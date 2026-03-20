@@ -8,9 +8,7 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      screens: { "2xl": "1400px" },
     },
     extend: {
       fontFamily: {
@@ -50,11 +48,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        neo: {
-          yellow: "hsl(var(--neo-yellow))",
-          red: "hsl(var(--neo-red))",
-          cyan: "hsl(var(--neo-cyan))",
-          green: "hsl(var(--neo-green))",
+        bauhaus: {
+          red: "hsl(var(--bauhaus-red))",
+          blue: "hsl(var(--bauhaus-blue))",
+          yellow: "hsl(var(--bauhaus-yellow))",
+          black: "hsl(var(--bauhaus-black))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -69,8 +67,8 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "var(--radius)",
-        sm: "var(--radius)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       keyframes: {
         "accordion-down": {
@@ -89,7 +87,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "marquee": "marquee 20s linear infinite",
+        "marquee": "marquee 25s linear infinite",
       },
     },
   },

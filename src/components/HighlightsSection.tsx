@@ -18,49 +18,45 @@ const HighlightsSection = () => {
   }, []);
 
   return (
-    <section ref={ref} className="relative py-28 px-6 bg-background overflow-hidden">
-      {/* Background geometric shapes */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-40 h-40 bg-bauhaus-blue/8 bauhaus-circle" />
-        <div className="absolute bottom-10 right-20 w-32 h-32 bg-bauhaus-yellow/10 rotate-45" />
-        <div className="absolute top-10 right-1/3 w-24 h-24 bg-bauhaus-red/8 bauhaus-triangle" />
-      </div>
+    <section ref={ref} className="relative py-28 px-6 bg-white overflow-hidden dot-grid border-t border-gray-100">
 
       <div className="relative max-w-[1400px] mx-auto text-center">
-        <div data-reveal className="glass-strong rounded-3xl p-12 md:p-20 neumorph">
-          <h2 className="text-[clamp(2.5rem,7vw,7rem)] font-bold uppercase leading-[0.85] tracking-tight text-foreground mb-8">
+        <div data-reveal className="premium-card p-12 md:p-24 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50/50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+          
+          <h2 className="text-[clamp(2.5rem,7vw,7rem)] font-black uppercase leading-[0.85] tracking-tighter text-gray-900 mb-12">
             #1 TECH FEST
             <br />
-            <span className="text-primary">IN KOLKATA</span>
+            <span className="text-blue-600">IN KOLKATA</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 mt-8">
             {[
-              { num: "15,000+", label: "Footfall" },
-              { num: "200+", label: "Events" },
-              { num: "50+", label: "Colleges" },
+              { num: "15,000+", label: "Annual Footfall" },
+              { num: "200+", label: "Technical Events" },
+              { num: "50+", label: "Partner Colleges" },
             ].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-3xl md:text-5xl font-bold text-foreground">{s.num}</p>
-                <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mt-1">{s.label}</p>
+              <div key={s.label} className="text-center group">
+                <p className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter group-hover:text-blue-600 transition-colors">{s.num}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mt-3">{s.label}</p>
               </div>
             ))}
           </div>
-          {/* Bauhaus dots */}
-          <div className="flex justify-center gap-3 mt-10">
-            <div className="w-5 h-5 bg-bauhaus-red bauhaus-circle" />
-            <div className="w-5 h-5 bg-bauhaus-blue bauhaus-circle" />
-            <div className="w-5 h-5 bg-bauhaus-yellow bauhaus-circle" />
+          {/* Brand Mark */}
+          <div className="flex justify-center gap-3 mt-16 scale-75 md:scale-100">
+            <div className="w-4 h-4 bg-gray-900 rounded-sm transform rotate-12" />
+            <div className="w-4 h-4 bg-blue-600 rounded-sm transform -rotate-12" />
+            <div className="w-4 h-4 bg-gray-200 rounded-sm transform rotate-45" />
           </div>
         </div>
       </div>
 
       {/* Marquee */}
-      <div className="mt-16 glass-strong rounded-2xl py-5 -mx-2 overflow-hidden neumorph-sm">
+      <div className="mt-16 bg-gray-50 border-y border-gray-100 py-8 -mx-10 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {Array(4)
             .fill(null)
             .map((_, i) => (
-              <span key={i} className="text-xl md:text-3xl font-bold uppercase text-foreground/40 mx-6">
+              <span key={i} className="text-xl md:text-4xl font-black uppercase text-gray-200 mx-12 tracking-tighter">
                 INNOVATE · CREATE · COMPETE · CELEBRATE · UNITE ·&nbsp;
               </span>
             ))}

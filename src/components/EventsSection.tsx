@@ -1,11 +1,22 @@
 import { useEffect, useRef } from "react";
+import { ArrowUpRight, MapPin, Clock } from "lucide-react";
+
+// Separated featured event from the rest for distinct styling
+const featuredEvent = { 
+  id: "01", 
+  name: "IEMPACT 2024", 
+  date: "Mar 25", 
+  desc: "Our flagship cultural extravaganza featuring national artists, intense inter-college competitions, and unforgettable nights. The biggest event of the year.", 
+  type: "Flagship Cultural",
+  location: "Main Campus Grounds",
+  time: "6:00 PM onwards"
+};
 
 const events = [
-  { name: "IEMPACT", desc: "The flagship cultural extravaganza", accent: "bg-bauhaus-red" },
-  { name: "INNOVACION", desc: "Annual tech fest pushing boundaries", accent: "bg-bauhaus-blue" },
-  { name: "MARATHON", desc: "5K run for fitness and community", accent: "bg-bauhaus-yellow" },
-  { name: "FILM FESTIVAL", desc: "Student cinema & storytelling", accent: "bg-bauhaus-red" },
-  { name: "ALUMNI MEET", desc: "Bridging generations of IEM", accent: "bg-bauhaus-blue" },
+  { id: "02", name: "Innovacion", date: "Apr 15", desc: "Annual tech fest pushing the boundaries of student engineering and applied research.", type: "Technical" },
+  { id: "03", name: "Campus Marathon", date: "May 02", desc: "The annual 5K run promoting student fitness, mental health, and community unity.", type: "Athletics" },
+  { id: "04", name: "Film Festival", date: "May 10", desc: "A weekend dedicated to student cinema, photography exhibitions, and storytelling.", type: "Creative" },
+  { id: "05", name: "Alumni Summit", date: "Aug 20", desc: "Bridging generations of IEM graduates with current students through networking.", type: "Networking" },
 ];
 
 const EventsSection = () => {
@@ -16,7 +27,7 @@ const EventsSection = () => {
       (entries) => entries.forEach((e) => {
         if (e.isIntersecting) e.target.classList.add("animate-reveal-up");
       }),
-      { threshold: 0.08 }
+      { threshold: 0.1 }
     );
     ref.current?.querySelectorAll("[data-reveal]").forEach((el, i) => {
       (el as HTMLElement).style.animationDelay = `${i * 0.1}s`;
@@ -27,40 +38,107 @@ const EventsSection = () => {
   }, []);
 
   return (
-    <section id="events" ref={ref} className="relative py-28 px-6 bg-background overflow-hidden">
-      <div className="absolute -bottom-16 left-1/4 w-60 h-60 bg-bauhaus-yellow/8 bauhaus-triangle animate-spin-slow" />
+    <section id="events" ref={ref} className="relative py-24 md:py-40 bg-white border-t border-gray-100 dot-grid overflow-hidden">
 
-      <div className="relative max-w-[1400px] mx-auto">
-        <div data-reveal className="mb-16">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-1 bg-bauhaus-yellow rounded-full" />
-            <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground">What's Happening</span>
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-8">
+        
+        {/* Header */}
+        <div data-reveal className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tight mb-4">
+              Upcoming <span className="text-gray-400">Events.</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 font-medium">
+              Mark your calendars. Here's what's happening around campus.
+            </p>
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold uppercase text-foreground">
-            EVENTS
-          </h2>
+          <button className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors group">
+            See all events
+            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </button>
         </div>
 
-        <div className="flex gap-6 overflow-x-auto pb-6 hide-scrollbar">
-          {events.map((ev) => (
-            <div
-              key={ev.name}
-              data-reveal
-              className="glass-strong rounded-2xl p-8 min-w-[280px] md:min-w-[340px] flex-shrink-0 neumorph neumorph-hover group"
-            >
-              <div className={`w-10 h-2 ${ev.accent} rounded-full mb-5 transition-all duration-300 group-hover:w-16`} />
-              <h3 className="text-2xl md:text-3xl font-bold uppercase mb-3 leading-tight text-foreground">
-                {ev.name}
-              </h3>
-              <p className="text-base font-medium text-muted-foreground mb-6">{ev.desc}</p>
-              <span className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold uppercase bg-card rounded-lg neumorph-sm text-foreground/80 transition-all group-hover:text-foreground group-hover:neumorph active:neumorph-inset active:scale-97">
-                Learn More
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-1">
-                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          
+          {/* Featured Event - Spans 2 columns, Dark striking contrast */}
+          <div 
+            data-reveal 
+            className="md:col-span-2 group relative overflow-hidden bg-gray-900 rounded-[2rem] p-8 md:p-12 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between min-h-[400px]"
+          >
+            {/* Ambient inner glow */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none transition-all duration-700 group-hover:bg-blue-500/30" />
+            
+            <div className="relative z-10 flex justify-between items-start mb-8">
+              <span className="px-4 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-500/20">
+                Featured • {featuredEvent.type}
               </span>
+              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10 group-hover:bg-white group-hover:text-gray-900 text-white transition-all duration-300">
+                <ArrowUpRight className="w-6 h-6" />
+              </div>
             </div>
-          ))}
+
+            <div className="relative z-10">
+              <div className="flex flex-col md:flex-row md:items-end gap-6 mb-6">
+                <div>
+                  <h3 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-2">
+                    {featuredEvent.name}
+                  </h3>
+                  <div className="flex items-center gap-4 text-gray-300 font-medium text-sm md:text-base">
+                    <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4" /> {featuredEvent.location}</span>
+                    <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {featuredEvent.time}</span>
+                  </div>
+                </div>
+                <div className="bg-white text-gray-900 rounded-2xl px-6 py-4 text-center md:ml-auto shrink-0 shadow-lg">
+                  <span className="block text-sm font-bold uppercase tracking-widest text-gray-500 mb-1">Date</span>
+                  <span className="block text-2xl font-black">{featuredEvent.date}</span>
+                </div>
+              </div>
+              <p className="text-lg text-gray-400 max-w-xl leading-relaxed">
+                {featuredEvent.desc}
+              </p>
+            </div>
+          </div>
+
+          {/* Standard Event Cards */}
+          {events.map((ev) => {
+            const [month, day] = ev.date.split(" ");
+            return (
+              <div
+                key={ev.id}
+                data-reveal
+                className="premium-card p-8 group flex flex-col relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-[4rem] -z-0 transition-colors duration-500 group-hover:bg-blue-50/50" />
+                
+                <div className="relative z-10 flex items-start gap-5 mb-8">
+                  {/* Calendar Tear-off style date */}
+                  <div className="flex flex-col items-center justify-center bg-gray-50 rounded-2xl p-3 border border-gray-100 min-w-[72px] shadow-sm group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors duration-300">
+                    <span className="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-blue-100 mb-0.5">{month}</span>
+                    <span className="text-2xl font-black text-gray-900 group-hover:text-white">{day}</span>
+                  </div>
+                  <div className="pt-1">
+                    <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-1.5 block">
+                      {ev.type}
+                    </span>
+                    <h3 className="text-xl font-black text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
+                      {ev.name}
+                    </h3>
+                  </div>
+                </div>
+                
+                <p className="relative z-10 text-gray-500 font-medium leading-relaxed flex-1">
+                  {ev.desc}
+                </p>
+
+                <div className="relative z-10 mt-8 flex items-center gap-2 text-xs font-black text-gray-900 group-hover:text-blue-600 transition-colors uppercase tracking-widest">
+                  View Details
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </div>
+              </div>
+            );
+          })}
+
         </div>
       </div>
     </section>

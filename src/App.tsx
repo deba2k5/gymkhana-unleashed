@@ -8,6 +8,10 @@ import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
+import SocietiesPage from "./pages/SocietiesPage.tsx";
+import MembersPage from "./pages/MembersPage.tsx";
+import FaqPage from "./pages/FaqPage.tsx";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -16,6 +20,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/societies" element={<SocietiesPage />} />
+          <Route path="/members" element={<MembersPage />} />
+          <Route path="/faq" element={<FaqPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

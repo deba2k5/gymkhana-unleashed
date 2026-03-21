@@ -10,12 +10,17 @@ import Footer from "@/components/Footer";
 const Index = () => (
   <div className="min-h-screen bg-background">
     <Navbar />
-    <HeroSection />
-    <AboutSection />
-    <SocietiesSection />
-    <EventsSection />
-    <NewsSection />
-    <HighlightsSection />
+
+    {/* 🔥 ADD GLOBAL TOP SPACING ONCE */}
+    <div className="pt-[100px] md:pt-[120px]">
+      <HeroSection />
+      <AboutSection />
+      <SocietiesSection />
+      <EventsSection />
+      <NewsSection />
+      <HighlightsSection />
+    </div>
+
     <Footer />
   </div>
 );

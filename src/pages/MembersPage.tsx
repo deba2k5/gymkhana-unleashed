@@ -1,98 +1,163 @@
-import { Search, User, Mail, Shield, Zap, Globe } from "lucide-react";
+"use client";
+
+import { Search, Mail } from "lucide-react";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const members = [
-  { id: 1, name: "Arjun Mehta", role: "President", department: "Computer Science", email: "president@iemgymkhana.in", bio: "Leading the vision for a more connected and innovative campus culture.", icon: <Shield className="w-5 h-5" /> },
-  { id: 2, name: "Sneha Roy", role: "General Secretary", department: "Electronics", email: "gen-sec@iemgymkhana.in", bio: "Managing cross-society collaborations and administrative excellence.", icon: <Zap className="w-5 h-5" /> },
-  { id: 3, name: "Rohan Das", role: "Technical Head", department: "IT", email: "tech@iemgymkhana.in", bio: "Driving technical fests and open-source initiatives across the institute.", icon: <Globe className="w-5 h-5" /> },
-  { id: 4, name: "Priya Singh", role: "Cultural Head", department: "Mechanical", email: "cultural@iemgymkhana.in", bio: "Orchestrating IEMPACT and preserving our rich cultural heritage.", icon: <User className="w-5 h-5" /> },
-  // Add more as needed
-];
+/* ⭐ PRESIDENT */
+const president = {
+  id: 0,
+  name: "Dr. Sanghamitra Podder",
+  role: "President",
+  email: "president@iemgymkhana.in",
+  image: "/coming.png",
+};
+
+/* 👥 MEMBERS */
+const members = Array.from({ length: 150 }, (_, i) => ({
+  id: i + 1,
+  name: `Member ${i + 1}`,
+  role: "",
+  email: `member${i + 1}@iemgymkhana.in`,
+  image: "/coming.png",
+}));
 
 const MembersPage = () => {
   const [search, setSearch] = useState("");
 
-  const filteredMembers = members.filter(m => 
-    m.name.toLowerCase().includes(search.toLowerCase()) || 
-    m.role.toLowerCase().includes(search.toLowerCase())
+  const filteredMembers = members.filter((m) =>
+    m.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="min-h-screen bg-background dot-grid font-sans selection:bg-blue-100">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      
-      <main className="max-w-[1400px] mx-auto px-6 lg:px-12 py-32 md:py-48">
-        <div className="max-w-4xl mb-24">
-          <div className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest border border-blue-100">
-            Gymkhana Leadership 2024-25
+
+      <main className="max-w-[1100px] mx-auto px-4 sm:px-6 pt-24 pb-16">
+
+        {/* 🔥 HEADER + PRESIDENT */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center mb-12">
+
+          {/* LEFT: HEADING */}
+          <div className="text-left">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-orbitron text-gray-900 mb-2 leading-[0.9]">
+              MEET THE <br />
+              <span className="text-[#7a2e2e]">TEAM</span>
+            </h1>
+
+            <p className="text-sm text-gray-500 max-w-md">
+              The people behind IEM Gymkhana
+            </p>
           </div>
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-gray-900 mb-8 leading-[0.85]">
-            MEET THE <br /><span className="text-gray-300">VISIONARIES.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-500 font-medium leading-relaxed max-w-2xl">
-            The dedicated team of student leaders driving excellence in technical, cultural, and sports domains.
-          </p>
+
+          {/* RIGHT: PRESIDENT (CENTERED + DOWN) */}
+          <div className="flex justify-center md:justify-center md:mt-12">
+            <div className="relative group w-[180px] h-[220px]">
+
+              {/* BACK */}
+              <div className="absolute inset-0 rounded-lg border border-[#7a2e2e] bg-white p-3 flex flex-col justify-between 
+              transition-all duration-300 group-hover:translate-x-2 group-hover:translate-y-4">
+
+                <div>
+                  <p className="text-[10px] font-orbitron text-[#7a2e2e] uppercase tracking-widest">
+                    {president.role}
+                  </p>
+                  <h3 className="text-sm font-semibold text-gray-900 mt-1">
+                    {president.name}
+                  </h3>
+                </div>
+
+                <a
+                  href={`mailto:${president.email}`}
+                  className="flex items-center gap-1 text-xs text-gray-400 hover:text-[#7a2e2e]"
+                >
+                  <Mail className="w-3 h-3" />
+                  Mail
+                </a>
+              </div>
+
+              {/* FRONT */}
+              <div className="absolute inset-0 rounded-lg overflow-hidden border border-[#7a2e2e] bg-white 
+              transition-all duration-300 group-hover:-translate-x-2 group-hover:-translate-y-4">
+
+                <img
+                  src={president.image}
+                  alt={president.name}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* NAME + ROLE */}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-2 text-center">
+                  <p className="text-[11px] font-semibold text-white leading-tight">
+                    {president.name}
+                  </p>
+                  <p className="text-[9px] text-gray-200 uppercase tracking-widest">
+                    {president.role}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        {/* Search Bar */}
-        <div className="relative max-w-xl mb-20 group">
-          <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
-          <input 
-            type="text" 
-            placeholder="Search by name or role..." 
-            className="w-full pl-14 pr-8 py-5 bg-white border border-gray-100 rounded-2xl shadow-xl shadow-gray-200/50 focus:outline-none focus:ring-4 focus:ring-blue-600/5 focus:border-blue-600 transition-all text-lg font-medium"
+        {/* 🔍 SEARCH */}
+        <div className="relative max-w-xs mb-10">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full pl-10 pr-4 py-2 text-sm bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7a2e2e]/20"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 
-        {/* Members Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredMembers.map((member) => (
-            <div 
-              key={member.id} 
-              className="premium-card p-10 group relative overflow-hidden flex flex-col"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-bl-[5rem] -z-0 group-hover:bg-blue-50 transition-colors duration-500" />
-              
-              <div className="relative z-10 flex items-center justify-between mb-10">
-                <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300">
-                  {member.icon}
-                </div>
-                <div className="text-right">
-                  <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-1 block">
-                    {member.department}
-                  </span>
-                  <p className="text-sm font-black text-gray-900 uppercase tracking-widest">{member.role}</p>
-                </div>
-              </div>
+        {/* 👥 MEMBERS GRID */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
 
-              <div className="relative z-10 mb-8">
-                <h3 className="text-2xl font-black text-gray-900 mb-4 tracking-tight">
+          {filteredMembers.map((member) => (
+            <div key={member.id} className="relative group h-[170px]">
+
+              {/* BACK */}
+              <div className="absolute inset-0 rounded-md border border-[#7a2e2e] bg-white p-2 flex flex-col justify-between 
+              transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-3">
+
+                <h3 className="text-[10px] font-semibold text-gray-900 text-center">
                   {member.name}
                 </h3>
-                <p className="text-gray-500 font-medium leading-relaxed text-sm h-12 overflow-hidden italic">
-                  "{member.bio}"
-                </p>
+
+                <a
+                  href={`mailto:${member.email}`}
+                  className="flex justify-center text-gray-400 hover:text-[#7a2e2e]"
+                >
+                  <Mail className="w-3 h-3" />
+                </a>
               </div>
 
-              <div className="mt-auto relative z-10 pt-8 border-t border-gray-50 flex items-center justify-between">
-                <a 
-                  href={`mailto:${member.email}`} 
-                  className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-blue-600 transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                  Connect
-                </a>
-                <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <div className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse" />
+              {/* FRONT */}
+              <div className="absolute inset-0 rounded-md overflow-hidden border border-[#7a2e2e] bg-white 
+              transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-3">
+
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
+
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-1 text-center">
+                  <p className="text-[9px] font-semibold text-white truncate">
+                    {member.name}
+                  </p>
                 </div>
               </div>
+
             </div>
           ))}
+
         </div>
+
       </main>
 
       <Footer />

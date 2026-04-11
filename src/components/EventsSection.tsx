@@ -1,144 +1,195 @@
-import { useEffect, useRef } from "react";
-import { ArrowUpRight, MapPin, Clock } from "lucide-react";
+"use client";
 
-// Separated featured event from the rest for distinct styling
-const featuredEvent = { 
-  id: "01", 
-  name: "IEMPACT 2024", 
-  date: "Mar 25", 
-  desc: "Our flagship cultural extravaganza featuring national artists, intense inter-college competitions, and unforgettable nights. The biggest event of the year.", 
-  type: "Flagship Cultural",
-  location: "Main Campus Grounds",
-  time: "6:00 PM onwards"
+import { useRef } from "react";
+import { ArrowUpRight, MapPin, Clock, MoveRight, Zap } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+
+const featuredEvent = {
+  id: "01",
+  name: "IEMPACT 2024",
+  date: "MAR 25",
+  desc: "The heartbeat of our cultural legacy. A national-level extravaganza featuring global talent, elite competitions, and unforgettable performances.",
+  type: "FLAGSHIP — CULTURAL",
+  location: "MAIN CAMPUS GROUNDS",
+  time: "18:00 HRS",
 };
 
 const events = [
-  { id: "02", name: "Innovacion", date: "Apr 15", desc: "Annual tech fest pushing the boundaries of student engineering and applied research.", type: "Technical" },
-  { id: "03", name: "Campus Marathon", date: "May 02", desc: "The annual 5K run promoting student fitness, mental health, and community unity.", type: "Athletics" },
-  { id: "04", name: "Film Festival", date: "May 10", desc: "A weekend dedicated to student cinema, photography exhibitions, and storytelling.", type: "Creative" },
-  { id: "05", name: "Alumni Summit", date: "Aug 20", desc: "Bridging generations of IEM graduates with current students through networking.", type: "Networking" },
+  { id: "02", name: "Innovacion",      date: "APR 15", type: "TECHNICAL",   desc: "Annual tech confluence pushing students beyond conventional engineering limits." },
+  { id: "03", name: "Campus Marathon", date: "MAY 02", type: "ATHLETICS",   desc: "Ultimate 5K endurance test promoting mental resilience and athletic community." },
+  { id: "04", name: "Film Festival",   date: "MAY 10", type: "CREATIVE",    desc: "A cinematic odyssey showcasing student-produced media and narrative art." },
+  { id: "05", name: "Alumni Summit",   date: "AUG 20", type: "NETWORKING",  desc: "Forging multi-generational bridges between IEM leaders and the new guard." },
 ];
 
 const EventsSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("animate-reveal-up");
-      }),
-      { threshold: 0.1 }
-    );
-    ref.current?.querySelectorAll("[data-reveal]").forEach((el, i) => {
-      (el as HTMLElement).style.animationDelay = `${i * 0.1}s`;
-      (el as HTMLElement).style.opacity = "0";
-      observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
-    <section id="events" ref={ref} className="relative py-24 md:py-40 bg-white border-t border-gray-100 dot-grid overflow-hidden">
+    <section
+      id="events"
+      ref={ref}
+      className="relative py-32 lg:py-52 bg-white border-t-4 border-black overflow-hidden"
+    >
+      {/* subtle dot grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(#00000008_1px,transparent_0)] bg-[length:24px_24px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-8">
-        
-        {/* Header */}
-        <div data-reveal className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tight mb-4">
-              Upcoming <span className="text-gray-400">Events.</span>
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 z-10">
+
+        {/* ── SECTION HEADER ── */}
+        <div className="mb-20 lg:mb-32 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+          <div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-[3px] bg-black" />
+              <span className="text-[11px] font-black tracking-[0.45em] uppercase text-black/50">
+                CALENDAR
+              </span>
+            </div>
+            <h2
+              className="font-space font-black tracking-tighter text-black"
+              style={{ fontSize: "clamp(3.5rem,10vw,9.5rem)", lineHeight: 0.82 }}
+            >
+              UPCOMING<br />
+              <span className="text-outline">CHRONICLE.</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 font-medium">
-              Mark your calendars. Here's what's happening around campus.
-            </p>
           </div>
-          <button className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors group">
-            See all events
-            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+
+          <button className="brutalist-button bg-black text-white hover:bg-yellow-400 hover:text-black px-10 py-4 text-sm self-start lg:self-auto">
+            VIEW ALL EVENTS
+            <MoveRight className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          
-          {/* Featured Event - Spans 2 columns, Dark striking contrast */}
-          <div 
-            data-reveal 
-            className="md:col-span-2 group relative overflow-hidden bg-gray-900 rounded-[2rem] p-8 md:p-12 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between min-h-[400px]"
+        {/* ── EVENTS GRID ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8">
+
+          {/* FEATURED */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1 }}
+            className="lg:col-span-12 group relative bg-black p-10 lg:p-16 overflow-hidden brutalist-shadow-lg cursor-pointer flex flex-col min-h-[500px] border-[3px] border-black"
           >
-            {/* Ambient inner glow */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none transition-all duration-700 group-hover:bg-blue-500/30" />
-            
-            <div className="relative z-10 flex justify-between items-start mb-8">
-              <span className="px-4 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-500/20">
-                Featured • {featuredEvent.type}
-              </span>
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10 group-hover:bg-white group-hover:text-gray-900 text-white transition-all duration-300">
-                <ArrowUpRight className="w-6 h-6" />
+            {/* glow */}
+            <div className="absolute top-0 right-0 w-[55%] h-[55%] bg-yellow-400/8 blur-[100px] pointer-events-none group-hover:bg-yellow-400/15 transition-all duration-700" />
+
+            {/* top bar */}
+            <div className="relative z-10 flex justify-between items-start mb-auto">
+              <div className="flex items-center gap-4">
+                <div className="w-3.5 h-3.5 rounded-full bg-yellow-400 animate-pulse" />
+                <span className="text-[10px] font-black text-white/60 tracking-[0.45em] uppercase">
+                  FEATURED EVENT
+                </span>
+              </div>
+              <div className="w-14 h-14 border-2 border-white/25 flex items-center justify-center text-white group-hover:bg-yellow-400 group-hover:border-yellow-400 group-hover:text-black transition-all">
+                <ArrowUpRight className="w-7 h-7" />
               </div>
             </div>
 
-            <div className="relative z-10">
-              <div className="flex flex-col md:flex-row md:items-end gap-6 mb-6">
-                <div>
-                  <h3 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-2">
+            {/* content */}
+            <div className="relative z-10 pt-10">
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-8">
+                <div className="flex-1">
+                  <span className="text-[11px] font-black text-yellow-400 tracking-[0.3em] uppercase block mb-4">
+                    {featuredEvent.type}
+                  </span>
+                  <h3
+                    className="font-space font-black text-white uppercase tracking-tighter mb-6"
+                    style={{ fontSize: "clamp(3rem,8vw,6rem)", lineHeight: 0.85 }}
+                  >
                     {featuredEvent.name}
                   </h3>
-                  <div className="flex items-center gap-4 text-gray-300 font-medium text-sm md:text-base">
-                    <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4" /> {featuredEvent.location}</span>
-                    <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {featuredEvent.time}</span>
+                  <div className="flex flex-wrap gap-8">
+                    <div className="flex items-center gap-2 text-[11px] font-black text-white/55 uppercase tracking-widest">
+                      <MapPin className="w-4 h-4 text-yellow-400" />
+                      {featuredEvent.location}
+                    </div>
+                    <div className="flex items-center gap-2 text-[11px] font-black text-white/55 uppercase tracking-widest">
+                      <Clock className="w-4 h-4 text-yellow-400" />
+                      {featuredEvent.time}
+                    </div>
                   </div>
                 </div>
-                <div className="bg-white text-gray-900 rounded-2xl px-6 py-4 text-center md:ml-auto shrink-0 shadow-lg">
-                  <span className="block text-sm font-bold uppercase tracking-widest text-gray-500 mb-1">Date</span>
-                  <span className="block text-2xl font-black">{featuredEvent.date}</span>
+
+                {/* date widget */}
+                <div className="shrink-0 bg-yellow-400 p-6 text-center brutalist-shadow border-2 border-black min-w-[100px]">
+                  <span className="block text-[9px] font-black text-black/60 tracking-widest mb-1 uppercase">DATE</span>
+                  <span className="block text-3xl font-space font-black text-black">{featuredEvent.date}</span>
                 </div>
               </div>
-              <p className="text-lg text-gray-400 max-w-xl leading-relaxed">
+
+              <p className="text-lg lg:text-xl font-bold uppercase tracking-tight text-white/65 leading-tight max-w-3xl">
                 {featuredEvent.desc}
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Standard Event Cards */}
-          {events.map((ev) => {
-            const [month, day] = ev.date.split(" ");
-            return (
-              <div
-                key={ev.id}
-                data-reveal
-                className="premium-card p-8 group flex flex-col relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-[4rem] -z-0 transition-colors duration-500 group-hover:bg-blue-50/50" />
-                
-                <div className="relative z-10 flex items-start gap-5 mb-8">
-                  {/* Calendar Tear-off style date */}
-                  <div className="flex flex-col items-center justify-center bg-gray-50 rounded-2xl p-3 border border-gray-100 min-w-[72px] shadow-sm group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors duration-300">
-                    <span className="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-blue-100 mb-0.5">{month}</span>
-                    <span className="text-2xl font-black text-gray-900 group-hover:text-white">{day}</span>
-                  </div>
-                  <div className="pt-1">
-                    <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-1.5 block">
-                      {ev.type}
-                    </span>
-                    <h3 className="text-xl font-black text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
-                      {ev.name}
-                    </h3>
-                  </div>
+          {/* SECONDARY EVENTS */}
+          {events.slice(0, 2).map((ev, idx) => (
+            <motion.div
+              key={ev.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.18 + idx * 0.1 }}
+              className="lg:col-span-6 premium-card p-10 bg-white group flex flex-col min-h-[300px] cursor-pointer"
+            >
+              <div className="flex justify-between items-start mb-auto">
+                <div className="w-14 h-14 bg-black flex flex-col items-center justify-center brutalist-shadow-sm text-white border-2 border-black">
+                  <span className="text-[9px] font-black uppercase text-white/60 leading-none">{ev.date.split(" ")[0]}</span>
+                  <span className="text-xl font-space font-black leading-tight">{ev.date.split(" ")[1]}</span>
                 </div>
-                
-                <p className="relative z-10 text-gray-500 font-medium leading-relaxed flex-1">
+                <span className="text-[9px] font-black text-black/40 tracking-[0.3em] uppercase border border-black/20 px-3 py-1">
+                  {ev.type}
+                </span>
+              </div>
+
+              <div className="mt-8">
+                <h4
+                  className="font-space font-black text-black tracking-tighter uppercase mb-4 group-hover:text-yellow-500 transition-colors"
+                  style={{ fontSize: "clamp(1.75rem,3.5vw,2.5rem)", lineHeight: 0.9 }}
+                >
+                  {ev.name}
+                </h4>
+                <p className="text-[11px] font-bold text-black/55 uppercase tracking-wide mb-6 leading-relaxed">
                   {ev.desc}
                 </p>
-
-                <div className="relative z-10 mt-8 flex items-center gap-2 text-xs font-black text-gray-900 group-hover:text-blue-600 transition-colors uppercase tracking-widest">
-                  View Details
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <div className="pt-6 border-t-2 border-black/10 flex items-center justify-between group-hover:border-black transition-colors">
+                  <span className="text-[10px] font-black tracking-widest text-black/50 uppercase">LEARN MORE</span>
+                  <ArrowUpRight className="w-5 h-5" />
                 </div>
               </div>
-            );
-          })}
+            </motion.div>
+          ))}
 
+          {/* TERTIARY EVENTS */}
+          {events.slice(2).map((ev, idx) => (
+            <motion.div
+              key={ev.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.35 + idx * 0.1 }}
+              className="lg:col-span-6 premium-card p-10 bg-white group flex items-center justify-between gap-8 min-h-[200px] cursor-pointer"
+            >
+              <div className="flex-1">
+                <span className="text-[9px] font-black text-black/40 tracking-[0.4em] uppercase block mb-3">{ev.type}</span>
+                <h4
+                  className="font-space font-black text-black tracking-tighter uppercase mb-3 group-hover:text-yellow-500 transition-colors"
+                  style={{ fontSize: "clamp(1.5rem,3vw,2.25rem)", lineHeight: 0.9 }}
+                >
+                  {ev.name}
+                </h4>
+                <p className="text-[11px] font-bold text-black/55 uppercase tracking-wide">
+                  {ev.desc}
+                </p>
+              </div>
+              <div className="shrink-0 flex flex-col items-end gap-4">
+                <span className="text-xl font-space font-black text-black italic">{ev.date}</span>
+                <div className="w-11 h-11 border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+                  <MoveRight className="w-5 h-5" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

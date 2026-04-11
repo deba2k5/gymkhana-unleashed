@@ -4,22 +4,19 @@ import AboutSection from "@/components/AboutSection";
 import SocietiesSection from "@/components/SocietiesSection";
 import EventsSection from "@/components/EventsSection";
 import NewsSection from "@/components/NewsSection";
-import HighlightsSection from "@/components/HighlightsSection";
+import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
     <Navbar />
 
-    {/* 🔥 ADD GLOBAL TOP SPACING ONCE */}
-    <div className="pt-[100px] md:pt-[120px]">
-      <HeroSection />
-      <AboutSection />
-      <SocietiesSection />
-      <EventsSection />
-      <NewsSection />
-      <HighlightsSection />
-    </div>
+    <HeroSection />
+    <AboutSection />
+    <SocietiesSection />
+    <EventsSection />
+    <NewsSection />
+    <FaqSection />
 
     <Footer />
   </div>

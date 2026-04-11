@@ -1,123 +1,129 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Info } from "lucide-react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Zap, Target, Sparkles, MoveRight } from "lucide-react";
 
-const ABOUT_TEXT = "IEM Student Gymkhana is where campus life finds its energy. It brings together creativity, innovation, and leadership — turning ideas into experiences that shape who we become. From large-scale fests to close-knit communities, it’s where students connect, create, and grow.";
+const stats = [
+  { label: "ANNUAL EVENTS", val: "50+",  icon: Sparkles },
+  { label: "TOTAL FOOTFALL", val: "15K+", icon: Zap },
+  { label: "ACTIVE 24/7",   val: "365",  icon: Target },
+];
 
 const AboutSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
-  const [hasStartedTyping, setHasStartedTyping] = useState(false);
-
-  useEffect(() => {
-    if (!isTyping) return;
-
-    let currentIndex = 0;
-    const typingInterval = setInterval(() => {
-      if (currentIndex < ABOUT_TEXT.length) {
-        setDisplayedText(ABOUT_TEXT.slice(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-        setIsTyping(false);
-      }
-    }, 15);
-
-    return () => clearInterval(typingInterval);
-  }, [isTyping]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("animate-reveal-up");
-            if (
-              e.target.getAttribute("data-typewriter") === "true" &&
-              !hasStartedTyping
-            ) {
-              setHasStartedTyping(true);
-              setTimeout(() => setIsTyping(true), 400);
-            }
-          }
-        }),
-      { threshold: 0.2 }
-    );
-
-    ref.current?.querySelectorAll("[data-reveal]").forEach((el, i) => {
-      if (el.getAttribute("data-typewriter") !== "true") {
-        (el as HTMLElement).style.animationDelay = `${i * 0.12}s`;
-        (el as HTMLElement).style.opacity = "0";
-      }
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [hasStartedTyping]);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
     <section
       ref={ref}
-      className="relative pt-24 pb-12 md:pt-32 md:pb-24 bg-background dot-grid overflow-hidden border-t border-gray-100"
+      className="relative py-32 lg:py-52 bg-white border-t-4 border-black overflow-hidden"
     >
-      {/* MAROON GLOW */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-[#7a2e2e]/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
-
-      <div className="relative max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 grid grid-cols-1 md:grid-cols-[0.7fr_1.3fr] gap-10 md:gap-16 items-center">
-        
-        {/* LEFT */}
-        <div
-          data-reveal
-          className="max-w-md mx-auto md:mx-0 text-center md:text-left"
+      {/* Background watermark */}
+      <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none overflow-hidden">
+        <span
+          className="font-black tracking-tighter uppercase whitespace-nowrap text-black opacity-[0.025] -rotate-6"
+          style={{ fontSize: "22vw", lineHeight: 1 }}
         >
-          <div className="flex items-center justify-center md:justify-start gap-3 mb-5 text-[#7a2e2e]">
-            <Info className="w-5 h-5" />
-            <span className="text-[10px] sm:text-xs font-orbitron uppercase tracking-[0.25em]">
-              Our Mission
-            </span>
-          </div>
+          IDENTITY
+        </span>
+      </div>
 
-          <h2 className="font-orbitron text-4xl sm:text-5xl md:text-8xl font-semibold text-gray-900 leading-[0.9] tracking-tight mb-6">
-            ABOUT<span className="text-[#7a2e2e]">.</span>
-          </h2>
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 z-10">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-28 items-start">
 
-          <p className="text-base sm:text-lg font-medium text-gray-500 leading-relaxed">
-            Building a culture of creativity, collaboration, and leadership at IEM.
-          </p>
-        </div>
-
-        {/* RIGHT CARD */}
-        <div
-          data-reveal
-          data-typewriter="true"
-          className="premium-card p-6 sm:p-8 md:p-16 flex flex-col justify-center min-h-[240px] md:min-h-[320px]"
-        >
-          <p className="text-base sm:text-lg md:text-3xl font-semibold leading-[1.5] text-gray-800 tracking-tight">
-            {displayedText}
-            <span
-              className={`inline-block w-1 h-6 sm:h-7 md:h-10 bg-[#7a2e2e] ml-2 translate-y-1 ${
-                isTyping || !hasStartedTyping ? "animate-pulse" : "opacity-0"
-              }`}
-            ></span>
-          </p>
-
-          {/* CIRCLES */}
-          <div className="mt-8 md:mt-12 flex items-center gap-4 md:gap-6 border-t border-gray-100 pt-6 md:pt-10">
-            <div className="flex -space-x-2 md:-space-x-3">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-[#7a2e2e]" />
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-[#9f4a4a]" />
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-[#c27a7a]" />
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-[#e0b3b3]" />
+          {/* ── LEFT: HEADING ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Section tag */}
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-14 h-[3px] bg-black" />
+              <span className="text-[11px] font-black tracking-[0.4em] uppercase text-black/50">
+                OUR MISSION
+              </span>
             </div>
 
-            <span className="text-[10px] sm:text-sm font-orbitron text-gray-400 uppercase tracking-widest">
-              Est. 1989
-            </span>
-          </div>
-        </div>
+            {/* Headline */}
+            <h2
+              className="font-space font-black tracking-tighter text-black mb-10"
+              style={{ fontSize: "clamp(4rem,11vw,9rem)", lineHeight: 0.82 }}
+            >
+              CORE<br />
+              <span className="text-outline">CULTURE.</span>
+            </h2>
 
+            <p className="text-xl md:text-2xl font-bold uppercase tracking-tight text-black leading-[1.2] mb-10 max-w-md">
+              More than a student body —{" "}
+              <span className="bg-yellow-400 text-black px-1.5">an accelerator</span>{" "}
+              for campus evolution.
+            </p>
+
+            <a
+              href="#societies"
+              className="brutalist-button bg-black text-white hover:bg-yellow-400 hover:text-black px-8 py-4 text-sm"
+            >
+              JOIN THE LEGACY
+              <MoveRight className="w-5 h-5" />
+            </a>
+          </motion.div>
+
+          {/* ── RIGHT: CONTENT CARD ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.95, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
+            className="relative"
+          >
+            {/* Offset shadow frame */}
+            <div
+              className="absolute inset-0 bg-yellow-400/30 border-2 border-black/15"
+              style={{ transform: "translate(10px,10px)", zIndex: 0 }}
+            />
+
+            <div className="relative premium-card p-10 lg:p-16 bg-white z-10">
+              {/* Side text */}
+              <div className="absolute top-0 right-8 h-full flex items-center pointer-events-none select-none">
+                <span className="text-[9px] font-black text-black/10 tracking-[1.2em] vertical-text uppercase">
+                  ESTABLISHED 1989
+                </span>
+              </div>
+
+              <span className="text-[11px] font-black text-yellow-500 tracking-[0.3em] uppercase block mb-5">
+                THE NARRATIVE
+              </span>
+
+              <p className="text-lg md:text-xl font-medium leading-[1.55] text-black/80 mb-12 font-outfit">
+                IEM Student Gymkhana is where campus life finds its energy. It
+                brings together creativity, innovation, and leadership — turning
+                ideas into experiences that shape who we become.
+                <br /><br />
+                From large-scale fests to close-knit communities, it's where
+                students connect, create, and grow into the leaders of tomorrow.
+              </p>
+
+              {/* Stats row */}
+              <div className="grid grid-cols-3 gap-6 pt-10 border-t-2 border-black/15">
+                {stats.map((s, i) => (
+                  <div key={i} className="group cursor-default">
+                    <div className="flex items-center gap-2 mb-3">
+                      <s.icon className="w-4 h-4 text-black/35 group-hover:text-yellow-500 transition-colors" />
+                      <span className="text-[9px] font-black text-black/55 tracking-widest uppercase leading-tight">
+                        {s.label}
+                      </span>
+                    </div>
+                    <span className="text-3xl md:text-4xl font-space font-black text-black tracking-tighter">
+                      {s.val}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

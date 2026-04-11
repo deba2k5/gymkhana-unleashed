@@ -1,111 +1,261 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Users2 } from "lucide-react";
+import {
+  ArrowUpRight, ChevronLeft, ChevronRight,
+  Binary, Music, Trophy, Heart, Edit3, Rocket,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 const societies = [
-  { id: "cultural", name: "Cultural" },
-  { id: "technical", name: "Technical" },
-  { id: "sports", name: "Sports" },
-  { id: "welfare", name: "Student Welfare" },
-  { id: "creative", name: "Creative & Literary" },
+  {
+    id: "humour",  name: "Humour Club",    number: "01",
+    image: "/societies/cultural.png",
+    description: "Bringing joy and laughter through stand-up comedy and improv.",
+    icon: Edit3,    color: "#EF4444",
+  },
+  {
+    id: "dance", name: "Dance Club",   number: "02",
+    image: "/societies/cultural.png",
+    description: "Celebrating expression through classical to contemporary movements.",
+    icon: Rocket,   color: "#3B82F6",
+  },
+  {
+    id: "music",    name: "Music Club",      number: "03",
+    image: "/societies/cultural.png",
+    description: "The symphony of IEM - exploring diverse musical genres.",
+    icon: Music,   color: "#FACC15",
+  },
+  {
+    id: "debate",   name: "Debate Society",     number: "04",
+    image: "/societies/technical.png",
+    description: "Fostering critical thinking, rhetoric, and public speaking.",
+    icon: Binary,    color: "#EF4444",
+  },
+  {
+    id: "drama",  name: "Drama Club", number: "05",
+    image: "/societies/cultural.png",
+    description: "Bringing stories to life through theatrical expressions.",
+    icon: Heart,    color: "#3B82F6",
+  },
+  {
+    id: "photography",name: "Photography Club",      number: "06",
+    image: "/societies/creative.png",
+    description: "Documenting campus life and capturing memorable visual art.",
+    icon: Trophy,   color: "#FACC15",
+  },
+  {
+    id: "lit",name: "Lit Club",      number: "07",
+    image: "/societies/creative.png",
+    description: "A community for lovers of reading, writing, and literature.",
+    icon: Edit3,   color: "#EF4444",
+  },
+  {
+    id: "pet",name: "Pet Society",      number: "08",
+    image: "/societies/welfare.png",
+    description: "Promoting animal welfare and spreading compassion for our furry friends.",
+    icon: Heart,   color: "#3B82F6",
+  },
+  {
+    id: "film",name: "Film Society",      number: "09",
+    image: "/societies/creative.png",
+    description: "Celebrating cinematic journeys and the art of visual storytelling.",
+    icon: Rocket,   color: "#FACC15",
+  },
 ];
 
 const SocietiesSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((p) => (p + 1) % societies.length);
+  const prev = () => setIndex((p) => (p - 1 + societies.length) % societies.length);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("animate-reveal-up");
-      }),
-      { threshold: 0.1 }
-    );
-
-    ref.current?.querySelectorAll("[data-reveal]").forEach((el, i) => {
-      (el as HTMLElement).style.animationDelay = `${i * 0.1}s`;
-      (el as HTMLElement).style.opacity = "0";
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    const interval = setInterval(() => {
+      setIndex((p) => (p + 1) % societies.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
+
+  const active = societies[index];
 
   return (
     <section
       id="societies"
-      ref={ref}
-      className="relative py-16 sm:py-20 md:py-40 px-4 sm:px-6 bg-white dot-grid overflow-hidden border-t border-gray-100"
+      className="relative py-32 lg:py-52 bg-white border-t-4 border-black overflow-hidden"
     >
-      <div className="relative max-w-[1400px] mx-auto z-10">
+      {/* Atmospheric blobs */}
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-yellow-300/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[120px] pointer-events-none" />
 
-        {/* HEADER */}
-        <div
-          data-reveal
-          className="mb-12 sm:mb-16 md:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 md:gap-10"
-        >
-          <div className="max-w-2xl text-center md:text-left">
+      <div className="relative max-w-[1400px] mx-auto px-6 z-10">
 
-
-            <h2 className="font-orbitron text-3xl sm:text-4xl md:text-8xl font-semibold text-gray-900 leading-[0.9] tracking-tight">
-              STUDENT<br />
-              <span className="text-[#7a2e2e]">SOCIETIES.</span>
+        {/* ── SECTION HEADER ── */}
+        <div className="mb-20 lg:mb-32 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+          <div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-[3px] bg-black" />
+              <span className="text-[11px] font-black tracking-[0.45em] uppercase text-black/50">
+                THE ECOSYSTEM
+              </span>
+            </div>
+            <h2
+              className="font-space font-black tracking-tighter text-black"
+              style={{ fontSize: "clamp(3.5rem,10vw,9.5rem)", lineHeight: 0.82 }}
+            >
+              OUR<br />
+              <span className="text-outline">SOCIETIES.</span>
             </h2>
           </div>
 
-          <div className="max-w-xs mx-auto md:mx-0 text-center md:text-left">
-            <p className="text-sm sm:text-base md:text-lg text-gray-500 font-medium leading-relaxed">
-              Explore diverse communities, collaborate with peers, and find where you truly belong.
+          <div className="flex items-center gap-6">
+            <p className="max-w-[240px] text-sm font-bold text-black/50 uppercase tracking-wider leading-relaxed hidden lg:block text-right">
+              EXPLORE THE CORE PILLARS OF STUDENT EXCELLENCE AT IEM.
             </p>
+            <div className="flex gap-3">
+              <button
+                onClick={prev}
+                aria-label="Previous"
+                className="w-16 h-16 border-[3px] border-black flex items-center justify-center hover:bg-black hover:text-white transition-all brutalist-shadow bg-white text-black"
+              >
+                <ChevronLeft className="w-7 h-7" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next"
+                className="w-16 h-16 border-[3px] border-black flex items-center justify-center bg-black text-white hover:bg-yellow-400 hover:text-black hover:border-black transition-all brutalist-shadow"
+              >
+                <ChevronRight className="w-7 h-7" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-10">
-          {societies.map((s) => (
-            <Link
-              to={`/societies#${s.id}`}
-              key={s.name}
-              data-reveal
-              className="premium-card aspect-[4/3] min-h-[180px] sm:min-h-[200px] md:min-h-[260px]
-              group flex flex-col items-center justify-center text-center
-              p-6 sm:p-8 md:p-12
-              transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
-            >
-              {/* ICON */}
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-4 sm:mb-6 rounded-2xl bg-[#7a2e2e]/10 flex items-center justify-center">
-                <span className="text-[#7a2e2e] font-orbitron text-base sm:text-lg">
-                  {s.name.charAt(0)}
-                </span>
-              </div>
+        {/* ── CAROUSEL ENGINE ── */}
+        <div
+          className="relative flex items-center justify-center overflow-visible"
+          style={{ height: "clamp(460px, 55vw, 700px)", perspective: "2800px" }}
+        >
+          <div className="relative w-full h-full flex items-center justify-center">
+            {societies.map((s, i) => {
+              const half = Math.floor(societies.length / 2);
+              let dist = i - index;
+              if (dist > half)  dist -= societies.length;
+              if (dist < -half) dist += societies.length;
+              const abs   = Math.abs(dist);
+              const isActive = dist === 0;
 
-              {/* NAME */}
-              <h3 className="text-base sm:text-lg md:text-2xl font-orbitron font-semibold text-gray-900 group-hover:text-[#7a2e2e] transition-colors">
-                {s.name}
-              </h3>
+              return (
+                <motion.div
+                  key={s.id}
+                  initial={false}
+                  animate={{
+                    x: dist * (typeof window !== "undefined" && window.innerWidth < 768 ? 300 : 550),
+                    scale: 1 - abs * 0.13,
+                    rotateY: dist * -42,
+                    z: -abs * 900,
+                    opacity: abs > 2 ? 0 : 1 - abs * 0.32,
+                  }}
+                  transition={{ type: "spring", stiffness: 160, damping: 26 }}
+                  className={`absolute ${
+                    isActive ? "z-50 cursor-default" : "z-10 cursor-pointer"
+                  }`}
+                  style={{ width: "clamp(320px, 45vw, 680px)", aspectRatio: "16/9" }}
+                  onClick={() => !isActive && setIndex(i)}
+                >
+                  {/* CARD */}
+                  <div
+                    className="relative w-full h-full border-[3px] border-black overflow-hidden bg-black brutalist-shadow-lg group"
+                  >
+                    {/* Background image */}
+                    <div className="absolute inset-0">
+                      <img
+                        src={s.image}
+                        alt={s.name}
+                        className="w-full h-full object-cover transition-transform duration-[5s] ease-out group-hover:scale-105 brightness-75"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                    </div>
 
-              {/* ARROW */}
-              <div className="mt-3 sm:mt-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
-                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#7a2e2e]" />
-              </div>
-            </Link>
-          ))}
+                    {/* Content (always visible) */}
+                    <div className="relative h-full flex flex-col justify-between p-8 lg:p-12 z-20">
+                      {/* Top row */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className="w-10 h-10 border-2 border-white/20 flex items-center justify-center"
+                            style={{ background: `${s.color}33` }}
+                          >
+                            <s.icon className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="text-[10px] font-black text-white/60 tracking-[0.4em] uppercase">
+                            {s.number}
+                          </span>
+                        </div>
+                        <span
+                          className="text-[2.5rem] font-space font-black tracking-tighter leading-none"
+                          style={{ color: `${s.color}30` }}
+                        >
+                          #{s.number}
+                        </span>
+                      </div>
+
+                      {/* Bottom: name + description + CTA */}
+                      <div className="space-y-4">
+                        <h3
+                          className="font-space font-black text-white tracking-tighter uppercase leading-[0.85]"
+                          style={{ fontSize: "clamp(2rem,5vw,3.5rem)" }}
+                        >
+                          {s.name}
+                        </h3>
+                        <p className="text-white/80 text-sm font-semibold uppercase tracking-wide leading-snug max-w-xs">
+                          {s.description}
+                        </p>
+                        <Link
+                          to={`/societies#${s.id}`}
+                          className="brutalist-button bg-white text-black hover:bg-yellow-400 text-xs w-full justify-between px-6 py-3"
+                        >
+                          EXPLORE SOCIETY
+                          <ArrowUpRight className="w-5 h-5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reflection */}
+                  {isActive && (
+                    <div
+                      className="absolute top-[100%] left-0 right-0 pointer-events-none overflow-hidden reflection-floor"
+                      style={{ height: "35%", transform: "scaleY(-0.5)", opacity: 0.08 }}
+                    >
+                      <img src={s.image} alt="" className="w-full h-full object-cover grayscale" />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* CTA */}
-        <div data-reveal className="mt-16 sm:mt-20 md:mt-28 text-center">
-          <Link
-            to="/societies"
-            className="inline-flex items-center gap-3 sm:gap-4 text-xs sm:text-sm font-orbitron uppercase tracking-[0.2em] text-gray-900 hover:text-[#7a2e2e] transition-colors group"
-          >
-            View all Clubs
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#7a2e2e] transition-all">
-              <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </div>
-          </Link>
+        {/* ── DOT PROGRESS ── */}
+        <div className="mt-16 flex flex-col items-center gap-6">
+          <div className="flex gap-3">
+            {societies.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                aria-label={`Society ${i + 1}`}
+                className={`h-1.5 transition-all duration-400 rounded-none border-0 p-0 ${
+                  index === i ? "w-10 bg-black" : "w-3 bg-black/20 hover:bg-black/40"
+                }`}
+              />
+            ))}
+          </div>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">
+            {String(index + 1).padStart(2, "0")} / {String(societies.length).padStart(2, "0")} — {active.name.toUpperCase()}
+          </span>
         </div>
-
       </div>
     </section>
   );

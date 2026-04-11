@@ -10,19 +10,21 @@ const queryClient = new QueryClient();
 
 import SocietiesPage from "./pages/SocietiesPage.tsx";
 import MembersPage from "./pages/MembersPage.tsx";
-import FaqPage from "./pages/FaqPage.tsx";
+import OathPage from "./pages/OathPage.tsx";
+import CustomCursor from "@/components/CustomCursor";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CustomCursor />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/oath" element={<OathPage />} />
           <Route path="/societies" element={<SocietiesPage />} />
           <Route path="/members" element={<MembersPage />} />
-          <Route path="/faq" element={<FaqPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

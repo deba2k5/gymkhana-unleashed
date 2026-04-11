@@ -1,150 +1,230 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================
+   CSS VARIABLES (HSL Format for Tailwind v3)
+============================ */
 @layer base {
   :root {
-    --background: 210 40% 98.7%; /* Very Light Slate-50 for professional SaaS look */
-    --foreground: 225 25% 12%;
-
+    --background: 60 33% 99%;
+    --foreground: 0 0% 2%;
     --card: 0 0% 100%;
-    --card-foreground: 225 25% 12%;
-
+    --card-foreground: 0 0% 2%;
     --popover: 0 0% 100%;
-    --popover-foreground: 225 25% 12%;
-
-    /* Bauhaus royal blue - Modern SaaS Blue */
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    /* Crisp borders */
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-
-    --radius: 1rem;
-
-    /* Bauhaus palette tokens - Refined */
-    --bauhaus-red: 0 84% 60%;
-    --bauhaus-blue: 221 83% 53%;
-    --bauhaus-yellow: 45 93% 47%;
-    --bauhaus-black: 225 25% 12%;
+    --popover-foreground: 0 0% 2%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 40%;
+    --accent: 48 96% 53%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 0%;
+    --input: 240 6% 90%;
+    --ring: 48 96% 53%;
+    --radius: 0rem;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Space Grotesk', sans-serif;
+    background-color: hsl(60, 33%, 99%);
+    color: #050505;
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: #000;
+    color: #fff;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
   }
 
-  h1, h2 { line-height: 1.0; }
-  h3, h4, h5, h6 { line-height: 1.25; }
+  h1, h2 { line-height: 0.85; }
+  h3 { line-height: 0.88; }
+  h4, h5, h6 { line-height: 0.95; }
 }
 
+/* ============================
+   SCROLLBAR
+============================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #fdfdfb; }
+::-webkit-scrollbar-thumb { background: #000; }
+::-webkit-scrollbar-thumb:hover { background: #FACC15; }
+
+/* ============================
+   UTILITY CLASSES
+============================ */
 @layer utilities {
-  /* Premium Glassmorphism */
-  .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20;
+  /* Fonts */
+  .font-outfit { font-family: 'Outfit', sans-serif; }
+  .font-space { font-family: 'Space Grotesk', sans-serif; }
+
+  /* ── BRUTALIST SHADOW SYSTEM ── */
+  .brutalist-shadow-sm {
+    box-shadow: 2px 2px 0px 0px #000;
+  }
+  .brutalist-shadow-small {
+    box-shadow: 3px 3px 0px 0px #000;
+  }
+  .brutalist-shadow {
+    box-shadow: 5px 5px 0px 0px #000;
+  }
+  .brutalist-shadow-lg {
+    box-shadow: 8px 8px 0px 0px #000;
+  }
+  .brutalist-shadow-xl {
+    box-shadow: 12px 12px 0px 0px #000;
   }
 
-  .glass-strong {
-    @apply bg-white/90 backdrop-blur-xl border border-white/30;
-  }
-
-  .glass-dark {
-    @apply bg-gray-900/80 backdrop-blur-xl border border-white/5;
-  }
-
-  /* Premium Cards & Containers */
+  /* ── CARDS ── */
   .premium-card {
-    @apply bg-white border border-gray-200 rounded-[2rem] shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-blue-100;
+    background: #ffffff;
+    border: 2px solid #000;
+    box-shadow: 6px 6px 0px 0px #000;
+    transition: transform 350ms cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 350ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .premium-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 11px 11px 0px 0px #000;
   }
 
-  .dot-grid {
-    @apply bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px];
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 2px solid rgba(0,0,0,0.85);
+    box-shadow: 4px 4px 0px 0px #000;
   }
 
-  /* Bauhaus geometric accents */
-  .bauhaus-circle {
-    border-radius: 50%;
+  /* ── BRUTALIST BUTTON ── */
+  .brutalist-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border: 3px solid #000;
+    padding: 0.85rem 1.85rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: transform 150ms, box-shadow 150ms;
+    box-shadow: 5px 5px 0px 0px #000;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .brutalist-button:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px 0px #000;
+  }
+  .brutalist-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000;
   }
 
-  .bauhaus-triangle {
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  /* ── TEXT EFFECTS ── */
+  /* BLACK outline — used on white/light backgrounds (About, Societies, Events, News headers) */
+  .text-outline {
+    -webkit-text-stroke: 3px #000 !important;
+    color: transparent !important;
+  }
+  /* WHITE outline — used on dark/black backgrounds (Hero section) */
+  .text-outline-white {
+    -webkit-text-stroke: 3px rgba(255,255,255,0.85) !important;
+    color: transparent !important;
+  }
+  /* YELLOW outline */
+  .text-outline-yellow {
+    -webkit-text-stroke: 3px #FACC15 !important;
+    color: transparent !important;
+  }
+
+  /* ── MISC ── */
+  .reflection-floor {
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+  }
+
+  .ease-premium {
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
 }
 
-/* Scroll reveal animations */
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes reveal-left {
-  from { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
-  to { opacity: 1; transform: translateX(0); filter: blur(0); }
-}
-
-@keyframes reveal-scale {
-  from { opacity: 0; transform: scale(0.96); filter: blur(3px); }
-  to { opacity: 1; transform: scale(1); filter: blur(0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(2deg); }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-reveal-up {
-  animation: reveal-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.animate-reveal-left {
-  animation: reveal-left 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.animate-reveal-scale {
-  animation: reveal-scale 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 25s linear infinite;
-}
-
-/* Hide scrollbar */
+/* ============================
+   HIDE SCROLLBAR
+============================ */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ============================
+   REVEAL ANIMATIONS
+============================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================
+   MARQUEE ANIMATIONS
+============================ */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee-slow {
+  animation: marquee-scroll 45s linear infinite;
+}
+.animate-marquee-slower {
+  animation: marquee-scroll 65s linear infinite reverse;
+}
+.animate-marquee-fast {
+  animation: marquee-scroll 22s linear infinite;
+}
+
+/* Spin slow for decorative elements */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}

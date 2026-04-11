@@ -1,137 +1,135 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
-import Geometric3DBackground from "./Geometric3DBackground";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, LayoutGrid, Zap } from "lucide-react";
+import { motion } from "framer-motion";
+
+const stats = [
+  { val: "5K+",  label: "MEMBERS" },
+  { val: "15+",  label: "SOCIETIES" },
+  { val: "50+",  label: "EVENTS / YEAR" },
+  { val: "1989", label: "ESTABLISHED" },
+];
 
 const HeroSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLImageElement>(null);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    const elements = ref.current?.querySelectorAll("[data-reveal]");
+  useEffect(() => { setMounted(true); }, []);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("reveal-active");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    elements?.forEach((el, i) => {
-      const element = el as HTMLElement;
-      element.style.transitionDelay = `${i * 0.12}s`;
-      observer.observe(element);
-    });
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!logoRef.current) return;
-
-      const { innerWidth, innerHeight } = window;
-
-      const x = (e.clientX / innerWidth - 0.5) * 20;
-      const y = (e.clientY / innerHeight - 0.5) * 20;
-
-      logoRef.current.style.transform = `
-        translate(${x}px, ${y}px)
-        rotateX(${y * -0.5}deg)
-        rotateY(${x * 0.5}deg)
-      `;
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+  if (!mounted) return <div className="min-h-screen bg-black" />;
 
   return (
-    <section
-      id="home"
-      ref={ref}
-      className="relative min-h-screen pt-20 md:pt-28 overflow-hidden bg-background"
-    >
-      <Geometric3DBackground />
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-40 pb-20">
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-12 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center min-h-[calc(100vh-100px)]">
-        
-        {/* LEFT */}
-        <div className="text-center lg:text-left">
-
-          <h1
-            data-reveal
-            className="font-orbitron text-[clamp(2.3rem,7vw,4.5rem)] leading-[1.05] tracking-wide lg:tracking-wider text-gray-900 mb-5 reveal"
-          >
-            IEM
-            <br />
-            <span className="text-[#7a2e2e]">
-              Student Gymkhana
-            </span>
-          </h1>
-
-          {/* ✅ UPDATED SUBTEXT */}
-          <p
-            data-reveal
-            className="text-base sm:text-lg md:text-xl font-medium text-gray-500 mb-8 max-w-md mx-auto lg:mx-0 reveal"
-          >
-            welcomes you! 
-          </p>
-
-          <div
-            data-reveal
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 reveal"
-          >
-            <a
-              href="#societies"
-              className="w-full sm:w-auto px-6 py-3 bg-gray-900 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-[#7a2e2e] transition-all duration-300 shadow-lg hover:shadow-[#7a2e2e]/30 group flex items-center justify-center gap-2"
-            >
-              Find Your Tribe
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-
-            <a
-              href="#events"
-              className="w-full sm:w-auto px-6 py-3 border border-gray-300 text-gray-900 text-sm font-bold uppercase tracking-widest rounded-full hover:border-[#7a2e2e] hover:text-[#7a2e2e] transition-all duration-300 bg-white/60 backdrop-blur-sm"
-            >
-              Explore Events
-            </a>
-          </div>
-        </div>
-
-        {/* RIGHT */}
-        <div className="relative flex items-center justify-center mt-8 lg:mt-0">
-          <img
-            ref={logoRef}
-            src="/iem-3d-logo.png"
-            alt="IEM Logo"
-            className="w-[80%] sm:w-full max-w-[380px] lg:max-w-[450px] drop-shadow-2xl reveal transition-transform duration-200 ease-out will-change-transform"
-            data-reveal
+      {/* ── VIDEO BACKGROUND ── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <video
+          autoPlay muted loop playsInline
+          className="w-full h-full object-cover opacity-25"
+        >
+          <source
+            src="/societies/15447240-uhd_3840_2160_24fps.mp4"
+            type="video/mp4"
           />
-        </div>
+        </video>
+        {/* dark vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/90" />
+        {/* yellow glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_60%,_rgba(250,204,21,0.12)_0%,_transparent_70%)]" />
+        {/* subtle grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_0)] bg-[length:28px_28px]" />
       </div>
 
-      <style>
-        {`
-          .reveal {
-            opacity: 0;
-            transform: translateY(40px) scale(0.96);
-            filter: blur(10px);
-            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-          }
+      {/* ── CONTENT ── */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 text-center">
 
-          .reveal-active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-          }
-        `}
-      </style>
+
+
+        {/* HEADLINE */}
+        <div className="mb-6 overflow-hidden">
+          <motion.h1
+            initial={{ y: 110, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.05, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
+            className="block text-[clamp(3.2rem,9vw,11.5rem)] leading-[0.82] font-space font-black tracking-[-0.04em] text-outline-white"
+          >
+            IEM STUDENT
+          </motion.h1>
+        </div>
+        <div className="mb-12 overflow-hidden">
+          <motion.div
+            initial={{ y: 110, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.05, ease: [0.23, 1, 0.32, 1], delay: 0.22 }}
+            className="block text-[clamp(3.2rem,9vw,11.5rem)] leading-[0.82] font-space font-black tracking-[-0.04em] text-outline-white"
+          >
+            GYMKHANA
+          </motion.div>
+        </div>
+
+        {/* SUBTITLE */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.55 }}
+          className="text-base md:text-lg text-white/65 font-bold uppercase tracking-[0.18em] mb-14 max-w-xl mx-auto leading-relaxed"
+        >
+          THE EPICENTER OF CAMPUS CULTURE, INNOVATION &amp; LEADERSHIP
+        </motion.p>
+
+        {/* CTA BUTTONS */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.85 }}
+          className="flex flex-wrap gap-5 items-center justify-center mb-24"
+        >
+          <a
+            href="#societies"
+            className="brutalist-button bg-yellow-400 text-black hover:bg-white px-10 py-4 text-sm"
+          >
+            EXPLORE SOCIETIES
+            <LayoutGrid className="w-5 h-5" />
+          </a>
+          <a
+            href="#events"
+            style={{ borderColor: "rgba(255,255,255,0.5)", color: "#fff" }}
+            className="brutalist-button bg-transparent hover:bg-white hover:text-black px-10 py-4 text-sm"
+          >
+            UPCOMING EVENTS
+            <ArrowUpRight className="w-5 h-5" />
+          </a>
+        </motion.div>
+
+        {/* STATS ROW */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 1.2 }}
+          className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8"
+        >
+          {stats.map((s, i) => (
+            <div key={i} className="text-center">
+              <span className="block text-3xl md:text-4xl font-space font-black text-white leading-none">
+                {s.val}
+              </span>
+              <span className="block text-[10px] font-black text-white/45 tracking-[0.3em] uppercase mt-2">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* ── BOTTOM PROGRESS BAR ── */}
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 3.5, delay: 1, ease: "easeOut" }}
+          className="h-full bg-yellow-400 origin-left"
+        />
+      </div>
     </section>
   );
 };

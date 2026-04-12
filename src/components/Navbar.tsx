@@ -1,21 +1,25 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { events } from "@/data/eventsData";
 
 const navItems = [
   { name: "Home",      path: "/",          id: "01" },
   { name: "Oath",      path: "/oath",      id: "02" },
   { name: "Societies", path: "/societies", id: "03" },
-  { name: "Events",    path: "#events",    id: "04" },
+  { name: "Events",    path: "/events",    id: "04", hasDropdown: true },
   { name: "Members",   path: "/members",   id: "05" },
 ];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled]     = useState(false);
+  const [eventsOpen, setEventsOpen] = useState(false);
+  const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLLIElement>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -23,6 +27,23 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setEventsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setEventsOpen(false);
+    setMobileOpen(false);
+  }, [location.pathname]);
 
   return (
     <>
@@ -53,7 +74,6 @@ const Navbar = () => {
 
             {/* ── LOGO ── */}
             <Link to="/" className="flex items-center gap-4 group flex-shrink-0">
-              {/* Logo square */}
               <motion.div
                 whileHover={{ rotate: -8, scale: 1.08 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -67,27 +87,26 @@ const Navbar = () => {
                 />
               </motion.div>
 
-              {/* Brand text */}
               <div className="leading-none ml-2">
                 <div className="font-outfit font-black text-black uppercase tracking-widest text-[1rem] leading-none flex items-center gap-1.5 overflow-hidden">
-                  <motion.span 
-                    initial={{ y: "100%" }} 
-                    animate={{ y: 0 }} 
+                  <motion.span
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                   >
                     IEM
                   </motion.span>
-                  <motion.span 
-                    initial={{ y: "100%" }} 
-                    animate={{ y: 0 }} 
+                  <motion.span
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
                     className="text-black/50"
                   >
                     STUDENT
                   </motion.span>
-                  <motion.span 
-                    initial={{ y: "100%" }} 
-                    animate={{ y: 0 }} 
+                  <motion.span
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
                     className="text-yellow-500"
                   >
@@ -103,14 +122,133 @@ const Navbar = () => {
             {/* ── DESKTOP NAV LINKS ── */}
             <ul className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => {
-                const isActive = location.pathname === item.path;
+                const isActive =
+                  item.path === "/"
+                    ? location.pathname === "/"
+                    : location.pathname.startsWith(item.path);
+
+                if (item.hasDropdown) {
+                  return (
+                    <li key={item.name} className="relative" ref={dropdownRef}>
+                      {/* Events trigger */}
+                      <button
+                        onClick={() => setEventsOpen(o => !o)}
+                        className="relative px-5 py-2 flex items-center gap-1.5 group"
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="nav-pill"
+                            className="absolute inset-0 bg-black"
+                            style={{ zIndex: -1 }}
+                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          />
+                        )}
+                        <span
+                          className={`text-[11px] font-black uppercase tracking-[0.18em] transition-colors duration-200 ${
+                            isActive ? "text-white" : "text-black/45 group-hover:text-black"
+                          }`}
+                        >
+                          {item.name}
+                        </span>
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                            isActive ? "text-white" : "text-black/40 group-hover:text-black"
+                          } ${eventsOpen ? "rotate-180" : ""}`}
+                        />
+                        {!isActive && (
+                          <span className="absolute bottom-0 left-5 right-5 h-[2.5px] bg-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-250" />
+                        )}
+                      </button>
+
+                      {/* Dropdown panel */}
+                      <AnimatePresence>
+                        {eventsOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10, scaleY: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                            exit={{ opacity: 0, y: 8, scaleY: 0.95 }}
+                            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                            style={{
+                              transformOrigin: "top center",
+                              boxShadow: "6px 6px 0 0 #000",
+                            }}
+                            className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[680px] bg-white border-[3px] border-black z-[200]"
+                          >
+                            {/* Header */}
+                            <div className="flex items-center justify-between px-6 py-4 border-b-2 border-black bg-black">
+                              <span className="text-[10px] font-black text-white/50 tracking-[0.4em] uppercase">
+                                ALL EVENTS — 2025 / 2026
+                              </span>
+                              <Link
+                                to="/events"
+                                className="flex items-center gap-1.5 text-[10px] font-black text-yellow-400 uppercase tracking-widest hover:text-white transition-colors"
+                                onClick={() => setEventsOpen(false)}
+                              >
+                                VIEW ALL
+                                <ArrowUpRight className="w-3.5 h-3.5" />
+                              </Link>
+                            </div>
+
+                            {/* Events grid */}
+                            <div className="grid grid-cols-2 gap-0 max-h-[420px] overflow-y-auto">
+                              {events.map((ev, i) => (
+                                <Link
+                                  key={ev.id}
+                                  to={`/events/${ev.slug}`}
+                                  onClick={() => setEventsOpen(false)}
+                                  className="group flex items-center gap-4 px-5 py-4 border-b border-r border-black/10 hover:bg-yellow-50 hover:border-yellow-400 transition-all last:border-b-0"
+                                >
+                                  {/* Thumbnail */}
+                                  <div className="w-14 h-10 shrink-0 border-2 border-black overflow-hidden bg-black/5">
+                                    <img
+                                      src={`/events/${ev.images[0]}`}
+                                      alt={ev.shortName}
+                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                      onError={(e) => {
+                                        (e.target as HTMLImageElement).style.display = "none";
+                                      }}
+                                    />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <span className="text-[8px] font-black text-black/35 tracking-[0.3em] uppercase block leading-none mb-1">
+                                      {ev.displayDate} · {ev.category}
+                                    </span>
+                                    <span className="text-[12px] font-space font-black text-black uppercase tracking-tight leading-tight group-hover:text-yellow-700 transition-colors truncate block">
+                                      {ev.shortName}
+                                    </span>
+                                  </div>
+                                  <ArrowUpRight className="w-4 h-4 text-black/20 group-hover:text-yellow-600 shrink-0 transition-colors" />
+                                </Link>
+                              ))}
+                            </div>
+
+                            {/* Footer CTA */}
+                            <div className="border-t-2 border-black px-6 py-3 bg-yellow-400 flex items-center justify-between">
+                              <span className="text-[10px] font-black text-black/60 uppercase tracking-widest">
+                                {events.length} EVENTS TOTAL
+                              </span>
+                              <Link
+                                to="/events"
+                                onClick={() => setEventsOpen(false)}
+                                className="flex items-center gap-2 text-[11px] font-black text-black uppercase tracking-widest hover:underline"
+                              >
+                                EXPLORE FULL CALENDAR
+                                <ArrowUpRight className="w-3.5 h-3.5" />
+                              </Link>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </li>
+                  );
+                }
+
                 return (
                   <li key={item.name}>
                     <Link
                       to={item.path}
                       className="relative px-5 py-2 flex items-center gap-1.5 group"
                     >
-                      {/* active / hover bg fill */}
                       {isActive && (
                         <motion.div
                           layoutId="nav-pill"
@@ -119,7 +257,6 @@ const Navbar = () => {
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
-
                       <span
                         className={`
                           text-[11px] font-black uppercase tracking-[0.18em] transition-colors duration-200
@@ -128,8 +265,6 @@ const Navbar = () => {
                       >
                         {item.name}
                       </span>
-
-                      {/* hover underline for non-active */}
                       {!isActive && (
                         <span className="absolute bottom-0 left-5 right-5 h-[2.5px] bg-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-250" />
                       )}
@@ -223,7 +358,7 @@ const Navbar = () => {
             </div>
 
             {/* Nav links */}
-            <nav className="flex-1 flex flex-col justify-center px-8 gap-2 overflow-y-auto py-8">
+            <nav className="flex-1 flex flex-col justify-start px-8 gap-0 overflow-y-auto py-6">
               {navItems.map((item, i) => (
                 <motion.div
                   key={item.name}
@@ -231,24 +366,99 @@ const Navbar = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.25 + i * 0.08, ease: [0.23, 1, 0.32, 1] }}
                 >
-                  <Link
-                    to={item.path}
-                    onClick={() => setMobileOpen(false)}
-                    className="group flex items-center justify-between py-5 border-b border-white/10 hover:border-yellow-400 transition-colors"
-                  >
-                    <div className="flex items-center gap-5">
-                      <span className="text-yellow-400 font-black text-sm font-space italic">
-                        {item.id}
-                      </span>
-                      <span
-                        className="font-space font-black uppercase tracking-tighter text-white group-hover:text-yellow-400 transition-colors"
-                        style={{ fontSize: "clamp(2rem, 8vw, 4.5rem)", lineHeight: 1 }}
+                  {item.hasDropdown ? (
+                    <>
+                      {/* Events accordion header */}
+                      <button
+                        onClick={() => setMobileEventsOpen(o => !o)}
+                        className="group w-full flex items-center justify-between py-5 border-b border-white/10 hover:border-yellow-400 transition-colors"
                       >
-                        {item.name}
-                      </span>
-                    </div>
-                    <ArrowUpRight className="w-8 h-8 text-white/20 group-hover:text-yellow-400 transition-colors flex-shrink-0" />
-                  </Link>
+                        <div className="flex items-center gap-5">
+                          <span className="text-yellow-400 font-black text-sm font-space italic">{item.id}</span>
+                          <span
+                            className="font-space font-black uppercase tracking-tighter text-white group-hover:text-yellow-400 transition-colors"
+                            style={{ fontSize: "clamp(2rem, 8vw, 4.5rem)", lineHeight: 1 }}
+                          >
+                            {item.name}
+                          </span>
+                        </div>
+                        <ChevronDown
+                          className={`w-8 h-8 text-white/30 group-hover:text-yellow-400 transition-all flex-shrink-0 ${mobileEventsOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+
+                      {/* Events accordion body */}
+                      <AnimatePresence>
+                        {mobileEventsOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+                            className="overflow-hidden"
+                          >
+                            {/* All Events link */}
+                            <Link
+                              to="/events"
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center justify-between px-4 py-3 my-1 bg-yellow-400 border-2 border-black"
+                              style={{ boxShadow: "3px 3px 0 0 #fff" }}
+                            >
+                              <span className="text-[12px] font-black text-black uppercase tracking-widest">VIEW ALL EVENTS</span>
+                              <ArrowUpRight className="w-4 h-4 text-black" />
+                            </Link>
+
+                            {/* Individual events */}
+                            <div className="grid grid-cols-1 gap-0 mb-4 border-2 border-white/10">
+                              {events.map((ev) => (
+                                <Link
+                                  key={ev.id}
+                                  to={`/events/${ev.slug}`}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="group flex items-center gap-3 px-4 py-3 border-b border-white/10 hover:bg-white/5 transition-colors"
+                                >
+                                  <div className="w-12 h-8 shrink-0 border border-white/20 overflow-hidden bg-white/5">
+                                    <img
+                                      src={`/events/${ev.images[0]}`}
+                                      alt=""
+                                      className="w-full h-full object-cover"
+                                      onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                                    />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <span className="text-[8px] font-black text-white/30 tracking-widest uppercase block">{ev.displayDate}</span>
+                                    <span className="text-[12px] font-black text-white uppercase tracking-tight group-hover:text-yellow-400 transition-colors truncate block">
+                                      {ev.shortName}
+                                    </span>
+                                  </div>
+                                  <ArrowUpRight className="w-4 h-4 text-white/20 group-hover:text-yellow-400 shrink-0 transition-colors" />
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      onClick={() => setMobileOpen(false)}
+                      className="group flex items-center justify-between py-5 border-b border-white/10 hover:border-yellow-400 transition-colors"
+                    >
+                      <div className="flex items-center gap-5">
+                        <span className="text-yellow-400 font-black text-sm font-space italic">
+                          {item.id}
+                        </span>
+                        <span
+                          className="font-space font-black uppercase tracking-tighter text-white group-hover:text-yellow-400 transition-colors"
+                          style={{ fontSize: "clamp(2rem, 8vw, 4.5rem)", lineHeight: 1 }}
+                        >
+                          {item.name}
+                        </span>
+                      </div>
+                      <ArrowUpRight className="w-8 h-8 text-white/20 group-hover:text-yellow-400 transition-colors flex-shrink-0" />
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </nav>

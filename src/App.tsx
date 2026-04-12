@@ -11,6 +11,8 @@ const queryClient = new QueryClient();
 import SocietiesPage from "./pages/SocietiesPage.tsx";
 import MembersPage from "./pages/MembersPage.tsx";
 import OathPage from "./pages/OathPage.tsx";
+import EventsPage from "./pages/EventsPage.tsx";
+import EventDetailPage from "./pages/EventDetailPage.tsx";
 import CustomCursor from "@/components/CustomCursor";
 
 const App = () => (
@@ -25,6 +27,8 @@ const App = () => (
           <Route path="/oath" element={<OathPage />} />
           <Route path="/societies" element={<SocietiesPage />} />
           <Route path="/members" element={<MembersPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/events/:slug" element={<EventDetailPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

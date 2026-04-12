@@ -5,24 +5,37 @@ import { ArrowUpRight, MoveRight, Radio } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 
 const featuredNews = {
-  headline: "IEM Receives 'University of the Year' Excellence Award",
+  headline: "IEM Signs Historic MOU with IBM — Opens First IBM CAS in India",
   tag: "BREAKING_NEWS",
-  date: "LIVE NOW",
-  desc: "IEM Kolkata has been recognized nationally for its contribution to student leadership, pioneering open-source technical education, and cultural infrastructure development.",
+  date: "JAN 7, 2025",
+  desc: "IEM signed a landmark MOU with IBM to open the first IBM Center for Advanced Studies (CAS), becoming a frontier of AI and enterprise technology education in India.",
 };
 
 const newsTrack1 = [
-  { headline: "Robotics Championship 2024 Secured",      tag: "TECH",     date: "2H AGO"   },
-  { headline: "IEM UEM Marathon: 3000+ Participants",      tag: "SPORTS",   date: "4H AGO"   },
-  { headline: "AI Lab V2.0 Phase Integration Complete",   tag: "INFRA",    date: "08 MAR"  },
-  { headline: "Dance Troupe Gold at All-India Festival",  tag: "CULTURE",  date: "05 MAR"  },
+  { headline: "IEM-UEM Cyclothon 2025: Students Rally For Green Future",       tag: "SPORTS",   date: "JAN 19" },
+  { headline: "Cannes Film Content Creators Festival 2025 — IEM in France",    tag: "CULTURE",  date: "APR 12" },
+  { headline: "Innovate 2025: International Conference in Davos, Switzerland", tag: "TECH",     date: "APR 16" },
+  { headline: "IIEEE World AI-IoT Congress 2025 — Seattle, Washington",        tag: "TECH",     date: "MAY 28" },
+  { headline: "MoU with Pegasystems: First University in Eastern India",        tag: "ACADEMIC", date: "JUN 20" },
+  { headline: "IEM Futsal 2025 — CSE Dept Clinches Championship",              tag: "SPORTS",   date: "JUL 12" },
 ];
 
 const newsTrack2 = [
-  { headline: "Literary Anthology 'Echoes' Released",     tag: "LITERARY", date: "02 MAR"  },
-  { headline: "Startup Bootcamp Batch 24 Launched",       tag: "INNOV",    date: "28 FEB"  },
-  { headline: "Debate Team Qualifies for Nationals",      tag: "CIVIC",    date: "25 FEB"  },
-  { headline: "Cybersecurity Workshop: Industry Leaders", tag: "TECH",     date: "20 FEB"  },
+  { headline: "Comicverse 2025 — Fandom Unites the Campus",                   tag: "CULTURE",  date: "JUL 19" },
+  { headline: "Bengal E-Summit 2025: Startup Culture Promoted at IEM",        tag: "INNOV",    date: "JUL 26" },
+  { headline: "Freedom Cup 2025: Dravida Dominators Are Champions",           tag: "SPORTS",   date: "AUG 02" },
+  { headline: "National Sports Day 2025 — Multi-Sport Celebration at IEM",    tag: "SPORTS",   date: "AUG 29" },
+  { headline: "IEM MUN 2025 — Young Diplomats Debate Global Issues",           tag: "CIVIC",    date: "SEP 13" },
+  { headline: "Smart Makers Festival 2025 — World's Innovators at IEM",       tag: "TECH",     date: "SEP 06" },
+];
+
+const newsTrack3 = [
+  { headline: "Bienvenue 2025 — Freshers' Welcome Night Electrifies Campus",  tag: "CULTURE",  date: "OCT 17" },
+  { headline: "IEM Badminton Blitz Season 3 — Rouhish Paul Takes Title",      tag: "SPORTS",   date: "OCT"    },
+  { headline: "Homecoming 2025 — Alumni Return to Where It All Began",        tag: "ALUMNI",   date: "DEC 18" },
+  { headline: "Inter-Year Football Championship — B.Tech 3rd Year Champions", tag: "SPORTS",   date: "DEC 07" },
+  { headline: "Innovación 2026 — 150+ Projects, Global Participation",        tag: "TECH",     date: "MAR 13" },
+  { headline: "IEM-UEM Kolkata Marathon 2026 — 10K, Half & Full Marathon",    tag: "SPORTS",   date: "FEB 22" },
 ];
 
 const NewsSection = () => {
@@ -109,7 +122,7 @@ const NewsSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.15 }}
-            className="flex flex-col justify-center gap-8 overflow-hidden py-2"
+            className="flex flex-col justify-center gap-6 overflow-hidden py-2"
           >
             {/* Track 1 */}
             <div className="overflow-hidden">
@@ -117,7 +130,7 @@ const NewsSection = () => {
                 {[...newsTrack1, ...newsTrack1, ...newsTrack1].map((n, i) => (
                   <div
                     key={i}
-                    className="flex-shrink-0 w-[340px] border-[3px] border-black p-7 bg-white hover:bg-yellow-50 transition-colors cursor-pointer group"
+                    className="flex-shrink-0 w-[320px] border-[3px] border-black p-6 bg-white hover:bg-yellow-50 transition-colors cursor-pointer group"
                     style={{ boxShadow: "4px 4px 0px 0px #000" }}
                   >
                     <div className="flex justify-between items-center mb-4">
@@ -128,7 +141,7 @@ const NewsSection = () => {
                         {n.date}
                       </span>
                     </div>
-                    <h4 className="text-lg font-space font-black text-black tracking-tighter uppercase leading-tight group-hover:text-yellow-600 transition-colors line-clamp-2">
+                    <h4 className="text-sm font-space font-black text-black tracking-tighter uppercase leading-tight group-hover:text-yellow-600 transition-colors line-clamp-2">
                       {n.headline}
                     </h4>
                   </div>
@@ -142,7 +155,7 @@ const NewsSection = () => {
                 {[...newsTrack2, ...newsTrack2, ...newsTrack2].map((n, i) => (
                   <div
                     key={i}
-                    className="flex-shrink-0 w-[340px] border-[3px] border-black p-7 bg-black hover:bg-gray-900 transition-colors cursor-pointer group"
+                    className="flex-shrink-0 w-[320px] border-[3px] border-black p-6 bg-black hover:bg-gray-900 transition-colors cursor-pointer group"
                     style={{ boxShadow: "4px 4px 0px 0px #FACC15" }}
                   >
                     <div className="flex justify-between items-center mb-4">
@@ -153,7 +166,32 @@ const NewsSection = () => {
                         {n.date}
                       </span>
                     </div>
-                    <h4 className="text-lg font-space font-black text-white tracking-tighter uppercase leading-tight group-hover:text-yellow-400 transition-colors line-clamp-2">
+                    <h4 className="text-sm font-space font-black text-white tracking-tighter uppercase leading-tight group-hover:text-yellow-400 transition-colors line-clamp-2">
+                      {n.headline}
+                    </h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Track 3 */}
+            <div className="overflow-hidden">
+              <div className="flex animate-marquee-slow whitespace-nowrap gap-6" style={{ animationDirection: "reverse" }}>
+                {[...newsTrack3, ...newsTrack3, ...newsTrack3].map((n, i) => (
+                  <div
+                    key={i}
+                    className="flex-shrink-0 w-[320px] border-[3px] border-black p-6 bg-yellow-400 hover:bg-yellow-300 transition-colors cursor-pointer group"
+                    style={{ boxShadow: "4px 4px 0px 0px #000" }}
+                  >
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-[9px] font-black text-black/60 tracking-[0.4em] uppercase border border-black/30 px-2 py-0.5">
+                        {n.tag}
+                      </span>
+                      <span className="text-[10px] font-black text-black/70 uppercase tracking-wide">
+                        {n.date}
+                      </span>
+                    </div>
+                    <h4 className="text-sm font-space font-black text-black tracking-tighter uppercase leading-tight group-hover:text-black/70 transition-colors line-clamp-2">
                       {n.headline}
                     </h4>
                   </div>

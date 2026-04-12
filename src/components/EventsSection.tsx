@@ -15,10 +15,10 @@ const featuredEvent = {
 };
 
 const events = [
-  { id: "02", name: "Innovacion",      date: "APR 15", type: "TECHNICAL",   desc: "Annual tech confluence pushing students beyond conventional engineering limits." },
-  { id: "03", name: " Marathon", date: "MAY 02", type: "ATHLETICS",   desc: "Ultimate 5K endurance test promoting mental resilience and athletic community." },
+  { id: "02", name: "Innovacia",      date: "APR 15", type: "TECHNICAL",   desc: "Annual tech confluence pushing students beyond conventional engineering limits." },
+  { id: "03", name: "IEM UEM Marathon", date: "MAY 02", type: "ATHLETICS",   desc: "Ultimate 5K endurance test promoting mental resilience and athletic community." },
   { id: "04", name: "Film Festival",   date: "MAY 10", type: "CREATIVE",    desc: "A cinematic odyssey showcasing student-produced media and narrative art." },
-  { id: "05", name: "Alumni MEET",   date: "AUG 20", type: "NETWORKING",  desc: "Forging multi-generational bridges between IEM leaders and the new guard." },
+  { id: "05", name: "Alumni meet",   date: "AUG 20", type: "NETWORKING",  desc: "Forging multi-generational bridges between IEM leaders and the new guard." },
 ];
 
 const EventsSection = () => {

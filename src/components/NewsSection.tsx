@@ -13,7 +13,7 @@ const featuredNews = {
 
 const newsTrack1 = [
   { headline: "Robotics Championship 2024 Secured",      tag: "TECH",     date: "2H AGO"   },
-  { headline: "Campus Marathon: 3000+ Participants",      tag: "SPORTS",   date: "4H AGO"   },
+  { headline: "IEM UEM Marathon: 3000+ Participants",      tag: "SPORTS",   date: "4H AGO"   },
   { headline: "AI Lab V2.0 Phase Integration Complete",   tag: "INFRA",    date: "08 MAR"  },
   { headline: "Dance Troupe Gold at All-India Festival",  tag: "CULTURE",  date: "05 MAR"  },
 ];

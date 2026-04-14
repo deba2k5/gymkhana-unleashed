@@ -22,14 +22,16 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-40 pb-20">
 
       {/* ── VIDEO BACKGROUND ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
-        <iframe
-          src="https://drive.google.com/file/d/1SQACXc8sbLe7057GetEQrbeVVpJu6q8L/preview?autoplay=1&mute=0&loop=1&controls=0"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[67.5vw] min-h-[120vh] min-w-[213.33vh] max-w-none opacity-25 pointer-events-none"
-          allow="autoplay"
-          frameBorder="0"
-          title="Background Video"
-        ></iframe>
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <video
+          autoPlay loop playsInline
+          className="w-full h-full object-cover opacity-25"
+        >
+          <source
+            src="/bg-video.mp4"
+            type="video/mp4"
+          />
+        </video>
         {/* dark vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/90" />
         {/* yellow glow */}

@@ -25,7 +25,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
           autoPlay muted={isMuted} loop playsInline
-          className="w-full h-full object-cover opacity-25"
+          className="w-full h-full object-cover opacity-60"
         >
           <source
             src="/bg-video.mp4"
@@ -33,7 +33,7 @@ const HeroSection = () => {
           />
         </video>
         {/* dark vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90" />
         {/* yellow glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_60%,_rgba(250,204,21,0.12)_0%,_transparent_70%)]" />
         {/* subtle grid */}

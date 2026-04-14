@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, LayoutGrid, Zap, Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 
-const stats = [
-  { val: "5K+", label: "MEMBERS" },
-  { val: "15+", label: "SOCIETIES" },
-  { val: "50+", label: "EVENTS / YEAR" },
-  { val: "1989", label: "ESTABLISHED" },
-];
+
 
 const HeroSection = () => {
   const [mounted, setMounted] = useState(false);
@@ -43,24 +38,7 @@ const HeroSection = () => {
       {/* ── CONTENT ── */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 text-center">
 
-        {/* STATS ROW */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 1.2 }}
-          className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8"
-        >
-          {stats.map((s, i) => (
-            <div key={i} className="text-center">
-              <span className="block text-3xl md:text-4xl font-space font-black text-white leading-none">
-                {s.val}
-              </span>
-              <span className="block text-[10px] font-black text-white/45 tracking-[0.3em] uppercase mt-2">
-                {s.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+
       </div>
 
       {/* ── BOTTOM PROGRESS BAR ── */}

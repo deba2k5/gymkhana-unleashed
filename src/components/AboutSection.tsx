@@ -96,12 +96,15 @@ const AboutSection = () => {
               </span>
 
               <p className="text-lg md:text-xl font-medium leading-[1.55] text-black/80 mb-12 font-outfit">
-                IEM Student Gymkhana is where campus life finds its energy. It
-                brings together creativity, innovation, and leadership — turning
-                ideas into experiences that shape who we become.
+                IEM Gymkhana is the official student member council board of the
+                Institute of Engineering & Management, Kolkata. It serves as the
+                central body that represents student interests, coordinates
+                extracurricular and co-curricular activities, and fosters a
+                vibrant campus culture.
                 <br /><br />
-                From large-scale fests to close-knit communities, it's where
-                students connect, create, and grow into the leaders of tomorrow.
+                The Gymkhana also plays a key role in organizing major events,
+                competitions, and initiatives that enhance student engagement
+                and leadership development.
               </p>
 
               {/* Stats row */}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUpRight, LayoutGrid, Zap } from "lucide-react";
+import { ArrowUpRight, LayoutGrid, Zap, Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 
 const stats = [
@@ -13,7 +13,7 @@ const stats = [
 
 const HeroSection = () => {
   const [mounted, setMounted] = useState(false);
-
+  const [isMuted, setIsMuted] = useState(true);
   useEffect(() => { setMounted(true); }, []);
 
   if (!mounted) return <div className="min-h-screen bg-black" />;
@@ -24,7 +24,7 @@ const HeroSection = () => {
       {/* ── VIDEO BACKGROUND ── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
-          autoPlay muted loop playsInline
+          autoPlay muted={isMuted} loop playsInline
           className="w-full h-full object-cover opacity-25"
         >
           <source
@@ -130,6 +130,15 @@ const HeroSection = () => {
           className="h-full bg-yellow-400 origin-left"
         />
       </div>
+      {/* SOUND TOGGLE */}
+      <button
+        onClick={() => setIsMuted(!isMuted)}
+        className="absolute bottom-6 right-6 z-50 p-3 bg-black/40 hover:bg-yellow-400/20 text-yellow-400 border border-yellow-400/40 hover:border-yellow-400 transition-all rounded-full backdrop-blur-md"
+        aria-label="Toggle Sound"
+      >
+        {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+      </button>
+
     </section>
   );
 };

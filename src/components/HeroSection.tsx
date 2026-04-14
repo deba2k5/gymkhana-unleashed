@@ -25,7 +25,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         <iframe
           src="https://drive.google.com/file/d/1SQACXc8sbLe7057GetEQrbeVVpJu6q8L/preview?autoplay=1&mute=0&loop=1&controls=0"
-          className="absolute w-[150vw] h-[150vh] max-w-none opacity-25 pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[67.5vw] min-h-[120vh] min-w-[213.33vh] max-w-none opacity-25 pointer-events-none"
           allow="autoplay"
           frameBorder="0"
           title="Background Video"

@@ -5,9 +5,9 @@ import { ArrowUpRight, LayoutGrid, Zap, Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 
 const stats = [
-  { val: "5K+",  label: "MEMBERS" },
-  { val: "15+",  label: "SOCIETIES" },
-  { val: "50+",  label: "EVENTS / YEAR" },
+  { val: "5K+", label: "MEMBERS" },
+  { val: "15+", label: "SOCIETIES" },
+  { val: "50+", label: "EVENTS / YEAR" },
   { val: "1989", label: "ESTABLISHED" },
 ];
 
@@ -25,7 +25,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
           autoPlay muted={isMuted} loop playsInline
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover opacity-50"
         >
           <source
             src="/bg-video.mp4"

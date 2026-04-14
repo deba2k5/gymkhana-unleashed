@@ -24,7 +24,7 @@ const HeroSection = () => {
       {/* ── VIDEO BACKGROUND ── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
-          autoPlay loop playsInline
+          autoPlay muted loop playsInline
           className="w-full h-full object-cover opacity-25"
         >
           <source

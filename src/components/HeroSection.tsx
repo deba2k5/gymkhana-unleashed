@@ -43,64 +43,6 @@ const HeroSection = () => {
       {/* ── CONTENT ── */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 text-center">
 
-
-
-        {/* HEADLINE */}
-        <div className="mb-6 overflow-hidden">
-          <motion.h1
-            initial={{ y: 110, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.05, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
-            className="block text-[clamp(3.2rem,9vw,11.5rem)] leading-[0.82] font-space font-black tracking-[-0.04em] text-outline-white"
-          >
-            IEM STUDENT
-          </motion.h1>
-        </div>
-        <div className="mb-12 overflow-hidden">
-          <motion.div
-            initial={{ y: 110, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.05, ease: [0.23, 1, 0.32, 1], delay: 0.22 }}
-            className="block text-[clamp(3.2rem,9vw,11.5rem)] leading-[0.82] font-space font-black tracking-[-0.04em] text-outline-white"
-          >
-            GYMKHANA
-          </motion.div>
-        </div>
-
-        {/* SUBTITLE */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-          className="text-base md:text-lg text-white/65 font-bold uppercase tracking-[0.18em] mb-14 max-w-xl mx-auto leading-relaxed"
-        >
-          THE EPICENTER OF CAMPUS CULTURE, INNOVATION &amp; LEADERSHIP
-        </motion.p>
-
-        {/* CTA BUTTONS */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.85 }}
-          className="flex flex-wrap gap-5 items-center justify-center mb-24"
-        >
-          <a
-            href="#societies"
-            className="brutalist-button bg-yellow-400 text-black hover:bg-white px-10 py-4 text-sm"
-          >
-            EXPLORE SOCIETIES
-            <LayoutGrid className="w-5 h-5" />
-          </a>
-          <a
-            href="#events"
-            style={{ borderColor: "rgba(255,255,255,0.5)", color: "#fff" }}
-            className="brutalist-button bg-transparent hover:bg-white hover:text-black px-10 py-4 text-sm"
-          >
-            UPCOMING EVENTS
-            <ArrowUpRight className="w-5 h-5" />
-          </a>
-        </motion.div>
-
         {/* STATS ROW */}
         <motion.div
           initial={{ opacity: 0 }}

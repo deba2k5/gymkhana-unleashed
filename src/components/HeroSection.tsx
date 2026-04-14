@@ -24,11 +24,11 @@ const HeroSection = () => {
       {/* ── VIDEO BACKGROUND ── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
-          autoPlay muted loop playsInline
+          autoPlay loop playsInline
           className="w-full h-full object-cover opacity-25"
         >
           <source
-            src="/societies/15447240-uhd_3840_2160_24fps.mp4"
+            src="/GYMKHANA.mp4"
             type="video/mp4"
           />
         </video>

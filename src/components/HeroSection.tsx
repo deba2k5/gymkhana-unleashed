@@ -22,16 +22,14 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-40 pb-20">
 
       {/* ── VIDEO BACKGROUND ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <video
-          autoPlay loop playsInline
-          className="w-full h-full object-cover opacity-25"
-        >
-          <source
-            src="/GYMKHANA.mp4"
-            type="video/mp4"
-          />
-        </video>
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
+        <iframe
+          src="https://drive.google.com/file/d/1SQACXc8sbLe7057GetEQrbeVVpJu6q8L/preview?autoplay=1&mute=0&loop=1&controls=0"
+          className="absolute w-[150vw] h-[150vh] max-w-none opacity-25 pointer-events-none"
+          allow="autoplay"
+          frameBorder="0"
+          title="Background Video"
+        ></iframe>
         {/* dark vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/90" />
         {/* yellow glow */}

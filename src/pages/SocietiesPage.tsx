@@ -1,108 +1,376 @@
+"use client";
+
 import { useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { societiesDetails } from "../data/societiesDetails";
+import { Link } from "react-router-dom";
+import { ArrowLeft, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const SocietiesPage = () => {
-  const { hash } = useLocation();
+/* LOGOS */
+const logoMap: Record<string, string> = {
+  music: "/Music.jpg",
+  itrana: "/ITRANAA.jpg",
+  offbeat: "/Offbeat_Logo.jpeg",
+  chorus: "/CHORUS.jpg",
+};
 
+/* CLUBS */
+const clubs = [
+{
+  id: "music",
+  name: "The Eighth Note",
+  instagram: "https://www.instagram.com/iemmusicclub/",
+  about:
+    "If music is your passion—whether you sing or play an instrument, rooted in Eastern traditions or Western styles—the Music Club offers a platform to collaborate, perform, and grow. From college events to inter-college fests, it nurtures both artistry and stage presence.",
+  people: [
+    "Rajdeep Sengupta — 9831895110",
+    "Arighna Bhattacharya — 7439487159",
+    "Adrija Acharyya — 7908760641",
+    
+  ],
+  achievements: [
+    "Umang 2024 – Winner",
+    "Umang 2023 – Runners Up",
+    "Xavrang 2026 – Winner",
+    "Xavrang 2025 – Runners Up",
+    "Amiphoria 2025 – Winner",
+    "Ecstasy 2025 – Runners Up",
+  ],
+},
+{
+  id: "itrana",
+  name: "Itranaa",
+  instagram: "https://www.instagram.com/itranaa.iem",
+  about:
+    "As we step into the rhythm and grace of our passion, we share one thing in common—a deep love for dance. From in-house performances to inter-college victories, Itranaa nurtures expression, discipline, and artistic excellence.",
+  people: [
+    "Prakriti Mukhopadhyay — 9907444649",
+    "Snikta Banerjee — 9674173204",
+    
+  ],
+  achievements: [
+    "Sanskriti 2021 – 1st Runners Up",
+    "Calcutta Youth Meet 2023 – Winner",
+    "Samgra 2024 – 1st Runners Up",
+    "Rhapsody 2023 – 1st Runners Up",
+    "Umang 2025 – 1st Runners Up",
+    "Ecstasia 2025 – Winner (Solo)",
+  ],
+},
+{
+  id: "offbeat",
+  name: "OffBeat",
+  instagram: "https://www.instagram.com/offbeat_2526",
+  about:
+    "Offbeat, the official western dance club of IEM, Kolkata, is driven by creativity, confidence, and artistic excellence through dance. It fosters a community where dancers explore diverse styles, perform, and grow together.",
+  people: [
+    "Soham Sarkar — 9832249929",
+    "Priyanjana Paul — 6290836210",
+  ],
+  achievements: [
+    "Sanskriti 2023 – 1st Prize",
+    "Ripples 2025 – 2nd Prize",
+    "Umang 2025 – 2nd Prize",
+  ],
+},
+{
+  id: "chorus",
+  name: "Chorus",
+  instagram:
+    "https://www.instagram.com/chorusdrama?igsh=MW4wYWh1YmQycmM4MQ==",
+  about:
+    "The official drama club of IEM, making stage our home and keeping theatre alive among youngsters.",
+  people: [
+    "Shaptorshi Chakraborty — 9123304829",
+    "Ritankar Kundu — 8420281840",
+  ],
+  achievements: [
+    "Winner at Anubhuti 2019",
+    "1st Runners Up at Sanskriti 2023",
+    "Special Mention at Anubhuti 2025",
+    "Special Invitation at Gyan Manch by Kolkata RomRoma",
+  ],
+},
+{
+  id: "arc",
+  name: "ARC",
+  about: "",
+  people: [],
+  achievements: [],
+},
+{
+  id: "debate",
+  name: "Debate Society",
+  about: "",
+  people: [
+    "Rajsekhar Hajrah — 8902697173",
+    "Vishal Roy — 8399995198",
+  ],
+  achievements: [],
+},
+{
+  id: "photography",
+  name: "Photography Club",
+  about: "",
+  people: [
+    "Arghya Banerjee — 6294566708",
+    "Subham Saha — 9163799483",
+    "Ankush Saha — 7044778799",
+  ],
+  achievements: [],
+},
+{
+  id: "lit",
+  name: "Literary Society",
+  about: "",
+  people: [
+    "Spandan Chakrabarty — 9836364257",
+  ],
+  achievements: [],
+},
+{
+  id: "humour",
+  name: "Humour Club",
+  about: "",
+  people: [
+    "Md Tanzil Imam — 9330657193",
+  ],
+  achievements: [],
+},
+{
+  id: "pet",
+  name: "Pet Society",
+  about: "",
+  people: [
+    "Zinnia Ghosh — 7044835500",
+    "Himel Jana — 7063076214",
+  ],
+  achievements: [],
+},
+{
+  id: "film",
+  name: "Film Society",
+  about: "",
+  people: [
+    "Bratyabandhu Bhattacharyya — 8240005041",
+  ],
+  achievements: [],
+},
+];
+
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 60 },
+  show: { opacity: 1, y: 0 },
+};
+
+const SocietiesPage = () => {
   useEffect(() => {
-    // Handle scroll to hash on load
-    if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash.replace("#", ""));
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      window.scrollTo(0, 0);
-    }
-  }, [hash]);
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-black selection:bg-yellow-400 selection:text-black flex flex-col">
+    <div className="min-h-screen bg-white text-black flex flex-col">
       <Navbar />
 
-      <main className="flex-grow max-w-[1400px] mx-auto px-6 lg:px-12 py-32 md:py-48 w-full">
-        <div className="mb-24 text-center lg:text-left max-w-4xl relative">
-          <Link to="/" className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-black/50 hover:text-black transition-colors group mb-8">
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            Back to Home
-          </Link>
-          
-          <br/>
+      <main className="flex-grow">
 
-          <div className="inline-flex px-4 py-1.5 border-[3px] border-black bg-yellow-400 brutalist-shadow mb-8">
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black">
-              Official Hub
-            </span>
-          </div>
-          
-          <h1 className="font-space font-black tracking-tighter text-black mb-8 leading-[0.85]" style={{ fontSize: "clamp(3.5rem,8vw,7rem)" }}>
-            THE <br /><span className="text-outline">SOCIETIES.</span>
-          </h1>
-          <p className="font-space text-xl md:text-2xl text-black/70 font-bold leading-relaxed max-w-2xl">
-            Detailed insights into the organizations that drive technical excellence and cultural vibrancy at IEM.
-          </p>
-        </div>
+        {/* HERO */}
+        <div className="bg-black text-white px-6 py-24 border-b-[3px] border-yellow-400">
+          <div className="max-w-[1300px] mx-auto">
 
-        <div className="space-y-40">
-          {societiesDetails.map((society) => (
-            <div 
-              key={society.id} 
-              id={society.id} 
-              className="scroll-mt-32 w-full grid lg:grid-cols-[1fr_3fr] gap-16 md:gap-24 items-start border-t-[4px] border-black pt-24"
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-sm font-black uppercase text-white/60 hover:text-yellow-400 mb-10"
             >
-              {/* Sticky sidebar for society title */}
-              <div className="lg:sticky lg:top-40">
-                <div className="w-16 h-16 bg-white p-2 border-[3px] border-black brutalist-shadow mb-8 transition-transform hover:rotate-6">
-                  <img src="/iem-3d-logo.png" alt="IEM Logo" className="w-full h-full object-contain drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]" />
-                </div>
-                <div className="w-12 h-2 mb-8 bg-black" />
-                <h2 className="text-4xl md:text-5xl font-space font-black text-black tracking-tighter mb-6 leading-none uppercase">
-                  {society.name}
-                </h2>
-                <div className="inline-flex px-3 py-1.5 border-[3px] border-black text-[10px] font-black uppercase tracking-[0.2em] text-black mb-10 bg-white">
-                  Active Club
-                </div>
-                
-                <div className="hidden lg:block">
-                  <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-6">Directory</p>
-                  <ul className="space-y-4 flex flex-col items-start">
-                    {societiesDetails.map(s => (
-                      <li key={s.id}>
-                        <Link 
-                          to={`#${s.id}`} 
-                          className={`text-sm font-space font-black uppercase tracking-widest transition-all ${society.id === s.id ? 'text-black border-b-2 border-black pb-1' : 'text-black/40 hover:text-black hover:border-b-2 hover:border-black/40'}`}
-                        >
-                          {s.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+              <ArrowLeft className="w-5 h-5" />
+              Back
+            </Link>
+
+<div className="relative mb-10">
+
+  <motion.h1
+    initial={{ opacity: 0, y: 60 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="
+      text-[120px] md:text-[180px] font-black leading-none
+      text-transparent
+      stroke-text
+      absolute top-10 left-0
+      opacity-90
+      pointer-events-none
+    "
+  >
+    CLUBS & SOCIETIES
+  </motion.h1>
+
+  <motion.h1
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2 }}
+    className="text-7xl md:text-8xl font-black relative z-10"
+  >
+    <span className="text-white">OUR</span>
+    <br />
+    <span className="text-yellow-400">CLUBS AND SOCIETIES.</span>
+  </motion.h1>
+
+</div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-xl text-white/70 max-w-xl"
+            >
+              Discover all clubs and societies at IEM.
+            </motion.p>
+          </div>
+        </div>
+
+        {/* CONTENT */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="max-w-[1300px] mx-auto px-6 py-24 space-y-32"
+        >
+
+          {clubs.map((club, i) => (
+            <motion.div
+              key={club.id}
+              variants={item}
+              whileHover={{ scale: 1.02, rotate: -0.2 }}
+              className="
+                group grid lg:grid-cols-[260px_1fr] gap-16 
+                border-t-[3px] border-black pt-16
+                transition-all duration-300
+              "
+            >
+
+              {/* LOGO */}
+              <div className="flex justify-center">
+                <div className="
+                  w-44 h-44 border-[3px] border-black bg-white flex items-center justify-center
+                  shadow-[8px_8px_0px_#FACC15]
+                  group-hover:shadow-[14px_14px_0px_#FACC15]
+                  group-hover:-translate-y-2
+                  transition-all duration-300
+                ">
+                  <img
+                    src={logoMap[club.id] || "/coming.png"}
+                    className="w-full h-full object-contain p-4 group-hover:scale-110 transition"
+                  />
                 </div>
               </div>
 
-              {/* Content block */}
-              <div className="prose prose-slate prose-lg md:prose-xl max-w-none">
-                <div 
-                  dangerouslySetInnerHTML={{ __html: society.content }} 
-                  className="space-y-10 text-black/80 leading-relaxed font-sans
-                    [&>h2]:text-4xl [&>h2]:font-space [&>h2]:font-black [&>h2]:text-black [&>h2]:tracking-tighter [&>h2]:mt-20 [&>h2]:mb-8 [&>h2]:uppercase [&>h2]:text-[1.8rem]
-                    [&>h3]:text-2xl [&>h3]:font-space [&>h3]:font-black [&>h3]:text-black [&>h3]:mt-12 [&>h3]:mb-6 [&>h3]:uppercase [&>h3]:tracking-tight
-                    [&>p]:font-bold [&>p]:leading-relaxed [&>p]:text-black/70
-                    [&>ul]:space-y-4 [&>ul]:list-none [&>ul>li]:pl-8 [&>ul>li]:relative [&>ul>li]:font-bold [&>ul>li]:text-black/70
-                    [&>ul>li]:before:content-[''] [&>ul>li]:before:absolute [&>ul>li]:before:left-0 [&>ul>li]:before:top-3 [&>ul>li]:before:w-3 [&>ul>li]:before:h-3 [&>ul>li]:before:border-[2px] [&>ul>li]:before:border-black [&>ul>li]:before:bg-yellow-400"
-                />
+              {/* CONTENT */}
+              <div className="space-y-4">
+
+                <h2 className="
+                  text-4xl font-black inline-block px-3 py-1
+                  shadow-[4px_4px_0px_#FACC15]
+                  group-hover:shadow-[8px_8px_0px_#FACC15]
+                  transition
+                ">
+                  {club.name}
+                </h2>
+
+                <p className="text-lg text-black/70">
+                  {club.about || "Details will be updated soon."}
+                </p>
+
+                {/* LEADS */}
+                <div>
+                  <p className="text-sm font-bold text-black/50 mb-2">
+                    Leads
+                  </p>
+
+                  {club.people.length ? (
+                    <div className="flex flex-wrap gap-2">
+                      {club.people.map((p, i) => {
+                        const phone = p.split("—")[1]?.trim();
+
+                        return (
+                          <a
+                            key={i}
+                            href={`tel:${phone}`}
+                            className="
+                              px-3 py-1 border border-black text-sm
+                              shadow-[2px_2px_0px_#FACC15]
+                              hover:shadow-[4px_4px_0px_#FACC15]
+                              transition
+                            "
+                          >
+                            {p}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p className="text-black/40">To be updated</p>
+                  )}
+                </div>
+
+                {/* ACHIEVEMENTS */}
+                <div>
+                  <p className="text-sm font-bold text-black/50 mb-2">
+                    Achievements
+                  </p>
+
+                  {club.achievements.length ? (
+                    <div className="space-y-2">
+                      {club.achievements.map((a, i) => (
+                        <div
+                          key={i}
+                          className="
+                            pl-4 py-1 border-l-[3px] border-yellow-400
+                            hover:bg-yellow-50 transition
+                          "
+                        >
+                          {a}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-black/40">To be updated</p>
+                  )}
+                </div>
+
+                {/* SOCIAL */}
+                {club.instagram && (
+                  <a
+                    href={club.instagram}
+                    target="_blank"
+                    className="
+                      inline-flex items-center justify-center w-11 h-11
+                      border-[2px] border-black
+                      shadow-[3px_3px_0px_#FACC15]
+                      hover:shadow-[6px_6px_0px_#FACC15]
+                      hover:bg-black hover:text-white
+                      transition
+                    "
+                  >
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                )}
+
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+
+        </motion.div>
+
       </main>
-      
+
       <Footer />
     </div>
   );

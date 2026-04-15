@@ -3,6 +3,8 @@ import { Phone, ArrowLeft, ExternalLink, ChevronDown, ChevronUp } from "lucide-r
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search } from "lucide-react";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 interface Member {
@@ -473,26 +475,54 @@ const allSections: Section[] = [
 
 // ─── MEMBER CARD ─────────────────────────────────────────────────────────────
 const MemberCard = ({ member, accent }: { member: Member; accent: string }) => (
-  <div className="bg-white border-[2px] border-black p-4 flex flex-col gap-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] transition-all">
+  <motion.div
+    initial={{ opacity: 0, y: 40, scale: 0.92 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    whileHover={{
+      y: -6,
+      scale: 1.02,
+      boxShadow: "6px 6px 0px rgba(0,0,0,0.9)"
+    }}
+    whileTap={{ scale: 0.97 }}
+    transition={{ type: "spring", stiffness: 120, damping: 12 }}
+    className="bg-white border-[2px] border-black p-4 flex flex-col gap-1 transition-all"
+  >
     <div className="flex items-start justify-between gap-2">
-      <p className="font-space font-black text-black text-sm leading-tight uppercase">{member.name}</p>
+      <p className="font-space font-black text-black text-sm leading-tight uppercase">
+        {member.name}
+      </p>
+
       {member.chapter && (
-        <span className="shrink-0 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 border border-black text-black/60">{member.chapter}</span>
+        <span className="shrink-0 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 border border-black text-black/60">
+          {member.chapter}
+        </span>
       )}
     </div>
+
     {member.dept && (
-      <p className="text-[11px] font-bold text-black/60 uppercase tracking-wide">{member.dept}</p>
+      <p className="text-[11px] font-bold text-black/60 uppercase tracking-wide">
+        {member.dept}
+      </p>
     )}
+
     {member.email && (
-      <p className="text-[11px] font-bold text-blue-600 break-all">{member.email}</p>
+      <p className="text-[11px] font-bold text-blue-600 break-all">
+        {member.email}
+      </p>
     )}
+
     {member.phone && (
-      <a href={`tel:${member.phone}`} className="mt-1 inline-flex items-center gap-1.5 text-[12px] font-black" style={{ color: accent }}>
+      <motion.a
+        href={`tel:${member.phone}`}
+        whileHover={{ scale: 1.05 }}
+        className="mt-1 inline-flex items-center gap-1.5 text-[12px] font-black"
+        style={{ color: "#FACC15" }}
+      >
         <Phone className="w-3 h-3" />
         {member.phone}
-      </a>
+      </motion.a>
     )}
-  </div>
+  </motion.div>
 );
 
 // ─── SECTION BLOCK ───────────────────────────────────────────────────────────
@@ -500,54 +530,95 @@ const SectionBlock = ({ section }: { section: Section }) => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="border-t-[4px] border-black pt-8 pb-4">
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="border-t-[4px] border-black pt-8 pb-4"
+    >
       {/* Header row */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-6">
         <div>
           <div className="inline-flex items-center gap-2 mb-2">
-            <div className="w-3 h-3 border-[2px] border-black" style={{ background: section.accentColor }} />
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="w-3 h-3 border-[2px] border-black"
+              style={{ background: "#FACC15" }}
+            />
             <h2 className="font-space font-black text-black text-2xl md:text-3xl uppercase tracking-tighter leading-none">
               {section.title}
             </h2>
           </div>
+
           {section.subtitle && (
-            <p className="text-sm font-bold text-black/60 uppercase tracking-wide ml-5">{section.subtitle}</p>
+            <p className="text-sm font-bold text-black/60 uppercase tracking-wide ml-5">
+              {section.subtitle}
+            </p>
           )}
+
           {section.note && (
-            <p className="text-xs font-bold text-red-600 ml-5 mt-1">{section.note}</p>
+            <p className="text-xs font-bold text-red-600 ml-5 mt-1">
+              {section.note}
+            </p>
           )}
+
           {section.brochureLink && (
-            <a
+            <motion.a
               href={section.brochureLink}
               target="_blank"
               rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 mt-2 ml-5 font-black text-xs uppercase tracking-widest border-[2px] border-black px-3 py-1.5 bg-red-500 text-white hover:bg-red-600 brutalist-shadow transition-all"
             >
               <ExternalLink className="w-3 h-3" />
               View Official Brochure
-            </a>
+            </motion.a>
           )}
         </div>
-        <button
+
+        <motion.button
           onClick={() => setOpen(o => !o)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           className="shrink-0 flex items-center gap-1 font-black text-xs uppercase tracking-widest border-[2px] border-black px-3 py-1.5 hover:bg-black hover:text-white transition-all self-start"
         >
           {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           {open ? "Collapse" : "Expand"}
-        </button>
+        </motion.button>
       </div>
 
-      {open && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-          {section.members.map((m, i) => (
-            <MemberCard key={i} member={m} accent={section.accentColor} />
-          ))}
-        </div>
-      )}
-    </div>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="overflow-hidden"
+          >
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={{
+                show: {
+                  transition: { staggerChildren: 0.06 },
+                },
+              }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
+            >
+              {section.members.map((m, i) => (
+<MemberCard key={i} member={m} accent="#FACC15" />              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
-
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 const YEARS = ["2025-2026", "2026-2027"] as const;
 
@@ -573,27 +644,52 @@ const MembersPage = () => {
       <main className="flex-grow max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 pt-32 pb-24 w-full">
 
         {/* Header */}
-        <div className="mb-12">
-          <Link to="/" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-black/40 hover:text-black transition-colors group mb-8">
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            Back to Home
-          </Link>
+<div className="mb-12">
+  <Link
+    to="/"
+    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-black/40 hover:text-black transition-colors group mb-8"
+  >
+    <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+    Back to Home
+  </Link>
 
-          <div className="flex items-center gap-4 mt-6 mb-6">
-            <div className="w-14 h-[3px] bg-black" />
-            <span className="text-[11px] font-black tracking-[0.45em] text-black/40 uppercase">IEM Student Gymkhana</span>
-          </div>
+  <div className="flex items-center gap-4 mt-6 mb-6">
+    <div className="w-14 h-[3px] bg-yellow-400" />
+    <span className="text-[11px] font-black tracking-[0.45em] text-black/50 uppercase">
+      IEM Student Gymkhana
+    </span>
+  </div>
 
-          <h1
-            className="font-space font-black text-black tracking-tighter leading-[0.85] mb-6"
-            style={{ fontSize: "clamp(3rem,8vw,7rem)" }}
-          >
-            MEET THE <br /><span className="text-outline">TEAM.</span>
-          </h1>
-          <p className="font-space font-bold text-black/60 text-lg uppercase tracking-wider max-w-lg">
-            Official Gymkhana Committee — Institute of Engineering & Management, Kolkata
-          </p>
-        </div>
+ <motion.h1
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+  className="font-space font-black text-black tracking-tighter leading-[0.9] mb-6"
+  style={{ fontSize: "clamp(2.5rem,10vw,7rem)" }}
+>
+  {/* MEET THE */}
+  <span className="relative inline-block">
+    MEET THE
+    <span className="absolute left-0 bottom-1 w-full h-2 md:h-3 bg-yellow-400 -z-10"></span>
+  </span>
+
+  <br />
+
+  {/* TEAM */}
+  <span
+    className="inline-block mt-2 text-yellow-400 px-2 md:px-3 py-1"
+    style={{
+      WebkitTextStroke: "2px black",
+    }}
+  >
+    TEAM.
+  </span>
+</motion.h1>
+
+  <p className="font-space font-bold text-black/60 text-lg uppercase tracking-wider max-w-lg">
+    Official Gymkhana Committee — Institute of Engineering & Management, Kolkata
+  </p>
+</div>
 
         {/* ─── YEAR DROPDOWN ───────────────────────────────────────── */}
         <div className="mb-12">
@@ -614,31 +710,27 @@ const MembersPage = () => {
         {/* ─── 2025-2026 CONTENT ──────────────────────────────────── */}
         {activeYear === "2025-2026" && (
           <>
-            {/* Search */}
-            <div className="mb-12">
-              <div className="relative max-w-md">
-                <input
-                  type="text"
-                  placeholder="Search by name, dept or chapter…"
-                  value={search}
-                  onChange={e => setSearch(e.target.value)}
-                  className="w-full border-[3px] border-black px-5 py-3 font-space font-bold text-sm placeholder:text-black/30 focus:outline-none focus:shadow-[4px_4px_0px_0px_#FACC15] transition-all"
-                />
-              </div>
-            </div>
+<div className="mb-12">
+  <div className="max-w-md flex">
 
-            {/* Quick-jump index */}
-            <div className="mb-16 flex flex-wrap gap-2">
-              {allSections.map((sec, i) => (
-                <a
-                  key={i}
-                  href={`#section-${i}`}
-                  className="text-[10px] font-black uppercase tracking-wider px-3 py-1 border-[2px] border-black hover:bg-black hover:text-white transition-all"
-                >
-                  {sec.title}
-                </a>
-              ))}
-            </div>
+    <input
+      type="text"
+      placeholder="Search by name, dept or chapter…"
+      value={search}
+      onChange={e => setSearch(e.target.value)}
+      className="w-full border-[3px] border-black px-5 py-3 font-space font-bold text-sm placeholder:text-black/30 focus:outline-none focus:shadow-[4px_4px_0px_0px_#FACC15]"
+    />
+
+    <button
+      className="border-[3px] border-l-0 border-black px-4 flex items-center justify-center bg-yellow-400 hover:bg-yellow-500 active:scale-95"
+    >
+      <Search className="w-4 h-4 text-black" />
+    </button>
+
+  </div>
+</div>
+
+
 
             {/* Sections */}
             <div className="space-y-12">

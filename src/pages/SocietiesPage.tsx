@@ -13,6 +13,9 @@ const logoMap: Record<string, string> = {
   itrana: "/ITRANAA.jpg",
   offbeat: "/Offbeat_Logo.jpeg",
   chorus: "/CHORUS.jpg",
+  debate:"/Oratoria.png",
+  photography:"/Photography.png",
+  pet:"/pet.jpeg",
 };
 
 /* CLUBS */
@@ -92,33 +95,45 @@ const clubs = [
     "Special Invitation at Gyan Manch by Kolkata RomRoma",
   ],
 },
-{
-  id: "arc",
-  name: "ARC",
-  about: "",
-  people: [],
-  achievements: [],
-},
+// {
+//   id: "arc",
+//   name: "ARC",
+//   about: "",
+//   people: [],
+//   achievements: [],
+// },
 {
   id: "debate",
-  name: "Debate Society",
-  about: "",
+  name: "Oratoria-Debate Club",
+   instagram:
+    "https://www.instagram.com/iemdebatingsociety?igsh=aGJ0MGp2MnBpM3cz",
+  about: "Oratoria IEM Debating Society, established on 25th February 2025 in alignment with International Mother Language Day, is dedicated to promoting linguistic diversity, intellectual expression, and meaningful discourse.\n\nStarting with a small group of 10–15 members, the Society has grown into a strong community of 52, driven by its vision: Discover, Debate, Deliver.\n\nIt serves as a platform for developing analytical thinking, articulate communication, and principled debate, through structured sessions, training, and competitive forums.\n\nOratoria has consistently nurtured individuals who excel in debating, public speaking, and policy discourse, shaping future leaders and changemakers.",
   people: [
     "Rajsekhar Hajrah — 8902697173",
     "Vishal Roy — 8399995198",
   ],
-  achievements: [],
+  achievements: [
+    "IIT Kharagpur Communiqué — High Commendation (Biplab Jha)",
+    "NIT Durgapur — Best Delegate (Aditya Lahiri, Raj Sekhar Hajrah)",
+    "Rotary Forum of Diplomacy 2025 — Verbal Mention (Sreyobrata Saha, Sreeparna Barman; Adrija Chatterjee, Sampurna Datta; Raj Sekhar Hajrah, Vishal Roy; Adrija Dan), Special Mention (Sanniddh Mukherjee), Honourable Mention (Arka Chowdhury)",
+    "Bengal Diplomacy Summit 2025 — Verbal Mention (Nilaksha Sinha Roy), Special Mention (Sanniddh Mukherjee), Honourable Mention (Arka Chowdhury)",
+    "Eclecticia 2K25 — High Commendation (Soumik Mondal), Verbal Mention (Nilaksha Sinha Roy, Arka Chowdhury)",
+    "KIITMUN 2025 — Special Mention (Ankita Mondal, Soumil Jana), Honourable Mention (Nilaksha Sinha Roy)",
+    "IIT Kharagpur Communiqué 2026 — Best Delegation"
+  ],
 },
 {
   id: "photography",
   name: "Photography Club",
-  about: "",
+  about: "Our Club Focuses on Covering all the College events ,Other than that we built a network where the photographers do get actual paid works and most importantly our club will focus on organizing more competitions and photowalks",
   people: [
     "Arghya Banerjee — 6294566708",
     "Subham Saha — 9163799483",
     "Ankush Saha — 7044778799",
   ],
-  achievements: [],
+  achievements: [
+    
+  ],
 },
 {
   id: "lit",
@@ -141,7 +156,7 @@ const clubs = [
 {
   id: "pet",
   name: "Pet Society",
-  about: "",
+  about: "The Pet Society is a student-driven community dedicated to promoting animal welfare, compassion, and responsible pet care. It brings together animal lovers who are passionate about creating a safer and kinder environment for pets and stray animals.",
   people: [
     "Zinnia Ghosh — 7044835500",
     "Himel Jana — 7063076214",

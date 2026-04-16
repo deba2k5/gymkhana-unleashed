@@ -53,7 +53,7 @@ const HeroSection = () => {
       {/* SOUND TOGGLE */}
       <button
         onClick={() => setIsMuted(!isMuted)}
-        className="absolute bottom-6 right-6 z-50 p-3 bg-black/40 hover:bg-yellow-400/20 text-yellow-400 border border-yellow-400/40 hover:border-yellow-400 transition-all rounded-full backdrop-blur-md"
+        className="absolute bottom-6 right-6 z-0 p-3 bg-black/40 hover:bg-yellow-400/20 text-yellow-400 border border-yellow-400/40 hover:border-yellow-400 transition-all rounded-full backdrop-blur-md"
         aria-label="Toggle Sound"
       >
         {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}

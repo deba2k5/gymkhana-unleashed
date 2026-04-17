@@ -96,7 +96,7 @@ const AboutSection = () => {
               </span>
 
               <p className="text-lg md:text-xl font-medium leading-[1.55] text-black/80 mb-12 font-outfit">
-                IEM Gymkhana is the official student member council board of the
+                IEM Students' Gymkhana is the official student member council board of the
                 Institute of Engineering & Management, Kolkata. It serves as the
                 central body that represents student interests, coordinates
                 extracurricular and co-curricular activities, and fosters a

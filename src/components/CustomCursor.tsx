@@ -49,7 +49,9 @@ const CustomCursor = () => {
           x: cursorX,
           y: cursorY,
           translateX: "-50%",
-          translateY: "-50%",
+          translateY: "-50%"
+        }}
+        animate={{
           scale: isHovering ? 2.5 : 1,
           backgroundColor: isHovering ? "rgba(0,0,0,0.05)" : "transparent",
         }}

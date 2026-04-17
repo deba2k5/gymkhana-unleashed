@@ -475,7 +475,7 @@ const allSections: Section[] = [
 
 // ─── MEMBER CARD ─────────────────────────────────────────────────────────────
 const MemberCard = ({ member, accent }: { member: Member; accent: string }) => (
-  <motion.div
+    <motion.div
     initial={{ opacity: 0, y: 40, scale: 0.92 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     whileHover={{
@@ -527,7 +527,7 @@ const MemberCard = ({ member, accent }: { member: Member; accent: string }) => (
 
 // ─── SECTION BLOCK ───────────────────────────────────────────────────────────
 const SectionBlock = ({ section }: { section: Section }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false); //improve performance on low-end device
 
   return (
     <motion.div

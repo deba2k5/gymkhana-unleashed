@@ -117,7 +117,12 @@ const NewsSection = () => {
             </div>
           </motion.div>
 
-          {/* MARQUEE NEWS TRACKS */}
+          {/* MARQUEE NEWS TRACKS 
+          
+          TODO: When the list is scrolled too far - it can reveal empty stuff - since the track is only repeated like 3x
+          
+          */}
+          
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}

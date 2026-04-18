@@ -44,7 +44,7 @@ const EventsSection = () => {
 
           <Link
             to="/events"
-            className="brutalist-button bg-black text-white hover:bg-yellow-400 hover:text-black px-10 py-4 text-sm self-start lg:self-auto inline-flex items-center gap-3"
+            className="brutalist-button brutalist-shadow bg-yellow-400 text-black hover:bg-black hover:text-white hover:shadow-none px-10 py-4 text-sm self-start lg:self-auto inline-flex items-center gap-3 transition-all"
           >
             VIEW ALL EVENTS
             <MoveRight className="w-5 h-5" />

@@ -144,7 +144,7 @@ export default function SocietiesSection() {
         <div className="mt-12 flex justify-center">
           <Link
             to="/societies"
-            className="px-8 py-3 font-black text-sm uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_#FACC15] hover:shadow-[8px_8px_0px_#FACC15] hover:-translate-y-1 transition"
+            className="px-8 py-2 font-black text-sm uppercase tracking-widest border-2 border-black shadow-[8px_8px_0px_#FACC15] hover:shadow-[4px_4px_0px_#FACC15] hover:translate-y-1 transition"
           >
             Explore All Societies
           </Link>

@@ -18,8 +18,8 @@ const MemberCard = ({ member, accent }: { member: Member; accent: string }) => (
       boxShadow: "6px 6px 0px rgba(0,0,0,0.9)"
     }}
     whileTap={{ scale: 0.97 }}
-    transition={{ type: "spring", stiffness: 120, damping: 12 }}
-    className="bg-white border-[2px] border-black p-4 flex flex-col gap-1 transition-all"
+    transition={{ type: "spring", stiffness: 120, damping: 25, mass: 1.2, delay: 0.1  }} // lets them "arrive" thoughtfully and slowly
+    className="bg-white border-[2px] border-black p-4 flex flex-col gap-1 transition-all m-3"
   >
     <div className="flex items-start justify-between gap-2">
       <p className="font-space font-black text-black text-sm leading-tight uppercase">
@@ -64,6 +64,8 @@ const SectionBlock = ({ section }: { section: Section }) => {
   const [open, setOpen] = useState(false); //improve performance on low-end device
 
   return (
+
+    // tiny accent box
     <motion.div
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +82,7 @@ const SectionBlock = ({ section }: { section: Section }) => {
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
               className="w-3 h-3 border-[2px] border-black"
-              style={{ background: "#FACC15" }}
+              style={{ background: section.accentColor }}
             />
             <h2 className="font-space font-black text-black text-2xl md:text-3xl uppercase tracking-tighter leading-none">
               {section.title}

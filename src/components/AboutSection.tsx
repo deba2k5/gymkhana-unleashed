@@ -63,7 +63,7 @@ const AboutSection = () => {
 
             <a
               href="#societies"
-              className="brutalist-button bg-black text-white hover:bg-yellow-400 hover:text-black px-8 py-4 text-sm"
+              className="brutalist-button brutalist-shadow bg-yellow-400 text-black hover:bg-black hover:text-white hover:shadow-none px-8 py-4 text-sm transition-all"
             >
               JOIN THE LEGACY
               <MoveRight className="w-5 h-5" />

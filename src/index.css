@@ -109,8 +109,8 @@
                 box-shadow 350ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   .premium-card:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 11px 11px 0px 0px #000;
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0px 0px #000;
   }
 
   .glass {

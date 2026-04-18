@@ -90,11 +90,16 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        "hard-blink": {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "marquee": "marquee 25s linear infinite",
+        "hard-blink": "hard-blink 1s steps(2, start) infinite",
       },
       transitionTimingFunction: {
         "premium": "cubic-bezier(0.23, 1, 0.32, 1)",

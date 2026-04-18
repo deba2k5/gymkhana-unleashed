@@ -12,13 +12,13 @@ const OathPage = () => {
   const [isTypingDone, setIsTypingDone] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white selection:bg-yellow-400 selection:text-black flex flex-col">
+    <div className="min-h-screen bg-transparent text-foreground selection:bg-yellow-400 selection:text-black flex flex-col transition-colors">
       <Navbar />
 
       <main className="flex-grow relative pt-32 pb-24 md:pt-48 md:pb-32 flex items-center overflow-hidden">
         {/* BACKGROUND - Static, never re-renders */}
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-yellow-400/20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-gray-200 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-yellow-400/20 blur-[120px] rounded-full pointer-events-none transition-opacity" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none transition-opacity" />
 
         <div className="max-w-[1000px] mx-auto px-6 relative z-10 w-full text-center">
           {/* ANIMATED TAG - Static after initial animation */}
@@ -29,7 +29,7 @@ const OathPage = () => {
             whileHover={{ scale: 1.05 }}
             className="mb-10 inline-flex"
           >
-            <div className="bg-yellow-400 px-5 py-2 border-[3px] border-black shadow-[4px_4px_0px_#000]">
+            <div className="bg-yellow-400 px-5 py-2 border-[3px] border-primary shadow-[4px_4px_0px_var(--primary)] transition-colors">
               <span className="text-[10px] font-black tracking-[0.4em] uppercase">
                 STUDENT PLEDGE
               </span>
@@ -40,7 +40,7 @@ const OathPage = () => {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-space font-black text-black uppercase tracking-tighter mb-14"
+            className="font-space font-black text-foreground uppercase tracking-tighter mb-14 transition-colors"
             style={{ fontSize: "clamp(3rem, 7vw, 6rem)", lineHeight: 0.9 }}
           >
             THE GYMKHANA <br />
@@ -50,7 +50,7 @@ const OathPage = () => {
           {/* TYPEWRITER SECTION */}
           <div className="relative text-left">
             {/* Decorative left border (desktop only) */}
-            <div className="hidden md:block absolute -left-10 top-0 bottom-0 w-[3px] bg-gradient-to-b from-black via-black/50 to-transparent" />
+            <div className="hidden md:block absolute -left-10 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary via-primary/50 to-transparent transition-colors" />
 
             {/* ISOLATED TYPEWRITER COMPONENT - Handles all typing logic & interactions */}
             <TypewriterText text={fullText} onComplete={() => setIsTypingDone(true)} />
@@ -60,13 +60,13 @@ const OathPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isTypingDone ? 1 : 0, y: isTypingDone ? 0 : 20 }}
               transition={{ duration: 0.5 }}
-              className="mt-12 pt-8 border-t-[2px] border-black/10 flex flex-col md:flex-row justify-between gap-4"
+              className="mt-12 pt-8 border-t-[2px] border-primary/10 flex flex-col md:flex-row justify-between gap-4 transition-colors"
             >
               <div>
-                <div className="text-black/50 font-black uppercase tracking-widest text-xs mb-2">
+                <div className="text-foreground/50 font-black uppercase tracking-widest text-xs mb-2 transition-colors">
                   ESTABLISHED 1989
                 </div>
-                <div className="text-black font-space font-black uppercase tracking-tighter text-2xl">
+                <div className="text-foreground font-space font-black uppercase tracking-tighter text-2xl transition-colors">
                   IEM STUDENT BODY
                 </div>
               </div>

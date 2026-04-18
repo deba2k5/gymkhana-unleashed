@@ -7,7 +7,7 @@
     <title>IEM STUDENT GYMKHANA | Central Governance Unit</title>
     <meta name="description" content="The heartbeat of campus culture, technical excellence, and community spirit at IEM Kolkata." />
     
-    <link rel="icon" type="image/png" href="/iem-3d-logo.png" />
+    <link rel="icon" type="image/jpeg" href="/IEM_logo.jpeg" />
 
     <!-- ✅ Orbitron Font -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,15 +16,28 @@
     <meta property="og:title" content="IEM STUDENT GYMKHANA" />
     <meta property="og:description" content="The heartbeat of campus culture, technical excellence, and community spirit at IEM Kolkata." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/iem-3d-logo.png" />
+    <meta property="og:image" content="/IEM_logo.jpeg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@iemgymkhana" />
-    <meta name="twitter:image" content="/iem-3d-logo.png" />
+    <meta name="twitter:image" content="/IEM_logo.jpeg" />
   </head>
 
   <body>
+    <script>
+      // Prevent FOUC: apply theme class before React renders
+      (function() {
+        try {
+          var theme = localStorage.getItem('vite-ui-theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

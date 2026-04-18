@@ -45,7 +45,7 @@ const NewsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-32 lg:py-52 bg-white border-t-4 border-black overflow-hidden"
+      className="relative py-32 lg:py-52 bg-background border-t-4 border-primary overflow-hidden transition-colors"
     >
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 z-10">
 
@@ -53,13 +53,13 @@ const NewsSection = () => {
         <div className="mb-20 lg:mb-32 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
           <div>
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-14 h-[3px] bg-black" />
-              <span className="text-[11px] font-black tracking-[0.45em] uppercase text-black/50">
+              <div className="w-14 h-[3px] bg-primary transition-colors" />
+              <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/50 transition-colors">
                 BULLETIN
               </span>
             </div>
             <h2
-              className="font-space font-black tracking-tighter text-black"
+              className="font-space font-black tracking-tighter text-foreground transition-colors"
               style={{ fontSize: "clamp(3.5rem,10vw,9.5rem)", lineHeight: 0.82 }}
             >
               LATEST<br />
@@ -67,7 +67,7 @@ const NewsSection = () => {
             </h2>
           </div>
 
-          <div className="flex items-center gap-4 px-8 py-4 bg-black text-white text-xs font-black tracking-widest uppercase brutalist-shadow border-2 border-black self-start lg:self-auto">
+          <div className="flex items-center gap-4 px-8 py-4 bg-primary text-primary-foreground text-xs font-black tracking-widest uppercase brutalist-shadow border-2 border-primary self-start lg:self-auto transition-colors">
             <Radio className="w-4 h-4 text-yellow-400 animate-pulse" />
             LIVE FEED SYNCHRONIZED
           </div>
@@ -81,9 +81,9 @@ const NewsSection = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1 }}
-            className="group relative bg-black p-10 lg:p-16 overflow-hidden brutalist-shadow-lg cursor-pointer flex flex-col justify-between min-h-[500px] border-[3px] border-black"
+            className="group relative bg-black p-10 lg:p-16 overflow-hidden brutalist-shadow-lg cursor-pointer flex flex-col justify-between min-h-[500px] border-[3px] border-primary transition-colors"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_80%_20%,_rgba(59,130,246,0.15)_0%,_transparent_70%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_80%_20%,_rgba(250,204,21,0.1)_0%,_transparent_70%)]" />
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-6">
@@ -108,21 +108,15 @@ const NewsSection = () => {
             </div>
 
             <div className="relative z-10 flex items-center gap-5 mt-10 group/link">
-              <div className="w-14 h-14 border-2 border-white/25 flex items-center justify-center text-white group-hover/link:bg-white group-hover/link:text-black transition-all duration-400">
+              <div className="w-14 h-14 border-2 border-white/25 flex items-center justify-center text-white group-hover/link:bg-yellow-400 group-hover/link:border-yellow-400 group-hover/link:text-black transition-all duration-400">
                 <ArrowUpRight className="w-6 h-6" />
               </div>
-              <span className="text-[11px] font-black text-white tracking-widest uppercase group-hover/link:translate-x-2 transition-transform">
+              <span className="text-[11px] font-black text-white tracking-widest uppercase group-hover/link:text-yellow-400 group-hover/link:translate-x-2 transition-all">
                 READ FULL REPORT
               </span>
             </div>
           </motion.div>
 
-          {/* MARQUEE NEWS TRACKS 
-          
-          TODO: When the list is scrolled too far - it can reveal empty stuff - since the track is only repeated like 3x
-          
-          */}
-          
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -135,18 +129,17 @@ const NewsSection = () => {
                 {[...newsTrack1, ...newsTrack1, ...newsTrack1].map((n, i) => (
                   <div
                     key={i}
-                    className="flex-shrink-0 w-[320px] border-[3px] border-black p-6 bg-white hover:bg-yellow-50 transition-colors cursor-pointer group"
-                    style={{ boxShadow: "4px 4px 0px 0px #000" }}
+                    className="flex-shrink-0 w-[320px] border-[3px] border-primary p-6 bg-card hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-pointer group brutalist-shadow-sm"
                   >
                     <div className="flex justify-between items-center mb-4">
-                      <span className="text-[9px] font-black text-black/50 tracking-[0.4em] uppercase border border-black/20 px-2 py-0.5">
+                      <span className="text-[9px] font-black tracking-[0.4em] uppercase border border-primary/20 px-2 py-0.5 text-foreground/50 group-hover:text-primary-foreground/50 transition-colors">
                         {n.tag}
                       </span>
-                      <span className="text-[10px] font-black text-black/60 uppercase tracking-wide">
+                      <span className="text-[10px] font-black uppercase tracking-wide text-foreground/60 group-hover:text-primary-foreground/60 transition-colors">
                         {n.date}
                       </span>
                     </div>
-                    <h4 className="text-sm font-space font-black text-black tracking-tighter uppercase leading-tight group-hover:text-yellow-600 transition-colors line-clamp-2">
+                    <h4 className="text-sm font-space font-black tracking-tighter uppercase leading-tight group-hover:text-primary-foreground transition-colors line-clamp-2">
                       {n.headline}
                     </h4>
                   </div>
@@ -160,18 +153,17 @@ const NewsSection = () => {
                 {[...newsTrack2, ...newsTrack2, ...newsTrack2].map((n, i) => (
                   <div
                     key={i}
-                    className="flex-shrink-0 w-[320px] border-[3px] border-black p-6 bg-black hover:bg-gray-900 transition-colors cursor-pointer group"
-                    style={{ boxShadow: "4px 4px 0px 0px #FACC15" }}
+                    className="flex-shrink-0 w-[320px] border-[3px] border-primary p-6 bg-card hover:bg-yellow-400 hover:text-black transition-all duration-300 cursor-pointer group brutalist-shadow-sm"
                   >
                     <div className="flex justify-between items-center mb-4">
-                      <span className="text-[9px] font-black text-white/50 tracking-[0.4em] uppercase border border-white/20 px-2 py-0.5">
+                      <span className="text-[9px] font-black tracking-[0.4em] uppercase border border-primary/20 px-2 py-0.5 text-foreground/50 group-hover:text-black/50 transition-colors">
                         {n.tag}
                       </span>
-                      <span className="text-[10px] font-black text-white/60 uppercase tracking-wide">
+                      <span className="text-[10px] font-black uppercase tracking-wide text-foreground/60 group-hover:text-black/60 transition-colors">
                         {n.date}
                       </span>
                     </div>
-                    <h4 className="text-sm font-space font-black text-white tracking-tighter uppercase leading-tight group-hover:text-yellow-400 transition-colors line-clamp-2">
+                    <h4 className="text-sm font-space font-black tracking-tighter uppercase leading-tight group-hover:text-black transition-colors line-clamp-2">
                       {n.headline}
                     </h4>
                   </div>
@@ -185,24 +177,24 @@ const NewsSection = () => {
                 {[...newsTrack3, ...newsTrack3, ...newsTrack3].map((n, i) => (
                   <div
                     key={i}
-                    className="flex-shrink-0 w-[320px] border-[3px] border-black p-6 bg-yellow-400 hover:bg-yellow-300 transition-colors cursor-pointer group"
-                    style={{ boxShadow: "4px 4px 0px 0px #000" }}
+                    className="flex-shrink-0 w-[320px] border-[3px] border-primary p-6 bg-yellow-400 text-black hover:bg-black hover:text-white transition-all duration-300 cursor-pointer group brutalist-shadow-sm"
                   >
                     <div className="flex justify-between items-center mb-4">
-                      <span className="text-[9px] font-black text-black/60 tracking-[0.4em] uppercase border border-black/30 px-2 py-0.5">
+                      <span className="text-[9px] font-black tracking-[0.4em] uppercase border border-black/20 px-2 py-0.5 group-hover:border-white/20 transition-colors">
                         {n.tag}
                       </span>
-                      <span className="text-[10px] font-black text-black/70 uppercase tracking-wide">
+                      <span className="text-[10px] font-black uppercase tracking-wide group-hover:text-white/60 transition-colors">
                         {n.date}
                       </span>
                     </div>
-                    <h4 className="text-sm font-space font-black text-black tracking-tighter uppercase leading-tight group-hover:text-black/70 transition-colors line-clamp-2">
+                    <h4 className="text-sm font-space font-black tracking-tighter uppercase leading-tight group-hover:text-white transition-colors line-clamp-2">
                       {n.headline}
                     </h4>
                   </div>
                 ))}
               </div>
             </div>
+
           </motion.div>
         </div>
       </div>

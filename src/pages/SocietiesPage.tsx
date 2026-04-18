@@ -192,18 +192,18 @@ const SocietiesPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-black flex flex-col">
+    <div className="min-h-screen bg-transparent text-foreground flex flex-col transition-colors">
       <Navbar />
 
       <main className="flex-grow">
 
         {/* HERO */}
-        <div className="bg-black text-white px-6 py-24 border-b-[3px] border-yellow-400">
+        <div className="bg-transparent text-foreground px-6 py-24 border-b-[3px] border-primary transition-colors">
           <div className="max-w-[1300px] mx-auto">
 
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm font-black uppercase text-white/60 hover:text-yellow-400 mb-10"
+              className="inline-flex items-center gap-2 text-sm font-black uppercase text-foreground/60 hover:text-yellow-400 mb-10 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               Back
@@ -233,7 +233,7 @@ const SocietiesPage = () => {
     transition={{ delay: 0.2 }}
     className="text-7xl md:text-8xl font-black relative z-10"
   >
-    <span className="text-white">OUR</span>
+    <span className="text-foreground">OUR</span>
     <br />
     <span className="text-yellow-400">CLUBS AND SOCIETIES.</span>
   </motion.h1>
@@ -244,7 +244,7 @@ const SocietiesPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-xl text-white/70 max-w-xl"
+              className="text-xl text-foreground/70 max-w-xl transition-colors"
             >
               Discover all clubs and societies at IEM.
             </motion.p>
@@ -266,7 +266,7 @@ const SocietiesPage = () => {
               whileHover={{ scale: 1.02, rotate: -0.2 }}
               className="
                 group grid lg:grid-cols-[260px_1fr] gap-16 
-                border-t-[3px] border-black pt-16
+                border-t-[3px] border-primary pt-16
                 transition-all duration-300
               "
             >
@@ -274,8 +274,8 @@ const SocietiesPage = () => {
               {/* LOGO */}
               <div className="flex justify-center">
                 <div className="
-                  w-44 h-44 border-[3px] border-black bg-white flex items-center justify-center
-                  shadow-[8px_8px_0px_#FACC15]
+                  w-44 h-44 border-[3px] border-primary bg-background flex items-center justify-center
+                  shadow-[8px_8px_0px_FACC15]
                   group-hover:shadow-[14px_14px_0px_#FACC15]
                   group-hover:-translate-y-2
                   transition-all duration-300
@@ -291,21 +291,21 @@ const SocietiesPage = () => {
               <div className="space-y-4">
 
                 <h2 className="
-                  text-4xl font-black inline-block px-3 py-1
+                  text-4xl font-black inline-block px-3 py-1 text-foreground
                   shadow-[4px_4px_0px_#FACC15]
                   group-hover:shadow-[8px_8px_0px_#FACC15]
-                  transition
+                  transition-all
                 ">
                   {club.name}
                 </h2>
 
-                <p className="text-lg text-black/70">
+                <p className="text-lg text-foreground/70 transition-colors">
                   {club.about || "Details will be updated soon."}
                 </p>
 
                 {/* LEADS */}
                 <div>
-                  <p className="text-sm font-bold text-black/50 mb-2">
+                  <p className="text-sm font-bold text-foreground/50 mb-2 transition-colors">
                     Leads
                   </p>
 
@@ -319,10 +319,10 @@ const SocietiesPage = () => {
                             key={i}
                             href={`tel:${phone}`}
                             className="
-                              px-3 py-1 border border-black text-sm
+                              px-3 py-1 border border-primary text-sm text-foreground
                               shadow-[2px_2px_0px_#FACC15]
                               hover:shadow-[4px_4px_0px_#FACC15]
-                              transition
+                              transition-all
                             "
                           >
                             {p}
@@ -331,13 +331,13 @@ const SocietiesPage = () => {
                       })}
                     </div>
                   ) : (
-                    <p className="text-black/40">To be updated</p>
+                    <p className="text-foreground/40">To be updated</p>
                   )}
                 </div>
 
                 {/* ACHIEVEMENTS */}
                 <div>
-                  <p className="text-sm font-bold text-black/50 mb-2">
+                  <p className="text-sm font-bold text-foreground/50 mb-2 transition-colors">
                     Achievements
                   </p>
 
@@ -356,7 +356,7 @@ const SocietiesPage = () => {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-black/40">To be updated</p>
+                    <p className="text-foreground/40">To be updated</p>
                   )}
                 </div>
 
@@ -367,11 +367,11 @@ const SocietiesPage = () => {
                     target="_blank"
                     className="
                       inline-flex items-center justify-center w-11 h-11
-                      border-[2px] border-black
+                      border-[2px] border-primary text-foreground
                       shadow-[3px_3px_0px_#FACC15]
                       hover:shadow-[6px_6px_0px_#FACC15]
-                      hover:bg-black hover:text-white
-                      transition
+                      hover:bg-primary hover:text-primary-foreground
+                      transition-all
                     "
                   >
                     <Instagram className="w-5 h-5" />

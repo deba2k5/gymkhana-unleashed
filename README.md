@@ -10,7 +10,8 @@
 - **📅 Event Management**: Stay updated with the latest campus events, including detailed schedules, descriptions, and registration information.
 - **👥 Member Directory**: A structured view of the Gymkhana office bearers, society heads, and core team members.
 - **📜 Oath & Constitution**: Easy access to the fundamental values and governing rules of the student body.
-- **🎨 Interactive UI**: A premium user experience powered by smooth animations, glassmorphism, and responsive layouts.
+- **🎨 Interactive UI**: A premium user experience powered by smooth animations, high-contrast Brutalist aesthetics, and responsive layouts.
+- **🌓 Dark Mode**: Full support for dark and light themes using semantic CSS variables, accessible via a dedicated theme toggle.
 - **📊 Real-time Data**: Integrated data extraction from official brochures and documents.
 
 ---
@@ -22,6 +23,7 @@
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Shadcn UI](https://ui.shadcn.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [Lucide React](https://lucide.dev/)
+- **Theming**: [next-themes](https://github.com/pacocoursey/next-themes)
 - **Routing**: [React Router DOM](https://reactrouter.com/)
 - **Data Fetching**: [TanStack Query](https://tanstack.com/query/latest)
 - **3D Elements**: [Three.js](https://threejs.org/) (integration for immersive components)

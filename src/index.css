@@ -31,6 +31,49 @@
     --radius: 0rem;
   }
 
+  /* ═══════════════════════════════════════════
+     MIDNIGHT NEBULA — Premium Dark Mode Palette
+     Deep purple-black + Vibrant Violet + Fuchsia  
+  ═══════════════════════════════════════════ */
+  .dark {
+    /* Backgrounds */
+    --background: 264 40% 4%;        /* #08040F — deep violet-black */
+    --foreground: 270 30% 93%;       /* #EDE8F5 — warm off-white with violet tint */
+
+    /* Cards & Surfaces */
+    --card: 265 38% 7%;              /* #0F0819 — elevated purple-black */
+    --card-foreground: 270 25% 93%;
+
+    /* Popovers */
+    --popover: 265 38% 6%;
+    --popover-foreground: 270 25% 93%;
+
+    /* Primary — Vibrant Violet (borders, shadows, active states) */
+    --primary: 262 83% 68%;          /* #9B6EF4 — electric violet */
+    --primary-foreground: 264 100% 5%; /* dark for contrast on violet bg */
+
+    /* Secondary */
+    --secondary: 265 30% 12%;        /* muted dark violet surface */
+    --secondary-foreground: 270 25% 80%;
+
+    /* Muted */
+    --muted: 265 25% 10%;
+    --muted-foreground: 270 15% 55%;
+
+    /* Accent — Vivid Fuchsia/Magenta (key highlights) */
+    --accent: 285 75% 65%;           /* #C86EF4 — vivid magenta-violet */
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders & Inputs */
+    --border: 263 45% 22%;           /* #2D1B4E — deep muted violet border */
+    --input: 265 30% 14%;
+    --ring: 262 83% 68%;             /* matches primary */
+  }
+
   *,
   *::before,
   *::after {
@@ -42,16 +85,22 @@
   }
 
   body {
-    background-color: hsl(60, 33%, 99%);
-    color: #050505;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     font-family: 'Outfit', sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection {
     background: #000;
+    color: #fff;
+  }
+
+  .dark ::selection {
+    background: #7C3AED;
     color: #fff;
   }
 
@@ -75,6 +124,78 @@
 ::-webkit-scrollbar-thumb { background: #000; }
 ::-webkit-scrollbar-thumb:hover { background: #FACC15; }
 
+/* Dark mode scrollbar — violet */
+.dark ::-webkit-scrollbar-track { background: #08040F; }
+.dark ::-webkit-scrollbar-thumb { background: #7C3AED; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #A855F7; }
+
+/* ════════════════════════════════════════════════
+   DARK MODE YELLOW → VIOLET GLOBAL OVERRIDES
+   Remaps all hardcoded Tailwind yellow-400 classes
+   to vibrant violet/fuchsia in dark mode only
+════════════════════════════════════════════════ */
+.dark .text-yellow-400,
+.dark .text-yellow-500 {
+  color: #A78BFA !important; /* violet-400 */
+}
+.dark .bg-yellow-400 {
+  background-color: #7C3AED !important; /* violet-700 */
+  color: #ffffff !important;
+}
+.dark .bg-yellow-300 {
+  background-color: #6D28D9 !important;
+}
+.dark .bg-yellow-400\/5 {
+  background-color: rgb(124 58 237 / 0.08) !important;
+}
+.dark .bg-yellow-400\/20 {
+  background-color: rgb(124 58 237 / 0.2) !important;
+}
+.dark .border-yellow-400 {
+  border-color: #7C3AED !important;
+}
+.dark .border-yellow-400\/30 {
+  border-color: rgb(124 58 237 / 0.3) !important;
+}
+.dark .hover\:bg-yellow-400:hover {
+  background-color: #7C3AED !important;
+  color: #ffffff !important;
+}
+.dark .hover\:bg-yellow-500:hover {
+  background-color: #6D28D9 !important;
+}
+.dark .hover\:bg-yellow-300:hover {
+  background-color: #6D28D9 !important;
+}
+.dark .hover\:text-yellow-400:hover {
+  color: #A78BFA !important;
+}
+.dark .hover\:border-yellow-400:hover {
+  border-color: #7C3AED !important;
+}
+.dark .group:hover .group-hover\:text-yellow-400 {
+  color: #A78BFA !important;
+}
+.dark .group:hover .group-hover\:text-yellow-600 {
+  color: #A78BFA !important;
+}
+.dark .group-hover\/btn\:text-yellow-400 {
+  color: #A78BFA !important;
+}
+.dark .focus\:border-yellow-400:focus {
+  border-color: #7C3AED !important;
+}
+
+/* Navbar top accent bar — violet in dark */
+.dark .bg-yellow-400.h-1 {
+  background-color: #7C3AED !important;
+}
+
+/* Text outline yellow → violet in dark */
+.dark .text-outline-yellow {
+  -webkit-text-stroke: 3px #7C3AED !important;
+}
+
 /* ============================
    UTILITY CLASSES
 ============================ */
@@ -85,40 +206,41 @@
 
   /* ── BRUTALIST SHADOW SYSTEM ── */
   .brutalist-shadow-sm {
-    box-shadow: 2px 2px 0px 0px #000;
+    box-shadow: 2px 2px 0px 0px hsl(var(--primary));
   }
   .brutalist-shadow-small {
-    box-shadow: 3px 3px 0px 0px #000;
+    box-shadow: 3px 3px 0px 0px hsl(var(--primary));
   }
   .brutalist-shadow {
-    box-shadow: 5px 5px 0px 0px #000;
+    box-shadow: 5px 5px 0px 0px hsl(var(--primary));
   }
   .brutalist-shadow-lg {
-    box-shadow: 8px 8px 0px 0px #000;
+    box-shadow: 8px 8px 0px 0px hsl(var(--primary));
   }
   .brutalist-shadow-xl {
-    box-shadow: 12px 12px 0px 0px #000;
+    box-shadow: 12px 12px 0px 0px hsl(var(--primary));
   }
 
   /* ── CARDS ── */
   .premium-card {
-    background: #ffffff;
-    border: 2px solid #000;
-    box-shadow: 6px 6px 0px 0px #000;
+    background: hsl(var(--card));
+    border: 2px solid hsl(var(--primary));
+    box-shadow: 6px 6px 0px 0px hsl(var(--primary));
     transition: transform 350ms cubic-bezier(0.23, 1, 0.32, 1),
-                box-shadow 350ms cubic-bezier(0.23, 1, 0.32, 1);
+                box-shadow 350ms cubic-bezier(0.23, 1, 0.32, 1),
+                background 0.3s ease, border 0.3s ease;
   }
   .premium-card:hover {
     transform: translate(2px, 2px);
-    box-shadow: 4px 4px 0px 0px #000;
+    box-shadow: 4px 4px 0px 0px hsl(var(--primary));
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.55);
+    background: hsl(var(--background) / 0.55);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 2px solid rgba(0,0,0,0.85);
-    box-shadow: 4px 4px 0px 0px #000;
+    border: 2px solid hsl(var(--primary) / 0.85);
+    box-shadow: 4px 4px 0px 0px hsl(var(--primary));
   }
 
   /* ── BRUTALIST BUTTON ── */
@@ -128,7 +250,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    border: 3px solid #000;
+    border: 3px solid hsl(var(--primary));
     padding: 0.85rem 1.85rem;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 900;
@@ -136,30 +258,30 @@
     text-transform: uppercase;
     letter-spacing: -0.01em;
     cursor: pointer;
-    transition: transform 150ms, box-shadow 150ms;
-    box-shadow: 5px 5px 0px 0px #000;
+    transition: transform 150ms, box-shadow 150ms, background 0.3s ease;
+    box-shadow: 5px 5px 0px 0px hsl(var(--primary));
     text-decoration: none;
     line-height: 1;
     white-space: nowrap;
   }
   .brutalist-button:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0px 0px #000;
+    box-shadow: 8px 8px 0px 0px hsl(var(--primary));
   }
   .brutalist-button:active {
     transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px 0px #000;
+    box-shadow: 2px 2px 0px 0px hsl(var(--primary));
   }
 
   /* ── TEXT EFFECTS ── */
-  /* BLACK outline — used on white/light backgrounds (About, Societies, Events, News headers) */
+  /* BLACK/PRIMARY outline — used on white/light backgrounds (About, Societies, Events, News headers) */
   .text-outline {
-    -webkit-text-stroke: 3px #000 !important;
+    -webkit-text-stroke: 3px hsl(var(--primary)) !important;
     color: transparent !important;
   }
   /* WHITE outline — used on dark/black backgrounds (Hero section) */
   .text-outline-white {
-    -webkit-text-stroke: 3px rgba(255,255,255,0.85) !important;
+    -webkit-text-stroke: 3px hsl(0 0% 100% / 0.85) !important;
     color: transparent !important;
   }
   /* YELLOW outline */
@@ -182,6 +304,44 @@
     transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
 }
+
+/* ════════════════════════════════════════════════════
+   DARK MODE ENHANCED BRUTALIST SHADOWS — Violet Glow
+   Adds a soft inner violet luminance to the hard offset
+════════════════════════════════════════════════════ */
+.dark .brutalist-shadow-sm {
+  box-shadow: 2px 2px 0px 0px hsl(var(--primary)), 0 0 12px rgba(124,58,237,0.15);
+}
+.dark .brutalist-shadow-small {
+  box-shadow: 3px 3px 0px 0px hsl(var(--primary)), 0 0 16px rgba(124,58,237,0.18);
+}
+.dark .brutalist-shadow {
+  box-shadow: 5px 5px 0px 0px hsl(var(--primary)), 0 0 20px rgba(124,58,237,0.2);
+}
+.dark .brutalist-shadow-lg {
+  box-shadow: 8px 8px 0px 0px hsl(var(--primary)), 0 0 28px rgba(124,58,237,0.22);
+}
+.dark .brutalist-shadow-xl {
+  box-shadow: 12px 12px 0px 0px hsl(var(--primary)), 0 0 40px rgba(124,58,237,0.25);
+}
+
+/* ── DARK MODE — Premium card hover glow ── */
+.dark .premium-card:hover {
+  box-shadow: 4px 4px 0px 0px hsl(var(--primary)), 0 0 30px rgba(139,92,246,0.2);
+}
+
+/* ── DARK MODE — Primary bordered section glow ── */
+.dark .border-t-4.border-primary,
+.dark .border-b-4.border-primary,
+.dark .border-\[3px\].border-primary {
+  box-shadow: 0 0 20px rgba(124,58,237,0.08);
+}
+
+/* ── DARK MODE — Input focus glow ── */
+.dark input:focus {
+  box-shadow: 0 0 0 1px #7C3AED, 0 0 16px rgba(124,58,237,0.3) !important;
+}
+
 
 /* ============================
    HIDE SCROLLBAR
@@ -227,4 +387,21 @@
 }
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform:translate(0, 0) }
+  10% { transform:translate(-5%, -10%) }
+  20% { transform:translate(-15%, 5%) }
+  30% { transform:translate(7%, -25%) }
+  40% { transform:translate(-5%, 25%) }
+  50% { transform:translate(-15%, 10%) }
+  60% { transform:translate(15%, 0%) }
+  70% { transform:translate(0%, 15%) }
+  80% { transform:translate(3%, 35%) }
+  90% { transform:translate(-10%, 10%) }
+}
+
+.animate-grain {
+  animation: grain 8s steps(10) infinite;
 }

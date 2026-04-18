@@ -140,7 +140,7 @@ const TypewriterText = ({ text, onComplete }: TypewriterTextProps) => {
       {/* DESKTOP: Interactive text container with hover tooltip */}
       <div className="group cursor-pointer" onClick={handleSkipAnimation}>
         <div aria-hidden="true">
-          <p className="font-space font-semibold text-black/80 text-lg md:text-2xl lg:text-3xl leading-relaxed md:leading-[1.7] tracking-tight italic">
+          <p className="font-space font-semibold text-foreground/80 text-lg md:text-2xl lg:text-3xl leading-relaxed md:leading-[1.7] tracking-tight italic transition-colors">
             {displayText}
             {!isComplete && showCursor && (
               <span className="animate-hard-blink">|</span>
@@ -151,7 +151,7 @@ const TypewriterText = ({ text, onComplete }: TypewriterTextProps) => {
         {/* DESKTOP TOOLTIP: Shows on hover via group-hover (CSS-based, performant) */}
         {!isComplete && (
           <div className="hidden md:block absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-            <div className="bg-yellow-400 border-[2px] border-black px-4 py-2 whitespace-nowrap">
+            <div className="bg-yellow-400 border-[2px] border-primary px-4 py-2 whitespace-nowrap brutalist-shadow">
               <span className="font-space font-black uppercase tracking-widest text-xs text-black">
                 Press Space or Click to Skip
               </span>
@@ -165,7 +165,7 @@ const TypewriterText = ({ text, onComplete }: TypewriterTextProps) => {
         <div className="md:hidden mt-4 flex justify-end">
           <button
             onClick={handleSkipAnimation}
-            className="bg-yellow-400 border-[2px] border-black px-4 py-2 font-space font-black uppercase tracking-widest text-xs text-black hover:bg-yellow-300 transition-colors"
+            className="bg-yellow-400 border-[2px] border-primary px-4 py-2 font-space font-black uppercase tracking-widest text-xs text-black hover:bg-yellow-300 transition-all brutalist-shadow"
           >
             Tap to skip
           </button>

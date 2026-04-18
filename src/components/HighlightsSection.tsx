@@ -10,23 +10,19 @@ const HighlightsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-32 lg:py-48 bg-white border-t-4 border-black overflow-hidden"
+      className="relative py-32 lg:py-48 bg-background border-t-4 border-primary overflow-hidden transition-colors"
     >
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
 
         {/* MAIN STATS CARD */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.85, ease: [0.23, 1, 0.32, 1] }}
-          className="premium-card p-12 lg:p-20 bg-black text-white relative overflow-hidden mb-0"
+          className="premium-card p-12 lg:p-20 bg-background text-foreground border-4 border-primary relative overflow-hidden mb-0 transition-colors brutalist-shadow"
         >
           {/* Yellow accent glow */}
           <div className="absolute top-0 right-0 w-[50%] h-[80%] bg-yellow-400/10 blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
           {/* Side label */}
           <div className="absolute top-0 right-10 h-full flex items-center pointer-events-none select-none">
-            <span className="text-[9px] font-black text-white/10 tracking-[1.2em] vertical-text uppercase">
+            <span className="text-[9px] font-black text-primary/10 tracking-[1.2em] vertical-text uppercase transition-colors">
               REAL_TIME_DATA / STATS_2024
             </span>
           </div>
@@ -35,14 +31,14 @@ const HighlightsSection = () => {
 
             {/* Badge */}
             <div className="flex justify-center mb-10">
-              <div className="px-6 py-2 bg-yellow-400 text-black font-black text-[11px] tracking-[0.4em] uppercase brutalist-shadow-sm border-2 border-yellow-400">
+              <div className="px-6 py-2 bg-yellow-400 text-black font-black text-[11px] tracking-[0.4em] uppercase brutalist-shadow-sm border-2 border-primary">
                 BENCHMARK_2024
               </div>
             </div>
 
             {/* Headline */}
             <h2
-              className="font-space font-black uppercase text-white mb-16"
+              className="font-space font-black uppercase text-foreground mb-16 transition-colors"
               style={{ fontSize: "clamp(2.8rem,9vw,8rem)", lineHeight: 0.85 }}
             >
               #1 TECH FEST<br />
@@ -65,15 +61,15 @@ const HighlightsSection = () => {
                   className="group cursor-default"
                 >
                   <span
-                    className="block font-space font-black text-white tracking-tighter mb-3 group-hover:text-yellow-400 transition-colors"
+                    className="block font-space font-black text-foreground tracking-tighter mb-3 group-hover:text-yellow-400 transition-colors"
                     style={{ fontSize: "clamp(3rem,7vw,5.5rem)", lineHeight: 1 }}
                   >
                     {s.num}
                   </span>
-                  <span className="block text-[11px] font-black text-white/70 tracking-[0.3em] uppercase mb-2">
+                  <span className="block text-[11px] font-black text-foreground/70 tracking-[0.3em] uppercase mb-2 transition-colors">
                     {s.label}
                   </span>
-                  <p className="text-xs font-bold text-white/40 uppercase tracking-widest">
+                  <p className="text-xs font-bold text-foreground/40 uppercase tracking-widest transition-colors">
                     {s.desc}
                   </p>
                 </motion.div>
@@ -84,7 +80,7 @@ const HighlightsSection = () => {
       </div>
 
       {/* MARQUEE BAND */}
-      <div className="mt-20 border-y-4 border-black bg-yellow-400 py-5 whitespace-nowrap overflow-hidden -rotate-[1deg] scale-105">
+      <div className="mt-20 border-y-4 border-primary bg-yellow-400 py-5 whitespace-nowrap overflow-hidden -rotate-[1deg] scale-105 transition-colors">
         <div className="flex animate-marquee-fast">
           {Array(10).fill(null).map((_, i) => (
             <div key={i} className="flex items-center">

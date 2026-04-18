@@ -4,13 +4,15 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ModeToggle } from "./ModeToggle";
 
 const navItems = [
   { name: "Home", path: "/", id: "01" },
   { name: "Oath", path: "/oath", id: "02" },
   { name: "Societies", path: "/societies", id: "03" },
   { name: "Events", path: "/events", id: "04" },
-  { name: "Members", path: "/members", id: "05" },
+  { name: "Awards", path: "/awards", id: "05" },
+  { name: "Members", path: "/members", id: "06" },
 ];
 
 const Navbar = () => {
@@ -24,11 +26,10 @@ const Navbar = () => {
   return (
     <>
       <motion.nav className="fixed top-0 left-0 right-0 z-50">
-        <div className="h-1 w-full bg-yellow-400" />
+        <div className="h-1 w-full bg-yellow-400 dark:bg-violet-600 transition-colors" />
 
         <div
-          className="w-full backdrop-blur-lg border-b-[3px] border-black"
-          style={{ background: "rgba(255,255,255,0.95)" }}
+          className="w-full backdrop-blur-lg border-b-[3px] border-primary transition-colors bg-background/95"
         >
           {/* ✅ FIXED LAYOUT */}
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between h-[60px] sm:h-[68px]">
@@ -36,13 +37,13 @@ const Navbar = () => {
             {/* LOGO */}
             <Link to="/" className="flex items-center gap-4 group flex-1 min-w-0">
               <div
-                className="w-11 h-11 bg-black flex items-center justify-center p-[7px] shrink-0"
+                className="w-11 h-11 bg-white flex items-center justify-center p-[4px] shrink-0 border border-primary/10"
                 style={{ boxShadow: "3px 3px 0px 0px #FACC15" }}
               >
                 <img
-                  src="/iem-3d-logo.png"
-                  alt="logo"
-                  className="w-full h-full object-contain invert grayscale brightness-125"
+                  src="/IEM_logo.jpeg"
+                  alt="IEM logo"
+                  className="w-full h-full object-contain"
                 />
               </div>
 
@@ -50,7 +51,7 @@ const Navbar = () => {
               <div className="leading-none flex-1 min-w-0">
                 <div className="font-black uppercase tracking-wider text-[12px] sm:text-[14px] flex items-center gap-1 whitespace-nowrap">
 
-                  <span className="text-black">IEM</span>
+                  <span className="text-primary">IEM</span>
 
                   <span className="text-gray-400">
                     STUDENTS’
@@ -61,7 +62,7 @@ const Navbar = () => {
                   </span>
                 </div>
 
-                <div className="text-[8px] font-bold text-black/40 tracking-[0.5em] uppercase mt-1 hidden sm:block">
+                <div className="text-[8px] font-bold text-foreground/40 tracking-[0.5em] uppercase mt-1 hidden sm:block transition-colors">
                   THE CENTRAL HUB
                 </div>
               </div>
@@ -81,12 +82,12 @@ const Navbar = () => {
                       to={item.path}
                       className={`relative px-5 py-2 text-[12px] font-black uppercase tracking-widest transition-all duration-200 group
                         hover:-translate-y-[1px] active:translate-y-[2px]
-                        ${isActive ? "text-white" : "text-black/60 hover:text-black"}
+                        ${isActive ? "text-primary-foreground" : "text-foreground/60 hover:text-foreground"}
                       `}
                     >
                       {isActive && (
                         <span
-                          className="absolute inset-0 bg-black -z-10"
+                          className="absolute inset-0 bg-primary -z-10"
                           style={{
                             boxShadow: "3px 3px 0px 0px #FACC15",
                           }}
@@ -104,13 +105,20 @@ const Navbar = () => {
               })}
             </ul>
 
-            {/* 🍔 HAMBURGER */}
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="lg:hidden ml-4 w-10 h-10 border-2 border-black flex items-center justify-center bg-white hover:bg-black hover:text-white transition-all shrink-0"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-3">
+              {/* THEME TOGGLE */}
+              <div className="hidden sm:block">
+                <ModeToggle />
+              </div>
+
+              {/* 🍔 HAMBURGER */}
+              <button
+                onClick={() => setMobileOpen(true)}
+                className="lg:hidden w-10 h-10 border-2 border-primary flex items-center justify-center bg-background text-primary hover:bg-primary hover:text-primary-foreground transition-all shrink-0 brutalist-shadow-sm"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </div>
 
           </div>
         </div>
@@ -129,8 +137,11 @@ const Navbar = () => {
 
             {/* HEADER */}
             <div className="flex justify-between items-center px-6 py-6 border-b border-white/10">
-              <span className="font-black text-lg tracking-wide">MENU</span>
-              <button onClick={() => setMobileOpen(false)}>
+              <div className="flex items-center gap-4">
+                <span className="font-black text-lg tracking-wide text-white">MENU</span>
+                <ModeToggle />
+              </div>
+              <button onClick={() => setMobileOpen(false)} className="text-white">
                 <X className="w-6 h-6" />
               </button>
             </div>

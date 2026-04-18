@@ -15,26 +15,26 @@ const MemberCard = ({ member, accent }: { member: Member; accent: string }) => (
     whileHover={{
       y: -6,
       scale: 1.02,
-      boxShadow: "6px 6px 0px rgba(0,0,0,0.9)"
+      boxShadow: "var(--brutalist-shadow-color, rgba(0,0,0,0.9))"
     }}
     whileTap={{ scale: 0.97 }}
     transition={{ type: "spring", stiffness: 120, damping: 25, mass: 1.2, delay: 0.1  }} // lets them "arrive" thoughtfully and slowly
-    className="bg-white border-[2px] border-black p-4 flex flex-col gap-1 transition-all m-3"
+    className="bg-card border-[2px] border-primary p-4 flex flex-col gap-1 transition-all m-3"
   >
     <div className="flex items-start justify-between gap-2">
-      <p className="font-space font-black text-black text-sm leading-tight uppercase">
+      <p className="font-space font-black text-foreground text-sm leading-tight uppercase transition-colors">
         {member.name}
       </p>
 
       {member.chapter && (
-        <span className="shrink-0 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 border border-black text-black/60">
+        <span className="shrink-0 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 border border-primary text-foreground/60 transition-colors">
           {member.chapter}
         </span>
       )}
     </div>
 
     {member.dept && (
-      <p className="text-[11px] font-bold text-black/60 uppercase tracking-wide">
+      <p className="text-[11px] font-bold text-foreground/60 uppercase tracking-wide transition-colors">
         {member.dept}
       </p>
     )}
@@ -71,7 +71,7 @@ const SectionBlock = ({ section }: { section: Section }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="border-t-[4px] border-black pt-8 pb-4"
+      className="border-t-[4px] border-primary pt-8 pb-4 transition-colors"
     >
       {/* Header row */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-6">
@@ -81,16 +81,16 @@ const SectionBlock = ({ section }: { section: Section }) => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="w-3 h-3 border-[2px] border-black"
+              className="w-3 h-3 border-[2px] border-primary"
               style={{ background: section.accentColor }}
             />
-            <h2 className="font-space font-black text-black text-2xl md:text-3xl uppercase tracking-tighter leading-none">
+            <h2 className="font-space font-black text-foreground text-2xl md:text-3xl uppercase tracking-tighter leading-none transition-colors">
               {section.title}
             </h2>
           </div>
 
           {section.subtitle && (
-            <p className="text-sm font-bold text-black/60 uppercase tracking-wide ml-5">
+            <p className="text-sm font-bold text-foreground/60 uppercase tracking-wide ml-5 transition-colors">
               {section.subtitle}
             </p>
           )}
@@ -102,17 +102,37 @@ const SectionBlock = ({ section }: { section: Section }) => {
           )}
 
           {section.brochureLink && (
-            <motion.a
-              href={section.brochureLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 mt-2 ml-5 font-black text-xs uppercase tracking-widest border-[2px] border-black px-3 py-1.5 bg-red-500 text-white hover:bg-red-600 brutalist-shadow transition-all"
-            >
-              <ExternalLink className="w-3 h-3" />
-              View Official Brochure
-            </motion.a>
+            <div className="flex flex-wrap items-center gap-4 mt-2 ml-5">
+              <motion.a
+                href={section.brochureLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 font-black text-xs uppercase tracking-widest border-[2px] border-primary px-3 py-1.5 bg-red-500 text-white hover:bg-red-600 brutalist-shadow transition-all"
+              >
+                <ExternalLink className="w-3 h-3" />
+                View Official Brochure
+              </motion.a>
+
+              {/* Special Addition for Anti-Ragging Section Contacts */}
+              {section.title === "Anti-Ragging Committee" && (
+                <div className="flex flex-col sm:flex-row gap-4 border-l-2 border-primary/20 pl-4 py-1">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40">General Secretary</span>
+                    <a href="tel:7439122770" className="text-[12px] font-black text-foreground hover:text-red-500 transition-colors">
+                      Surjyangshu: 7439122770
+                    </a>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Vice President</span>
+                    <a href="tel:9749125069" className="text-[12px] font-black text-foreground hover:text-red-500 transition-colors">
+                      Sayantika: 9749125069
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
           )}
         </div>
 
@@ -120,7 +140,7 @@ const SectionBlock = ({ section }: { section: Section }) => {
           onClick={() => setOpen(o => !o)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="shrink-0 flex items-center gap-1 font-black text-xs uppercase tracking-widest border-[2px] border-black px-3 py-1.5 hover:bg-black hover:text-white transition-all self-start"
+          className="shrink-0 flex items-center gap-1 font-black text-xs uppercase tracking-widest border-[2px] border-primary px-3 py-1.5 bg-background text-foreground hover:bg-primary hover:text-primary-foreground transition-all self-start"
         >
           {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           {open ? "Collapse" : "Expand"}
@@ -174,7 +194,7 @@ const MembersPage = () => {
       })).filter(sec => sec.members.length > 0);
 
   return (
-    <div className="min-h-screen bg-white text-black selection:bg-yellow-400 selection:text-black flex flex-col">
+    <div className="min-h-screen bg-background text-foreground selection:bg-yellow-400 selection:text-black flex flex-col transition-colors">
       <Navbar />
 
       <main className="flex-grow max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 pt-32 pb-24 w-full">
@@ -183,30 +203,30 @@ const MembersPage = () => {
 <div className="mb-12">
   <Link
     to="/"
-    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-black/40 hover:text-black transition-colors group mb-8"
+    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-foreground/40 hover:text-foreground transition-colors group mb-8"
   >
     <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
     Back to Home
   </Link>
 
   <div className="flex items-center gap-4 mt-6 mb-6">
-    <div className="w-14 h-[3px] bg-yellow-400" />
-    <span className="text-[11px] font-black tracking-[0.45em] text-black/50 uppercase">
+    <div className="w-14 h-[3px] bg-primary transition-colors" />
+    <span className="text-[11px] font-black tracking-[0.45em] text-foreground/50 uppercase transition-colors">
       IEM Student Gymkhana
     </span>
   </div>
 
- <motion.h1
+  <motion.h1
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.5 }}
-  className="font-space font-black text-black tracking-tighter leading-[0.9] mb-6"
+  className="font-space font-black text-foreground tracking-tighter leading-[0.9] mb-6 transition-colors"
   style={{ fontSize: "clamp(2.5rem,10vw,7rem)" }}
 >
   {/* MEET THE */}
   <span className="relative inline-block">
     MEET THE
-    <span className="absolute left-0 bottom-1 w-full h-2 md:h-3 bg-yellow-400 -z-10"></span>
+    <span className="absolute left-0 bottom-1 w-full h-2 md:h-3 bg-primary -z-10"></span>
   </span>
 
   <br />
@@ -215,14 +235,14 @@ const MembersPage = () => {
   <span
     className="inline-block mt-2 text-yellow-400 px-2 md:px-3 py-1"
     style={{
-      WebkitTextStroke: "2px black",
+      WebkitTextStroke: "2px hsl(var(--foreground))",
     }}
   >
     TEAM.
   </span>
 </motion.h1>
 
-  <p className="font-space font-bold text-black/60 text-lg uppercase tracking-wider max-w-lg">
+  <p className="font-space font-bold text-foreground/60 text-lg uppercase tracking-wider max-w-lg transition-colors">
     Official Gymkhana Committee — Institute of Engineering & Management, Kolkata
   </p>
 </div>
@@ -232,8 +252,8 @@ const MembersPage = () => {
           <select
             value={activeYear}
             onChange={e => { setActiveYear(e.target.value as typeof YEARS[number]); setSearch(""); }}
-            className="px-6 py-3 pr-12 font-space font-black text-sm uppercase tracking-wider border-[3px] border-black bg-white text-black cursor-pointer appearance-none focus:outline-none focus:shadow-[4px_4px_0px_0px_#FACC15] transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
-            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
+            className="px-6 py-3 pr-12 font-space font-black text-sm uppercase tracking-wider border-[3px] border-primary bg-background text-foreground cursor-pointer appearance-none focus:outline-none focus:shadow-[4px_4px_0px_0px_#FACC15] transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
           >
             {YEARS.map(year => (
               <option key={year} value={year}>
@@ -254,11 +274,11 @@ const MembersPage = () => {
       placeholder="Search by name, dept or chapter…"
       value={search}
       onChange={e => setSearch(e.target.value)}
-      className="w-full border-[3px] border-black px-5 py-3 font-space font-bold text-sm placeholder:text-black/30 focus:outline-none focus:shadow-[4px_4px_0px_0px_#FACC15]"
+      className="w-full border-[3px] border-primary bg-background text-foreground px-5 py-3 font-space font-bold text-sm placeholder:text-foreground/30 focus:outline-none focus:shadow-[4px_4px_0px_0px_#FACC15] transition-all"
     />
 
     <button
-      className="border-[3px] border-l-0 border-black px-4 flex items-center justify-center bg-yellow-400 hover:bg-yellow-500 active:scale-95"
+      className="border-[3px] border-l-0 border-primary px-4 flex items-center justify-center bg-yellow-400 hover:bg-yellow-500 active:scale-95 transition-all"
     >
       <Search className="w-4 h-4 text-black" />
     </button>
@@ -279,7 +299,7 @@ const MembersPage = () => {
 
             {filtered.length === 0 && (
               <div className="py-24 text-center">
-                <p className="font-space font-black text-4xl text-black/20 uppercase">No results found.</p>
+                <p className="font-space font-black text-4xl text-foreground/20 uppercase transition-colors">No results found.</p>
               </div>
             )}
           </>
@@ -288,22 +308,22 @@ const MembersPage = () => {
         {/* ─── 2026-2027 COMING SOON ──────────────────────────────── */}
         {activeYear === "2026-2027" && (
           <div className="py-32 flex flex-col items-center justify-center text-center">
-            <div className="w-24 h-24 border-[4px] border-black bg-yellow-400 brutalist-shadow flex items-center justify-center mb-10 animate-pulse">
+            <div className="w-24 h-24 border-[4px] border-primary bg-yellow-400 brutalist-shadow flex items-center justify-center mb-10 animate-pulse">
               <span className="font-space font-black text-4xl text-black">?</span>
             </div>
             <h2
-              className="font-space font-black text-black uppercase tracking-tighter mb-6"
+              className="font-space font-black text-foreground uppercase tracking-tighter mb-6 transition-colors"
               style={{ fontSize: "clamp(2.5rem,6vw,5rem)", lineHeight: 0.9 }}
             >
               COMING <span className="text-outline">SOON.</span>
             </h2>
-            <p className="font-space font-bold text-black/50 text-lg uppercase tracking-wider max-w-md mb-10">
+            <p className="font-space font-bold text-foreground/50 text-lg uppercase tracking-wider max-w-md mb-10 transition-colors">
               The 2026-2027 Student Gymkhana Committee will be revealed soon. Stay tuned!
             </p>
-            <div className="flex items-center gap-3 text-sm font-black uppercase tracking-widest text-black/30">
-              <div className="w-8 h-[2px] bg-black/20" />
+            <div className="flex items-center gap-3 text-sm font-black uppercase tracking-widest text-foreground/30 transition-colors">
+              <div className="w-8 h-[2px] bg-primary/20" />
               Under Formation
-              <div className="w-8 h-[2px] bg-black/20" />
+              <div className="w-8 h-[2px] bg-primary/20" />
             </div>
           </div>
         )}

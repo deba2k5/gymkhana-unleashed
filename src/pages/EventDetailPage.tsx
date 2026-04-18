@@ -43,7 +43,7 @@ export default function EventDetailPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-white min-h-screen">
+      <main className="bg-background min-h-screen text-foreground transition-colors">
 
         {/* ─── HERO ─── */}
         <section className="relative pt-32 lg:pt-40 min-h-[85vh] flex flex-col justify-end overflow-hidden bg-black">
@@ -56,7 +56,7 @@ export default function EventDetailPage() {
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff04_1px,transparent_0)] bg-[length:24px_24px]" />
+            <div className="absolute inset-0 bg-[radial-gradient(var(--foreground)_1px,transparent_0)] bg-[length:24px_24px] opacity-[0.05]" />
           </div>
 
           {/* Image navigation */}
@@ -161,15 +161,15 @@ export default function EventDetailPage() {
                   transition={{ duration: 0.7 }}
                 >
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-[3px] bg-black" />
-                    <span className="text-[11px] font-black tracking-[0.45em] uppercase text-black/40">ABOUT THIS EVENT</span>
+                    <div className="w-12 h-[3px] bg-primary transition-colors" />
+                    <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/40 transition-colors">ABOUT THIS EVENT</span>
                   </div>
 
-                  <p className="text-xl font-bold uppercase tracking-tight text-black/70 leading-relaxed mb-8 border-l-4 border-yellow-400 pl-6">
+                  <p className="text-xl font-bold uppercase tracking-tight text-foreground/70 leading-relaxed mb-8 border-l-4 border-yellow-400 pl-6 transition-colors">
                     {event.desc}
                   </p>
 
-                  <p className="text-base font-bold text-black/60 uppercase tracking-wide leading-relaxed">
+                  <p className="text-base font-bold text-foreground/60 uppercase tracking-wide leading-relaxed transition-colors">
                     {event.fullDesc}
                   </p>
                 </motion.div>
@@ -184,15 +184,15 @@ export default function EventDetailPage() {
                 >
                   {/* Highlights */}
                   {event.highlights && (
-                    <div className="border-[3px] border-black p-8 mb-8" style={{ boxShadow: "6px 6px 0 0 #000" }}>
-                      <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-black/50 mb-6">KEY HIGHLIGHTS</h3>
+                    <div className="border-[3px] border-primary p-8 mb-8 transition-colors" style={{ boxShadow: "6px 6px 0 0 var(--primary)" }}>
+                      <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-foreground/50 mb-6 transition-colors">KEY HIGHLIGHTS</h3>
                       <div className="space-y-4">
                         {event.highlights.map((h, i) => (
                           <div key={i} className="flex items-start gap-4">
-                            <div className="shrink-0 w-8 h-8 bg-yellow-400 flex items-center justify-center border-2 border-black mt-0.5" style={{ boxShadow: "2px 2px 0 0 #000" }}>
+                            <div className="shrink-0 w-8 h-8 bg-yellow-400 flex items-center justify-center border-2 border-primary mt-0.5" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
                               <span className="text-[10px] font-black text-black">0{i + 1}</span>
                             </div>
-                            <span className="text-sm font-black text-black uppercase tracking-wide leading-tight">{h}</span>
+                            <span className="text-sm font-black text-foreground uppercase tracking-wide leading-tight transition-colors">{h}</span>
                           </div>
                         ))}
                       </div>
@@ -200,23 +200,23 @@ export default function EventDetailPage() {
                   )}
 
                   {/* Quick info */}
-                  <div className="bg-black p-8 border-[3px] border-black" style={{ boxShadow: "6px 6px 0 0 #facc15" }}>
-                    <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-white/40 mb-6">EVENT INFO</h3>
+                  <div className="bg-background p-8 border-[3px] border-primary transition-colors" style={{ boxShadow: "6px 6px 0 0 #facc15" }}>
+                    <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-foreground/40 mb-6 transition-colors">EVENT INFO</h3>
                     <div className="space-y-5">
-                      <div className="flex justify-between items-center pb-4 border-b border-white/10">
-                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">DATE</span>
-                        <span className="text-sm font-black text-white uppercase">{event.displayDate}</span>
+                      <div className="flex justify-between items-center pb-4 border-b border-primary/10 transition-colors">
+                        <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest transition-colors">DATE</span>
+                        <span className="text-sm font-black text-foreground uppercase transition-colors">{event.displayDate}</span>
                       </div>
-                      <div className="flex justify-between items-center pb-4 border-b border-white/10">
-                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">TYPE</span>
+                      <div className="flex justify-between items-center pb-4 border-b border-primary/10 transition-colors">
+                        <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest transition-colors">TYPE</span>
                         <span className="text-sm font-black text-yellow-400 uppercase">{event.type}</span>
                       </div>
-                      <div className="flex justify-between items-start pb-4 border-b border-white/10">
-                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest shrink-0 mt-1">VENUE</span>
-                        <span className="text-sm font-black text-white uppercase text-right ml-4">{event.location}</span>
+                      <div className="flex justify-between items-start pb-4 border-b border-primary/10 transition-colors">
+                        <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest shrink-0 mt-1 transition-colors">VENUE</span>
+                        <span className="text-sm font-black text-foreground uppercase text-right ml-4 transition-colors">{event.location}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">CATEGORY</span>
+                        <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest transition-colors">CATEGORY</span>
                         <span className={`px-3 py-1 text-[9px] font-black tracking-[0.2em] uppercase ${categoryColors[event.category] || "bg-yellow-400 text-black"}`}>
                           {event.category}
                         </span>
@@ -236,8 +236,8 @@ export default function EventDetailPage() {
                 className="mt-24"
               >
                 <div className="flex items-center gap-4 mb-10">
-                  <div className="w-12 h-[3px] bg-black" />
-                  <span className="text-[11px] font-black tracking-[0.45em] uppercase text-black/40">PHOTO GALLERY</span>
+                  <div className="w-12 h-[3px] bg-primary transition-colors" />
+                  <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/40 transition-colors">PHOTO GALLERY</span>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -246,9 +246,9 @@ export default function EventDetailPage() {
                       key={i}
                       onClick={() => { setActiveImg(i); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                       className={`relative overflow-hidden border-[3px] transition-all aspect-video ${
-                        i === activeImg ? "border-yellow-400" : "border-black hover:border-yellow-400"
+                        i === activeImg ? "border-yellow-400" : "border-primary hover:border-yellow-400"
                       }`}
-                      style={{ boxShadow: i === activeImg ? "4px 4px 0 0 #facc15" : "3px 3px 0 0 #000" }}
+                      style={{ boxShadow: i === activeImg ? "4px 4px 0 0 #facc15" : "3px 3px 0 0 var(--primary)" }}
                     >
                       <img
                         src={`/events/${img}`}
@@ -271,17 +271,17 @@ export default function EventDetailPage() {
             )}
 
             {/* ─── NAV: PREV / NEXT ─── */}
-            <div className="mt-24 pt-12 border-t-4 border-black grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mt-24 pt-12 border-t-4 border-primary transition-colors grid grid-cols-1 md:grid-cols-2 gap-6">
               {prevEvent ? (
                 <Link
                   to={`/events/${prevEvent.slug}`}
-                  className="group flex items-center gap-6 p-8 border-[3px] border-black hover:bg-black transition-colors"
-                  style={{ boxShadow: "5px 5px 0 0 #000" }}
+                  className="group flex items-center gap-6 p-8 border-[3px] border-primary hover:bg-foreground hover:text-background transition-colors"
+                  style={{ boxShadow: "5px 5px 0 0 var(--primary)" }}
                 >
-                  <ArrowLeft className="w-6 h-6 text-black group-hover:text-yellow-400 transition-colors shrink-0" />
+                  <ArrowLeft className="w-6 h-6 text-foreground group-hover:text-yellow-400 transition-colors shrink-0" />
                   <div>
-                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-black/40 group-hover:text-white/40 transition-colors block mb-1">PREVIOUS EVENT</span>
-                    <span className="text-base font-space font-black text-black group-hover:text-white uppercase tracking-tight transition-colors">{prevEvent.shortName}</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/40 group-hover:text-background/40 transition-colors block mb-1">PREVIOUS EVENT</span>
+                    <span className="text-base font-space font-black text-foreground group-hover:text-background uppercase tracking-tight transition-colors">{prevEvent.shortName}</span>
                   </div>
                 </Link>
               ) : <div />}
@@ -289,14 +289,14 @@ export default function EventDetailPage() {
               {nextEvent && (
                 <Link
                   to={`/events/${nextEvent.slug}`}
-                  className="group flex items-center justify-end gap-6 p-8 border-[3px] border-black hover:bg-black transition-colors"
-                  style={{ boxShadow: "5px 5px 0 0 #000" }}
+                  className="group flex items-center justify-end gap-6 p-8 border-[3px] border-primary hover:bg-foreground hover:text-background transition-colors"
+                  style={{ boxShadow: "5px 5px 0 0 var(--primary)" }}
                 >
                   <div className="text-right">
-                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-black/40 group-hover:text-white/40 transition-colors block mb-1">NEXT EVENT</span>
-                    <span className="text-base font-space font-black text-black group-hover:text-white uppercase tracking-tight transition-colors">{nextEvent.shortName}</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/40 group-hover:text-background/40 transition-colors block mb-1">NEXT EVENT</span>
+                    <span className="text-base font-space font-black text-foreground group-hover:text-background uppercase tracking-tight transition-colors">{nextEvent.shortName}</span>
                   </div>
-                  <ArrowUpRight className="w-6 h-6 text-black group-hover:text-yellow-400 transition-colors shrink-0" />
+                  <ArrowUpRight className="w-6 h-6 text-foreground group-hover:text-yellow-400 transition-colors shrink-0" />
                 </Link>
               )}
             </div>

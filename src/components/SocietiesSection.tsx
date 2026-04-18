@@ -44,20 +44,20 @@ export default function SocietiesSection() {
   }, []);
 
   return (
-    <section className="relative py-32 bg-white border-t-4 border-black overflow-hidden">
+    <section className="relative py-32 bg-background border-t-4 border-primary overflow-hidden transition-colors">
       <div className="max-w-[1400px] mx-auto px-6">
 
         {/* HEADER */}
         <div className="mb-20 flex justify-between items-end">
-          <h2 className="text-6xl font-black">
+          <h2 className="text-6xl font-black text-foreground transition-colors">
             OUR <span className="text-outline">SOCIETIES</span>
           </h2>
 
           <div className="flex gap-3">
-            <button onClick={prev} className="w-14 h-14 border-2 border-black flex items-center justify-center hover:bg-black hover:text-white">
+            <button onClick={prev} className="w-14 h-14 border-2 border-primary flex items-center justify-center bg-background text-primary hover:bg-primary hover:text-primary-foreground transition-all">
               <ChevronLeft />
             </button>
-            <button onClick={next} className="w-14 h-14 border-2 border-black bg-black text-white hover:bg-yellow-400 hover:text-black">
+            <button onClick={next} className="w-14 h-14 border-2 border-primary bg-primary text-primary-foreground hover:bg-yellow-400 hover:text-black transition-all">
               <ChevronRight />
             </button>
           </div>
@@ -95,7 +95,7 @@ export default function SocietiesSection() {
               >
 
                 {/* CARD */}
-                <div className="relative border-2 border-black bg-black overflow-hidden group">
+                <div className="relative border-2 border-primary bg-black overflow-hidden group transition-colors">
 
                   <img
                     src={s.image}
@@ -134,7 +134,7 @@ export default function SocietiesSection() {
               key={i}
               onClick={() => setIndex(i)}
               className={`h-2 transition-all ${
-                index === i ? "w-10 bg-black" : "w-3 bg-black/30"
+                index === i ? "w-10 bg-primary" : "w-3 bg-primary/30"
               }`}
             />
           ))}
@@ -144,7 +144,7 @@ export default function SocietiesSection() {
         <div className="mt-12 flex justify-center">
           <Link
             to="/societies"
-            className="px-8 py-2 font-black text-sm uppercase tracking-widest border-2 border-black shadow-[8px_8px_0px_#FACC15] hover:shadow-[4px_4px_0px_#FACC15] hover:translate-y-1 transition"
+            className="px-8 py-2 font-black text-sm uppercase tracking-widest border-2 border-primary bg-background text-foreground shadow-[8px_8px_0px_#FACC15] hover:shadow-[4px_4px_0px_#FACC15] hover:translate-y-1 transition-all"
           >
             Explore All Societies
           </Link>

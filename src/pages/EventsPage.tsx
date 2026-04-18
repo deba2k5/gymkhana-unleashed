@@ -34,12 +34,12 @@ export default function EventsPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-white min-h-screen">
+      <main className="bg-transparent min-h-screen text-foreground transition-colors">
 
         {/* ─── HERO ─── */}
-        <section className="relative pt-40 pb-20 lg:pt-52 lg:pb-28 bg-black border-b-4 border-yellow-400 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(#ffffff05_1px,transparent_0)] bg-[length:24px_24px]" />
-          <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-yellow-400/5 blur-[120px]" />
+        <section className="relative pt-40 pb-20 lg:pt-52 lg:pb-28 bg-transparent border-b-4 border-primary overflow-hidden transition-colors">
+          <div className="absolute inset-0 bg-[radial-gradient(var(--foreground)_1px,transparent_0)] bg-[length:24px_24px] opacity-[0.05]" />
+          <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-primary/5 blur-[120px]" />
 
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 z-10">
             <motion.div
@@ -55,14 +55,14 @@ export default function EventsPage() {
               </div>
 
               <h1
-                className="font-space font-black tracking-tighter text-white mb-6"
+                className="font-space font-black tracking-tighter text-foreground mb-6 transition-colors"
                 style={{ fontSize: "clamp(4rem,12vw,11rem)", lineHeight: 0.82 }}
               >
                 ALL<br />
                 <span style={{ WebkitTextStroke: "2px #facc15", color: "transparent" }}>EVENTS.</span>
               </h1>
 
-              <p className="text-lg font-bold uppercase tracking-tight text-white/50 max-w-2xl leading-relaxed">
+              <p className="text-lg font-bold uppercase tracking-tight text-foreground/50 max-w-2xl leading-relaxed transition-colors">
                 Every milestone, competition, celebration, and achievement — documented from the IEM Student's Gymkhana.
               </p>
             </motion.div>
@@ -70,23 +70,23 @@ export default function EventsPage() {
         </section>
 
         {/* ─── FILTER BAR ─── */}
-        <section className="sticky top-0 z-40 bg-white border-b-4 border-black">
+        <section className="sticky top-0 z-40 bg-background border-b-4 border-primary transition-colors">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="flex items-center gap-4 py-5 overflow-x-auto scrollbar-none">
               <div className="flex items-center gap-2 shrink-0 mr-4">
-                <Filter className="w-4 h-4 text-black/40" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/40">FILTER</span>
+                <Filter className="w-4 h-4 text-foreground/40" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">FILTER</span>
               </div>
               {CATEGORIES.map(cat => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`shrink-0 px-5 py-2 text-[10px] font-black uppercase tracking-[0.3em] border-2 border-black transition-all ${
+                  className={`shrink-0 px-5 py-2 text-[10px] font-black uppercase tracking-[0.3em] border-2 border-primary transition-all ${
                     activeCategory === cat
-                      ? "bg-black text-white"
-                      : "bg-white text-black hover:bg-yellow-400"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-background text-foreground hover:bg-yellow-400 hover:text-black"
                   }`}
-                  style={{ boxShadow: activeCategory === cat ? "3px 3px 0 0 #facc15" : "3px 3px 0 0 #000" }}
+                  style={{ boxShadow: activeCategory === cat ? "3px 3px 0 0 #facc15" : "3px 3px 0 0 var(--primary)" }}
                 >
                   {cat}
                 </button>
@@ -101,7 +101,7 @@ export default function EventsPage() {
 
             {filtered.length === 0 && (
               <div className="text-center py-32">
-                <p className="text-2xl font-space font-black text-black/30 uppercase tracking-widest">No events found</p>
+                <p className="text-2xl font-space font-black text-foreground/30 uppercase tracking-widest transition-colors">No events found</p>
               </div>
             )}
 
@@ -116,8 +116,8 @@ export default function EventsPage() {
               >
                 <Link
                   to={`/events/${featured.slug}`}
-                  className="group relative flex flex-col lg:flex-row overflow-hidden border-[3px] border-black"
-                  style={{ boxShadow: "8px 8px 0 0 #000", minHeight: "520px" }}
+                  className="group relative flex flex-col lg:flex-row overflow-hidden border-[3px] border-primary transition-colors"
+                  style={{ boxShadow: "8px 8px 0 0 var(--primary)", minHeight: "520px" }}
                 >
                   {/* Image */}
                   <div className="relative w-full lg:w-[55%] min-h-[300px] lg:min-h-full overflow-hidden">
@@ -134,8 +134,8 @@ export default function EventsPage() {
                   </div>
 
                   {/* Content */}
-                  <div className="relative bg-black flex-1 p-10 lg:p-16 flex flex-col justify-between">
-                    <div className="absolute top-0 right-0 w-[80%] h-[60%] bg-yellow-400/5 blur-[80px]" />
+                  <div className="relative bg-background flex-1 p-10 lg:p-16 flex flex-col justify-between transition-colors">
+                    <div className="absolute top-0 right-0 w-[80%] h-[60%] bg-primary/5 blur-[80px]" />
 
                     <div className="relative z-10">
                       <div className="flex items-center gap-3 mb-8">
@@ -154,13 +154,13 @@ export default function EventsPage() {
                         {featured.type}
                       </span>
                       <h2
-                        className="font-space font-black text-white uppercase tracking-tighter mb-6 group-hover:text-yellow-400 transition-colors"
+                        className="font-space font-black text-foreground uppercase tracking-tighter mb-6 group-hover:text-yellow-400 transition-colors"
                         style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)", lineHeight: 0.88 }}
                       >
                         {featured.name}
                       </h2>
 
-                      <p className="text-base font-bold uppercase tracking-tight text-white/60 leading-relaxed max-w-lg mb-8">
+                      <p className="text-base font-bold uppercase tracking-tight text-foreground/60 leading-relaxed max-w-lg mb-8 transition-colors">
                         {featured.desc}
                       </p>
 
@@ -169,7 +169,7 @@ export default function EventsPage() {
                           {featured.highlights.map((h, i) => (
                             <div key={i} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 bg-yellow-400 shrink-0" />
-                              <span className="text-[10px] font-black text-white/50 uppercase tracking-wide">{h}</span>
+                              <span className="text-[10px] font-black text-foreground/50 uppercase tracking-wide transition-colors">{h}</span>
                             </div>
                           ))}
                         </div>
@@ -177,12 +177,12 @@ export default function EventsPage() {
                     </div>
 
                     <div className="relative z-10 flex items-center justify-between mt-10 pt-8 border-t border-white/10">
-                      <div className="text-4xl font-space font-black text-white/20 italic">
+                      <div className="text-4xl font-space font-black text-foreground/20 italic transition-colors">
                         {featured.displayDate}
                       </div>
-                      <div className="flex items-center gap-4 group/btn">
-                        <span className="text-[11px] font-black text-white/50 tracking-widest uppercase group-hover/btn:text-yellow-400 transition-colors">VIEW EVENT</span>
-                        <div className="w-12 h-12 border-2 border-white/20 flex items-center justify-center text-white group-hover:bg-yellow-400 group-hover:border-yellow-400 group-hover:text-black transition-all">
+                      <div className="flex items-center gap-4 group/btn transition-colors">
+                        <span className="text-[11px] font-black text-foreground/50 tracking-widest uppercase group-hover/btn:text-yellow-400 transition-colors">VIEW EVENT</span>
+                        <div className="w-12 h-12 border-2 border-primary/20 flex items-center justify-center text-foreground group-hover:bg-yellow-400 group-hover:border-yellow-400 group-hover:text-black transition-all">
                           <ArrowUpRight className="w-5 h-5" />
                         </div>
                       </div>
@@ -215,8 +215,8 @@ function EventCard({ event: ev, idx, inView }: { event: Event; idx: number; inVi
     >
       <Link
         to={`/events/${ev.slug}`}
-        className="group relative flex flex-col overflow-hidden border-[3px] border-black bg-white h-full"
-        style={{ boxShadow: "5px 5px 0 0 #000" }}
+        className="group relative flex flex-col overflow-hidden border-[3px] border-primary bg-background h-full transition-colors"
+        style={{ boxShadow: "5px 5px 0 0 var(--primary)" }}
       >
         {/* Thumbnail */}
         <div className="relative h-52 overflow-hidden bg-black">
@@ -238,7 +238,7 @@ function EventCard({ event: ev, idx, inView }: { event: Event; idx: number; inVi
           </div>
 
           {/* Date badge */}
-          <div className="absolute bottom-4 right-4 bg-yellow-400 px-3 py-1.5 text-center border-2 border-black" style={{ boxShadow: "2px 2px 0 0 #000" }}>
+          <div className="absolute bottom-4 right-4 bg-yellow-400 px-3 py-1.5 text-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
             <span className="block text-[9px] font-black text-black/60 uppercase tracking-widest leading-none">{ev.displayDate.split(" ")[0]}</span>
             <span className="block text-lg font-space font-black text-black leading-tight">{ev.displayDate.split(" ")[1]}</span>
           </div>
@@ -246,20 +246,20 @@ function EventCard({ event: ev, idx, inView }: { event: Event; idx: number; inVi
 
         {/* Body */}
         <div className="p-8 flex flex-col flex-1">
-          <span className="text-[9px] font-black text-black/40 tracking-[0.4em] uppercase block mb-2">{ev.type}</span>
+          <span className="text-[9px] font-black text-foreground/40 tracking-[0.4em] uppercase block mb-2 transition-colors">{ev.type}</span>
           <h3
-            className="font-space font-black text-black tracking-tighter uppercase mb-3 group-hover:text-yellow-600 transition-colors"
+            className="font-space font-black text-foreground tracking-tighter uppercase mb-3 group-hover:text-yellow-600 transition-colors"
             style={{ fontSize: "clamp(1.4rem,2.5vw,1.9rem)", lineHeight: 0.92 }}
           >
             {ev.shortName}
           </h3>
-          <p className="text-[11px] font-bold text-black/55 uppercase tracking-wide leading-relaxed line-clamp-3 flex-1">
+          <p className="text-[11px] font-bold text-foreground/55 uppercase tracking-wide leading-relaxed line-clamp-3 flex-1 transition-colors">
             {ev.desc}
           </p>
 
-          <div className="mt-6 pt-5 border-t-2 border-black/10 flex items-center justify-between group-hover:border-black transition-colors">
-            <span className="text-[10px] font-black tracking-widest text-black/40 uppercase">EXPLORE</span>
-            <div className="w-9 h-9 border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+          <div className="mt-6 pt-5 border-t-2 border-primary/10 flex items-center justify-between group-hover:border-primary transition-colors">
+            <span className="text-[10px] font-black tracking-widest text-foreground/40 uppercase">EXPLORE</span>
+            <div className="w-9 h-9 border-2 border-primary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
               <MoveRight className="w-4 h-4" />
             </div>
           </div>

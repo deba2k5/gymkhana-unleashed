@@ -17,12 +17,12 @@ const AboutSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-32 lg:py-52 bg-white border-t-4 border-black overflow-hidden"
+      className="relative py-32 lg:py-52 bg-background border-t-4 border-primary overflow-hidden transition-colors"
     >
       {/* Background watermark */}
       <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none overflow-hidden">
         <span
-          className="font-black tracking-tighter uppercase whitespace-nowrap text-black opacity-[0.025] -rotate-6"
+          className="font-black tracking-tighter uppercase whitespace-nowrap text-primary opacity-[0.025] -rotate-6 transition-opacity"
           style={{ fontSize: "22vw", lineHeight: 1 }}
         >
           IDENTITY
@@ -40,30 +40,30 @@ const AboutSection = () => {
           >
             {/* Section tag */}
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-14 h-[3px] bg-black" />
-              <span className="text-[11px] font-black tracking-[0.4em] uppercase text-black/50">
+              <div className="w-14 h-[3px] bg-primary transition-colors" />
+              <span className="text-[11px] font-black tracking-[0.4em] uppercase text-foreground/50 transition-colors">
                 OUR MISSION
               </span>
             </div>
 
             {/* Headline */}
             <h2
-              className="font-space font-black tracking-tighter text-black mb-10"
+              className="font-space font-black tracking-tighter text-foreground mb-10 transition-colors"
               style={{ fontSize: "clamp(4rem,11vw,9rem)", lineHeight: 0.82 }}
             >
               CORE<br />
               <span className="text-outline">CULTURE.</span>
             </h2>
 
-            <p className="text-xl md:text-2xl font-bold uppercase tracking-tight text-black leading-[1.2] mb-10 max-w-md">
+            <p className="text-xl md:text-2xl font-bold uppercase tracking-tight text-foreground leading-[1.2] mb-10 max-w-md transition-colors">
               More than a student body —{" "}
-              <span className="bg-yellow-400 text-black px-1.5">an accelerator</span>{" "}
+              <span className="bg-yellow-400 text-black px-1.5 font-black">an accelerator</span>{" "}
               for campus evolution.
             </p>
 
             <a
               href="#societies"
-              className="brutalist-button brutalist-shadow bg-yellow-400 text-black hover:bg-black hover:text-white hover:shadow-none px-8 py-4 text-sm transition-all"
+              className="brutalist-button brutalist-shadow bg-yellow-400 text-black hover:bg-primary hover:text-primary-foreground hover:shadow-none px-8 py-4 text-sm transition-all"
             >
               JOIN THE LEGACY
               <MoveRight className="w-5 h-5" />
@@ -79,14 +79,14 @@ const AboutSection = () => {
           >
             {/* Offset shadow frame */}
             <div
-              className="absolute inset-0 bg-yellow-400/30 border-2 border-black/15"
+              className="absolute inset-0 bg-yellow-400/30 border-2 border-primary/15"
               style={{ transform: "translate(10px,10px)", zIndex: 0 }}
             />
 
-            <div className="relative premium-card p-10 lg:p-16 bg-white z-10">
+            <div className="relative premium-card p-10 lg:p-16 bg-card z-10 transition-colors">
               {/* Side text */}
               <div className="absolute top-0 right-8 h-full flex items-center pointer-events-none select-none">
-                <span className="text-[9px] font-black text-black/10 tracking-[1.2em] vertical-text uppercase">
+                <span className="text-[9px] font-black text-foreground/10 tracking-[1.2em] vertical-text uppercase transition-colors">
                   ESTABLISHED 1989
                 </span>
               </div>
@@ -95,7 +95,7 @@ const AboutSection = () => {
                 THE NARRATIVE
               </span>
 
-              <p className="text-lg md:text-xl font-medium leading-[1.55] text-black/80 mb-12 font-outfit">
+              <p className="text-lg md:text-xl font-medium leading-[1.55] text-foreground/80 mb-12 font-outfit transition-colors">
                 IEM Students' Gymkhana is the official student member council board of the
                 Institute of Engineering & Management, Kolkata. It serves as the
                 central body that represents student interests, coordinates
@@ -108,16 +108,16 @@ const AboutSection = () => {
               </p>
 
               {/* Stats row */}
-              <div className="grid grid-cols-3 gap-6 pt-10 border-t-2 border-black/15">
+              <div className="grid grid-cols-3 gap-6 pt-10 border-t-2 border-primary/15 transition-colors">
                 {stats.map((s, i) => (
                   <div key={i} className="group cursor-default">
                     <div className="flex items-center gap-2 mb-3">
-                      <s.icon className="w-4 h-4 text-black/35 group-hover:text-yellow-500 transition-colors" />
-                      <span className="text-[9px] font-black text-black/55 tracking-widest uppercase leading-tight">
+                      <s.icon className="w-4 h-4 text-foreground/35 group-hover:text-yellow-500 transition-colors" />
+                      <span className="text-[9px] font-black text-foreground/55 tracking-widest uppercase leading-tight transition-colors">
                         {s.label}
                       </span>
                     </div>
-                    <span className="text-3xl md:text-4xl font-space font-black text-black tracking-tighter">
+                    <span className="text-3xl md:text-4xl font-space font-black text-foreground tracking-tighter transition-colors">
                       {s.val}
                     </span>
                   </div>

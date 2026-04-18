@@ -5,9 +5,9 @@ import { motion, useInView } from "framer-motion";
 import { Zap, Target, Sparkles, MoveRight } from "lucide-react";
 
 const stats = [
-  { label: "ANNUAL EVENTS", val: "50+",  icon: Sparkles },
+  { label: "ANNUAL EVENTS", val: "50+", icon: Sparkles },
   { label: "TOTAL FOOTFALL", val: "15K+", icon: Zap },
-  { label: "ACTIVE 24/7",   val: "365",  icon: Target },
+  { label: "ACTIVE 24/7", val: "365", icon: Target },
 ];
 
 const AboutSection = () => {
@@ -32,7 +32,7 @@ const AboutSection = () => {
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 z-10">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-28 items-start">
 
-          {/* ── LEFT: HEADING ── */}
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -46,7 +46,7 @@ const AboutSection = () => {
               </span>
             </div>
 
-            {/* Headline */}
+            {/* Heading */}
             <h2
               className="font-space font-black tracking-tighter text-foreground mb-10 transition-colors"
               style={{ fontSize: "clamp(4rem,11vw,9rem)", lineHeight: 0.82 }}
@@ -61,23 +61,31 @@ const AboutSection = () => {
               for campus evolution.
             </p>
 
+            {/* ✅ FIXED CTA */}
             <a
               href="#societies"
-              className="brutalist-button brutalist-shadow bg-yellow-400 text-black hover:bg-primary hover:text-primary-foreground hover:shadow-none px-8 py-4 text-sm transition-all"
+              className="
+                brutalist-button brutalist-shadow
+                bg-white text-black
+                hover:bg-violet-600 hover:text-white
+                hover:shadow-none
+                px-8 py-4 text-sm
+                transition-all duration-200
+              "
             >
               JOIN THE LEGACY
               <MoveRight className="w-5 h-5" />
             </a>
           </motion.div>
 
-          {/* ── RIGHT: CONTENT CARD ── */}
+          {/* RIGHT */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.95, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
             className="relative"
           >
-            {/* Offset shadow frame */}
+            {/* Shadow frame */}
             <div
               className="absolute inset-0 bg-yellow-400/30 border-2 border-primary/15"
               style={{ transform: "translate(10px,10px)", zIndex: 0 }}
@@ -107,7 +115,7 @@ const AboutSection = () => {
                 and leadership development.
               </p>
 
-              {/* Stats row */}
+              {/* Stats */}
               <div className="grid grid-cols-3 gap-6 pt-10 border-t-2 border-primary/15 transition-colors">
                 {stats.map((s, i) => (
                   <div key={i} className="group cursor-default">
@@ -123,6 +131,7 @@ const AboutSection = () => {
                   </div>
                 ))}
               </div>
+
             </div>
           </motion.div>
 

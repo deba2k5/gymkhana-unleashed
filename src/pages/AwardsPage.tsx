@@ -37,7 +37,7 @@ const categoryIcons: Record<string, typeof Trophy> = {
 };
 
 /* ── AWARD CARD (lazy expanded panel) ── */
-function AwardPanel({ category, delay }: { category: AwardCategory; delay: number }) {
+function AwardPanel({ category, delay, index }: { category: AwardCategory; delay: number; index: number }){
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const ref = useRef(null);
@@ -50,13 +50,16 @@ function AwardPanel({ category, delay }: { category: AwardCategory; delay: numbe
   );
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay }}
-      className="border-[3px] border-primary bg-card brutalist-shadow overflow-hidden transition-all"
-    >
+<motion.div
+  ref={ref}
+  initial={{ opacity: 0, y: 40 }}
+  animate={inView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.7, delay }}
+  className={`relative border-[2px] border-primary bg-card overflow-hidden ${
+    index === 0 ? "gold-border-glow" : "brutalist-shadow"
+  }`}
+>
+      
       {/* ── HEADER ── */}
       <button
         onClick={() => setOpen((p) => !p)}
@@ -64,13 +67,7 @@ function AwardPanel({ category, delay }: { category: AwardCategory; delay: numbe
       >
         <div className="flex items-center justify-between gap-4 p-6 lg:p-8">
           <div className="flex items-center gap-5">
-            {/* Icon badge */}
-            <div
-              className="w-16 h-16 flex items-center justify-center text-3xl border-[3px] border-primary shrink-0 brutalist-shadow-sm transition-all group-hover:scale-105"
-              style={{ background: `${category.accentDark}22` }}
-            >
-              {category.icon}
-            </div>
+
 
             <div>
               <p className="text-[10px] font-black uppercase tracking-[0.35em] text-foreground/50 mb-1 transition-colors">
@@ -86,14 +83,7 @@ function AwardPanel({ category, delay }: { category: AwardCategory; delay: numbe
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
-            {/* Count pill */}
-            <div
-              className="hidden md:flex items-center gap-2 px-4 py-2 border-[2px] border-primary brutalist-shadow-sm text-xs font-black uppercase tracking-wider text-foreground transition-colors"
-              style={{ borderColor: category.accentDark }}
-            >
-              <Users className="w-3.5 h-3.5" style={{ color: category.accentDark }} />
-              <span style={{ color: category.accentDark }}>{category.recipients.length}</span>
-            </div>
+
 
             {/* Toggle */}
             <motion.div
@@ -249,7 +239,7 @@ export default function AwardsPage() {
                   className="text-primary"
                   style={{ fontSize: "clamp(2rem,5vw,5rem)" }}
                 >
-                  2026
+                
                 </span>
               </h1>
             </motion.div>
@@ -263,7 +253,7 @@ export default function AwardsPage() {
             >
               {[
                 { label: "Award Categories", value: awardsData.length },
-                { label: "Total Recipients", value: totalRecipients },
+             
                 { label: "Academic Year", value: "2025–26" },
               ].map((stat) => (
                 <div
@@ -296,46 +286,16 @@ export default function AwardsPage() {
         </div>
       </section>
 
-      {/* ══ AWARD CATEGORY SUMMARY CHIPS ══ */}
-      <section className="py-12 px-6 border-b-[2px] border-primary/20">
-        <div className="max-w-[1400px] mx-auto flex flex-wrap gap-4">
-          {awardsData.map((cat) => {
-            const Icon = categoryIcons[cat.id] ?? Trophy;
-            return (
-              <a
-                key={cat.id}
-                href={`#${cat.id}`}
-                className="flex items-center gap-3 px-5 py-3 border-[2px] border-primary bg-card hover:bg-primary hover:text-primary-foreground transition-all brutalist-shadow-sm group"
-              >
-                <span className="text-xl">{cat.icon}</span>
-                <div>
-                  <p className="text-[9px] font-black uppercase tracking-widest text-foreground/50 group-hover:text-primary-foreground/60 transition-colors">
-                    {cat.title}
-                  </p>
-                  <p className="text-[11px] font-black uppercase tracking-tight text-foreground group-hover:text-primary-foreground transition-colors">
-                    {cat.subtitle}
-                  </p>
-                </div>
-                <span
-                  className="ml-2 text-[10px] font-black px-2 py-0.5 text-white"
-                  style={{ background: cat.accentDark }}
-                >
-                  {cat.recipients.length}
-                </span>
-              </a>
-            );
-          })}
-        </div>
-      </section>
+
 
       {/* ══ AWARD PANELS ══ */}
       <main className="flex-1 py-20 lg:py-32 px-6">
         <div className="max-w-[1400px] mx-auto flex flex-col gap-8">
-          {awardsData.map((cat, i) => (
-            <div key={cat.id} id={cat.id} className="scroll-mt-24">
-              <AwardPanel category={cat} delay={i * 0.05} />
-            </div>
-          ))}
+         {awardsData.map((cat, i) => (
+  <div key={cat.id} id={cat.id} className="scroll-mt-24">
+    <AwardPanel category={cat} delay={i * 0.05} index={i} />
+  </div>
+))}
         </div>
       </main>
 

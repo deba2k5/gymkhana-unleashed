@@ -28,17 +28,20 @@ const Navbar = () => {
       <motion.nav className="fixed top-0 left-0 right-0 z-50">
         <div className="h-1 w-full bg-yellow-400 dark:bg-violet-600 transition-colors" />
 
-        <div
-          className="w-full backdrop-blur-lg border-b-[3px] border-primary transition-colors bg-background/95"
-        >
-          {/* ✅ FIXED LAYOUT */}
+        <div className="w-full backdrop-blur-lg border-b-[3px] border-primary bg-background/95">
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between h-[60px] sm:h-[68px]">
 
             {/* LOGO */}
             <Link to="/" className="flex items-center gap-4 group flex-1 min-w-0">
+              
+              {/* ✅ LOGO BOX WITH THEME SHADOW */}
               <div
-                className="w-11 h-11 bg-white flex items-center justify-center p-[4px] shrink-0 border border-primary/10"
-                style={{ boxShadow: "3px 3px 0px 0px #FACC15" }}
+                className="
+                  w-11 h-11 bg-white flex items-center justify-center p-[4px]
+                  border border-primary/10
+                  shadow-[3px_3px_0px_#FACC15]
+                  dark:shadow-[3px_3px_0px_#8B5CF6]
+                "
               >
                 <img
                   src="/IEM_logo.jpeg"
@@ -50,19 +53,14 @@ const Navbar = () => {
               {/* TEXT */}
               <div className="leading-none flex-1 min-w-0">
                 <div className="font-black uppercase tracking-wider text-[12px] sm:text-[14px] flex items-center gap-1 whitespace-nowrap">
-
                   <span className="text-primary">IEM</span>
-
-                  <span className="text-gray-400">
-                    STUDENTS’
-                  </span>
-
+                  <span className="text-gray-400">STUDENTS’</span>
                   <span className="text-yellow-400 drop-shadow-[1px_1px_0px_#000]">
                     GYMKHANA
                   </span>
                 </div>
 
-                <div className="text-[8px] font-bold text-foreground/40 tracking-[0.5em] uppercase mt-1 hidden sm:block transition-colors">
+                <div className="text-[8px] font-bold text-foreground/40 tracking-[0.5em] uppercase mt-1 hidden sm:block">
                   THE CENTRAL HUB
                 </div>
               </div>
@@ -82,15 +80,22 @@ const Navbar = () => {
                       to={item.path}
                       className={`relative px-5 py-2 text-[12px] font-black uppercase tracking-widest transition-all duration-200 group
                         hover:-translate-y-[1px] active:translate-y-[2px]
-                        ${isActive ? "text-primary-foreground" : "text-foreground/60 hover:text-foreground"}
+                        ${
+                          isActive
+                            ? "dark:text-black text-primary-foreground"
+                            : "text-foreground/60 hover:text-foreground"
+                        }
                       `}
                     >
+                      {/* ✅ ACTIVE TAB */}
                       {isActive && (
                         <span
-                          className="absolute inset-0 bg-primary -z-10"
-                          style={{
-                            boxShadow: "3px 3px 0px 0px #FACC15",
-                          }}
+                          className="
+                            absolute inset-0 -z-10
+                            dark:bg-white bg-primary
+                            shadow-[3px_3px_0px_#FACC15]
+                            dark:shadow-[3px_3px_0px_#8B5CF6]
+                          "
                         />
                       )}
 
@@ -105,8 +110,8 @@ const Navbar = () => {
               })}
             </ul>
 
+            {/* RIGHT */}
             <div className="flex items-center gap-3">
-              {/* THEME TOGGLE */}
               <div className="hidden sm:block">
                 <ModeToggle />
               </div>
@@ -124,7 +129,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* 🔥 MOBILE MENU */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -146,7 +151,7 @@ const Navbar = () => {
               </button>
             </div>
 
-            {/* 🔥 LINKS WITH HOVER EFFECT */}
+            {/* LINKS */}
             <div className="flex flex-col gap-6 px-6 py-10">
               {navItems.map((item, i) => (
                 <motion.div
@@ -166,18 +171,15 @@ const Navbar = () => {
                       group block w-fit
                     "
                   >
-                    {/* TEXT */}
                     <span className="relative z-10 group-hover:translate-x-2 transition-transform duration-300">
                       {item.name}
                     </span>
 
-                    {/* UNDERLINE */}
                     <span className="
                       absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400
                       group-hover:w-full transition-all duration-300
                     " />
 
-                    {/* HOVER BG */}
                     <span className="
                       absolute inset-0 bg-white/5 scale-x-0 origin-left
                       group-hover:scale-x-100 transition-transform duration-300 -z-10

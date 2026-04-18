@@ -14,6 +14,9 @@ const logoMap: Record<string, string> = {
   offbeat: "/Offbeat_Logo.jpeg",
   chorus: "/CHORUS.jpg",
   debate:"/Oratoria.png",
+  film:"/film.jpg",
+  arc:"ARC.png",
+
   photography:"/Photography.png",
   pet:"/pet.jpeg",
 };
@@ -95,13 +98,6 @@ const clubs = [
     "Special Invitation at Gyan Manch by Kolkata RomRoma",
   ],
 },
-// {
-//   id: "arc",
-//   name: "ARC",
-//   about: "",
-//   people: [],
-//   achievements: [],
-// },
 {
   id: "debate",
   name: "Oratoria-Debate Club",
@@ -123,16 +119,40 @@ const clubs = [
   ],
 },
 {
+  id: "arc",
+  name: "ARC",
+   about: "The team responsible for the artwork that catches your eye, the videos that leave an impression on you, and the designs that just seem to be done the right way. For the A.R.C., creation is a process—one that involves experimentation, improvement, and perfection at every step. It’s not about following a fixed style or working within limits, but about a group of individuals exploring graphic, video, and digital art techniques with purpose and expertise.",
+  
+  people: [
+    "Paramartha Ghosh",
+    "Ankita Mandal",
+    "Rupsa Ghosh",
+    "Swastika Saha"
+  ],
+
+achievements: [
+    "Supported major events including IEMPACT 2026, IEM–UEM Kolkata Marathon 2026, FED CUP 2026, IEMMUN ’25, and Comicverse 2025.",
+    "Delivered high-quality graphics, video content, and digital artwork for large-scale college and external events.",
+    "Contributed creative assets used across multiple media houses and social platforms."
+  ],
+
+
+  drive: "https://drive.google.com/drive/folders/1g6wXrMse3Fd1VQz2T5lEv8ApdtgXePhR?usp=sharing"
+} as any,
+
+{
   id: "photography",
   name: "Photography Club",
-  about: "Our Club Focuses on Covering all the College events ,Other than that we built a network where the photographers do get actual paid works and most importantly our club will focus on organizing more competitions and photowalks",
+  about: "Our Club focuses on covering all college events. Other than that, we have built a network where photographers get actual paid work. Most importantly, our club focuses on organizing more competitions and photowalks.",
+  
   people: [
     "Arghya Banerjee — 6294566708",
     "Subham Saha — 9163799483",
     "Ankush Saha — 7044778799",
   ],
+
   achievements: [
-    
+    "Club heads have been awarded Best Student Performance. Photographs from our club are used in various media houses and social media platforms."
   ],
 },
 {
@@ -165,8 +185,10 @@ const clubs = [
 },
 {
   id: "film",
-  name: "Film Society",
-  about: "",
+  name: "Aalokborsho",
+     instagram:
+    "https://www.instagram.com/aalokborsho?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D",
+  about: `The Film Society is dedicated to fostering a deeper appreciation of cinema as an art form and a medium of expression. We create a platform for critical viewing, thoughtful discussion, and creative exploration. By bridging the gap between audience and creator, we aim to cultivate a culture of storytelling, perspective, and innovation within the student community.`,
   people: [
     "Bratyabandhu Bhattacharyya — 8240005041",
   ],
@@ -336,48 +358,68 @@ const SocietiesPage = () => {
                 </div>
 
                 {/* ACHIEVEMENTS */}
-                <div>
-                  <p className="text-sm font-bold text-foreground/50 mb-2 transition-colors">
-                    Achievements
-                  </p>
+{club.achievements.length > 0 && (
+  <div>
+    <p className="text-sm font-bold text-foreground/50 mb-2 transition-colors">
+      Achievements
+    </p>
 
-                  {club.achievements.length ? (
-                    <div className="space-y-2">
-                      {club.achievements.map((a, i) => (
-                        <div
-                          key={i}
-                          className="
-                            pl-4 py-1 border-l-[3px] border-yellow-400
-                            hover:bg-yellow-50 transition
-                          "
-                        >
-                          {a}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-foreground/40">To be updated</p>
-                  )}
-                </div>
+    <div className="space-y-2">
+      {club.achievements.map((a, i) => (
+        <div
+          key={i}
+          className="
+            pl-4 py-1 border-l-[3px] border-yellow-400
+            hover:bg-yellow-50 hover:text-black transition
+          "
+        >
+          {a}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+{/* SOCIAL */}
+<div className="flex items-center gap-3">
 
-                {/* SOCIAL */}
-                {club.instagram && (
-                  <a
-                    href={club.instagram}
-                    target="_blank"
-                    className="
-                      inline-flex items-center justify-center w-11 h-11
-                      border-[2px] border-primary text-foreground
-                      shadow-[3px_3px_0px_#FACC15]
-                      hover:shadow-[6px_6px_0px_#FACC15]
-                      hover:bg-primary hover:text-primary-foreground
-                      transition-all
-                    "
-                  >
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                )}
+  {club.instagram && (
+<a
+  href={club.instagram}
+  target="_blank"
+  rel="noreferrer"
+  className="
+    inline-flex items-center justify-center w-11 h-11
+    border-[2px] border-primary text-foreground
+    shadow-[3px_3px_0px_#FACC15]
+    hover:shadow-[6px_6px_0px_#FACC15]
+    hover:bg-white hover:text-black hover:border-white
+    transition-all duration-200
+  "
+>
+      <Instagram className="w-5 h-5" />
+    </a>
+  )}
 
+  {/* ✅ DRIVE BUTTON ONLY FOR ARC */}
+  {club.id === "arc" && (
+    <a
+      href="https://drive.google.com/drive/folders/1g6wXrMse3Fd1VQz2T5lEv8ApdtgXePhR?usp=sharing"
+      target="_blank"
+      rel="noreferrer"
+      className="
+        inline-flex items-center justify-center h-11 px-4
+        border-[2px] border-primary text-sm font-bold text-foreground
+        shadow-[3px_3px_0px_#FACC15]
+        hover:shadow-[6px_6px_0px_#FACC15]
+        hover:bg-primary hover:text-primary-foreground
+        transition-all
+      "
+    >
+      Portfolio
+    </a>
+  )}
+
+</div>
               </div>
             </motion.div>
           ))}

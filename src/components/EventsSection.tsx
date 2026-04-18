@@ -42,13 +42,22 @@ const EventsSection = () => {
             </h2>
           </div>
 
-          <Link
-            to="/events"
-            className="brutalist-button brutalist-shadow bg-yellow-400 text-black hover:bg-primary hover:text-primary-foreground hover:shadow-none px-10 py-4 text-sm self-start lg:self-auto inline-flex items-center gap-3 transition-all"
-          >
-            VIEW ALL EVENTS
-            <MoveRight className="w-5 h-5" />
-          </Link>
+<Link
+  to="/events"
+  className="
+    brutalist-button brutalist-shadow
+    bg-white text-black
+    hover:bg-violet-600 hover:text-white
+    hover:shadow-none
+    px-10 py-4 text-sm
+    self-start lg:self-auto
+    inline-flex items-center gap-3
+    transition-all duration-200
+  "
+>
+  VIEW ALL EVENTS
+  <MoveRight className="w-5 h-5" />
+</Link>
         </div>
 
         {/* ── EVENTS GRID ── */}

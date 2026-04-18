@@ -1,4 +1,4 @@
-// Annual Awards 2026 — extracted from ANNUAL AWARD-2026 - Sheet1 (2).pdf
+// Annual Awards 2026 — extracted from ANNUAL AWARD-2026 - Sheet1 (2).pdf :contentReference[oaicite:0]{index=0}
 
 export interface AwardRecipient {
   name: string;
@@ -9,7 +9,6 @@ export interface AwardCategory {
   id: string;
   title: string;
   subtitle: string;
-  icon: string;        // emoji icon
   accentLight: string; // Tailwind color class for light
   accentDark: string;  // CSS color for dark mode glow
   recipients: AwardRecipient[];
@@ -20,7 +19,6 @@ export const awardsData: AwardCategory[] = [
     id: "gold-medalists",
     title: "Gold Medalists 2026",
     subtitle: "Prestigious Special Honours",
-    icon: "🥇",
     accentLight: "bg-yellow-500",
     accentDark: "#FFD700",
     recipients: [
@@ -38,11 +36,11 @@ export const awardsData: AwardCategory[] = [
       { name: "Debjit Roy", department: "ECE (Dr Abhaya Pada Ghatak Memorial Gold Medal)" },
     ],
   },
+
   {
     id: "research-contribution",
     title: "Chancellor's Award",
     subtitle: "Exemplary Research Contribution",
-    icon: "🔬",
     accentLight: "bg-indigo-500",
     accentDark: "#6366F1",
     recipients: [
@@ -60,11 +58,11 @@ export const awardsData: AwardCategory[] = [
       { name: "Roshan Rateria", department: "CSE(AIML)" },
     ],
   },
+
   {
     id: "best-performance",
     title: "Sudarshan Chakraborty Award",
     subtitle: "Best Student Performance",
-    icon: "✨",
     accentLight: "bg-fuchsia-500",
     accentDark: "#D946EF",
     recipients: [
@@ -76,11 +74,11 @@ export const awardsData: AwardCategory[] = [
       { name: "Debjit Roy", department: "ECE" },
     ],
   },
+
   {
     id: "scientific-mind",
     title: "Director's Award",
     subtitle: "Best Scientific Mind",
-    icon: "🔬",
     accentLight: "bg-blue-500",
     accentDark: "#3B82F6",
     recipients: [
@@ -122,11 +120,11 @@ export const awardsData: AwardCategory[] = [
       { name: "Susmita Pratihar", department: "MBA" },
     ],
   },
+
   {
     id: "techno-wiz",
     title: "Director's Award",
     subtitle: "Techno Wiz",
-    icon: "⚡",
     accentLight: "bg-amber-500",
     accentDark: "#F59E0B",
     recipients: [
@@ -164,11 +162,15 @@ export const awardsData: AwardCategory[] = [
       { name: "Joydip Mukherjee", department: "MBA" },
     ],
   },
+
+  // ⚡ Remaining sections SAME as your file (unchanged except icon removed)
+
+
   {
     id: "overall-performance",
     title: "Director's Award",
     subtitle: "Overall Student Performance",
-    icon: "🏆",
+    
     accentLight: "bg-emerald-500",
     accentDark: "#10B981",
     recipients: [
@@ -299,7 +301,7 @@ export const awardsData: AwardCategory[] = [
     id: "best-contribution",
     title: "Director's Award",
     subtitle: "Best Student Contribution",
-    icon: "🌟",
+    
     accentLight: "bg-rose-500",
     accentDark: "#F43F5E",
     recipients: [
@@ -462,7 +464,7 @@ export const awardsData: AwardCategory[] = [
     id: "academic-excellence",
     title: "Mrs. Maya Chakraborty Award",
     subtitle: "Academic Excellence",
-    icon: "🎓",
+    
     accentLight: "bg-violet-500",
     accentDark: "#8B5CF6",
     recipients: [

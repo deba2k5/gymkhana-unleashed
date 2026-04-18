@@ -6,30 +6,14 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const societies = [
-  {
-    id: "dance",
-    name: "Dance Club",
-    image: "/ITRANAA.jpg",
-    description: "Celebrating expression through classical to contemporary movements.",
-  },
-  {
-    id: "music",
-    name: "Music Club",
-    image: "/Music.jpg",
-    description: "Exploring diverse musical genres.",
-  },
-  {
-    id: "drama",
-    name: "Drama Club",
-    image: "/CHORUS.jpg",
-    description: "Bringing stories to life through theatre.",
-  },
-  {
-    id: "offbeat",
-    name: "Western Dance",
-    image: "/Offbeat_Logo.jpeg",
-    description: "Creative western dance community.",
-  },
+  { id: "dance", name: "Dance Club", image: "/ITRANAA.jpg", description: "Celebrating expression through classical to contemporary movements." },
+  { id: "music", name: "Music Club", image: "/Music.jpg", description: "Exploring diverse musical genres." },
+  { id: "drama", name: "Drama Club", image: "/CHORUS.jpg", description: "Bringing stories to life through theatre." },
+  { id: "offbeat", name: "Western Dance", image: "/Offbeat_Logo.jpeg", description: "Creative western dance community." },
+  { id: "photography", name: "Photography Club", image: "/Photography.png", description: "Capturing moments through lenses." },
+  { id: "film", name: "Film Society", image: "/film.jpg", description: "Exploring cinema and storytelling." },
+  { id: "debate", name: "Debate Club", image: "/Oratoria.png", description: "Enhancing public speaking and logic." },
+  { id: "art", name: "ARC", image: "/ARC.png", description: "Creative design and digital art hub." },
 ];
 
 export default function SocietiesSection() {
@@ -49,7 +33,7 @@ export default function SocietiesSection() {
 
         {/* HEADER */}
         <div className="mb-20 flex justify-between items-end">
-          <h2 className="text-6xl font-black text-foreground transition-colors">
+          <h2 className="text-6xl font-black text-foreground">
             OUR <span className="text-outline">SOCIETIES</span>
           </h2>
 
@@ -66,7 +50,7 @@ export default function SocietiesSection() {
         {/* CAROUSEL */}
         <div
           className="relative flex justify-center"
-          style={{ height: "clamp(360px, 44vw, 560px)", perspective: "2200px" }} // 🔽 reduced height
+          style={{ height: "clamp(300px, 40vw, 500px)", perspective: "2200px" }}
         >
           {societies.map((s, i) => {
             const total = societies.length;
@@ -82,20 +66,20 @@ export default function SocietiesSection() {
               <motion.div
                 key={s.id}
                 animate={{
-                  x: dist * 320, // 🔽 tighter spacing
-                  scale: isActive ? 1 : 1 - abs * 0.18,
-                  rotateY: dist * -26,
-                  opacity: isActive ? 1 : 1 - abs * 0.5,
+                  x: dist * 200,               // ✅ tighter spacing
+                  scale: isActive ? 1 : 1 - abs * 0.12, // ✅ smaller scale drop
+                  rotateY: dist * -18,         // ✅ softer rotation
+                  opacity: isActive ? 1 : 1 - abs * 0.3,
                   zIndex: 50 - abs,
                 }}
                 transition={{ type: "spring", stiffness: 140, damping: 22 }}
                 className="absolute cursor-pointer"
-                style={{ width: "clamp(240px, 32vw, 500px)" }} // 🔽 reduced width
+                style={{ width: "clamp(180px, 20vw, 320px)" }} // ✅ smaller cards
                 onClick={() => setIndex(i)}
               >
 
                 {/* CARD */}
-                <div className="relative border-2 border-primary bg-black overflow-hidden group transition-colors">
+                <div className="relative border-2 border-primary bg-black overflow-hidden group">
 
                   <img
                     src={s.image}
@@ -103,21 +87,21 @@ export default function SocietiesSection() {
                     className="w-full h-full object-cover brightness-75 group-hover:scale-105 transition"
                   />
 
-                  <div className="absolute inset-0 p-5 flex flex-col justify-end"> {/* 🔽 reduced padding */}
-                    <h3 className="text-white font-black text-2xl md:text-3xl"> {/* 🔽 smaller text */}
+                  <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                    <h3 className="text-white font-black text-lg md:text-xl">
                       {s.name}
                     </h3>
 
-                    <p className="text-white/80 text-xs md:text-sm mt-2 max-w-[220px]">
+                    <p className="text-white/80 text-[10px] md:text-xs mt-1 max-w-[200px]">
                       {s.description}
                     </p>
 
                     <Link
                       to={`/societies#${s.id}`}
-                      className="mt-4 inline-flex items-center gap-2 px-4 py-2 border border-white text-white text-xs hover:bg-yellow-400 hover:text-black"
+                      className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 border border-white text-white text-[10px] hover:bg-yellow-400 hover:text-black"
                     >
                       Explore
-                      <ArrowUpRight size={14} /> {/* 🔽 smaller icon */}
+                      <ArrowUpRight size={12} />
                     </Link>
                   </div>
 
@@ -128,7 +112,7 @@ export default function SocietiesSection() {
         </div>
 
         {/* DOTS */}
-        <div className="mt-20 flex justify-center gap-3">
+        <div className="mt-16 flex justify-center gap-3">
           {societies.map((_, i) => (
             <button
               key={i}
@@ -144,7 +128,16 @@ export default function SocietiesSection() {
         <div className="mt-12 flex justify-center">
           <Link
             to="/societies"
-            className="px-8 py-2 font-black text-sm uppercase tracking-widest border-2 border-primary bg-background text-foreground shadow-[8px_8px_0px_#FACC15] hover:shadow-[4px_4px_0px_#FACC15] hover:translate-y-1 transition-all"
+            className="
+              px-8 py-2 font-black text-sm uppercase tracking-widest
+              border-2 border-primary
+              bg-white text-black
+              shadow-[8px_8px_0px_#FACC15]
+              hover:bg-violet-600 hover:text-white
+              hover:shadow-[4px_4px_0px_#FACC15]
+              hover:translate-y-1
+              transition-all
+            "
           >
             Explore All Societies
           </Link>

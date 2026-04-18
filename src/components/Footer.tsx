@@ -161,7 +161,7 @@ const Footer = () => (
 
         <div className="flex items-center gap-3 px-5 py-2.5 bg-yellow-400 text-black text-[10px] font-black tracking-widest uppercase brutalist-shadow-sm">
           <Sparkles className="w-4 h-4" />
-          Made by Debangshu Chatterjee , Debangkita Saha
+          Made by Debangshu Chatterjee , Debangkita Saha, Nihal Gazi
         </div>
       </div>
     </div>

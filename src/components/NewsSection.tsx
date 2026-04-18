@@ -125,8 +125,8 @@ const NewsSection = () => {
             className="flex flex-col justify-center gap-6 overflow-hidden py-2"
           >
             {/* Track 1 */}
-            <div className="overflow-hidden">
-              <div className="flex animate-marquee-slow whitespace-nowrap gap-6">
+            <div className="overflow-x-auto hide-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
+              <div className="flex animate-marquee-slow whitespace-nowrap gap-6 min-w-max">
                 {[...newsTrack1, ...newsTrack1, ...newsTrack1].map((n, i) => (
                   <div
                     key={i}
@@ -150,8 +150,8 @@ const NewsSection = () => {
             </div>
 
             {/* Track 2 (reversed) */}
-            <div className="overflow-hidden">
-              <div className="flex animate-marquee-slower whitespace-nowrap gap-6">
+            <div className="overflow-x-auto hide-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
+              <div className="flex animate-marquee-slower whitespace-nowrap gap-6 min-w-max">
                 {[...newsTrack2, ...newsTrack2, ...newsTrack2].map((n, i) => (
                   <div
                     key={i}
@@ -175,8 +175,8 @@ const NewsSection = () => {
             </div>
 
             {/* Track 3 */}
-            <div className="overflow-hidden">
-              <div className="flex animate-marquee-slow whitespace-nowrap gap-6" style={{ animationDirection: "reverse" }}>
+            <div className="overflow-x-auto hide-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
+              <div className="flex animate-marquee-slow whitespace-nowrap gap-6 min-w-max" style={{ animationDirection: "reverse" }}>
                 {[...newsTrack3, ...newsTrack3, ...newsTrack3].map((n, i) => (
                   <div
                     key={i}

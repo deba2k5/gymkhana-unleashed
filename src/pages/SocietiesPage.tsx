@@ -21,8 +21,18 @@ const logoMap: Record<string, string> = {
   pet:"/pet.jpeg",
 };
 
+interface Club {
+  id: string;
+  name: string;
+  about: string;
+  people: string[];
+  achievements: string[];
+  instagram?: string;
+  drive?: string;
+}
+
 /* CLUBS */
-const clubs = [
+const clubs: Club[] = [
 {
   id: "music",
   name: "The Eighth Note",
@@ -138,7 +148,7 @@ achievements: [
 
 
   drive: "https://drive.google.com/drive/folders/1g6wXrMse3Fd1VQz2T5lEv8ApdtgXePhR?usp=sharing"
-} as any,
+},
 
 {
   id: "photography",

@@ -6,13 +6,14 @@
 
 ## ✨ Key Features
 
-- **🏆 Societies Portal**: Explore various technical, cultural, and sports societies with detailed descriptions and social media integration.
-- **📅 Event Management**: Stay updated with the latest campus events, including detailed schedules, descriptions, and registration information.
-- **👥 Member Directory**: A structured view of the Gymkhana office bearers, society heads, and core team members.
-- **📜 Oath & Constitution**: Easy access to the fundamental values and governing rules of the student body.
-- **🎨 Interactive UI**: A premium user experience powered by smooth animations, high-contrast Brutalist aesthetics, and responsive layouts.
-- **🌓 Dark Mode**: Full support for dark and light themes using semantic CSS variables, accessible via a dedicated theme toggle.
-- **📊 Real-time Data**: Integrated data extraction from official brochures and documents.
+- **🏆 Annual Awards 2026**: A dedicated portal celebrating student excellence, featuring gold medalists and top performers across all departments with interactive search and highlights.
+- **🎨 Modern Societies Portal**: Explore various technical, cultural, and sports societies with vibrant descriptions, recruitment details, and social media integration.
+- **📅 Campus Event Hub**: Real-time event tracking with detailed schedules, immersive descriptions, and seamless registration workflows.
+- **👥 Member Directory**: Comprehensive directory of Gymkhana office bearers, society heads, and core teams with direct contact integration.
+- **📜 Constitution & Oath**: Virtual copy of the fundamental governing rules and the core values that define the student community.
+- **📰 News & Updates**: Stay informed with a dynamic news section featuring the latest official announcements and campus updates.
+- **🌓 Advanced Dark Mode**: Crystal-clear accessibility with semantic theming and a glassmorphic UI that adapts to user preferences.
+- **📊 Document Ingestion**: Automated data pipelines to sync details from official brochures and campus PDFs.
 
 ---
 
@@ -25,8 +26,10 @@
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Theming**: [next-themes](https://github.com/pacocoursey/next-themes)
 - **Routing**: [React Router DOM](https://reactrouter.com/)
-- **Data Fetching**: [TanStack Query](https://tanstack.com/query/latest)
-- **3D Elements**: [Three.js](https://threejs.org/) (integration for immersive components)
+- **State Management**: [TanStack Query](https://tanstack.com/query/latest) for robust server-state management
+- **Data Visuals**: [Recharts](https://recharts.org/) for beautiful, responsive data charts
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/) for sleek, customizable toast notifications
+- **3D Elements**: [Three.js](https://threejs.org/) for immersive background and foreground components
 
 ---
 

@@ -34,7 +34,7 @@ export default function EventDetailPage() {
     if (!event) navigate("/events");
     setActiveImg(0);
     window.scrollTo(0, 0);
-  }, [slug]);
+  }, [slug, event, navigate]);
 
   if (!event) return null;
 

@@ -3,9 +3,11 @@
 import { useEffect, useState, type KeyboardEvent } from "react";
 import { useReducedMotion } from "framer-motion";
 
+// Handles logic for realistic human-like typing animation
+
 const TYPING_DELAY_MIN_MS = 10;
 const TYPING_DELAY_MAX_MS = 130;
-const BACKSPACE_DELAY_MIN_MS = 30;
+const BACKSPACE_DELAY_MIN_MS = 40;
 const BACKSPACE_DELAY_MAX_MS = 80;
 const MISTAKE_PROBABILITY = 0.1;
 const CURSOR_HANG_MS = 3000;

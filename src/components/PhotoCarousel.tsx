@@ -89,8 +89,8 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
 
         {/* Main display area */}
         <div className="grid grid-cols-12 gap-4 lg:gap-6 items-stretch">
-          {/* Previous thumbnail - hidden on mobile */}
-          <div className="hidden lg:block col-span-2 h-full">
+          {/* Previous thumbnail */}
+          <div className="col-span-2 h-full">
             <button
               onClick={() => go(-1)}
               className="group relative w-full h-full overflow-hidden border-[3px] border-primary/20 hover:border-primary transition-all"
@@ -107,7 +107,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
           </div>
 
           {/* Main image */}
-          <div className="col-span-12 lg:col-span-8">
+          <div className="col-span-8">
             <div
               className="relative overflow-hidden border-[3px] border-primary aspect-[16/10] bg-black"
               style={{ boxShadow: "6px 6px 0 0 var(--primary)" }}
@@ -145,8 +145,8 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
             </div>
           </div>
 
-          {/* Next thumbnail - hidden on mobile */}
-          <div className="hidden lg:block col-span-2 h-full">
+          {/* Next thumbnail */}
+          <div className="col-span-2 h-full">
             <button
               onClick={() => go(1)}
               className="group relative w-full h-full overflow-hidden border-[3px] border-primary/20 hover:border-primary transition-all"

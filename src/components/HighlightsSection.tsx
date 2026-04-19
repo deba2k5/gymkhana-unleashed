@@ -15,6 +15,10 @@ const HighlightsSection = () => {
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
 
         {/* MAIN STATS CARD */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
           className="premium-card p-12 lg:p-20 bg-background text-foreground border-4 border-primary relative overflow-hidden mb-0 transition-colors brutalist-shadow"
         >
           {/* Yellow accent glow */}

@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { events, type Event } from "@/data/eventsData";
+import { CardCarousel } from "@/components/ui/CardCarousel";
 
 const CATEGORIES = ["ALL", "FLAGSHIP", "SPORTS", "TECHNICAL", "CULTURAL", "ACADEMIC", "NETWORKING"] as const;
 
@@ -119,18 +120,10 @@ export default function EventsPage() {
                   className="group relative flex flex-col lg:flex-row overflow-hidden border-[3px] border-primary transition-colors"
                   style={{ boxShadow: "8px 8px 0 0 var(--primary)", minHeight: "520px" }}
                 >
-                  {/* Image */}
-                  <div className="relative w-full lg:w-[55%] min-h-[300px] lg:min-h-full overflow-hidden">
-                    <img
-                      src={`/events/${featured.images[0]}`}
-                      alt={featured.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = "none";
-                        (e.target as HTMLImageElement).parentElement!.style.background = "#111";
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/30" />
+                  {/* Image Carousel */}
+                  <div className="relative w-full lg:w-[55%] min-h-[300px] lg:min-h-full overflow-hidden bg-black">
+                    <CardCarousel images={featured.images} />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/30 pointer-events-none" />
                   </div>
 
                   {/* Content */}
@@ -220,15 +213,10 @@ function EventCard({ event: ev, idx, inView }: { event: Event; idx: number; inVi
       >
         {/* Thumbnail */}
         <div className="relative h-52 overflow-hidden bg-black">
-          <img
-            src={`/events/${ev.images[0]}`}
-            alt={ev.name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute inset-0 pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+            <CardCarousel images={ev.images} />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
 
           {/* Category badge */}
           <div className="absolute top-4 left-4">

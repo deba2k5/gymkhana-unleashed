@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowUpRight, MapPin, Calendar, ChevronLeft, ChevronRight } 
 import { motion, useInView } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PhotoCarousel from "@/components/PhotoCarousel";
 import { events } from "@/data/eventsData";
 
 const categoryColors: Record<string, string> = {
@@ -227,7 +228,7 @@ export default function EventDetailPage() {
               </div>
             </div>
 
-            {/* ─── PHOTO GALLERY ─── */}
+            {/* ─── PHOTO GALLERY CAROUSEL ─── */}
             {event.images.length > 1 && (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -235,38 +236,11 @@ export default function EventDetailPage() {
                 transition={{ duration: 0.7, delay: 0.25 }}
                 className="mt-24"
               >
-                <div className="flex items-center gap-4 mb-10">
-                  <div className="w-12 h-[3px] bg-primary transition-colors" />
-                  <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/40 transition-colors">PHOTO GALLERY</span>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {event.images.map((img, i) => (
-                    <button
-                      key={i}
-                      onClick={() => { setActiveImg(i); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                      className={`relative overflow-hidden border-[3px] transition-all aspect-video ${
-                        i === activeImg ? "border-yellow-400" : "border-primary hover:border-yellow-400"
-                      }`}
-                      style={{ boxShadow: i === activeImg ? "4px 4px 0 0 #facc15" : "3px 3px 0 0 var(--primary)" }}
-                    >
-                      <img
-                        src={`/events/${img}`}
-                        alt={`${event.name} ${i + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).parentElement!.style.background = "#f5f5f5";
-                          (e.target as HTMLImageElement).style.display = "none";
-                        }}
-                      />
-                      {i === activeImg && (
-                        <div className="absolute inset-0 bg-yellow-400/20 flex items-center justify-center">
-                          <div className="w-3 h-3 bg-yellow-400 rounded-full" />
-                        </div>
-                      )}
-                    </button>
-                  ))}
-                </div>
+                <PhotoCarousel
+                  images={event.images}
+                  eventName={event.name}
+                  basePath="/events"
+                />
               </motion.div>
             )}
 

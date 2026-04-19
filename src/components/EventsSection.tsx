@@ -5,6 +5,7 @@ import { ArrowUpRight, MapPin, Clock, MoveRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { events, featuredEvent } from "@/data/eventsData";
+import { CardCarousel } from "./ui/CardCarousel";
 
 const EventsSection = () => {
   const ref = useRef(null);
@@ -70,11 +71,10 @@ const EventsSection = () => {
             transition={{ duration: 1 }}
             className="lg:col-span-12 group relative overflow-hidden brutalist-shadow-lg border-[3px] border-primary"
           >
-            {/* Background image */}
-            <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={{ backgroundImage: `url(/events/${featuredEvent.images[0]})` }}
-            />
+            {/* Background image carousel */}
+            <div className="absolute inset-0 bg-black">
+              <CardCarousel images={featuredEvent.images} />
+            </div>
             <div className="absolute inset-0 bg-black/75 group-hover:bg-black/65 transition-all duration-700" />
             {/* glow */}
             <div className="absolute top-0 right-0 w-[55%] h-[55%] bg-yellow-400/8 blur-[100px] pointer-events-none group-hover:bg-yellow-400/15 transition-all duration-700" />
@@ -142,10 +142,9 @@ const EventsSection = () => {
               className="lg:col-span-6 group relative overflow-hidden border-[3px] border-primary bg-card transition-colors brutalist-shadow"
             >
               {/* Thumbnail */}
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-15 group-hover:opacity-25 transition-opacity duration-500"
-                style={{ backgroundImage: `url(/events/${ev.images[0]})` }}
-              />
+              <div className="absolute inset-0 pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-500 bg-black text-transparent mix-blend-screen">
+                <CardCarousel images={ev.images} />
+              </div>
               <Link to={`/events/${ev.slug}`} className="relative z-10 p-10 flex flex-col min-h-[300px] cursor-pointer">
                 <div className="flex justify-between items-start mb-auto">
                   <div className="w-14 h-14 bg-primary flex flex-col items-center justify-center text-primary-foreground border-2 border-primary transition-colors" style={{ boxShadow: "3px 3px 0 0 #facc15" }}>
@@ -185,10 +184,9 @@ const EventsSection = () => {
               transition={{ duration: 0.8, delay: 0.35 + idx * 0.1 }}
               className="lg:col-span-6 group relative overflow-hidden border-[3px] border-primary bg-card transition-colors brutalist-shadow"
             >
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500"
-                style={{ backgroundImage: `url(/events/${ev.images[0]})` }}
-              />
+              <div className="absolute inset-0 pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-500 bg-black text-transparent mix-blend-screen">
+                <CardCarousel images={ev.images} />
+              </div>
               <Link to={`/events/${ev.slug}`} className="relative z-10 p-10 flex items-center justify-between gap-8 min-h-[200px] cursor-pointer">
                 <div className="flex-1">
                   <span className="text-[9px] font-black text-foreground/40 tracking-[0.4em] uppercase block mb-3 transition-colors">{ev.type}</span>

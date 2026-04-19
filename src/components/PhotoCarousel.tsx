@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight, X, ZoomIn, Pause, Play, Expand } from "lucide-react";
-import { motion, AnimatePresence, useMotionValue, useTransform, PanInfo, Variants } from "framer-motion";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { motion, AnimatePresence, PanInfo, Variants } from "framer-motion";
 
 interface PhotoCarouselProps {
   images: string[];
@@ -12,10 +12,8 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
   const [lightbox, setLightbox] = useState(false);
-  const [autoPlay, setAutoPlay] = useState(true);
+  const [autoPlay] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
-  const dragX = useMotionValue(0);
-  const dragProgress = useTransform(dragX, [-200, 0, 200], [1, 0, -1]);
 
   const total = images.length;
 

@@ -16,7 +16,7 @@ const logoMap: Record<string, string> = {
   debate:"/Oratoria.png",
   film:"/film.jpg",
   arc:"ARC.png",
-
+  lit:"/lit.jpg",
   photography:"/Photography.png",
   pet:"/pet.jpeg",
 };
@@ -158,21 +158,26 @@ achievements: [
 {
   id: "lit",
   name: "Literary Society",
-  about: "",
+    instagram:
+    "https://www.instagram.com/iemliterarysociety?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D",
+  about: " The Literary Society of IEM is an energetic group of thinkers, writers, speakers, and creators committed to fostering a love for literature, communication, and creativity within campus activities.As the literary branch of the Institute of Engineering and Management, the society offers a space for students to share their thoughts, delve into language, and appreciate the influence of words through interactive events like debates, quizzes, poetry, storytelling, public speaking, creative writing, and cultural collaborations. We advocate for the fusion of Literature and Technology to inspire meaningful innovation, new viewpoints, and significant ideas for today’s world.We also recognize the potential of youth—encouraging emerging talents to question norms, think boldly, and embrace the unconventional.With creativity at our foundation and innovation as our goal, we aim to cultivate a vibrant environment where talent can express itself and originality can shine.",
   people: [
     "Spandan Chakrabarty — 9836364257",
+    "Swastik Gayen",
+    "Sankha Subhra Mahata",
+    "Sweta Mandal"
   ],
   achievements: [],
 },
-{
-  id: "humour",
-  name: "Humour Club",
-  about: "",
-  people: [
-    "Md Tanzil Imam — 9330657193",
-  ],
-  achievements: [],
-},
+// {
+//   id: "humour",
+//   name: "Humour Club",
+//   about: "",
+//   people: [
+//     "Md Tanzil Imam — 9330657193",
+//   ],
+//   achievements: [],
+// },
 {
   id: "pet",
   name: "Pet Society",

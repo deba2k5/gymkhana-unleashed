@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useTheme } from "next-themes";
 
 const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const { resolvedTheme } = useTheme();
+
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 250 };
-  const cursorX = useSpring(mouseX, springConfig);
-  const cursorY = useSpring(mouseY, springConfig);
-
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
+    const hoverCheck = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
         target.tagName === "BUTTON" ||
@@ -33,50 +30,60 @@ const CustomCursor = () => {
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseover", hoverCheck);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseover", hoverCheck);
     };
-  }, [mouseX, mouseY]);
+  }, []);
+
+  const isDark = resolvedTheme === "dark";
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[99999] hidden lg:block">
-      {/* Outer Ring */}
+
+      {/* 🔥 OUTER AMBIENT GLOW (very soft, wide) */}
       <motion.div
-        className={`absolute w-8 h-8 border rounded-full ${
-          resolvedTheme === "dark" ? "border-white" : "border-black"
-        }`}
+        className="absolute rounded-full blur-[120px]"
         style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%"
-        }}
-        animate={{
-          scale: isHovering ? 2.5 : 1,
-          backgroundColor: isHovering
-            ? resolvedTheme === "dark"
-              ? "rgba(255,255,255,0.05)"
-              : "rgba(0,0,0,0.05)"
-            : "transparent",
-        }}
-        transition={{ type: "spring", stiffness: 250, damping: 25 }}
-      />
-      {/* Inner Dot */}
-      <motion.div
-        className={`absolute w-1.5 h-1.5 rounded-full ${
-          resolvedTheme === "dark" ? "bg-white" : "bg-black"
-        }`}
-        style={{
-          x: cursorX,
-          y: cursorY,
+          x: mouseX,
+          y: mouseY,
           translateX: "-50%",
           translateY: "-50%",
         }}
+        animate={{
+          width: isHovering ? 380 : 300,
+          height: isHovering ? 380 : 300,
+          opacity: isHovering ? 0.45 : 0.3,
+          backgroundColor: isDark
+            ? "rgba(168,85,247,0.5)"
+            : "rgba(250,204,21,0.5)",
+        }}
+        transition={{ duration: 0.1 }}
       />
+
+      {/* 🔥 MID GLOW (main visible layer) */}
+      <motion.div
+        className="absolute rounded-full blur-[70px]"
+        style={{
+          x: mouseX,
+          y: mouseY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        animate={{
+          width: isHovering ? 240 : 200,
+          height: isHovering ? 240 : 200,
+          opacity: isHovering ? 0.7 : 0.55,
+          background: isDark
+            ? "radial-gradient(circle, rgba(168,85,247,0.9) 0%, rgba(168,85,247,0.5) 40%, transparent 80%)"
+            : "radial-gradient(circle, rgba(250,204,21,0.9) 0%, rgba(250,204,21,0.5) 40%, transparent 80%)",
+        }}
+        transition={{ duration: 0.08 }}
+      />
+
     </div>
   );
 };

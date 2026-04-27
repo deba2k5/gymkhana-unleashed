@@ -31,7 +31,7 @@ export const events: Event[] = [
     desc: "The heartbeat of IEM's cultural legacy — a national-level extravaganza featuring global talent, elite competitions, and unforgettable performances.",
     fullDesc: "IEMPACT 2026 is the annual cultural festival of IEM-UEM Group, held on 16th & 17th January at IEM Management House. A joint initiative bringing together creators, artists, and performers from across the country for two days of non-stop energy.",
     highlights: ["16th–17th January 2026", "IEM Management House", "National-Level Cultural Fest", "Multi-day Extravaganza"],
-    images: ["page26_img1.jpeg", "page26_img2.jpeg", "page26_img3.jpeg", "page26_img4.jpeg"],
+    images: ["page26_img1.jpeg", "iempact_new_16.jpg", "iempact_new_17.jpg", "iempact_new_18.jpg", "iempact_new_19.jpg", "iempact_new_20.jpg", "iempact_new_11.jpg", "iempact_new_12.jpg", "iempact_new_13.jpg", "iempact_new_14.jpg", "iempact_new_15.jpg", "iempact_new_6.jpg", "iempact_new_7.jpg", "iempact_new_8.jpg", "iempact_new_9.jpg", "iempact_new_10.jpg", "iempact_new_1.jpg", "iempact_new_2.jpg", "iempact_new_3.jpg", "iempact_new_4.jpg", "iempact_new_5.jpg", "page26_img2.jpeg", "page26_img3.jpeg", "page26_img4.jpeg"],
     featured: true,
   },
   {
@@ -47,7 +47,7 @@ export const events: Event[] = [
     desc: "International techno-management festival with 150+ innovative projects and 100+ research posters spanning AI, Robotics, Data Science & Sustainable Tech.",
     fullDesc: "Innovación 2026, the international techno-management festival of the IEM-UEM Group, was held on 13th–15th March 2026 at the IEM-UEM campus. The festival brought together students, researchers, and industry professionals from across the globe, featuring over 150 innovative projects and 100+ research posters spanning fields like AI, Robotics, Data Science, and Sustainable Technologies.",
     highlights: ["150+ Innovative Projects", "100+ Research Posters", "Global Participation", "13th–15th March 2026"],
-    images: ["page43_img1.jpeg", "page43_img2.jpeg", "page43_img3.jpeg", "page43_img4.jpeg"],
+    images: ["page43_img3.jpeg", "innovacion_new_1.jpg", "innovacion_new_3.jpg", "innovacion_new_4.jpg", "innovacion_new_5.jpg", "innovacion_new_6.jpg", "innovacion_new_7.jpg", "innovacion_new_8.jpg", "innovacion_new_9.jpg", "innovacion_new_10.jpg", "innovacion_new_11.jpg", "innovacion_new_12.jpg", "innovacion_new_13.jpg", "page43_img4.jpeg"],
   },
   {
     id: "03",
@@ -62,7 +62,7 @@ export const events: Event[] = [
     desc: "A massive community marathon with 10K, Half Marathon & Full Marathon distances — promoting sportsmanship and eco-friendly living across Kolkata.",
     fullDesc: "The IEM-UEM Kolkata Marathon was held on 22nd February 2026, starting from IEM Management House. Students, alumni, and faculty actively participated in 10K, Half Marathon, and Full Marathon categories, including many Pacers from across the state. The event promoted sportsmanship, teamwork, and enthusiasm.",
     highlights: ["10K / Half / Full Marathon", "Started from IEM Management House", "Alumni & Faculty Participation", "State-wide Pacers"],
-    images: ["page29_img1.jpeg", "page29_img2.jpeg", "page29_img3.jpeg", "page29_img4.jpeg"],
+    images: ["page29_img1.jpeg", "marathon_new_1.jpg", "marathon_new_2.jpg", "marathon_new_3.jpg", "marathon_new_4.jpg", "marathon_new_5.jpg", "marathon_new_6.jpg", "marathon_new_7.jpg", "marathon_new_8.jpg", "marathon_new_9.jpg", "marathon_new_10.jpg", "marathon_new_11.jpg", "marathon_new_12.png", "marathon_new_13.jpg", "marathon_new_14.jpg", "marathon_new_15.jpg", "marathon_new_16.jpg", "page29_img2.jpeg", "page29_img3.jpeg"],
   },
   {
     id: "04",
@@ -77,7 +77,7 @@ export const events: Event[] = [
     desc: "A cinematic celebration uniting creators, artists, and filmmakers — organized jointly by IEM-UEM Group, Forum for Film Studies and SMART Society, USA.",
     fullDesc: "The Consortium of Film and Content Creators Festival is a joint initiative of IEM-UEM Group, Forum for Film Studies and Allied Arts, and SMART Society, USA. Held on 10th January at Nandan, Kolkata — it is a celebration that brought creators, artists, and filmmakers together.",
     highlights: ["10th January 2026", "Nandan, Kolkata", "International Collaboration", "Film & Content Awards"],
-    images: ["page25_img1.jpeg", "page25_img2.jpeg", "page25_img3.jpeg", "page25_img4.jpeg"],
+    images: ["filmfest_new_9.jpg", "page25_img1.jpeg", "page25_img2.jpeg", "page25_img3.jpeg", "filmfest_new_1.jpg", "filmfest_new_2.jpg", "filmfest_new_3.jpg", "filmfest_new_4.jpg", "filmfest_new_5.jpg", "filmfest_new_6.jpg", "filmfest_new_7.jpg", "filmfest_new_8.jpg", "filmfest_new_10.jpg"],
   },
   {
     id: "05",
@@ -92,7 +92,7 @@ export const events: Event[] = [
     desc: "A heartfelt reunion where IEM alumni returned where it all began — reliving memories, laughter, and the warmth of campus life.",
     fullDesc: "Homecoming is a celebration that brought our alumni family back where it all began. Held on 18th December 2025 at IEM Gurukul Campus. Looking back now, we can still feel the warmth, the laughter, and the pride that filled every corner that day. Some moments really do stay timeless.",
     highlights: ["18th December 2025", "IEM Gurukul Campus", "Multi-Generational Reunion", "Cultural Evening"],
-    images: ["page24_img1.jpeg", "page24_img2.jpeg", "page24_img3.jpeg", "page24_img4.jpeg"],
+    images: ["page24_img1.jpeg", "page24_img2.jpeg", "alumni_new_1.jpg", "alumni_new_2.jpg", "alumni_new_3.jpg", "alumni_new_4.jpg", "alumni_new_5.jpg", "alumni_new_6.jpg", "alumni_new_7.jpg", "alumni_new_8.jpg", "alumni_new_9.jpg", "alumni_new_10.jpg", "alumni_new_11.jpg", "alumni_new_12.jpg", "alumni_new_13.jpg", "alumni_new_14.jpg"],
   },
   {
     id: "06",
@@ -107,7 +107,7 @@ export const events: Event[] = [
     desc: "Sprints, relay races, long jump, and tug of war — faculty, students, and alumni united in the spirit of sport on the grandest athletic stage at IEM.",
     fullDesc: "The Annual Sports Meet of Institute of Engineering & Management was held on 31st January 2026 at Maya Chakrabarti Smriti Krirangan. Students, alumni, and faculty actively participated in events like sprints, relay races, long jump, and tug of war. The event promoted sportsmanship, teamwork, and enthusiasm, concluding with prize distribution.",
     highlights: ["31st January 2026", "Sprints & Relay Races", "Long Jump & Tug of War", "Prize Distribution"],
-    images: ["page27_img1.jpeg", "page27_img2.jpeg", "page27_img3.jpeg", "page27_img4.jpeg"],
+    images: ["page27_img1.jpeg", "page27_img2.jpeg", "page27_img3.jpeg", "page27_img4.jpeg", "sportsmeet_new_1.jpg", "sportsmeet_new_2.jpg", "sportsmeet_new_3.jpg", "sportsmeet_new_4.jpg", "sportsmeet_new_5.jpg", "sportsmeet_new_6.jpg", "sportsmeet_new_7.jpg", "sportsmeet_new_8.jpg", "sportsmeet_new_9.jpg", "sportsmeet_new_10.jpg", "sportsmeet_new_11.jpg", "sportsmeet_new_12.jpg", "sportsmeet_new_13.jpg", "sportsmeet_new_14.jpg"],
   },
   {
     id: "07",
@@ -122,7 +122,7 @@ export const events: Event[] = [
     desc: "8 teams. Dramatic penalty shootouts. Dravida Dominators emerged Champions as Gujarat Gladiators finished strong Runners-up in this football showdown.",
     fullDesc: "The IEM Freedom Cup 2025, the football tournament of IEM, was held on 2nd August 2025 with 8 competitive teams battling for glory. After a series of intense matches and dramatic penalty shootouts, Dravida Dominators emerged as the Champions, while Gujarat Gladiators finished as the proud Runners-up.",
     highlights: ["2nd August 2025", "8 Competitive Teams", "Champions: Dravida Dominators", "Runners-Up: Gujarat Gladiators"],
-    images: ["page11_img1.jpeg", "page11_img2.jpeg", "page11_img3.jpeg", "page11_img4.jpeg"],
+    images: ["freedomcup_new_3.jpg", "freedomcup_new_14.jpg", "page11_img1.jpeg", "page11_img2.jpeg", "freedomcup_new_1.jpg", "freedomcup_new_2.jpg", "freedomcup_new_4.jpg", "freedomcup_new_5.jpg", "freedomcup_new_6.jpg", "freedomcup_new_7.jpg", "freedomcup_new_8.jpg", "freedomcup_new_9.jpg", "freedomcup_new_10.jpg", "freedomcup_new_11.jpg", "freedomcup_new_12.jpg", "freedomcup_new_13.jpg"],
   },
   {
     id: "08",
@@ -137,7 +137,7 @@ export const events: Event[] = [
     desc: "Creativity lit up every corner, imagination took center stage, and fandom became a language that united the entire campus in this one-of-a-kind festival.",
     fullDesc: "On 19th July 2025 will forever be remembered as the moment IEM stepped into an entirely new universe — Comicverse 2025, a festival where creativity lit up every corner, imagination took center stage, and fandom became a language that united the entire campus.",
     highlights: ["19th July 2025", "Cosplay & Fandom Events", "Art & Comics Exhibitions", "Campus-Wide Celebration"],
-    images: ["page9_img1.jpeg", "page9_img2.jpeg", "page9_img3.jpeg", "page9_img4.jpeg"],
+    images: ["comicverse_new_4.jpg", "comicverse_new_1.jpg", "comicverse_new_2.jpg", "comicverse_new_3.jpg", "comicverse_new_5.jpg", "comicverse_new_6.jpg", "comicverse_new_7.jpg", "comicverse_new_8.jpg", "comicverse_new_9.jpg", "page9_img1.jpeg", "page9_img2.jpeg", "page9_img3.jpeg"],
   },
   {
     id: "09",
@@ -152,7 +152,7 @@ export const events: Event[] = [
     desc: "Young innovators, aspiring entrepreneurs, and business enthusiasts gathered to promote startup culture, innovation, and practical business learning.",
     fullDesc: "The Bengal E-Summit 2025 was an entrepreneurial event held on 26th–27th July at IEM Gurukul Building. It brought together young innovators, aspiring entrepreneurs, and business enthusiasts. The summit aimed to promote startup culture, innovation, and practical business learning through a variety of engaging events.",
     highlights: ["26th–27th July 2025", "IEM Gurukul Building", "Startup Culture", "Innovation & Ideation"],
-    images: ["page10_img1.jpeg", "page10_img2.jpeg", "page10_img3.jpeg", "page10_img4.jpeg"],
+    images: ["page10_img1.jpeg", "esummit_new_1.jpg", "esummit_new_2.jpg", "esummit_new_3.jpg", "esummit_new_4.jpg", "esummit_new_5.jpg", "esummit_new_6.jpg", "esummit_new_7.jpg", "esummit_new_8.jpg", "esummit_new_9.jpg", "esummit_new_10.jpg", "esummit_new_11.jpg"],
   },
   {
     id: "10",
@@ -167,7 +167,7 @@ export const events: Event[] = [
     desc: "A premier platform for young diplomats to debate global affairs — simulating international diplomacy and fostering negotiation and public speaking skills.",
     fullDesc: "The IEM Model United Nations (IEM MUN), held on September 13th and 14th, 2025, at the IEM Gurukul House, served as a premier platform for young diplomats to debate pressing global issues. The event brought together students from various backgrounds to simulate international diplomacy, fostering skills in negotiation, public speaking, and critical thinking.",
     highlights: ["13th–14th September 2025", "IEM Gurukul Building", "International Diplomacy Simulation", "Critical Thinking & Debate"],
-    images: ["page20_img1.jpeg", "page20_img2.jpeg", "page20_img3.jpeg", "page20_img4.jpeg"],
+    images: ["page20_img1.jpeg", "page20_img2.jpeg", "page20_img3.jpeg", "mun_new_1.jpg", "mun_new_2.jpg", "mun_new_3.jpg", "mun_new_4.jpg", "mun_new_5.jpg", "mun_new_6.jpg", "mun_new_7.jpg", "mun_new_8.jpg", "mun_new_9.jpg", "mun_new_10.jpg", "mun_new_11.jpg", "mun_new_12.jpg"],
   },
   {
     id: "11",
@@ -182,7 +182,7 @@ export const events: Event[] = [
     desc: "Vibrant cultural performances, music, dance, and entertaining acts created a lively atmosphere welcoming the newest batch of IEM students.",
     fullDesc: "Bienvenue, the Freshers' Party of IEM, held on 17th October 2025 at IEM Management Campus. A vibrant and memorable event welcoming the new batch of students. The celebration featured a variety of cultural performances by talented college students. Music, dance, and entertaining acts created a lively atmosphere throughout the event.",
     highlights: ["17th October 2025", "IEM Management Campus", "Cultural Performances", "New Batch Welcome"],
-    images: ["page22_img1.jpeg", "page22_img2.jpeg", "page22_img3.jpeg", "page22_img4.jpeg"],
+    images: ["bienvenue_new_10.jpg", "bienvenue_new_6.jpg", "bienvenue_new_1.jpg", "bienvenue_new_2.jpg", "bienvenue_new_3.jpg", "bienvenue_new_4.jpg", "bienvenue_new_5.jpg", "bienvenue_new_7.jpg", "bienvenue_new_8.jpg", "bienvenue_new_9.jpg"],
   },
   {
     id: "12",
@@ -197,7 +197,7 @@ export const events: Event[] = [
     desc: "Makers, innovators, and tech enthusiasts from around the world gathered to showcase inventions, ideas, and cutting-edge products at this grand maker fest.",
     fullDesc: "The Smart Makers Festival 2025, organized by IEM, was held on 6th & 7th September 2025 at IEM Management Campus. A grand success bringing together makers, innovators, and tech enthusiasts from around the world to showcase innovative inventions, ideas, and cutting-edge products, encouraging creativity and technological advancement.",
     highlights: ["6th–7th September 2025", "Global Participation", "Innovation Showcase", "Collaborative Tech Spirit"],
-    images: ["page19_img1.jpeg", "page19_img2.jpeg", "page19_img3.jpeg", "page19_img4.jpeg"],
+    images: ["smf_new_9.jpg", "smf_new_1.jpg", "smf_new_2.jpg", "smf_new_3.jpg", "smf_new_4.jpg", "smf_new_5.jpg", "smf_new_6.jpg", "smf_new_7.jpg", "smf_new_8.jpg", "smf_new_10.jpg", "smf_new_11.jpg", "smf_new_12.jpg", "smf_new_13.jpg", "smf_new_14.jpg", "smf_new_15.jpg"],
   },
 ];
 

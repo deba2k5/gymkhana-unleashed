@@ -32,7 +32,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
     if (!autoPlay || lightbox) return;
     const timer = setInterval(() => go(1), 4000);
     return () => clearInterval(timer);
-  }, [autoPlay, lightbox, go]);
+  }, [autoPlay, lightbox, go, current]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -54,18 +54,15 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
     enter: (dir: number) => ({
       x: dir > 0 ? "100%" : "-100%",
       opacity: 0,
-      scale: 0.95,
     }),
     center: {
       x: 0,
       opacity: 1,
-      scale: 1,
       transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] as [number, number, number, number] },
     },
     exit: (dir: number) => ({
       x: dir > 0 ? "-100%" : "100%",
       opacity: 0,
-      scale: 0.95,
       transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] as [number, number, number, number] },
     }),
   };
@@ -96,7 +93,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
               className="group relative w-full h-full overflow-hidden border-[3px] border-primary/20 hover:border-primary transition-all"
               style={{ boxShadow: "3px 3px 0 0 var(--primary)" }}
             >
-              <img
+              <img decoding="async" loading="lazy"
                 src={`${basePath}/${images[prevIdx]}`}
                 alt={`${eventName} - Previous`}
                 className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-500 group-hover:scale-105"
@@ -127,10 +124,18 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
                   className="absolute inset-0 cursor-grab active:cursor-grabbing"
                   onClick={() => setLightbox(true)}
                 >
-                  <img
+                  <img decoding="async" loading="lazy"
                     src={`${basePath}/${images[current]}`}
                     alt={`${eventName} - Photo ${current + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full bg-black transition-all duration-300"
+                    onLoad={(e) => {
+                      const img = e.currentTarget;
+                      if (img.naturalWidth > img.naturalHeight) {
+                        img.style.objectFit = "cover";
+                      } else {
+                        img.style.objectFit = "contain";
+                      }
+                    }}
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = "none";
                       (e.target as HTMLImageElement).parentElement!.style.background = "#111";
@@ -152,7 +157,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
               className="group relative w-full h-full overflow-hidden border-[3px] border-primary/20 hover:border-primary transition-all"
               style={{ boxShadow: "3px 3px 0 0 var(--primary)" }}
             >
-              <img
+              <img decoding="async" loading="lazy"
                 src={`${basePath}/${images[nextIdx]}`}
                 alt={`${eventName} - Next`}
                 className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-500 group-hover:scale-105"
@@ -239,7 +244,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
                   className={`shrink-0 w-14 h-10 lg:w-20 lg:h-14 overflow-hidden border-2 transition-all ${i === current ? "border-yellow-400 opacity-100" : "border-white/10 opacity-40 hover:opacity-70"
                     }`}
                 >
-                  <img
+                  <img decoding="async" loading="lazy"
                     src={`${basePath}/${img}`}
                     alt={`Thumbnail ${i + 1}`}
                     className="w-full h-full object-cover"

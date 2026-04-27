@@ -10,7 +10,7 @@ import PhotoCarousel from "@/components/PhotoCarousel";
 import { events } from "@/data/eventsData";
 
 const categoryColors: Record<string, string> = {
-  FLAGSHIP:    "bg-yellow-400 text-black",
+
   SPORTS:      "bg-green-400 text-black",
   TECHNICAL:   "bg-blue-500 text-white",
   CULTURAL:    "bg-pink-500 text-white",

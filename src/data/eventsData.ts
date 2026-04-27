@@ -8,7 +8,7 @@ export interface Event {
   date: string;
   displayDate: string;
   type: string;
-  category: "CULTURAL" | "SPORTS" | "TECHNICAL" | "ACADEMIC" | "NETWORKING" | "FLAGSHIP";
+  category: "CULTURAL" | "SPORTS" | "TECHNICAL" | "ACADEMIC" | "NETWORKING";
   location: string;
   desc: string;
   fullDesc: string;
@@ -25,11 +25,11 @@ export const events: Event[] = [
     shortName: "IEMPACT",
     date: "2026-01-16",
     displayDate: "JAN 16",
-    type: "FLAGSHIP — CULTURAL",
-    category: "FLAGSHIP",
+    type: "CULTURAL",
+    category: "CULTURAL",
     location: "IEM Management House",
     desc: "The heartbeat of IEM's cultural legacy — a national-level extravaganza featuring global talent, elite competitions, and unforgettable performances.",
-    fullDesc: "IEMPACT 2026 is the annual flagship cultural festival of IEM-UEM Group, held on 16th & 17th January at IEM Management House. A joint initiative bringing together creators, artists, and performers from across the country for two days of non-stop energy.",
+    fullDesc: "IEMPACT 2026 is the annual cultural festival of IEM-UEM Group, held on 16th & 17th January at IEM Management House. A joint initiative bringing together creators, artists, and performers from across the country for two days of non-stop energy.",
     highlights: ["16th–17th January 2026", "IEM Management House", "National-Level Cultural Fest", "Multi-day Extravaganza"],
     images: ["page26_img1.jpeg", "page26_img2.jpeg", "page26_img3.jpeg", "page26_img4.jpeg"],
     featured: true,
@@ -58,7 +58,7 @@ export const events: Event[] = [
     displayDate: "FEB 22",
     type: "ATHLETICS",
     category: "SPORTS",
-    location: "Maya Chakrabarti Smriti Krirangan, Kulberia",
+    location: "IEM Management House",
     desc: "A massive community marathon with 10K, Half Marathon & Full Marathon distances — promoting sportsmanship and eco-friendly living across Kolkata.",
     fullDesc: "The IEM-UEM Kolkata Marathon was held on 22nd February 2026, starting from IEM Management House. Students, alumni, and faculty actively participated in 10K, Half Marathon, and Full Marathon categories, including many Pacers from across the state. The event promoted sportsmanship, teamwork, and enthusiasm.",
     highlights: ["10K / Half / Full Marathon", "Started from IEM Management House", "Alumni & Faculty Participation", "State-wide Pacers"],
@@ -68,7 +68,7 @@ export const events: Event[] = [
     id: "04",
     slug: "film-festival-2026",
     name: "Consortium of Film & Content Creators Festival 2026",
-    shortName: "Film Festival",
+    shortName: "CFCCF",
     date: "2026-01-10",
     displayDate: "JAN 10",
     type: "CREATIVE",
@@ -119,8 +119,8 @@ export const events: Event[] = [
     type: "SPORTS — FOOTBALL",
     category: "SPORTS",
     location: "IEM Campus",
-    desc: "8 teams. Dramatic penalty shootouts. Dravida Dominators emerged Champions as Gujarat Gladiators finished strong Runners-up in this flagship football showdown.",
-    fullDesc: "The IEM Freedom Cup 2025, the flagship football tournament of IEM, was held on 2nd August 2025 with 8 competitive teams battling for glory. After a series of intense matches and dramatic penalty shootouts, Dravida Dominators emerged as the Champions, while Gujarat Gladiators finished as the proud Runners-up.",
+    desc: "8 teams. Dramatic penalty shootouts. Dravida Dominators emerged Champions as Gujarat Gladiators finished strong Runners-up in this football showdown.",
+    fullDesc: "The IEM Freedom Cup 2025, the football tournament of IEM, was held on 2nd August 2025 with 8 competitive teams battling for glory. After a series of intense matches and dramatic penalty shootouts, Dravida Dominators emerged as the Champions, while Gujarat Gladiators finished as the proud Runners-up.",
     highlights: ["2nd August 2025", "8 Competitive Teams", "Champions: Dravida Dominators", "Runners-Up: Gujarat Gladiators"],
     images: ["page11_img1.jpeg", "page11_img2.jpeg", "page11_img3.jpeg", "page11_img4.jpeg"],
   },
@@ -188,7 +188,7 @@ export const events: Event[] = [
     id: "12",
     slug: "smart-makers-festival-2025",
     name: "Smart Makers Festival 2025",
-    shortName: "Makers Festival",
+    shortName: "Smart Makers Festival",
     date: "2025-09-06",
     displayDate: "SEP 06",
     type: "INNOVATION",

@@ -9,10 +9,10 @@ import Footer from "@/components/Footer";
 import { events, type Event } from "@/data/eventsData";
 import { CardCarousel } from "@/components/ui/CardCarousel";
 
-const CATEGORIES = ["ALL", "FLAGSHIP", "SPORTS", "TECHNICAL", "CULTURAL", "ACADEMIC", "NETWORKING"] as const;
+const CATEGORIES = ["ALL", "SPORTS", "TECHNICAL", "CULTURAL", "ACADEMIC", "NETWORKING"] as const;
 
 const categoryColors: Record<string, string> = {
-  FLAGSHIP:    "bg-yellow-400 text-black",
+
   SPORTS:      "bg-green-400 text-black",
   TECHNICAL:   "bg-blue-500 text-white",
   CULTURAL:    "bg-pink-500 text-white",

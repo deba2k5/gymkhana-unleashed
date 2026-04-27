@@ -58,7 +58,7 @@ const MemberCard = ({ member }: { member: Member }) => (
   >
     <div
       className="
-        rounded-3xl p-5 flex flex-col gap-2 border
+        rounded-3xl p-5 flex flex-col gap-2 border h-full
 
         /* LIGHT */
         bg-white border-black/10 shadow-[4px_4px_0px_0px_black]
@@ -67,9 +67,12 @@ const MemberCard = ({ member }: { member: Member }) => (
         dark:bg-transparent dark:border-white/5 dark:shadow-none
       "
     >
-      <p className="text-base font-semibold text-black dark:text-white">
+      <Link 
+        to={`/members/${member.slug}`}
+        className="text-base font-semibold text-black dark:text-white hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
+      >
         {member.name}
-      </p>
+      </Link>
 
       {member.dept && (
         <p className="text-xs text-black/60 dark:text-white/50">

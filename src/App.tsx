@@ -18,6 +18,7 @@ import OathPage from "./pages/OathPage.tsx";
 import EventsPage from "./pages/EventsPage.tsx";
 import EventDetailPage from "./pages/EventDetailPage.tsx";
 import AwardsPage from "./pages/AwardsPage.tsx";
+import MemberDetailPage from "./pages/MemberDetailPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => {
               <Route path="/oath" element={<OathPage />} />
               <Route path="/societies" element={<SocietiesPage />} />
               <Route path="/members" element={<MembersPage />} />
+              <Route path="/members/:slug" element={<MemberDetailPage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/events/:slug" element={<EventDetailPage />} />
               <Route path="/awards" element={<AwardsPage />} />

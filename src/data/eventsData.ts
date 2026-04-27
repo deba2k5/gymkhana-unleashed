@@ -212,44 +212,47 @@ export const events: Event[] = [
 {
   id: "13",
   slug: "diversion",
-  name: "Diversion",
+  name: "DIVERSION 2026",
   shortName: "Diversion",
-  date: "2026-04-01",
-  displayDate: "APR 01",
-  type: "CULTURAL",
-  category: "CULTURAL",
-  location: "IEM Campus",
-  desc: "West Bengal’s first in-person MLH hackathon with 450+ participants, featuring innovative projects, expert talks, and a two-day competitive build environment.",
-  fullDesc: "Diversion is West Bengal’s first in-person MLH hackathon with around 450 participants. The two-day event featured innovative projects, expert lectures, and concluded with results and prize distribution, supported by major tech collaborators.",
-  images: []
+  date: "2026-02-28",
+  displayDate: "FEB 28 - MAR 01",
+  type: "TECHNICAL",
+  category: "TECHNICAL",
+  location: "IEM Gurukul Building",
+  desc: "West Bengal’s first in-person 36 hr MLH hackathon with 450+ participants, featuring innovative projects, expert talks, and a competitive build environment.",
+  fullDesc: "DIVERSION 2026 is West Bengal’s first in-person 36 hr MLH hackathon with around 450 participants. The event featured innovative projects, expert lectures, and concluded with results and prize distribution, supported by major tech collaborators.",
+  highlights: ["36 hr Hackathon", "1st In-Person MLH Hackathon", "450+ Participants", "Expert Mentorship"],
+  images: ["diversion_new_1.jpg", "diversion_new_2.jpg", "diversion_new_3.jpg", "diversion_new_4.jpg", "diversion_new_5.jpg", "diversion_new_6.jpg", "diversion_new_7.jpg", "diversion_new_8.jpg", "diversion_new_9.jpg", "diversion_new_10.jpg", "diversion_new_11.jpg", "diversion_new_12.jpg", "diversion_new_13.jpg", "diversion_new_14.jpg", "diversion_new_15.jpg", "diversion_new_16.jpg", "diversion_new_17.jpg", "diversion_new_18.jpg", "diversion_new_19.jpg", "diversion_new_20.jpg", "diversion_new_21.jpg", "diversion_new_22.jpg"]
 },
 {
   id: "14",
   slug: "tedx",
   name: "TEDx",
   shortName: "TEDx",
-  date: "2026-04-05",
-  displayDate: "APR 05",
+  date: "2026-08-22",
+  displayDate: "AUG 22",
   type: "ACADEMIC",
   category: "ACADEMIC",
-  location: "IEM Campus",
+  location: "Godrej Genesis Building",
   desc: "A TEDx event featuring powerful talks and ideas aimed at inspiring innovation, creativity, and new ways of thinking.",
   fullDesc: "The event featured insightful discussions and thought-provoking talks that encouraged students to think beyond conventional boundaries and explore new possibilities in academics, career, and personal growth.",
-  images: []
+  highlights: ["Inspiring Innovation & Creativity", "Thought-Provoking Talks", "Career & Personal Growth", "Expert Speakers"],
+  images: ["tedx_new_6.jpg", "tedx_new_1.jpg", "tedx_new_2.jpg", "tedx_new_3.jpg", "tedx_new_4.jpg", "tedx_new_5.jpg", "tedx_new_7.jpg", "tedx_new_8.jpg"]
 },
 {
   id: "15",
   slug: "converge",
-  name: "Converge",
+  name: "Converge 2026",
   shortName: "Converge",
-  date: "2026-04-10",
-  displayDate: "APR 10",
+  date: "2026-03-06",
+  displayDate: "MAR 06 - 08",
   type: "TECHNICAL",
   category: "TECHNICAL",
-  location: "IEM Campus",
+  location: "IEM Gurukul Building",
   desc: "A 3-day IEEE technical fest featuring AI panels, workshops, coding competitions, and innovation-driven events.",
   fullDesc: "CONVERGE 2026, organized by the IEEE Computer Society, featured workshops, AI panels, coding competitions, and IdeaSprint finals, celebrating innovation and technical excellence.",
-  images: []
+  highlights: ["3-Day IEEE Technical Fest", "AI Panels & Workshops", "Coding Competitions", "IdeaSprint Finals"],
+  images: ["converge_new_16.jpg", "converge_new_1.jpg", "converge_new_2.jpg", "converge_new_3.jpg", "converge_new_4.jpg", "converge_new_5.jpg", "converge_new_6.jpg", "converge_new_7.jpg", "converge_new_8.jpg", "converge_new_9.jpg", "converge_new_10.jpg", "converge_new_11.jpg", "converge_new_12.jpg", "converge_new_13.jpg", "converge_new_17.jpg"]
 },
 {
   id: "16",
@@ -260,12 +263,12 @@ export const events: Event[] = [
   displayDate: "MAR 08",
   type: "CULTURAL",
   category: "CULTURAL",
-  location: "IEM Campus",
+  location: "IEM Management House",
   desc: "A celebration honoring and empowering women across all spheres through meaningful activities and initiatives.",
   fullDesc: "Organized by IEM Inner Wheel Club along with IQAC and ICC, the event celebrated and empowered women across all spheres of life.",
-  images: []
-},
-{
+  highlights: ["Organized by Inner Wheel Club", "Empowering Women in All Spheres", "Meaningful Activities & Initiatives", "IQAC & ICC Collaboration"],
+  images: ["womens_day_new_2.jpg", "womens_day_new_1.jpg", "womens_day_new_3.jpg", "womens_day_new_4.jpg", "womens_day_new_5.jpg", "womens_day_new_6.jpg"]
+  },{
   id: "17",
   slug: "iem-cricket-league",
   name: "IEM Cricket League",
@@ -277,6 +280,7 @@ export const events: Event[] = [
   location: "IEM Campus",
   desc: "A highly competitive cricket tournament showcasing exceptional skill, teamwork, and sportsmanship.",
   fullDesc: "The IEM Cricket League Season 1 featured intense matches, strong sportsmanship, and excellent team coordination, making its inaugural edition memorable.",
+  highlights: ["Inaugural Season 1", "Highly Competitive Tournament", "Exceptional Skill & Teamwork", "Strong Sportsmanship"],
   images: []
 },
 {
@@ -291,6 +295,7 @@ export const events: Event[] = [
   location: "IEM Campus",
   desc: "An engaging entertainment event organized with Red FM featuring fun activities and student interaction.",
   fullDesc: "Tanshanbazz was organized in collaboration with Red FM to engage students through entertainment and interactive experiences.",
+  highlights: ["Organized with Red FM", "Engaging Entertainment", "Fun Interactive Activities", "Student-Centric Experience"],
   images: []
 },
 {
@@ -302,12 +307,12 @@ export const events: Event[] = [
     displayDate: "MAR 20",
     type: "CULTURAL",
     category: "CULTURAL",
-    location: "IEM Campus",
+    location: "IEM Gurukul Campus",
     desc: "A vibrant cultural celebration of spring filled with music, colors, and performances.",
     fullDesc: "Basanta Utsav celebrates the spirit of spring with cultural performances, music, and festive activities bringing students together.",
-    images: []
-  }, 
-{
+    highlights: ["Celebration of Spring", "Music & Colors", "Cultural Performances", "Festive Activities"],
+    images: ["basanta_utsav_new_1.jpg", "basanta_utsav_new_2.jpg", "basanta_utsav_new_3.jpg", "basanta_utsav_new_4.jpg", "basanta_utsav_new_5.jpg", "basanta_utsav_new_6.jpg"]
+  },{
   id: "20",
   slug: "iemtronics",
   name: "Iemtronics",
@@ -319,6 +324,7 @@ export const events: Event[] = [
   location: "IEM Campus",
   desc: "An international conference bringing together researchers to share advancements in IoT, electronics, and mechatronics.",
   fullDesc: "IEMTRONICS 2026 is an international conference bringing together researchers to present advancements in IoT, Electronics, and Mechatronics through technical sessions and discussions.",
+  highlights: ["International Conference", "IoT, Electronics & Mechatronics", "Technical Sessions", "Global Researchers"],
   images: []
 },
 {
@@ -326,15 +332,17 @@ export const events: Event[] = [
   slug: "study-abroad-program",
   name: "Study Abroad Program",
   shortName: "Study Abroad Program",
-  date: "2026-05-01",
-  displayDate: "MAY 01",
+  date: "",
+  displayDate: "",
   type: "ACADEMIC",
   category: "ACADEMIC",
-  location: "IEM Campus",
+  location: "UNSW, Sydney and NUS, Singapore",
   desc: "An international program offering students global academic exposure and cross-cultural learning opportunities.",
   fullDesc: "The Study Abroad Programme provides students with international exposure through collaborations with global institutions like NUS and UNSW.",
-  images: []
+  highlights: ["Global Academic Exposure", "Cross-Cultural Learning", "Collaborations with NUS & UNSW", "International Program"],
+  images: ["study_abroad_new_1.jpg", "study_abroad_new_2.jpg", "study_abroad_new_3.jpg", "study_abroad_new_4.jpg", "study_abroad_new_5.jpg", "study_abroad_new_6.jpg", "study_abroad_new_7.jpg", "study_abroad_new_8.jpg", "study_abroad_new_9.jpg", "study_abroad_new_10.jpg", "study_abroad_new_11.jpg", "study_abroad_new_12.jpg", "study_abroad_new_13.jpg", "study_abroad_new_14.jpg", "study_abroad_new_15.jpg", "study_abroad_new_16.jpg", "study_abroad_new_17.jpg"]
 }
-]
+];
+
 export const featuredEvent = events.find(e => e.featured) || events[0];
 export const upcomingEvents = events.filter(e => !e.featured);

@@ -123,14 +123,18 @@ export default function EventDetailPage() {
 
               {/* Meta */}
               <div className="flex flex-wrap gap-8">
-                <div className="flex items-center gap-2 text-[12px] font-black text-white/50 uppercase tracking-widest">
-                  <Calendar className="w-4 h-4 text-yellow-400" />
-                  {event.displayDate}
-                </div>
-                <div className="flex items-center gap-2 text-[12px] font-black text-white/50 uppercase tracking-widest">
-                  <MapPin className="w-4 h-4 text-yellow-400" />
-                  {event.location}
-                </div>
+                {event.displayDate && (
+                  <div className="flex items-center gap-2 text-[12px] font-black text-white/50 uppercase tracking-widest">
+                    <Calendar className="w-4 h-4 text-yellow-400" />
+                    {event.displayDate}
+                  </div>
+                )}
+                {event.location && (
+                  <div className="flex items-center gap-2 text-[12px] font-black text-white/50 uppercase tracking-widest">
+                    <MapPin className="w-4 h-4 text-yellow-400" />
+                    {event.location}
+                  </div>
+                )}
               </div>
             </motion.div>
 
@@ -216,16 +220,18 @@ export default function EventDetailPage() {
                         <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest shrink-0 mt-1 transition-colors">VENUE</span>
                         <span className="text-sm font-black text-foreground uppercase text-right ml-4 transition-colors">{event.location}</span>
                       </div>
-                      <div className="flex justify-between items-center pb-4 border-b border-primary/10 transition-colors">
+                      <div className={`flex justify-between items-center ${event.eventHead ? "pb-4 border-b border-primary/10" : ""} transition-colors`}>
                         <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest transition-colors">CATEGORY</span>
                         <span className={`px-3 py-1 text-[9px] font-black tracking-[0.2em] uppercase ${categoryColors[event.category] || "bg-yellow-400 text-black"}`}>
                           {event.category}
                         </span>
                       </div>
-                      <div className="flex justify-between items-start">
-                        <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest shrink-0 mt-1 transition-colors">HEAD</span>
-                        <span className="text-sm font-black text-foreground uppercase text-right ml-4 transition-colors">{event.eventHead || "TBA"}</span>
-                      </div>
+                      {event.eventHead && (
+                        <div className="flex justify-between items-start">
+                          <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest shrink-0 mt-1 transition-colors">HEAD</span>
+                          <span className="text-sm font-black text-foreground uppercase text-right ml-4 transition-colors">{event.eventHead}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>

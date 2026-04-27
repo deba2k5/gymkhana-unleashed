@@ -147,10 +147,12 @@ const EventsSection = () => {
               </div>
               <Link to={`/events/${ev.slug}`} className="relative z-10 p-10 flex flex-col min-h-[300px] cursor-pointer">
                 <div className="flex justify-between items-start mb-auto">
-                  <div className="w-14 h-14 bg-primary flex flex-col items-center justify-center text-primary-foreground border-2 border-primary transition-colors" style={{ boxShadow: "3px 3px 0 0 #facc15" }}>
-                    <span className="text-[9px] font-black uppercase text-white/60 leading-none">{ev.displayDate.split(" ")[0]}</span>
-                    <span className="text-xl font-space font-black leading-tight">{ev.displayDate.split(" ")[1]}</span>
-                  </div>
+                  {ev.displayDate && (
+                    <div className="w-14 h-14 bg-primary flex flex-col items-center justify-center text-primary-foreground border-2 border-primary transition-colors" style={{ boxShadow: "3px 3px 0 0 #facc15" }}>
+                      <span className="text-[9px] font-black uppercase text-white/60 leading-none">{ev.displayDate.split(" ")[0]}</span>
+                      <span className="text-xl font-space font-black leading-tight">{ev.displayDate.split(" ")[1]}</span>
+                    </div>
+                  )}
                   <span className="text-[9px] font-black text-foreground/40 tracking-[0.3em] uppercase border border-primary/20 px-3 py-1 transition-colors">
                     {ev.type}
                   </span>
@@ -201,7 +203,9 @@ const EventsSection = () => {
                   </p>
                 </div>
                 <div className="shrink-0 flex flex-col items-end gap-4">
-                  <span className="text-xl font-space font-black text-foreground italic transition-colors">{ev.displayDate}</span>
+                  {ev.displayDate && (
+                    <span className="text-xl font-space font-black text-foreground italic transition-colors">{ev.displayDate}</span>
+                  )}
                   <div className="w-11 h-11 border-2 border-primary flex items-center justify-center text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                     <MoveRight className="w-5 h-5" />
                   </div>

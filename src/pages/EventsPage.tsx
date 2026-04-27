@@ -226,10 +226,12 @@ function EventCard({ event: ev, idx, inView }: { event: Event; idx: number; inVi
           </div>
 
           {/* Date badge */}
-          <div className="absolute bottom-4 right-4 bg-yellow-400 px-3 py-1.5 text-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
-            <span className="block text-[9px] font-black text-black/60 uppercase tracking-widest leading-none">{ev.displayDate.split(" ")[0]}</span>
-            <span className="block text-lg font-space font-black text-black leading-tight">{ev.displayDate.split(" ")[1]}</span>
-          </div>
+          {ev.displayDate && (
+            <div className="absolute bottom-4 right-4 bg-yellow-400 px-3 py-1.5 text-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
+              <span className="block text-[9px] font-black text-black/60 uppercase tracking-widest leading-none">{ev.displayDate.split(" ")[0]}</span>
+              <span className="block text-lg font-space font-black text-black leading-tight">{ev.displayDate.split(" ")[1]}</span>
+            </div>
+          )}
         </div>
 
         {/* Body */}

@@ -325,7 +325,7 @@ export const events: Event[] = [
   id: "21",
   slug: "study-abroad-program",
   name: "Study Abroad Program",
-  shortName: "Study Abroad",
+  shortName: "Study Abroad Program",
   date: "2026-05-01",
   displayDate: "MAY 01",
   type: "ACADEMIC",

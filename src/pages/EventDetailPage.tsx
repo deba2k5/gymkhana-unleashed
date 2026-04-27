@@ -189,8 +189,8 @@ export default function EventDetailPage() {
                       <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-foreground/50 mb-6 transition-colors">KEY HIGHLIGHTS</h3>
                       <div className="space-y-4">
                         {event.highlights.map((h, i) => (
-                          <div key={i} className="flex items-start gap-4">
-                            <div className="shrink-0 w-8 h-8 bg-yellow-400 flex items-center justify-center border-2 border-primary mt-0.5" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
+                          <div key={i} className="flex items-center gap-4">
+                            <div className="shrink-0 w-8 h-8 bg-yellow-400 flex items-center justify-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
                               <span className="text-[10px] font-black text-black">0{i + 1}</span>
                             </div>
                             <span className="text-sm font-black text-foreground uppercase tracking-wide leading-tight transition-colors">{h}</span>
@@ -216,11 +216,15 @@ export default function EventDetailPage() {
                         <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest shrink-0 mt-1 transition-colors">VENUE</span>
                         <span className="text-sm font-black text-foreground uppercase text-right ml-4 transition-colors">{event.location}</span>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center pb-4 border-b border-primary/10 transition-colors">
                         <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest transition-colors">CATEGORY</span>
                         <span className={`px-3 py-1 text-[9px] font-black tracking-[0.2em] uppercase ${categoryColors[event.category] || "bg-yellow-400 text-black"}`}>
                           {event.category}
                         </span>
+                      </div>
+                      <div className="flex justify-between items-start">
+                        <span className="text-[10px] font-black text-foreground/40 uppercase tracking-widest shrink-0 mt-1 transition-colors">HEAD</span>
+                        <span className="text-sm font-black text-foreground uppercase text-right ml-4 transition-colors">{event.eventHead || "TBA"}</span>
                       </div>
                     </div>
                   </div>

@@ -4,34 +4,70 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Member, Section, allSections } from "@/data/membersData";
+import { allSections2024 } from "@/data/membersData_2024"; // ✅ ADDED
+
+
+// ─── YEARS ───────────────────────────────────────────────
+const YEARS = ["2024-25", "2025-26", "2026-27"] as const;
+
+// ─── CUSTOM DROPDOWN ─────────────────────────────────────
+const YearDropdown = ({
+  activeYear,
+  setActiveYear,
+}: {
+  activeYear: string;
+  setActiveYear: (year: any) => void;
+}) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="relative w-fit">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="px-5 py-3 border-2 border-black/20 dark:border-white/10 rounded-xl bg-white dark:bg-[#0b0b0f] text-sm font-semibold flex items-center gap-2"
+      >
+        {activeYear}
+        <span className="text-xs">▼</span>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="absolute mt-2 w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#0b0b0f] shadow-lg z-50 overflow-hidden"
+          >
+            {YEARS.map((year) => (
+              <button
+                key={year}
+                onClick={() => {
+                  setActiveYear(year);
+                  setOpen(false);
+                }}
+                className={`
+                  w-full text-left px-4 py-3 text-sm transition
+                  ${
+                    activeYear === year
+                      ? "bg-black text-white dark:bg-white dark:text-black"
+                      : "hover:bg-black/5 dark:hover:bg-white/5"
+                  }
+                `}
+              >
+                {year}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 // ─── WRAPPER ─────────────────────────────────────────────
 const GlowWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div
-    className="
-      relative rounded-3xl p-[1px]
-
-      /* LIGHT (UNCHANGED — YOUR ORIGINAL) */
-      bg-yellow-400
-
-      /* DARK (your glow) */
-      dark:bg-gradient-to-r 
-      dark:from-purple-500/60 
-      dark:via-blue-500/50 
-      dark:to-cyan-400/60
-    "
-  >
-    <div
-      className="
-        rounded-3xl
-
-        /* LIGHT */
-        bg-white shadow-[4px_4px_0px_0px_black]
-
-        /* DARK */
-        dark:bg-[#0b0b0f]/95 dark:shadow-none
-      "
-    >
+  <div className="relative rounded-3xl p-[1px] bg-yellow-400 dark:bg-gradient-to-r dark:from-purple-500/60 dark:via-blue-500/50 dark:to-cyan-400/60">
+    <div className="rounded-3xl bg-white shadow-[4px_4px_0px_0px_black] dark:bg-[#0b0b0f]/95 dark:shadow-none">
       {children}
     </div>
   </div>
@@ -42,48 +78,20 @@ const MemberCard = ({ member }: { member: Member }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-
-    /* LIGHT interactions (same) */
-    whileHover={{
-      y: -6,
-      scale: 1.02,
-      boxShadow: "8px 8px 0px 0px black",
-    }}
-    whileTap={{
-      scale: 0.97,
-      boxShadow: "2px 2px 0px 0px black",
-    }}
-
+    whileHover={{ y: -6, scale: 1.02 }}
     className="rounded-3xl cursor-pointer"
   >
-    <div
-      className="
-        rounded-3xl p-5 flex flex-col gap-2 border h-full
-
-        /* LIGHT */
-        bg-white border-black/10 shadow-[4px_4px_0px_0px_black]
-
-        /* DARK */
-        dark:bg-transparent dark:border-white/5 dark:shadow-none
-      "
-    >
-      <Link 
-        to={`/members/${member.slug}`}
-        className="text-base font-semibold text-black dark:text-white hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
-      >
+    <div className="rounded-3xl p-5 flex flex-col gap-2 border h-full bg-white border-black/10 shadow-[4px_4px_0px_0px_black] dark:bg-transparent dark:border-white/5 dark:shadow-none">
+      <Link to={`/members/${member.slug}`} className="text-base font-semibold">
         {member.name}
       </Link>
 
       {member.dept && (
-        <p className="text-xs text-black/60 dark:text-white/50">
-          {member.dept}
-        </p>
+        <p className="text-xs opacity-60">{member.dept}</p>
       )}
 
       {member.chapter && (
-        <p className="text-xs text-black/50 dark:text-white/40">
-          {member.chapter}
-        </p>
+        <p className="text-xs opacity-50">{member.chapter}</p>
       )}
 
       {member.email && (
@@ -93,10 +101,7 @@ const MemberCard = ({ member }: { member: Member }) => (
       )}
 
       {member.phone && (
-        <a
-          href={`tel:${member.phone}`}
-          className="text-sm text-black/70 hover:text-blue-600 dark:text-white/70 dark:hover:text-cyan-400 transition"
-        >
+        <a href={`tel:${member.phone}`} className="text-sm opacity-70">
           {member.phone}
         </a>
       )}
@@ -111,62 +116,14 @@ const SectionBlock = ({ section }: { section: Section }) => {
   return (
     <GlowWrapper>
       <div className="p-6 md:p-8 mb-8">
-
         <div className="flex justify-between items-center mb-6">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-black dark:text-white">
-              {section.title}
-            </h2>
-
-            <div className="h-[2px] w-24 bg-yellow-400 dark:bg-gradient-to-r dark:from-purple-500 dark:to-cyan-400 mt-2 rounded-full" />
-
-            {section.subtitle && (
-              <p className="text-sm text-black/60 dark:text-white/50 mt-2">
-                {section.subtitle}
-              </p>
-            )}
-
-            {section.brochureLink && (
-              <div className="flex flex-wrap items-center gap-4 mt-3">
-
-                <a
-                  href={section.brochureLink}
-                  target="_blank"
-                  className="text-xs text-blue-600 dark:text-cyan-400 hover:underline"
-                >
-                  View Official Brochure
-                </a>
-
-                {section.title === "Anti-Ragging Committee" && (
-                  <div className="flex flex-col sm:flex-row gap-4 border-l border-black/10 dark:border-white/10 pl-4">
-
-                    <div>
-                      <span className="text-[10px] text-black/40 dark:text-white/40 uppercase">
-                        General Secretary
-                      </span>
-                      <p className="text-xs text-black/80 dark:text-white/80">
-                        Surjyangshu: 7439122770
-                      </p>
-                    </div>
-
-                    <div>
-                      <span className="text-[10px] text-black/40 dark:text-white/40 uppercase">
-                        Vice President
-                      </span>
-                      <p className="text-xs text-black/80 dark:text-white/80">
-                        Sayantika: 9749125069
-                      </p>
-                    </div>
-
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
+          <h2 className="text-2xl md:text-3xl font-semibold">
+            {section.title}
+          </h2>
 
           <button
             onClick={() => setOpen(!open)}
-            className="text-xs text-black/50 hover:text-black dark:text-white/50 dark:hover:text-white"
+            className="text-xs opacity-50 hover:opacity-100"
           >
             {open ? "Hide" : "Show"}
           </button>
@@ -176,7 +133,7 @@ const SectionBlock = ({ section }: { section: Section }) => {
           {open && (
             <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {section.members.map((m, i) => (
-                <MemberCard key={i} member={m} />
+        <MemberCard key={i} member={m} />
               ))}
             </motion.div>
           )}
@@ -188,14 +145,47 @@ const SectionBlock = ({ section }: { section: Section }) => {
 
 // ─── PAGE ────────────────────────────────────────────────
 const MembersPage = () => {
+  const [activeYear, setActiveYear] =
+    useState<typeof YEARS[number]>("2025-26");
+
   return (
-    <div className="min-h-screen bg-white dark:bg-[#050507] text-black dark:text-white flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-[#050507] flex flex-col">
       <Navbar />
 
-      <main className="flex-grow max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-10 pt-28 pb-20 w-full">
-        {allSections.map((section, i) => (
-          <SectionBlock key={i} section={section} />
-        ))}
+      <main className="flex-grow max-w-[1300px] mx-auto px-4 pt-28 pb-20 w-full">
+
+        {/* DROPDOWN */}
+        <div className="mb-10">
+          <YearDropdown
+            activeYear={activeYear}
+            setActiveYear={setActiveYear}
+          />
+        </div>
+
+        {/* 2025-26 */}
+        {activeYear === "2025-26" &&
+          allSections.map((section, i) => (
+            <SectionBlock key={i} section={section} />
+          ))}
+
+        {/* 2026-27 */}
+        {activeYear === "2026-27" && (
+          <div className="py-32 text-center">
+            <h2 className="text-3xl font-semibold mb-2">
+              2026–27 Committee
+            </h2>
+            <p className="opacity-60">
+              Team is under formation. Stay tuned.
+            </p>
+          </div>
+        )}
+
+        {/* 🔥 FIXED 2024-25 (NOW SHOWS DATA) */}
+        {activeYear === "2024-25" &&
+          allSections2024.map((section, i) => (
+            <SectionBlock key={i} section={section} />
+          ))}
+
       </main>
 
       <Footer />

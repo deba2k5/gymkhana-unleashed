@@ -31,6 +31,7 @@ const Loader = ({ onFinish }: { onFinish: () => void }) => {
         muted
         playsInline
         onEnded={onFinish}
+        onError={onFinish}
         className="absolute inset-0 w-full h-full object-cover"
       >
         {isMobile ? (

@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "react-router-dom";
-import { Instagram, Sparkles, MoveRight } from "lucide-react";
+import { Instagram, MoveRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const socials = [
@@ -157,11 +157,6 @@ const Footer = () => (
         <p className="text-[10px] font-black uppercase tracking-[0.45em] text-foreground/35">
           © 2026 GYMKHANA_OS_V3.0
         </p>
-
-        <div className="flex items-center gap-3 px-5 py-2.5 bg-yellow-400 text-black text-[10px] font-black tracking-widest uppercase brutalist-shadow-sm">
-          <Sparkles className="w-4 h-4" />
-          By Debangshu , Debangkita
-        </div>
       </div>
     </div>
   </footer>

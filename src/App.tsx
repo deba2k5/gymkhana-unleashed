@@ -23,10 +23,20 @@ import MemberDetailPage from "./pages/MemberDetailPage.tsx";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    // Only show the intro splash once per browser session, and only on the homepage.
+    if (typeof window === "undefined") return false;
+    if (window.location.pathname !== "/") return false;
+    return sessionStorage.getItem("gymkhana_intro_played") !== "1";
+  });
+
+  const finishLoading = () => {
+    sessionStorage.setItem("gymkhana_intro_played", "1");
+    setLoading(false);
+  };
 
   // ✅ SHOW LOADER FIRST
-  if (loading) return <Loader onFinish={() => setLoading(false)} />;
+  if (loading) return <Loader onFinish={finishLoading} />;
 
   return (
     <QueryClientProvider client={queryClient}>

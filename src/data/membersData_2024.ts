@@ -1,4 +1,4 @@
-import { Section } from "./membersData";
+import { Section, PATRON, VICE_PATRON, PRESIDENT, FACULTY } from "./membersData";
 
 const slugify = (name: string) =>
   name.toLowerCase().replace(/\s+/g, "-");
@@ -519,6 +519,10 @@ const PET: Section = {
 
 // ─── FINAL EXPORT ─────────────────────────────
 export const allSections2024: Section[] = [
+  PATRON,
+  VICE_PATRON,
+  PRESIDENT,
+  FACULTY,
   GENERAL_SECRETARY,
   VICE_PRESIDENT,
   CULTURAL_HEAD,

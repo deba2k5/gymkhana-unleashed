@@ -2,10 +2,25 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Trophy, Search, ChevronDown, Users, Award, Star, Medal, GraduationCap, X } from "lucide-react";
+import { Trophy, Search, ChevronDown, Users, Award, Star, Medal, GraduationCap, X, Clock, Sparkles } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { awardsData, type AwardCategory } from "../data/awardsData";
+import { awardsData2024 } from "../data/awardsData2024";
+
+/* ── SESSION CONFIG ── */
+interface SessionOption {
+  key: string;
+  label: string;
+  year: string;
+  data: AwardCategory[] | null; // null => coming soon
+}
+
+const sessionOptions: SessionOption[] = [
+  { key: "2024-2025", label: "2024–25 Session", year: "2024–25", data: awardsData2024 },
+  { key: "2025-2026", label: "2025–26 Session", year: "2025–26", data: awardsData },
+  { key: "2026-2027", label: "2026–27 Session", year: "2026–27", data: null },
+];
 
 // Department badge colour map
 const deptColors: Record<string, string> = {
@@ -182,6 +197,103 @@ function AwardPanel({ category, delay, index }: { category: AwardCategory; delay
   );
 }
 
+/* ── SESSION DROPDOWN ── */
+function SessionDropdown({
+  selected,
+  onSelect,
+}: {
+  selected: SessionOption;
+  onSelect: (s: SessionOption) => void;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen((p) => !p)}
+        className="flex items-center gap-3 px-6 py-4 border-[3px] border-primary bg-card brutalist-shadow-sm text-left transition-colors hover:bg-primary hover:text-primary-foreground group"
+      >
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/50 group-hover:text-primary-foreground/70 transition-colors">
+            Award Session
+          </p>
+          <p className="font-space font-black text-foreground group-hover:text-primary-foreground transition-colors" style={{ fontSize: "1.3rem" }}>
+            {selected.label}
+          </p>
+        </div>
+        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }}>
+          <ChevronDown className="w-5 h-5" />
+        </motion.div>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="absolute z-30 mt-2 w-full min-w-[240px] border-[3px] border-primary bg-card brutalist-shadow overflow-hidden"
+          >
+            {sessionOptions.map((opt) => (
+              <button
+                key={opt.key}
+                onClick={() => {
+                  onSelect(opt);
+                  setOpen(false);
+                }}
+                className={`w-full text-left px-6 py-4 text-sm font-black uppercase tracking-widest transition-colors border-b-2 border-primary/10 last:border-b-0 ${
+                  opt.key === selected.key
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-primary/10 text-foreground"
+                }`}
+              >
+                {opt.label}
+                {opt.data === null && (
+                  <span className="ml-2 text-[9px] font-bold opacity-60">(Coming Soon)</span>
+                )}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ── COMING SOON PANEL ── */
+function ComingSoonPanel({ year }: { year: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="relative border-[3px] border-primary bg-card brutalist-shadow overflow-hidden py-24 px-6 flex flex-col items-center text-center gap-6"
+    >
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="relative w-20 h-20 border-[3px] border-primary flex items-center justify-center brutalist-shadow-sm">
+        <Clock className="w-9 h-9 text-primary" />
+      </div>
+      <p className="relative text-[11px] font-black uppercase tracking-[0.45em] text-foreground/50">
+        {year} Session
+      </p>
+      <h2
+        className="relative font-space font-black text-foreground uppercase tracking-tighter"
+        style={{ fontSize: "clamp(2rem,6vw,4.5rem)", lineHeight: 0.9 }}
+      >
+        Coming Soon
+      </h2>
+      <p className="relative max-w-xl text-sm md:text-base font-bold uppercase tracking-tight text-foreground/50 leading-relaxed">
+        The award list for the {year} session hasn't been announced yet. Check back once the ceremony results are published.
+      </p>
+      <div className="relative flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs">
+        <Sparkles className="w-4 h-4" />
+        Stay tuned
+      </div>
+    </motion.div>
+  );
+}
+
 /* ══════════════════════════════════════════
    MAIN PAGE
 ══════════════════════════════════════════ */
@@ -189,7 +301,10 @@ export default function AwardsPage() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
 
-  const totalRecipients = awardsData.reduce((acc, c) => acc + c.recipients.length, 0);
+  const [session, setSession] = useState<SessionOption>(sessionOptions[1]); // default 2025-26
+  const activeData = session.data;
+
+  const totalRecipients = activeData ? activeData.reduce((acc, c) => acc + c.recipients.length, 0) : 0;
 
   return (
     <div className="min-h-screen bg-transparent text-foreground flex flex-col transition-colors">
@@ -212,12 +327,16 @@ export default function AwardsPage() {
             initial={{ opacity: 0, y: -20 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="flex items-center gap-4 mb-10"
+            className="flex flex-wrap items-center justify-between gap-6 mb-10"
           >
-            <div className="w-14 h-[3px] bg-primary" />
-            <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/50">
-              IEM Gymkhana · 2026
-            </span>
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-[3px] bg-primary" />
+              <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/50">
+                IEM Gymkhana · Annual Awards
+              </span>
+            </div>
+
+            <SessionDropdown selected={session} onSelect={setSession} />
           </motion.div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
@@ -252,9 +371,8 @@ export default function AwardsPage() {
               className="flex flex-wrap gap-4 lg:flex-col lg:items-end"
             >
               {[
-                { label: "Award Categories", value: awardsData.length },
-             
-                { label: "Academic Year", value: "2025–26" },
+                { label: "Award Categories", value: activeData ? activeData.length : "—" },
+                { label: "Academic Year", value: session.year },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -291,11 +409,15 @@ export default function AwardsPage() {
       {/* ══ AWARD PANELS ══ */}
       <main className="flex-1 py-20 lg:py-32 px-6">
         <div className="max-w-[1400px] mx-auto flex flex-col gap-8">
-         {awardsData.map((cat, i) => (
-  <div key={cat.id} id={cat.id} className="scroll-mt-24">
-    <AwardPanel category={cat} delay={i * 0.05} index={i} />
-  </div>
-))}
+          {activeData ? (
+            activeData.map((cat, i) => (
+              <div key={cat.id} id={cat.id} className="scroll-mt-24">
+                <AwardPanel category={cat} delay={i * 0.05} index={i} />
+              </div>
+            ))
+          ) : (
+            <ComingSoonPanel year={session.year} />
+          )}
         </div>
       </main>
 

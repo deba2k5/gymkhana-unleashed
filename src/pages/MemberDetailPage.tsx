@@ -13,16 +13,17 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { allSections, Member } from "@/data/membersData";
+import { allSections2024 } from "@/data/membersData_2024";
 
 const MemberDetailPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
 
-  // Find the member and their section
+  // Find the member and their section (search current session first, then 2024-25)
   let member: Member | undefined;
   let memberSectionTitle: string = "";
-  
-  for (const section of allSections) {
+
+  for (const section of [...allSections, ...allSections2024]) {
     member = section.members.find((m) => m.slug === slug);
     if (member) {
       memberSectionTitle = section.title;

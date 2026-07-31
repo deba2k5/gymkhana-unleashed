@@ -1,11 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Instagram } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, Instagram } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+type Category = "CULTURAL" | "TECHNICAL" | "SPORTS";
+
+const categoryMeta: { id: Category; label: string; description: string }[] = [
+  { id: "CULTURAL", label: "Cultural Societies", description: "Music, dance, drama, debate, literature & film." },
+  { id: "TECHNICAL", label: "Technical Societies", description: "Design, media, documentation & tech-driven clubs." },
+  { id: "SPORTS", label: "Sports Clubs", description: "Sports and fitness communities." },
+];
 
 /* LOGOS */
 const logoMap: Record<string, string> = {
@@ -26,6 +34,7 @@ const clubs = [
 {
   id: "music",
   name: "The Eighth Note",
+  category: "CULTURAL" as Category,
   instagram: "https://www.instagram.com/iemmusicclub/",
   about:
     "If music is your passion—whether you sing or play an instrument, rooted in Eastern traditions or Western styles—the Music Club offers a platform to collaborate, perform, and grow. From college events to inter-college fests, it nurtures both artistry and stage presence.",
@@ -47,6 +56,7 @@ const clubs = [
 {
   id: "itrana",
   name: "Itranaa",
+  category: "CULTURAL" as Category,
   instagram: "https://www.instagram.com/itranaa.iem",
   about:
     "As we step into the rhythm and grace of our passion, we share one thing in common—a deep love for dance. From in-house performances to inter-college victories, Itranaa nurtures expression, discipline, and artistic excellence.",
@@ -67,6 +77,7 @@ const clubs = [
 {
   id: "offbeat",
   name: "OffBeat",
+  category: "CULTURAL" as Category,
   instagram: "https://www.instagram.com/offbeat_2526",
   about:
     "Offbeat, the official western dance club of IEM, Kolkata, is driven by creativity, confidence, and artistic excellence through dance. It fosters a community where dancers explore diverse styles, perform, and grow together.",
@@ -83,6 +94,7 @@ const clubs = [
 {
   id: "chorus",
   name: "Chorus",
+  category: "CULTURAL" as Category,
   instagram:
     "https://www.instagram.com/chorusdrama?igsh=MW4wYWh1YmQycmM4MQ==",
   about:
@@ -101,6 +113,7 @@ const clubs = [
 {
   id: "debate",
   name: "Oratoria-Debate Club",
+  category: "CULTURAL" as Category,
    instagram:
     "https://www.instagram.com/iemdebatingsociety?igsh=aGJ0MGp2MnBpM3cz",
   about: "Oratoria IEM Debating Society, established on 25th February 2025 in alignment with International Mother Language Day, is dedicated to promoting linguistic diversity, intellectual expression, and meaningful discourse.\n\nStarting with a small group of 10–15 members, the Society has grown into a strong community of 52, driven by its vision: Discover, Debate, Deliver.\n\nIt serves as a platform for developing analytical thinking, articulate communication, and principled debate, through structured sessions, training, and competitive forums.\n\nOratoria has consistently nurtured individuals who excel in debating, public speaking, and policy discourse, shaping future leaders and changemakers.",
@@ -121,6 +134,7 @@ const clubs = [
 {
   id: "arc",
   name: "ARC",
+  category: "TECHNICAL" as Category,
    about: "The team responsible for the artwork that catches your eye, the videos that leave an impression on you, and the designs that just seem to be done the right way. For the A.R.C., creation is a process—one that involves experimentation, improvement, and perfection at every step. It’s not about following a fixed style or working within limits, but about a group of individuals exploring graphic, video, and digital art techniques with purpose and expertise.",
   
   people: [
@@ -143,6 +157,7 @@ achievements: [
 {
   id: "photography",
   name: "Photography Club",
+  category: "TECHNICAL" as Category,
   about: "Our Club focuses on covering all college events. Other than that, we have built a network where photographers get actual paid work. Most importantly, our club focuses on organizing more competitions and photowalks.",
   
   people: [
@@ -158,6 +173,7 @@ achievements: [
 {
   id: "lit",
   name: "Literary Society",
+  category: "TECHNICAL" as Category,
     instagram:
     "https://www.instagram.com/iemliterarysociety?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D",
   about: " The Literary Society of IEM is an energetic group of thinkers, writers, speakers, and creators committed to fostering a love for literature, communication, and creativity within campus activities.As the literary branch of the Institute of Engineering and Management, the society offers a space for students to share their thoughts, delve into language, and appreciate the influence of words through interactive events like debates, quizzes, poetry, storytelling, public speaking, creative writing, and cultural collaborations. We advocate for the fusion of Literature and Technology to inspire meaningful innovation, new viewpoints, and significant ideas for today’s world.We also recognize the potential of youth—encouraging emerging talents to question norms, think boldly, and embrace the unconventional.With creativity at our foundation and innovation as our goal, we aim to cultivate a vibrant environment where talent can express itself and originality can shine.",
@@ -181,6 +197,7 @@ achievements: [
 {
   id: "pet",
   name: "Pet Society",
+  category: "TECHNICAL" as Category,
   about: "The Pet Society is a student-driven community dedicated to promoting animal welfare, compassion, and responsible pet care. It brings together animal lovers who are passionate about creating a safer and kinder environment for pets and stray animals.",
   people: [
     "Zinnia Ghosh — 7044835500",
@@ -191,6 +208,7 @@ achievements: [
 {
   id: "film",
   name: "Aalokborsho",
+  category: "CULTURAL" as Category,
      instagram:
     "https://www.instagram.com/aalokborsho?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D",
   about: `The Film Society is dedicated to fostering a deeper appreciation of cinema as an art form and a medium of expression. We create a platform for critical viewing, thoughtful discussion, and creative exploration. By bridging the gap between audience and creator, we aim to cultivate a culture of storytelling, perspective, and innovation within the student community.`,
@@ -214,9 +232,17 @@ const item = {
 };
 
 const SocietiesPage = () => {
+  const [activeCategory, setActiveCategory] = useState<Category | null>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeCategory]);
+
+  const visibleClubs = clubs.filter((c) => c.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-transparent text-foreground flex flex-col transition-colors">
@@ -278,15 +304,82 @@ const SocietiesPage = () => {
           </div>
         </div>
 
-        {/* CONTENT */}
+        {/* CATEGORY CARDS */}
+        <AnimatePresence mode="wait">
+        {!activeCategory && (
+          <motion.div
+            key="category-cards"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="max-w-[1300px] mx-auto px-6 py-24 grid md:grid-cols-3 gap-10"
+          >
+            {categoryMeta.map((cat) => {
+              const count = clubs.filter((c) => c.category === cat.id).length;
+              return (
+                <motion.button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  whileHover={{ scale: 1.03, rotate: -0.5 }}
+                  className="
+                    group text-left p-10 border-[3px] border-primary bg-background
+                    shadow-[8px_8px_0px_#FACC15]
+                    hover:shadow-[14px_14px_0px_#FACC15]
+                    hover:-translate-y-2
+                    transition-all duration-300
+                  "
+                >
+                  <p className="text-sm font-bold text-foreground/40 mb-4">
+                    {count} {count === 1 ? "Club" : "Clubs"}
+                  </p>
+                  <h3 className="text-3xl font-black mb-4 text-foreground">
+                    {cat.label}
+                  </h3>
+                  <p className="text-foreground/70 mb-8">{cat.description}</p>
+                  <span className="inline-flex items-center gap-2 text-sm font-black uppercase text-yellow-400 group-hover:gap-4 transition-all">
+                    Explore
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        )}
+
+        {activeCategory && (
         <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="max-w-[1300px] mx-auto px-6 py-24 space-y-32"
+          key="club-list"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="max-w-[1300px] mx-auto px-6 py-24"
         >
 
-          {clubs.map((club, i) => (
+          <button
+            onClick={() => setActiveCategory(null)}
+            className="inline-flex items-center gap-2 text-sm font-black uppercase text-foreground/60 hover:text-yellow-400 transition-colors mb-10"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            All Categories
+          </button>
+
+          <h2 className="text-5xl font-black text-foreground mb-16">
+            {categoryMeta.find((c) => c.id === activeCategory)?.label}
+          </h2>
+
+          {visibleClubs.length === 0 && (
+            <p className="text-foreground/50 text-lg">
+              No clubs added under this category yet. Check back soon.
+            </p>
+          )}
+
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="space-y-32"
+          >
+          {visibleClubs.map((club, i) => (
             <motion.div
               key={club.id}
               variants={item}
@@ -428,8 +521,11 @@ const SocietiesPage = () => {
               </div>
             </motion.div>
           ))}
+          </motion.div>
 
         </motion.div>
+        )}
+        </AnimatePresence>
 
       </main>
 

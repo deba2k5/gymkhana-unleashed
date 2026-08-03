@@ -134,7 +134,7 @@ const clubs = [
 {
   id: "arc",
   name: "ARC",
-  category: "TECHNICAL" as Category,
+  category: "CULTURAL" as Category,
    about: "The team responsible for the artwork that catches your eye, the videos that leave an impression on you, and the designs that just seem to be done the right way. For the A.R.C., creation is a process—one that involves experimentation, improvement, and perfection at every step. It’s not about following a fixed style or working within limits, but about a group of individuals exploring graphic, video, and digital art techniques with purpose and expertise.",
   
   people: [
@@ -157,7 +157,7 @@ achievements: [
 {
   id: "photography",
   name: "Photography Club",
-  category: "TECHNICAL" as Category,
+  category: "CULTURAL" as Category,
   about: "Our Club focuses on covering all college events. Other than that, we have built a network where photographers get actual paid work. Most importantly, our club focuses on organizing more competitions and photowalks.",
   
   people: [
@@ -173,7 +173,7 @@ achievements: [
 {
   id: "lit",
   name: "Literary Society",
-  category: "TECHNICAL" as Category,
+  category: "CULTURAL" as Category,
     instagram:
     "https://www.instagram.com/iemliterarysociety?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D",
   about: " The Literary Society of IEM is an energetic group of thinkers, writers, speakers, and creators committed to fostering a love for literature, communication, and creativity within campus activities.As the literary branch of the Institute of Engineering and Management, the society offers a space for students to share their thoughts, delve into language, and appreciate the influence of words through interactive events like debates, quizzes, poetry, storytelling, public speaking, creative writing, and cultural collaborations. We advocate for the fusion of Literature and Technology to inspire meaningful innovation, new viewpoints, and significant ideas for today’s world.We also recognize the potential of youth—encouraging emerging talents to question norms, think boldly, and embrace the unconventional.With creativity at our foundation and innovation as our goal, we aim to cultivate a vibrant environment where talent can express itself and originality can shine.",
@@ -197,7 +197,7 @@ achievements: [
 {
   id: "pet",
   name: "Pet Society",
-  category: "TECHNICAL" as Category,
+  category: "CULTURAL" as Category,
   about: "The Pet Society is a student-driven community dedicated to promoting animal welfare, compassion, and responsible pet care. It brings together animal lovers who are passionate about creating a safer and kinder environment for pets and stray animals.",
   people: [
     "Zinnia Ghosh — 7044835500",

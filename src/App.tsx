@@ -21,6 +21,7 @@ import AwardsPage from "./pages/AwardsPage.tsx";
 import MemberDetailPage from "./pages/MemberDetailPage.tsx";
 import SelectCollegePage from "./pages/SelectCollegePage.tsx";
 import UemComingSoonPage from "./pages/uem/UemComingSoonPage.tsx";
+import UemSocietiesPage from "./pages/uem/UemSocietiesPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -62,7 +63,7 @@ const AppRoutes = () => {
       {/* UEM — all sections coming soon */}
       <Route path="/uem" element={<UemComingSoonPage section="Home" />} />
       <Route path="/uem/oath" element={<UemComingSoonPage section="Oath" />} />
-      <Route path="/uem/societies" element={<UemComingSoonPage section="Societies" />} />
+      <Route path="/uem/societies" element={<UemSocietiesPage />} />
       <Route path="/uem/members" element={<UemComingSoonPage section="Members" />} />
       <Route path="/uem/members/:slug" element={<UemComingSoonPage section="Members" />} />
       <Route path="/uem/events" element={<UemComingSoonPage section="Events" />} />

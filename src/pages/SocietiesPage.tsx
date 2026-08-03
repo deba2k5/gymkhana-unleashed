@@ -262,20 +262,23 @@ const SocietiesPage = () => {
               Back
             </Link>
 
-<div className="relative mb-10">
+<div className="relative mb-10 max-w-full overflow-hidden">
 
   <motion.h1
     initial={{ opacity: 0, y: 60 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
     className="
-      text-[120px] md:text-[180px] font-black leading-none
+      font-black leading-none
       text-transparent
       stroke-text
       absolute top-10 left-0
       opacity-90
       pointer-events-none
+      whitespace-normal
+      max-w-full
     "
+    style={{ fontSize: "clamp(2.5rem, 13vw, 11.25rem)" }}
   >
     CLUBS & SOCIETIES
   </motion.h1>
@@ -284,7 +287,7 @@ const SocietiesPage = () => {
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: 0.2 }}
-    className="text-7xl md:text-8xl font-black relative z-10"
+    className="text-5xl sm:text-7xl md:text-8xl font-black relative z-10"
   >
     <span className="text-foreground">OUR</span>
     <br />

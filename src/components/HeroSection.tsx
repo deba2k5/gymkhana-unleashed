@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, LayoutGrid, Zap, Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -37,9 +38,27 @@ const HeroSection = () => {
 
       {/* ── CONTENT ── */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 text-center">
-
-
       </div>
+
+      {/* AUDITION LIVE CTA — bottom center */}
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+      >
+        <Link
+          to="/auditions"
+          className="group inline-flex items-center gap-3 px-7 py-3.5 bg-yellow-400 text-red-600 text-sm font-black uppercase tracking-widest rounded-full shadow-[0_4px_20px_rgba(250,204,21,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_28px_rgba(250,204,21,0.55)] active:translate-y-0 transition-all"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+          </span>
+          Audition Live
+          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </Link>
+      </motion.div>
 
       {/* ── BOTTOM PROGRESS BAR ── */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10">

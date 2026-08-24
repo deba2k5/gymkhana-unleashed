@@ -7,6 +7,7 @@ export interface Club {
   achievements: string[];
   instagram?: string;
   drive?: string;
+  formLink?: string;
 }
 
 export const clubs: Club[] = [
@@ -18,15 +19,17 @@ export const clubs: Club[] = [
     about: "If music is your passion—whether you sing or play an instrument, rooted in Eastern traditions or Western styles—the Music Club offers a platform to collaborate, perform, and grow.",
     people: ["Rajdeep Sengupta — 9831895110", "Arighna Bhattacharya — 7439487159", "Adrija Acharyya — 7908760641"],
     achievements: ["Umang 2024 – Winner", "Xavrang 2026 – Winner", "Amiphoria 2025 – Winner"],
+    formLink: "https://forms.gle/M3tgGojzLum7uUB99",
   },
   {
     id: "itran-a",
-    name: "ITRAN-A",
+    name: "ITRAANA — Eastern Dance Club",
     category: "CULTURAL",
     instagram: "https://www.instagram.com/itranaa.iem",
     about: "As we step into the rhythm and grace of our passion, we share one thing in common—a deep love for dance.",
     people: ["Prakriti Mukhopadhyay — 9907444649", "Snikta Banerjee — 9674173204"],
     achievements: ["Calcutta Youth Meet 2023 – Winner", "Ecstasia 2025 – Winner (Solo)"],
+    formLink: "https://forms.gle/iFDbHuX83ub3rMiF6",
   },
   {
     id: "offbeat",
@@ -36,6 +39,7 @@ export const clubs: Club[] = [
     about: "Offbeat, the official western dance club of IEM, Kolkata, is driven by creativity, confidence, and artistic excellence through dance.",
     people: ["Soham Sarkar — 9832249929", "Priyanjana Paul — 6290836210"],
     achievements: ["Sanskriti 2023 – 1st Prize", "Umang 2025 – 2nd Prize"],
+    formLink: "https://forms.gle/qzVa8RwEtPV2QSrh8",
   },
   {
     id: "chorus",
@@ -54,6 +58,16 @@ export const clubs: Club[] = [
     about: "Oratoria IEM Debating Society is dedicated to promoting linguistic diversity and meaningful discourse.",
     people: ["Rajsekhar Hajrah — 8902697173", "Vishal Roy — 8399995198"],
     achievements: ["IIT Kharagpur Communiqué 2026 – Best Delegation"],
+    formLink: "https://forms.gle/t5e7N5Zni3BCY4tD9",
+  },
+  {
+    id: "arc-graphics",
+    name: "A.R.C. Graphics Team",
+    category: "TECHNICAL",
+    about: "The team responsible for the artwork, videos, and designs that keep the Gymkhana's visual identity sharp—exploring graphic, video, and digital art with purpose and expertise.",
+    people: ["Paramartha Ghosh", "Ankita Mandal", "Rupsa Ghosh", "Swastika Saha"],
+    achievements: ["Supported IEMPACT 2026, IEM–UEM Kolkata Marathon 2026, FED CUP 2026, IEMMUN '25, and Comicverse 2025."],
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdoQvLcmPqoJnOpOMj8ZxMpnCpp4R65eawvmv0aAm0S6GT40w/viewform?usp=publish-editor",
   },
   {
     id: "arc",
@@ -71,14 +85,16 @@ export const clubs: Club[] = [
     about: "Our Club focuses on covering all college events and building a professional network for photographers.",
     people: ["Arghya Banerjee — 6294566708", "Subham Saha — 9163799483", "Ankush Saha — 7044778799"],
     achievements: ["Photos used in various media houses and platforms."],
+    formLink: "https://forms.gle/gK3yF5fuG43eyDb37",
   },
   {
     id: "iemlit",
-    name: "IEM LIT",
+    name: "IEM Literary Society",
     category: "LITERARY",
     about: "A haven for writers and debaters exploring the power of words and logic.",
     people: ["Samarpita — 9831627448", "Mainak — 8777041530"],
     achievements: [],
+    formLink: "https://forms.gle/WHdhxZwa1C3qQNKb9",
   },
   {
     id: "humour",
@@ -95,6 +111,42 @@ export const clubs: Club[] = [
     about: "Physical Education and Techniques—promoting sports and healthy competition.",
     people: ["Subhashis — 8583858079", "Soham — 9477028148"],
     achievements: [],
+  },
+  {
+    id: "pet-society",
+    name: "IEM Pet Society",
+    category: "CULTURAL",
+    about: "A student-driven community dedicated to promoting animal welfare, compassion, and responsible pet care.",
+    people: ["Zinnia Ghosh — 7044835500", "Himel Jana — 7063076214"],
+    achievements: [],
+    formLink: "https://forms.gle/L34jhnAL1dMR2Eho7",
+  },
+  {
+    id: "art-craft",
+    name: "IEM Art and Craft Club",
+    category: "CULTURAL",
+    about: "A creative space for students to explore visual art, handicrafts, and design through workshops and campus exhibitions.",
+    people: ["Sneha Das — 8777684510", "Sebanjana Jana — 6290601300", "Roshni Kundu — 8334813230"],
+    achievements: [],
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSctoj6CxX0Bp4o8ZmiMQyfTP57e651vjOUUsFAPO9_Vln-Piw/viewform?usp=publish-editor",
+  },
+  {
+    id: "ecell",
+    name: "IEM E-Cell",
+    category: "TECHNICAL",
+    about: "The Innovation & Entrepreneurship Development Cell nurtures a startup mindset on campus through ideation sessions, mentorship, and entrepreneurship events.",
+    people: ["Sagnik Chakraborty — 9062064111", "Ahana Mukherjee — 8240435586", "Nakshatra Ghosh — 9883757307"],
+    achievements: [],
+    formLink: "https://forms.gle/vVXED9iZWmKEgnJ7A",
+  },
+  {
+    id: "quizzard",
+    name: "IEM Quizzard Club",
+    category: "CULTURAL",
+    about: "IEM's quizzing society, bringing together curious minds for trivia and competitive quizzing across campus and inter-college meets.",
+    people: [],
+    achievements: [],
+    formLink: "https://forms.gle/q57t2cFnc5XWQBVq9",
   },
   {
     id: "film",

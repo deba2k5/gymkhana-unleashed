@@ -20,6 +20,7 @@ import EventDetailPage from "./pages/EventDetailPage.tsx";
 import AwardsPage from "./pages/AwardsPage.tsx";
 import MemberDetailPage from "./pages/MemberDetailPage.tsx";
 import SelectCollegePage from "./pages/SelectCollegePage.tsx";
+import AuditionsPage from "./pages/AuditionsPage.tsx";
 import UemComingSoonPage from "./pages/uem/UemComingSoonPage.tsx";
 import UemSocietiesPage from "./pages/uem/UemSocietiesPage.tsx";
 
@@ -59,6 +60,7 @@ const AppRoutes = () => {
       <Route path="/events" element={<EventsPage />} />
       <Route path="/events/:slug" element={<EventDetailPage />} />
       <Route path="/awards" element={<AwardsPage />} />
+      <Route path="/auditions" element={<AuditionsPage />} />
 
       {/* UEM — all sections coming soon */}
       <Route path="/uem" element={<UemComingSoonPage section="Home" />} />

@@ -13,7 +13,7 @@ export interface Club {
 export const clubs: Club[] = [
   {
     id: "music",
-    name: "The Eighth Note",
+    name: "Music Club",
     category: "CULTURAL",
     instagram: "https://www.instagram.com/iemmusicclub/",
     about: "If music is your passion—whether you sing or play an instrument, rooted in Eastern traditions or Western styles—the Music Club offers a platform to collaborate, perform, and grow.",
@@ -23,7 +23,7 @@ export const clubs: Club[] = [
   },
   {
     id: "itran-a",
-    name: "ITRAANA — Eastern Dance Club",
+    name: "Eastern Dance Club",
     category: "CULTURAL",
     instagram: "https://www.instagram.com/itranaa.iem",
     about: "As we step into the rhythm and grace of our passion, we share one thing in common—a deep love for dance.",
@@ -33,7 +33,7 @@ export const clubs: Club[] = [
   },
   {
     id: "offbeat",
-    name: "OffBeat — Western Dance Club",
+    name: "Western Dance Club",
     category: "CULTURAL",
     instagram: "https://www.instagram.com/offbeat_2526",
     about: "Offbeat, the official western dance club of IEM, Kolkata, is driven by creativity, confidence, and artistic excellence through dance.",

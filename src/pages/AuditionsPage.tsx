@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, Phone } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -88,7 +88,7 @@ const AuditionsPage = () => {
                 </a>
               ) : (
                 <div className="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-background border-[3px] border-primary text-foreground/60 text-sm font-black uppercase tracking-widest">
-                  Application form opening soon — reach out to a club lead below
+                  Application form opening soon — check the open auditions below
                 </div>
               )}
             </motion.div>
@@ -114,8 +114,8 @@ const AuditionsPage = () => {
                 },
                 {
                   step: "02",
-                  title: "Reach Out",
-                  desc: "Call or message the club leads directly to register your interest and get audition details.",
+                  title: "Fill The Form",
+                  desc: "Hit Apply Now on the club of your choice and fill out the audition form with your details.",
                 },
                 {
                   step: "03",
@@ -172,7 +172,7 @@ const AuditionsPage = () => {
                     {club.name}
                   </h3>
 
-                  <div className="mt-auto pt-5 border-t-2 border-primary/10 flex flex-wrap gap-2">
+                  <div className="mt-auto pt-5 border-t-2 border-primary/10">
                     {club.formLink && (
                       <a
                         href={club.formLink}
@@ -184,27 +184,6 @@ const AuditionsPage = () => {
                         Apply Now
                       </a>
                     )}
-
-                    {club.people.slice(0, 2).map((p, i) => {
-                      const [name, phone] = p.split("—").map((s) => s.trim());
-                      return phone ? (
-                        <a
-                          key={i}
-                          href={`tel:${phone}`}
-                          className="inline-flex items-center gap-2 px-3 py-1.5 border-2 border-primary text-[11px] font-black text-foreground uppercase tracking-wide hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all"
-                        >
-                          <Phone className="w-3 h-3" />
-                          {name}
-                        </a>
-                      ) : (
-                        <span
-                          key={i}
-                          className="px-3 py-1.5 border-2 border-primary/30 text-[11px] font-black text-foreground/50 uppercase tracking-wide"
-                        >
-                          {name}
-                        </span>
-                      );
-                    })}
                   </div>
                 </motion.div>
               ))}

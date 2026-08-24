@@ -11,6 +11,19 @@ import { clubs } from "@/data/societiesData";
 // TODO: replace with the live auditions Google Form link when available
 const AUDITION_FORM_LINK = "";
 
+const logoMap: Record<string, string> = {
+  music: "/Music.jpg",
+  "itran-a": "/ITRANAA.jpg",
+  offbeat: "/Offbeat_Logo.jpeg",
+  chorus: "/CHORUS.jpg",
+  oratoria: "/Oratoria.png",
+  "arc-graphics": "/ARC.png",
+  photography: "/Photography.png",
+  "pet-society": "/pet.jpeg",
+  iemlit: "/lit.jpg",
+  film: "/film.jpg",
+};
+
 const container = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08 } },
@@ -165,12 +178,23 @@ const AuditionsPage = () => {
                   variants={item}
                   className="p-8 border-[3px] border-primary bg-background flex flex-col shadow-[5px_5px_0px_var(--primary)] transition-colors"
                 >
-                  <span className="text-[9px] font-black text-yellow-400 tracking-[0.4em] uppercase mb-2">
-                    {club.category}
-                  </span>
-                  <h3 className="font-space font-black text-foreground uppercase tracking-tighter mb-4 transition-colors text-2xl">
-                    {club.name}
-                  </h3>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 shrink-0 rounded-full overflow-hidden border-[3px] border-primary bg-black shadow-[3px_3px_0px_#FACC15]">
+                      <img
+                        src={logoMap[club.id] || "/coming.png"}
+                        alt={`${club.name} logo`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-black text-yellow-400 tracking-[0.4em] uppercase mb-1 block">
+                        {club.category}
+                      </span>
+                      <h3 className="font-space font-black text-foreground uppercase tracking-tighter transition-colors text-xl leading-tight">
+                        {club.name}
+                      </h3>
+                    </div>
+                  </div>
 
                   <div className="mt-auto pt-5 border-t-2 border-primary/10">
                     {club.formLink && (

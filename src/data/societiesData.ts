@@ -33,7 +33,7 @@ export const clubs: Club[] = [
   },
   {
     id: "offbeat",
-    name: "OffBeat",
+    name: "OffBeat — Western Dance Club",
     category: "CULTURAL",
     instagram: "https://www.instagram.com/offbeat_2526",
     about: "Offbeat, the official western dance club of IEM, Kolkata, is driven by creativity, confidence, and artistic excellence through dance.",

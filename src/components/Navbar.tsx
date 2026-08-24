@@ -25,11 +25,14 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.nav className="fixed top-0 left-0 right-0 z-50">
-        <div className="h-1 w-full bg-yellow-400 dark:bg-violet-600 transition-colors" />
-
-        <div className="w-full backdrop-blur-lg border-b-[3px] border-primary bg-background/95">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between h-[60px] sm:h-[68px]">
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-4 inset-x-4 sm:top-5 sm:inset-x-6 z-50"
+      >
+        <div className="max-w-[1440px] mx-auto backdrop-blur-lg border-[3px] border-primary rounded-2xl bg-background/95 shadow-[5px_5px_0px_#FACC15] dark:shadow-[5px_5px_0px_#8B5CF6] transition-colors">
+          <div className="px-4 sm:px-6 flex items-center justify-between h-[56px] sm:h-[64px]">
 
             {/* LOGO */}
             <Link to="/" className="flex items-center gap-4 group flex-1 min-w-0">
@@ -130,7 +133,7 @@ const Navbar = () => {
               {/* 🍔 HAMBURGER */}
               <button
                 onClick={() => setMobileOpen(true)}
-                className="lg:hidden w-10 h-10 border-2 border-primary flex items-center justify-center bg-background text-primary hover:bg-primary hover:text-primary-foreground transition-all shrink-0 brutalist-shadow-sm"
+                className="lg:hidden w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center bg-background text-primary hover:bg-primary hover:text-primary-foreground transition-all shrink-0"
               >
                 <Menu className="w-5 h-5" />
               </button>

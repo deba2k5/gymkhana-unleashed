@@ -52,17 +52,17 @@ const FaqSection = () => {
               Everything you need to know about joining, participating, and leading within the IEM Gymkhana ecosystem.
             </p>
             
-            <div className="p-8 border-[3px] border-primary bg-yellow-400 brutalist-shadow relative overflow-hidden group transition-colors">
+            <div className="p-8 border-[3px] border-primary rounded-[2rem] bg-yellow-400 brutalist-shadow relative overflow-hidden group transition-colors">
               <div className="relative z-10 flex flex-col gap-6">
-                <div className="w-12 h-12 border-[3px] border-primary bg-background flex items-center justify-center text-foreground transition-colors">
+                <div className="w-12 h-12 rounded-full border-[3px] border-primary bg-background flex items-center justify-center text-foreground transition-colors">
                   <MessageCircle className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-space font-black text-black uppercase tracking-tight mb-2">Still have questions?</h3>
                   <p className="text-sm font-bold text-black/70 mb-8">Can't find what you're looking for? Our team is active 24/7 on our Discord and Instagram channels.</p>
-                  <a 
-                    href="mailto:help@iemgymkhana.in" 
-                    className="inline-flex items-center gap-2 font-space font-black text-[12px] uppercase tracking-[0.15em] text-primary-foreground px-6 h-12 border-[3px] border-primary bg-primary transition-all hover:bg-background hover:text-foreground hover:shadow-[4px_4px_0px_0px_#000]"
+                  <a
+                    href="mailto:help@iemgymkhana.in"
+                    className="inline-flex items-center gap-2 rounded-full font-space font-black text-[12px] uppercase tracking-[0.15em] text-primary-foreground px-6 h-12 border-[3px] border-primary bg-primary transition-all hover:bg-background hover:text-foreground hover:shadow-[4px_4px_0px_0px_#000]"
                   >
                     Contact Support
                     <ArrowUpRight className="w-4 h-4" />
@@ -79,16 +79,16 @@ const FaqSection = () => {
               return (
                 <div 
                   key={index} 
-                  className={`border-[3px] border-primary bg-card transition-all duration-300 ${isOpen ? 'brutalist-shadow' : 'hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]'}`}
+                  className={`border-[3px] border-primary rounded-2xl bg-card transition-all duration-300 ${isOpen ? 'brutalist-shadow' : 'hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]'}`}
                 >
-                  <button 
+                  <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     className="w-full text-left p-6 md:p-8 flex items-center justify-between gap-6"
                   >
                     <span className="text-lg md:text-2xl font-space font-black text-foreground uppercase tracking-tight leading-tight transition-colors">
                       {faq.question}
                     </span>
-                    <div className={`shrink-0 w-10 h-10 border-[3px] border-primary flex items-center justify-center transition-all ${isOpen ? 'bg-yellow-400 text-black rotate-180' : 'bg-transparent text-foreground'}`}>
+                    <div className={`shrink-0 w-10 h-10 rounded-full border-[3px] border-primary flex items-center justify-center transition-all ${isOpen ? 'bg-yellow-400 text-black rotate-180' : 'bg-transparent text-foreground'}`}>
                       {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                     </div>
                   </button>

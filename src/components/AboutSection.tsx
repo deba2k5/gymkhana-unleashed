@@ -87,11 +87,11 @@ const AboutSection = () => {
           >
             {/* Shadow frame */}
             <div
-              className="absolute inset-0 bg-yellow-400/30 border-2 border-primary/15"
+              className="absolute inset-0 bg-yellow-400/30 border-2 border-primary/15 rounded-[2rem]"
               style={{ transform: "translate(10px,10px)", zIndex: 0 }}
             />
 
-            <div className="relative premium-card p-10 lg:p-16 bg-card z-10 transition-colors">
+            <div className="relative premium-card rounded-[2rem] overflow-hidden p-10 lg:p-16 bg-card z-10 transition-colors">
               {/* Side text */}
               <div className="absolute top-0 right-8 h-full flex items-center pointer-events-none select-none">
                 <span className="text-[9px] font-black text-foreground/10 tracking-[1.2em] vertical-text uppercase transition-colors">

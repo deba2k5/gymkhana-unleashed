@@ -61,6 +61,19 @@ export default {
           yellow: "hsl(var(--bauhaus-yellow))",
           black: "hsl(var(--bauhaus-black))",
         },
+        // Theme-aware accent: renders as cyan-blue in light mode, yellow in dark mode.
+        // Lets every existing bg-yellow-400 / text-yellow-400 / border-yellow-400 class
+        // (and their opacity variants) swap automatically per theme.
+        yellow: {
+          50: "hsl(var(--yellow-50) / <alpha-value>)",
+          100: "hsl(var(--yellow-100) / <alpha-value>)",
+          300: "hsl(var(--yellow-300) / <alpha-value>)",
+          400: "hsl(var(--yellow-400) / <alpha-value>)",
+          500: "hsl(var(--yellow-500) / <alpha-value>)",
+          600: "hsl(var(--yellow-600) / <alpha-value>)",
+          800: "hsl(var(--yellow-800) / <alpha-value>)",
+          900: "hsl(var(--yellow-900) / <alpha-value>)",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

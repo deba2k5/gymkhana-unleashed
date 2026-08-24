@@ -29,6 +29,16 @@
     --input: 240 6% 90%;
     --ring: 48 96% 53%;
     --radius: 0rem;
+
+    /* Light mode accent — light, soft blue replaces yellow */
+    --yellow-50: 195 100% 97%;
+    --yellow-100: 195 100% 93%;
+    --yellow-300: 195 92% 82%;
+    --yellow-400: 195 88% 70%;
+    --yellow-500: 195 80% 60%;
+    --yellow-600: 195 72% 50%;
+    --yellow-800: 195 65% 34%;
+    --yellow-900: 195 60% 26%;
   }
 
   /* ═══════════════════════════════════════════
@@ -72,6 +82,16 @@
     --border: 263 45% 22%;           /* #2D1B4E — deep muted violet border */
     --input: 265 30% 14%;
     --ring: 262 83% 68%;             /* matches primary */
+
+    /* Dark mode accent — original yellow, unchanged */
+    --yellow-50: 55 92% 95%;
+    --yellow-100: 55 97% 88%;
+    --yellow-300: 50 98% 64%;
+    --yellow-400: 48 96% 53%;
+    --yellow-500: 45 93% 47%;
+    --yellow-600: 41 96% 40%;
+    --yellow-800: 32 81% 29%;
+    --yellow-900: 28 73% 26%;
   }
 
   *,
@@ -122,7 +142,7 @@
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #fdfdfb; }
 ::-webkit-scrollbar-thumb { background: #000; }
-::-webkit-scrollbar-thumb:hover { background: #FACC15; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--yellow-400)); }
 
 /* Dark mode scrollbar — violet */
 .dark ::-webkit-scrollbar-track { background: #08040F; }
@@ -286,7 +306,7 @@
   }
   /* YELLOW outline */
   .text-outline-yellow {
-    -webkit-text-stroke: 3px #FACC15 !important;
+    -webkit-text-stroke: 3px hsl(var(--yellow-400)) !important;
     color: transparent !important;
   }
 

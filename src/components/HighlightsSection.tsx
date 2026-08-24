@@ -47,7 +47,7 @@ const HighlightsSection = () => {
             >
               #1 TECH FEST<br />
               <span className="text-outline-white"
-                style={{ WebkitTextStroke: "2px rgba(250,204,21,0.8)", color: "transparent" }}>
+                style={{ WebkitTextStroke: "2px hsl(var(--yellow-400) / 0.8)", color: "transparent" }}>
                 IN KOLKATA.
               </span>
             </h2>

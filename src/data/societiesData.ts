@@ -8,6 +8,7 @@ export interface Club {
   instagram?: string;
   drive?: string;
   formLink?: string;
+  logo?: string;
 }
 
 export const clubs: Club[] = [
@@ -20,6 +21,7 @@ export const clubs: Club[] = [
     people: ["Rajdeep Sengupta — 9831895110", "Arighna Bhattacharya — 7439487159", "Adrija Acharyya — 7908760641"],
     achievements: ["Umang 2024 – Winner", "Xavrang 2026 – Winner", "Amiphoria 2025 – Winner"],
     formLink: "https://forms.gle/M3tgGojzLum7uUB99",
+    logo: "/music-club.png",
   },
   {
     id: "itran-a",
@@ -30,6 +32,7 @@ export const clubs: Club[] = [
     people: ["Prakriti Mukhopadhyay — 9907444649", "Snikta Banerjee — 9674173204"],
     achievements: ["Calcutta Youth Meet 2023 – Winner", "Ecstasia 2025 – Winner (Solo)"],
     formLink: "https://forms.gle/iFDbHuX83ub3rMiF6",
+    logo: "/itrana.png",
   },
   {
     id: "offbeat",
@@ -49,10 +52,11 @@ export const clubs: Club[] = [
     about: "The official drama club of IEM, making stage our home and keeping theatre alive among youngsters.",
     people: ["Shaptorshi Chakraborty — 9123304829", "Ritankar Kundu — 8420281840"],
     achievements: ["Winner at Anubhuti 2019", "1st Runners Up at Sanskriti 2023"],
+    logo: "/chorus-drama.png",
   },
   {
     id: "oratoria",
-    name: "Oratoria-Debate Club",
+    name: "Debating Society",
     category: "LITERARY",
     instagram: "https://www.instagram.com/iemdebatingsociety?igsh=aGJ0MGp2MnBpM3cz",
     about: "Oratoria IEM Debating Society is dedicated to promoting linguistic diversity and meaningful discourse.",
@@ -68,6 +72,7 @@ export const clubs: Club[] = [
     people: ["Paramartha Ghosh", "Ankita Mandal", "Rupsa Ghosh", "Swastika Saha"],
     achievements: ["Supported IEMPACT 2026, IEM–UEM Kolkata Marathon 2026, FED CUP 2026, IEMMUN '25, and Comicverse 2025."],
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdoQvLcmPqoJnOpOMj8ZxMpnCpp4R65eawvmv0aAm0S6GT40w/viewform?usp=publish-editor",
+    logo: "/arc-graphics.png",
   },
   {
     id: "arc",
@@ -95,6 +100,7 @@ export const clubs: Club[] = [
     people: ["Samarpita — 9831627448", "Mainak — 8777041530"],
     achievements: [],
     formLink: "https://forms.gle/WHdhxZwa1C3qQNKb9",
+    logo: "/litsoc.png",
   },
   {
     id: "humour",
@@ -103,6 +109,7 @@ export const clubs: Club[] = [
     about: "A community for improv, stand-up, and lighthearted entertainment.",
     people: ["Md Tanzil Imam — 9330657193"],
     achievements: [],
+    logo: "/humour-club.png",
   },
   {
     id: "pet",
@@ -120,6 +127,7 @@ export const clubs: Club[] = [
     people: ["Zinnia Ghosh — 7044835500", "Himel Jana — 7063076214"],
     achievements: [],
     formLink: "https://forms.gle/L34jhnAL1dMR2Eho7",
+    logo: "/pet-society.png",
   },
   {
     id: "art-craft",
@@ -129,6 +137,7 @@ export const clubs: Club[] = [
     people: ["Sneha Das — 8777684510", "Sebanjana Jana — 6290601300", "Roshni Kundu — 8334813230"],
     achievements: [],
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSctoj6CxX0Bp4o8ZmiMQyfTP57e651vjOUUsFAPO9_Vln-Piw/viewform?usp=publish-editor",
+    logo: "/art-craft.png",
   },
   {
     id: "ecell",
@@ -138,6 +147,7 @@ export const clubs: Club[] = [
     people: ["Sagnik Chakraborty — 9062064111", "Ahana Mukherjee — 8240435586", "Nakshatra Ghosh — 9883757307"],
     achievements: [],
     formLink: "https://forms.gle/vVXED9iZWmKEgnJ7A",
+    logo: "/ecell.png",
   },
   {
     id: "quizzard",
@@ -147,6 +157,7 @@ export const clubs: Club[] = [
     people: [],
     achievements: [],
     formLink: "https://forms.gle/q57t2cFnc5XWQBVq9",
+    logo: "/quizzard.png",
   },
   {
     id: "film",
@@ -156,5 +167,23 @@ export const clubs: Club[] = [
     about: "Dedicated to fostering a deeper appreciation of cinema as an art form.",
     people: ["Bratyabandhu Bhattacharyya — 8240005041"],
     achievements: [],
+  },
+  {
+    id: "tech-club",
+    name: "Tech Club",
+    category: "TECHNICAL",
+    about: "IEM's technology club, bringing together students to build, hack, and explore emerging tech through projects and workshops.",
+    people: [],
+    achievements: [],
+    logo: "/tech-club.png",
+  },
+  {
+    id: "gaming-club",
+    name: "Re:Spawn Gaming Club",
+    category: "TECHNICAL",
+    about: "IEM's gaming community, uniting players for casual sessions, tournaments, and esports competitions.",
+    people: [],
+    achievements: [],
+    logo: "/gaming-club.png",
   },
 ];

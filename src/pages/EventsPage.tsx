@@ -60,7 +60,7 @@ export default function EventsPage() {
                 style={{ fontSize: "clamp(4rem,12vw,11rem)", lineHeight: 0.82 }}
               >
                 ALL<br />
-                <span style={{ WebkitTextStroke: "2px #facc15", color: "transparent" }}>EVENTS.</span>
+                <span style={{ WebkitTextStroke: "2px hsl(var(--yellow-400))", color: "transparent" }}>EVENTS.</span>
               </h1>
 
               <p className="text-lg font-bold uppercase tracking-tight text-foreground/50 max-w-2xl leading-relaxed transition-colors">
@@ -87,7 +87,7 @@ export default function EventsPage() {
                       ? "bg-primary text-primary-foreground"
                       : "bg-background text-foreground hover:bg-yellow-400 hover:text-black"
                   }`}
-                  style={{ boxShadow: activeCategory === cat ? "3px 3px 0 0 #facc15" : "3px 3px 0 0 var(--primary)" }}
+                  style={{ boxShadow: activeCategory === cat ? "3px 3px 0 0 hsl(var(--yellow-400))" : "3px 3px 0 0 hsl(var(--primary))" }}
                 >
                   {cat}
                 </button>

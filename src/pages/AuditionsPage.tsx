@@ -11,16 +11,10 @@ import { clubs } from "@/data/societiesData";
 // TODO: replace with the live auditions Google Form link when available
 const AUDITION_FORM_LINK = "";
 
-const logoMap: Record<string, string> = {
-  music: "/Music.jpg",
-  "itran-a": "/ITRANAA.jpg",
+// Fallback logos for clubs without a dedicated `logo` field in societiesData
+const fallbackLogoMap: Record<string, string> = {
   offbeat: "/Offbeat_Logo.jpeg",
-  chorus: "/CHORUS.jpg",
-  oratoria: "/Oratoria.png",
-  "arc-graphics": "/ARC.png",
   photography: "/Photography.png",
-  "pet-society": "/pet.jpeg",
-  iemlit: "/lit.jpg",
   film: "/film.jpg",
 };
 
@@ -63,12 +57,12 @@ const AuditionsPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center gap-3 mb-8 bg-yellow-400 px-5 py-2 rounded-full shadow-[0_4px_20px_rgba(250,204,21,0.4)] transition-colors">
+              <div className="inline-flex items-center gap-3 mb-8 bg-yellow-400 px-5 py-2 rounded-full shadow-[0_4px_20px_hsl(var(--yellow-400)/0.4)] transition-colors">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
                 </span>
-                <span className="text-[11px] font-black tracking-[0.4em] uppercase text-red-600">
+                <span className="text-[11px] font-black tracking-[0.4em] uppercase text-black">
                   Auditions Live
                 </span>
               </div>
@@ -78,7 +72,7 @@ const AuditionsPage = () => {
                 style={{ fontSize: "clamp(3.5rem,11vw,10rem)", lineHeight: 0.85 }}
               >
                 JOIN THE <br />
-                <span style={{ WebkitTextStroke: "2px #facc15", color: "transparent" }}>
+                <span style={{ WebkitTextStroke: "2px hsl(var(--yellow-400))", color: "transparent" }}>
                   GYMKHANA.
                 </span>
               </h1>
@@ -179,9 +173,9 @@ const AuditionsPage = () => {
                   className="p-8 border-[3px] border-primary bg-background flex flex-col shadow-[5px_5px_0px_var(--primary)] transition-colors"
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 shrink-0 rounded-full overflow-hidden border-[3px] border-primary bg-black shadow-[3px_3px_0px_#FACC15]">
+                    <div className="w-16 h-16 shrink-0 rounded-full overflow-hidden border-[3px] border-primary bg-black shadow-[3px_3px_0px_hsl(var(--yellow-400))]">
                       <img
-                        src={logoMap[club.id] || "/coming.png"}
+                        src={club.logo || fallbackLogoMap[club.id] || "/coming.png"}
                         alt={`${club.name} logo`}
                         className="w-full h-full object-cover"
                       />
@@ -202,7 +196,7 @@ const AuditionsPage = () => {
                         href={club.formLink}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400 text-red-600 rounded-full text-[11px] font-black uppercase tracking-wide hover:-translate-y-[1px] transition-all"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400 text-black rounded-full text-[11px] font-black uppercase tracking-wide hover:-translate-y-[1px] transition-all"
                       >
                         <ArrowUpRight className="w-3 h-3" />
                         Apply Now

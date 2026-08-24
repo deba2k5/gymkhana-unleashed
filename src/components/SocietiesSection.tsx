@@ -132,9 +132,9 @@ export default function SocietiesSection() {
               px-8 py-2 font-black text-sm uppercase tracking-widest
               border-2 border-primary
               bg-white text-black
-              shadow-[8px_8px_0px_#FACC15]
+              shadow-[8px_8px_0px_hsl(var(--yellow-400))]
               hover:bg-violet-600 hover:text-white
-              hover:shadow-[4px_4px_0px_#FACC15]
+              hover:shadow-[4px_4px_0px_hsl(var(--yellow-400))]
               hover:translate-y-1
               transition-all
             "

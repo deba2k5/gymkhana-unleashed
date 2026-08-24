@@ -31,7 +31,7 @@ const HeroSection = () => {
         {/* dark vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90" />
         {/* yellow glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_60%,_rgba(250,204,21,0.12)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_60%,_hsl(var(--yellow-400)/0.12)_0%,_transparent_70%)]" />
         {/* subtle grid */}
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_0)] bg-[length:28px_28px]" />
       </div>
@@ -41,24 +41,25 @@ const HeroSection = () => {
       </div>
 
       {/* AUDITION LIVE CTA — bottom center */}
-      <motion.div
-        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
-      >
-        <Link
-          to="/auditions"
-          className="group inline-flex items-center gap-3 px-7 py-3.5 bg-yellow-400 text-red-600 text-sm font-black uppercase tracking-widest rounded-full shadow-[0_4px_20px_rgba(250,204,21,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_28px_rgba(250,204,21,0.55)] active:translate-y-0 transition-all"
+      <div className="absolute inset-x-0 bottom-10 z-10 flex justify-center px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
-          </span>
-          Audition Live
-          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </Link>
-      </motion.div>
+          <Link
+            to="/auditions"
+            className="group inline-flex items-center gap-3 px-7 py-3.5 bg-yellow-400 text-black text-sm font-black uppercase tracking-widest rounded-full shadow-[0_4px_20px_hsl(var(--yellow-400)/0.4)] hover:-translate-y-1 hover:shadow-[0_6px_28px_hsl(var(--yellow-400)/0.55)] active:translate-y-0 transition-all"
+          >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+            </span>
+            Audition Live
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
+        </motion.div>
+      </div>
 
       {/* ── BOTTOM PROGRESS BAR ── */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10">

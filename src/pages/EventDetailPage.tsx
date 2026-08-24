@@ -205,7 +205,7 @@ export default function EventDetailPage() {
                   )}
 
                   {/* Quick info */}
-                  <div className="bg-background p-8 border-[3px] border-primary transition-colors" style={{ boxShadow: "6px 6px 0 0 #facc15" }}>
+                  <div className="bg-background p-8 border-[3px] border-primary transition-colors" style={{ boxShadow: "6px 6px 0 0 hsl(var(--yellow-400))" }}>
                     <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-foreground/40 mb-6 transition-colors">EVENT INFO</h3>
                     <div className="space-y-5">
                       <div className="flex justify-between items-center pb-4 border-b border-primary/10 transition-colors">

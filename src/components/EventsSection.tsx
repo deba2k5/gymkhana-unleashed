@@ -69,7 +69,7 @@ const EventsSection = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1 }}
-            className="lg:col-span-12 group relative overflow-hidden brutalist-shadow-lg border-[3px] border-primary"
+            className="lg:col-span-12 group relative overflow-hidden brutalist-shadow-lg border-[3px] border-primary rounded-[2rem]"
           >
             {/* Background image carousel */}
             <div className="absolute inset-0 bg-black">
@@ -88,7 +88,7 @@ const EventsSection = () => {
                     FEATURED EVENT
                   </span>
                 </div>
-                <div className="w-14 h-14 border-2 border-white/25 flex items-center justify-center text-white group-hover:bg-yellow-400 group-hover:border-yellow-400 group-hover:text-black transition-all">
+                <div className="w-14 h-14 rounded-full border-2 border-white/25 flex items-center justify-center text-white group-hover:bg-yellow-400 group-hover:border-yellow-400 group-hover:text-black transition-all">
                   <ArrowUpRight className="w-7 h-7" />
                 </div>
               </div>
@@ -119,7 +119,7 @@ const EventsSection = () => {
                   </div>
 
                   {/* date widget */}
-                  <div className="shrink-0 bg-yellow-400 p-6 text-center brutalist-shadow border-2 border-primary min-w-[100px] transition-colors">
+                  <div className="shrink-0 bg-yellow-400 p-6 text-center brutalist-shadow border-2 border-primary rounded-2xl min-w-[100px] transition-colors">
                     <span className="block text-[9px] font-black text-black/60 tracking-widest mb-1 uppercase">DATE</span>
                     <span className="block text-3xl font-space font-black text-black">{featuredEvent.displayDate}</span>
                   </div>
@@ -139,7 +139,7 @@ const EventsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.18 + idx * 0.1 }}
-              className="lg:col-span-6 group relative overflow-hidden border-[3px] border-primary bg-card transition-colors brutalist-shadow"
+              className="lg:col-span-6 group relative overflow-hidden border-[3px] border-primary bg-card transition-colors brutalist-shadow rounded-[1.75rem]"
             >
               {/* Thumbnail */}
               <div className="absolute inset-0 pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-500 bg-black text-transparent mix-blend-screen">
@@ -148,12 +148,12 @@ const EventsSection = () => {
               <Link to={`/events/${ev.slug}`} className="relative z-10 p-10 flex flex-col min-h-[300px] cursor-pointer">
                 <div className="flex justify-between items-start mb-auto">
                   {ev.displayDate && (
-                    <div className="w-14 h-14 bg-primary flex flex-col items-center justify-center text-primary-foreground border-2 border-primary transition-colors" style={{ boxShadow: "3px 3px 0 0 #facc15" }}>
+                    <div className="w-14 h-14 rounded-xl bg-primary flex flex-col items-center justify-center text-primary-foreground border-2 border-primary transition-colors" style={{ boxShadow: "3px 3px 0 0 hsl(var(--yellow-400))" }}>
                       <span className="text-[9px] font-black uppercase text-white/60 leading-none">{ev.displayDate.split(" ")[0]}</span>
                       <span className="text-xl font-space font-black leading-tight">{ev.displayDate.split(" ")[1]}</span>
                     </div>
                   )}
-                  <span className="text-[9px] font-black text-foreground/40 tracking-[0.3em] uppercase border border-primary/20 px-3 py-1 transition-colors">
+                  <span className="text-[9px] font-black text-foreground/40 tracking-[0.3em] uppercase border border-primary/20 rounded-full px-3 py-1 transition-colors">
                     {ev.type}
                   </span>
                 </div>
@@ -170,7 +170,9 @@ const EventsSection = () => {
                   </p>
                   <div className="pt-6 border-t-2 border-primary/10 flex items-center justify-between group-hover:border-primary transition-colors">
                     <span className="text-[10px] font-black tracking-widest text-foreground/50 uppercase transition-colors">LEARN MORE</span>
-                    <ArrowUpRight className="w-5 h-5 text-foreground transition-colors" />
+                    <div className="w-9 h-9 rounded-full border-2 border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                      <ArrowUpRight className="w-4 h-4 text-foreground group-hover:text-primary-foreground transition-colors" />
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -184,7 +186,7 @@ const EventsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.35 + idx * 0.1 }}
-              className="lg:col-span-6 group relative overflow-hidden border-[3px] border-primary bg-card transition-colors brutalist-shadow"
+              className="lg:col-span-6 group relative overflow-hidden border-[3px] border-primary bg-card transition-colors brutalist-shadow rounded-[1.75rem]"
             >
               <div className="absolute inset-0 pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-500 bg-black text-transparent mix-blend-screen">
                 <CardCarousel images={ev.images} />
@@ -206,7 +208,7 @@ const EventsSection = () => {
                   {ev.displayDate && (
                     <span className="text-xl font-space font-black text-foreground italic transition-colors">{ev.displayDate}</span>
                   )}
-                  <div className="w-11 h-11 border-2 border-primary flex items-center justify-center text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                  <div className="w-11 h-11 rounded-full border-2 border-primary flex items-center justify-center text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                     <MoveRight className="w-5 h-5" />
                   </div>
                 </div>

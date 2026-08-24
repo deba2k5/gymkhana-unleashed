@@ -17,16 +17,21 @@ const categoryMeta: { id: Category; label: string; description: string }[] = [
 
 /* LOGOS */
 const logoMap: Record<string, string> = {
-  music: "/Music.jpg",
-  itrana: "/ITRANAA.jpg",
+  music: "/music-club.png",
+  itrana: "/itrana.png",
   offbeat: "/Offbeat_Logo.jpeg",
-  chorus: "/CHORUS.jpg",
+  chorus: "/chorus-drama.png",
   debate:"/Oratoria.png",
   film:"/film.jpg",
-  arc:"ARC.png",
-  lit:"/lit.jpg",
+  arc:"/arc-graphics.png",
+  lit:"/litsoc.png",
   photography:"/Photography.png",
-  pet:"/pet.jpeg",
+  pet:"/pet-society.png",
+  "quiz-club":"/quizzard.png",
+  "art-craft":"/art-craft.png",
+  ecell:"/ecell.png",
+  "tech-club":"/tech-club.png",
+  "gaming-club":"/gaming-club.png",
 };
 
 /* CLUBS */
@@ -417,6 +422,22 @@ achievements: [
   ],
   achievements: [],
 },
+{
+  id: "tech-club",
+  name: "Tech Club",
+  category: "TECHNICAL" as Category,
+  about: "IEM's technology club, bringing together students to build, hack, and explore emerging tech through projects and workshops.",
+  people: [],
+  achievements: [],
+},
+{
+  id: "gaming-club",
+  name: "Re:Spawn Gaming Club",
+  category: "TECHNICAL" as Category,
+  about: "IEM's gaming community, uniting players for casual sessions, tournaments, and esports competitions.",
+  people: [],
+  achievements: [],
+},
 
 /* ══════════════════════════════════════════
    ADDITIONAL CULTURAL CLUBS — 2025-26
@@ -604,8 +625,8 @@ const SocietiesPage = () => {
                   whileHover={{ scale: 1.03, rotate: -0.5 }}
                   className="
                     group text-left p-10 border-[3px] border-primary bg-background
-                    shadow-[8px_8px_0px_#FACC15]
-                    hover:shadow-[14px_14px_0px_#FACC15]
+                    shadow-[8px_8px_0px_hsl(var(--yellow-400))]
+                    hover:shadow-[14px_14px_0px_hsl(var(--yellow-400))]
                     hover:-translate-y-2
                     transition-all duration-300
                   "
@@ -676,8 +697,8 @@ const SocietiesPage = () => {
               <div className="flex justify-center">
                 <div className="
                   w-44 h-44 border-[3px] border-primary bg-background flex items-center justify-center
-                  shadow-[8px_8px_0px_FACC15]
-                  group-hover:shadow-[14px_14px_0px_#FACC15]
+                  shadow-[8px_8px_0px_hsl(var(--yellow-400))]
+                  group-hover:shadow-[14px_14px_0px_hsl(var(--yellow-400))]
                   group-hover:-translate-y-2
                   transition-all duration-300
                 ">
@@ -693,8 +714,8 @@ const SocietiesPage = () => {
 
                 <h2 className="
                   text-4xl font-black inline-block px-3 py-1 text-foreground
-                  shadow-[4px_4px_0px_#FACC15]
-                  group-hover:shadow-[8px_8px_0px_#FACC15]
+                  shadow-[4px_4px_0px_hsl(var(--yellow-400))]
+                  group-hover:shadow-[8px_8px_0px_hsl(var(--yellow-400))]
                   transition-all
                 ">
                   {club.name}
@@ -721,8 +742,8 @@ const SocietiesPage = () => {
                             href={`tel:${phone}`}
                             className="
                               px-3 py-1 border border-primary text-sm text-foreground
-                              shadow-[2px_2px_0px_#FACC15]
-                              hover:shadow-[4px_4px_0px_#FACC15]
+                              shadow-[2px_2px_0px_hsl(var(--yellow-400))]
+                              hover:shadow-[4px_4px_0px_hsl(var(--yellow-400))]
                               transition-all
                             "
                           >
@@ -769,8 +790,8 @@ const SocietiesPage = () => {
   className="
     inline-flex items-center justify-center w-11 h-11
     border-[2px] border-primary text-foreground
-    shadow-[3px_3px_0px_#FACC15]
-    hover:shadow-[6px_6px_0px_#FACC15]
+    shadow-[3px_3px_0px_hsl(var(--yellow-400))]
+    hover:shadow-[6px_6px_0px_hsl(var(--yellow-400))]
     hover:bg-white hover:text-black hover:border-white
     transition-all duration-200
   "
@@ -788,8 +809,8 @@ const SocietiesPage = () => {
       className="
         inline-flex items-center justify-center h-11 px-4
         border-[2px] border-primary text-sm font-bold text-foreground
-        shadow-[3px_3px_0px_#FACC15]
-        hover:shadow-[6px_6px_0px_#FACC15]
+        shadow-[3px_3px_0px_hsl(var(--yellow-400))]
+        hover:shadow-[6px_6px_0px_hsl(var(--yellow-400))]
         hover:bg-primary hover:text-primary-foreground
         transition-all
       "

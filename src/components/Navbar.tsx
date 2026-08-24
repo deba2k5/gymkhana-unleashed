@@ -31,7 +31,7 @@ const Navbar = () => {
         transition={{ duration: 0.5 }}
         className="fixed top-4 inset-x-4 sm:top-5 sm:inset-x-6 z-50"
       >
-        <div className="max-w-[1440px] mx-auto backdrop-blur-lg border-[3px] border-primary rounded-2xl bg-background/95 shadow-[5px_5px_0px_#FACC15] dark:shadow-[5px_5px_0px_#8B5CF6] transition-colors">
+        <div className="max-w-[1440px] mx-auto backdrop-blur-lg border-[3px] border-primary rounded-2xl bg-background/95 shadow-[5px_5px_0px_hsl(var(--yellow-400))] dark:shadow-[5px_5px_0px_#8B5CF6] transition-colors">
           <div className="px-4 sm:px-6 flex items-center justify-between h-[56px] sm:h-[64px]">
 
             {/* LOGO */}
@@ -42,7 +42,7 @@ const Navbar = () => {
                 className="
                   w-11 h-11 bg-white flex items-center justify-center p-[4px]
                   border border-primary/10
-                  shadow-[3px_3px_0px_#FACC15]
+                  shadow-[3px_3px_0px_hsl(var(--yellow-400))]
                   dark:shadow-[3px_3px_0px_#8B5CF6]
                 "
               >
@@ -56,9 +56,9 @@ const Navbar = () => {
               {/* TEXT */}
               <div className="leading-none flex-1 min-w-0">
                 <div className="font-black uppercase tracking-wider text-[12px] sm:text-[14px] flex items-center gap-1 whitespace-nowrap">
-                  <span className="text-primary">IEM</span>
-                  <span className="text-gray-400">STUDENTS’</span>
-                  <span className="text-yellow-400 drop-shadow-[1px_1px_0px_#000]">
+                  <span className="text-black dark:text-white">IEM</span>
+                  <span className="text-black dark:text-white">STUDENTS’</span>
+                  <span className="text-black dark:text-yellow-400 drop-shadow-[1px_1px_0px_#000]">
                     GYMKHANA
                   </span>
                 </div>
@@ -96,7 +96,7 @@ const Navbar = () => {
                           className="
                             absolute inset-0 -z-10
                             dark:bg-white bg-primary
-                            shadow-[3px_3px_0px_#FACC15]
+                            shadow-[3px_3px_0px_hsl(var(--yellow-400))]
                             dark:shadow-[3px_3px_0px_#8B5CF6]
                           "
                         />
@@ -117,7 +117,7 @@ const Navbar = () => {
             <div className="flex items-center gap-3">
               <Link
                 to="/auditions"
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-red-600 text-[11px] font-black uppercase tracking-widest rounded-full shadow-[0_2px_10px_rgba(250,204,21,0.4)] hover:-translate-y-[1px] hover:shadow-[0_4px_16px_rgba(250,204,21,0.55)] active:translate-y-0 transition-all shrink-0"
+                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-black text-[11px] font-black uppercase tracking-widest rounded-full shadow-[0_2px_10px_hsl(var(--yellow-400)/0.4)] hover:-translate-y-[1px] hover:shadow-[0_4px_16px_hsl(var(--yellow-400)/0.55)] active:translate-y-0 transition-all shrink-0"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
@@ -175,7 +175,7 @@ const Navbar = () => {
                 <Link
                   to="/auditions"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-400 text-red-600 text-sm font-black uppercase tracking-widest rounded-full w-fit"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-400 text-black text-sm font-black uppercase tracking-widest rounded-full w-fit"
                 >
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />

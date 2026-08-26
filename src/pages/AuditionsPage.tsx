@@ -189,7 +189,7 @@ const AuditionsPage = () => {
                     </div>
                   </div>
 
-                  <p className="text-[11px] font-bold text-foreground/55 uppercase tracking-wide leading-relaxed line-clamp-2 mb-5 transition-colors">
+                  <p className="text-[12px] font-bold text-foreground/70 normal-case tracking-normal leading-relaxed mb-5 transition-colors">
                     {club.about}
                   </p>
 

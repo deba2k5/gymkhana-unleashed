@@ -53,6 +53,7 @@ export const clubs: Club[] = [
     people: ["Shaptorshi Chakraborty — 9123304829", "Ritankar Kundu — 8420281840"],
     achievements: ["Winner at Anubhuti 2019", "1st Runners Up at Sanskriti 2023"],
     logo: "/chorus-drama.png",
+    formLink: "https://forms.gle/7xHoPaaCqiA77LFG6",
   },
   {
     id: "oratoria",

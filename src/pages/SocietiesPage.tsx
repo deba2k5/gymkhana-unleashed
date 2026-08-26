@@ -17,16 +17,15 @@ const categoryMeta: { id: Category; label: string; description: string }[] = [
 
 /* LOGOS */
 const logoMap: Record<string, string> = {
-  music: "/music-club.png",
-  itrana: "/itrana.png",
-  offbeat: "/Offbeat_Logo.jpeg",
-  chorus: "/chorus-drama.png",
+  music: "/Music.jpg",
+  itrana: "/ITRANAA.jpg",
+  chorus: "/CHORUS.jpg",
   debate:"/Oratoria.png",
   film:"/film.jpg",
-  arc:"/arc-graphics.png",
-  lit:"/litsoc.png",
+  arc:"/ARC.png",
+  lit:"/lit.jpg",
   photography:"/Photography.png",
-  pet:"/pet-society.png",
+  pet:"/pet.jpeg",
   "quiz-club":"/quizzard.png",
   "art-craft":"/art-craft.png",
   ecell:"/ecell.png",

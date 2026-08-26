@@ -13,7 +13,6 @@ const AUDITION_FORM_LINK = "";
 
 // Fallback logos for clubs without a dedicated `logo` field in societiesData
 const fallbackLogoMap: Record<string, string> = {
-  offbeat: "/Offbeat_Logo.jpeg",
   photography: "/Photography.png",
   film: "/film.jpg",
 };
@@ -189,6 +188,10 @@ const AuditionsPage = () => {
                       </h3>
                     </div>
                   </div>
+
+                  <p className="text-[11px] font-bold text-foreground/55 uppercase tracking-wide leading-relaxed line-clamp-2 mb-5 transition-colors">
+                    {club.about}
+                  </p>
 
                   <div className="mt-auto pt-5 border-t-2 border-primary/10">
                     {club.formLink && (

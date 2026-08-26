@@ -29,7 +29,7 @@ const OathPage = () => {
             whileHover={{ scale: 1.05 }}
             className="mb-10 inline-flex"
           >
-            <div className="bg-yellow-400 px-5 py-2 border-[3px] border-primary shadow-[4px_4px_0px_var(--primary)] transition-colors">
+            <div className="bg-yellow-400 px-5 py-2 border-[3px] border-primary shadow-[4px_4px_0px_hsl(var(--primary)/var(--shadow-opacity))] transition-colors">
               <span className="text-[10px] font-black tracking-[0.4em] uppercase">
                 STUDENT PLEDGE
               </span>

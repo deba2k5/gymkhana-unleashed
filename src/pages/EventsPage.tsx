@@ -87,7 +87,7 @@ export default function EventsPage() {
                       ? "bg-primary text-primary-foreground"
                       : "bg-background text-foreground hover:bg-yellow-400 hover:text-black"
                   }`}
-                  style={{ boxShadow: activeCategory === cat ? "3px 3px 0 0 hsl(var(--yellow-400))" : "3px 3px 0 0 hsl(var(--primary))" }}
+                  style={{ boxShadow: activeCategory === cat ? "3px 3px 0 0 hsl(var(--yellow-400))" : "3px 3px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}
                 >
                   {cat}
                 </button>
@@ -118,7 +118,7 @@ export default function EventsPage() {
                 <Link
                   to={`/events/${featured.slug}`}
                   className="group relative flex flex-col lg:flex-row overflow-hidden border-[3px] border-primary transition-colors"
-                  style={{ boxShadow: "8px 8px 0 0 var(--primary)", minHeight: "520px" }}
+                  style={{ boxShadow: "8px 8px 0 0 hsl(var(--primary)/var(--shadow-opacity))", minHeight: "520px" }}
                 >
                   {/* Image Carousel */}
                   <div className="relative w-full lg:w-[55%] min-h-[300px] lg:min-h-full overflow-hidden bg-black">
@@ -209,7 +209,7 @@ function EventCard({ event: ev, idx, inView }: { event: Event; idx: number; inVi
       <Link
         to={`/events/${ev.slug}`}
         className="group relative flex flex-col overflow-hidden border-[3px] border-primary bg-background h-full transition-colors"
-        style={{ boxShadow: "5px 5px 0 0 var(--primary)" }}
+        style={{ boxShadow: "5px 5px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}
       >
         {/* Thumbnail */}
         <div className="relative h-52 overflow-hidden bg-black">
@@ -227,7 +227,7 @@ function EventCard({ event: ev, idx, inView }: { event: Event; idx: number; inVi
 
           {/* Date badge */}
           {ev.displayDate && (
-            <div className="absolute bottom-4 right-4 bg-yellow-400 px-3 py-1.5 text-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
+            <div className="absolute bottom-4 right-4 bg-yellow-400 px-3 py-1.5 text-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}>
               <span className="block text-[9px] font-black text-black/60 uppercase tracking-widest leading-none">{ev.displayDate.split(" ")[0]}</span>
               <span className="block text-lg font-space font-black text-black leading-tight">{ev.displayDate.split(" ")[1]}</span>
             </div>

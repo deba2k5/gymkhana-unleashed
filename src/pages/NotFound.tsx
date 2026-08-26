@@ -30,7 +30,7 @@ const NotFound = () => {
 
           <h1 className="font-space font-black uppercase tracking-tighter mb-6 leading-none" style={{ fontSize: "clamp(6rem, 15vw, 12rem)" }}>
             LOST<br />
-            <span className="text-outline-primary" style={{ WebkitTextStroke: "2px var(--primary)", color: "transparent" }}>SOUL.</span>
+            <span className="text-outline-primary" style={{ WebkitTextStroke: "2px hsl(var(--primary))", color: "transparent" }}>SOUL.</span>
           </h1>
 
           <p className="text-xl font-bold uppercase tracking-tight text-foreground/60 mb-12 max-w-md mx-auto leading-relaxed transition-colors">

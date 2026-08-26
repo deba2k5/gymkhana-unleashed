@@ -91,7 +91,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
             <button
               onClick={() => go(-1)}
               className="group relative w-full h-full overflow-hidden border-[3px] border-primary/20 hover:border-primary transition-all"
-              style={{ boxShadow: "3px 3px 0 0 var(--primary)" }}
+              style={{ boxShadow: "3px 3px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}
             >
               <img decoding="async" loading="lazy"
                 src={`${basePath}/${images[prevIdx]}`}
@@ -107,7 +107,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
           <div className="col-span-8">
             <div
               className="relative overflow-hidden border-[3px] border-primary aspect-[16/10] bg-black"
-              style={{ boxShadow: "6px 6px 0 0 var(--primary)" }}
+              style={{ boxShadow: "6px 6px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}
             >
               <AnimatePresence initial={false} custom={direction} mode="popLayout">
                 <motion.div
@@ -155,7 +155,7 @@ export default function PhotoCarousel({ images, eventName, basePath = "/events" 
             <button
               onClick={() => go(1)}
               className="group relative w-full h-full overflow-hidden border-[3px] border-primary/20 hover:border-primary transition-all"
-              style={{ boxShadow: "3px 3px 0 0 var(--primary)" }}
+              style={{ boxShadow: "3px 3px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}
             >
               <img decoding="async" loading="lazy"
                 src={`${basePath}/${images[nextIdx]}`}

@@ -97,7 +97,7 @@ const clubs = [
 },
 {
   id: "chorus",
-  name: "Chorus",
+  name: "Drama Club",
   category: "CULTURAL" as Category,
   instagram:
     "https://www.instagram.com/chorusdrama?igsh=MW4wYWh1YmQycmM4MQ==",

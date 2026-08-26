@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { clubs } from "@/data/societiesData";
@@ -17,9 +17,16 @@ const fallbackLogoMap: Record<string, string> = {
   film: "/film.jpg",
 };
 
+const categoryStyles: Record<string, string> = {
+  CULTURAL: "bg-pink-500 text-white",
+  TECHNICAL: "bg-blue-500 text-white",
+  LITERARY: "bg-purple-500 text-white",
+  MANAGEMENT: "bg-orange-400 text-black",
+};
+
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.07 } },
 };
 
 const item = {
@@ -28,9 +35,24 @@ const item = {
 };
 
 const AuditionsPage = () => {
+  const [activeCategory, setActiveCategory] = useState<string>("ALL");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const openClubs = useMemo(() => clubs.filter((club) => club.formLink), []);
+  const categories = useMemo(
+    () => ["ALL", ...Array.from(new Set(openClubs.map((c) => c.category)))],
+    [openClubs]
+  );
+  const visibleClubs = useMemo(
+    () =>
+      activeCategory === "ALL"
+        ? openClubs
+        : openClubs.filter((c) => c.category === activeCategory),
+    [openClubs, activeCategory]
+  );
 
   return (
     <div className="min-h-screen bg-transparent text-foreground flex flex-col transition-colors">
@@ -40,7 +62,8 @@ const AuditionsPage = () => {
         {/* ─── HERO ─── */}
         <section className="relative pt-40 pb-20 lg:pt-52 lg:pb-28 bg-transparent border-b-4 border-primary overflow-hidden transition-colors">
           <div className="absolute inset-0 bg-[radial-gradient(var(--foreground)_1px,transparent_0)] bg-[length:24px_24px] opacity-[0.05]" />
-          <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-yellow-400/10 blur-[120px]" />
+          <div className="absolute top-0 left-0 w-[55%] h-[55%] bg-yellow-400/10 blur-[130px] rounded-full" />
+          <div className="absolute bottom-0 right-0 w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full" />
 
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 z-10">
             <Link
@@ -87,13 +110,14 @@ const AuditionsPage = () => {
                   href={AUDITION_FORM_LINK}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-yellow-400 text-black text-sm font-black uppercase tracking-widest border-[3px] border-primary shadow-[6px_6px_0px_var(--primary)] hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--primary)] active:translate-y-0 active:shadow-[3px_3px_0px_var(--primary)] transition-all"
+                  className="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-yellow-400 text-black text-sm font-black uppercase tracking-widest rounded-2xl shadow-[6px_6px_0px_hsl(var(--primary)/var(--shadow-opacity))] hover:-translate-y-1 hover:shadow-[8px_8px_0px_hsl(var(--primary)/var(--shadow-opacity))] active:translate-y-0 active:shadow-[3px_3px_0px_hsl(var(--primary)/var(--shadow-opacity))] transition-all"
                 >
                   Apply Now
                   <ArrowUpRight className="w-5 h-5" />
                 </a>
               ) : (
-                <div className="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-background border-[3px] border-primary text-foreground/60 text-sm font-black uppercase tracking-widest">
+                <div className="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-background border-[3px] border-primary rounded-2xl text-foreground/60 text-sm font-black uppercase tracking-widest">
+                  <Sparkles className="w-4 h-4 text-yellow-500 shrink-0" />
                   Application form opening soon — check the open auditions below
                 </div>
               )}
@@ -131,9 +155,9 @@ const AuditionsPage = () => {
               ].map((s) => (
                 <div
                   key={s.step}
-                  className="p-8 border-[3px] border-primary bg-background shadow-[6px_6px_0px_var(--primary)] transition-colors"
+                  className="group p-8 border-[3px] border-primary bg-background rounded-3xl shadow-[6px_6px_0px_hsl(var(--primary)/var(--shadow-opacity))] hover:-translate-y-1.5 hover:shadow-[9px_9px_0px_hsl(var(--primary)/var(--shadow-opacity))] transition-all duration-300"
                 >
-                  <div className="text-5xl font-space font-black text-yellow-400 mb-4">
+                  <div className="text-5xl font-space font-black text-yellow-400 mb-4 group-hover:scale-110 origin-left transition-transform duration-300">
                     {s.step}
                   </div>
                   <h3 className="text-xl font-space font-black uppercase tracking-tighter text-foreground mb-3 transition-colors">
@@ -148,67 +172,100 @@ const AuditionsPage = () => {
           </div>
         </section>
 
-        {/* ─── CLUB CONTACTS ─── */}
+        {/* ─── OPEN AUDITIONS ─── */}
         <section className="py-24">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-            <div className="flex items-center gap-4 mb-14">
-              <div className="w-14 h-[3px] bg-yellow-400" />
-              <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/40">
-                Open Auditions
-              </span>
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-[3px] bg-yellow-400" />
+                  <span className="text-[11px] font-black tracking-[0.45em] uppercase text-foreground/40">
+                    Open Auditions
+                  </span>
+                </div>
+                <p className="text-sm font-bold text-foreground/40 uppercase tracking-wide">
+                  {openClubs.length} {openClubs.length === 1 ? "society" : "societies"} recruiting right now
+                </p>
+              </div>
+
+              {/* CATEGORY FILTER */}
+              <div className="flex flex-wrap items-center gap-2">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] border-2 border-primary transition-all ${
+                      activeCategory === cat
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-background text-foreground/60 hover:text-foreground hover:bg-yellow-400/10"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-10%" }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-            >
-              {clubs.filter((club) => club.formLink).map((club) => (
-                <motion.div
-                  key={club.id}
-                  variants={item}
-                  className="p-8 border-[3px] border-primary bg-background flex flex-col shadow-[5px_5px_0px_var(--primary)] transition-colors"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 shrink-0 rounded-full overflow-hidden border-[3px] border-primary bg-black shadow-[3px_3px_0px_hsl(var(--yellow-400))]">
-                      <img
-                        src={club.logo || fallbackLogoMap[club.id] || "/coming.png"}
-                        alt={`${club.name} logo`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <span className="text-[9px] font-black text-yellow-400 tracking-[0.4em] uppercase mb-1 block">
-                        {club.category}
-                      </span>
-                      <h3 className="font-space font-black text-foreground uppercase tracking-tighter transition-colors text-xl leading-tight">
-                        {club.name}
-                      </h3>
-                    </div>
-                  </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory}
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+              >
+                {visibleClubs.map((club) => (
+                  <motion.div
+                    key={club.id}
+                    variants={item}
+                    className="group relative p-8 border-[3px] border-primary bg-background rounded-3xl flex flex-col overflow-hidden shadow-[5px_5px_0px_hsl(var(--primary)/var(--shadow-opacity))] hover:-translate-y-1.5 hover:shadow-[9px_9px_0px_hsl(var(--primary)/var(--shadow-opacity))] transition-all duration-300"
+                  >
+                    {/* corner glow */}
+                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-400/10 blur-[50px] rounded-full pointer-events-none group-hover:bg-yellow-400/20 transition-colors duration-500" />
 
-                  <p className="text-[12px] font-bold text-foreground/70 normal-case tracking-normal leading-relaxed mb-5 transition-colors">
-                    {club.about}
-                  </p>
+                    <div className="relative flex items-center gap-4 mb-4">
+                      <div className="w-16 h-16 shrink-0 rounded-full overflow-hidden border-[3px] border-primary bg-black shadow-[0_0_0_4px_hsl(var(--yellow-400)/0.25)] group-hover:shadow-[0_0_0_6px_hsl(var(--yellow-400)/0.35)] transition-all duration-300">
+                        <img
+                          src={club.logo || fallbackLogoMap[club.id] || "/coming.png"}
+                          alt={`${club.name} logo`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <span
+                          className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black tracking-[0.3em] uppercase mb-1.5 ${
+                            categoryStyles[club.category] || "bg-yellow-400 text-black"
+                          }`}
+                        >
+                          {club.category}
+                        </span>
+                        <h3 className="font-space font-black text-foreground uppercase tracking-tighter transition-colors text-xl leading-tight">
+                          {club.name}
+                        </h3>
+                      </div>
+                    </div>
 
-                  <div className="mt-auto pt-5 border-t-2 border-primary/10">
-                    {club.formLink && (
-                      <a
-                        href={club.formLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400 text-black rounded-full text-[11px] font-black uppercase tracking-wide hover:-translate-y-[1px] transition-all"
-                      >
-                        <ArrowUpRight className="w-3 h-3" />
-                        Apply Now
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                    <p className="relative text-[12px] font-bold text-foreground/70 normal-case tracking-normal leading-relaxed mb-5 transition-colors">
+                      {club.about}
+                    </p>
+
+                    <div className="relative mt-auto pt-5 border-t-2 border-primary/10">
+                      {club.formLink && (
+                        <a
+                          href={club.formLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-black rounded-full text-[11px] font-black uppercase tracking-wide hover:-translate-y-[1px] hover:shadow-[0_4px_16px_hsl(var(--yellow-400)/0.5)] transition-all"
+                        >
+                          <ArrowUpRight className="w-3 h-3" />
+                          Apply Now
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </section>
       </main>

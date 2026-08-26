@@ -46,7 +46,7 @@ export const clubs: Club[] = [
   },
   {
     id: "chorus",
-    name: "Chorus",
+    name: "Drama Club",
     category: "CULTURAL",
     instagram: "https://www.instagram.com/chorusdrama?igsh=MW4wYWh1YmQycmM4MQ==",
     about: "The official drama club of IEM, making stage our home and keeping theatre alive among youngsters.",

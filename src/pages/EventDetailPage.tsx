@@ -189,12 +189,12 @@ export default function EventDetailPage() {
                 >
                   {/* Highlights */}
                   {event.highlights && (
-                    <div className="border-[3px] border-primary p-8 mb-8 transition-colors" style={{ boxShadow: "6px 6px 0 0 var(--primary)" }}>
+                    <div className="border-[3px] border-primary p-8 mb-8 transition-colors" style={{ boxShadow: "6px 6px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}>
                       <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-foreground/50 mb-6 transition-colors">KEY HIGHLIGHTS</h3>
                       <div className="space-y-4">
                         {event.highlights.map((h, i) => (
                           <div key={i} className="flex items-center gap-4">
-                            <div className="shrink-0 w-8 h-8 bg-yellow-400 flex items-center justify-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 var(--primary)" }}>
+                            <div className="shrink-0 w-8 h-8 bg-yellow-400 flex items-center justify-center border-2 border-primary" style={{ boxShadow: "2px 2px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}>
                               <span className="text-[10px] font-black text-black">0{i + 1}</span>
                             </div>
                             <span className="text-sm font-black text-foreground uppercase tracking-wide leading-tight transition-colors">{h}</span>
@@ -260,7 +260,7 @@ export default function EventDetailPage() {
                 <Link
                   to={`/events/${prevEvent.slug}`}
                   className="group flex items-center gap-6 p-8 border-[3px] border-primary hover:bg-foreground hover:text-background transition-colors"
-                  style={{ boxShadow: "5px 5px 0 0 var(--primary)" }}
+                  style={{ boxShadow: "5px 5px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}
                 >
                   <ArrowLeft className="w-6 h-6 text-foreground group-hover:text-yellow-400 transition-colors shrink-0" />
                   <div>
@@ -274,7 +274,7 @@ export default function EventDetailPage() {
                 <Link
                   to={`/events/${nextEvent.slug}`}
                   className="group flex items-center justify-end gap-6 p-8 border-[3px] border-primary hover:bg-foreground hover:text-background transition-colors"
-                  style={{ boxShadow: "5px 5px 0 0 var(--primary)" }}
+                  style={{ boxShadow: "5px 5px 0 0 hsl(var(--primary)/var(--shadow-opacity))" }}
                 >
                   <div className="text-right">
                     <span className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/40 group-hover:text-background/40 transition-colors block mb-1">NEXT EVENT</span>

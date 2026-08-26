@@ -43,6 +43,7 @@ export const clubs: Club[] = [
     people: ["Soham Sarkar — 9832249929", "Priyanjana Paul — 6290836210"],
     achievements: ["Sanskriti 2023 – 1st Prize", "Umang 2025 – 2nd Prize"],
     formLink: "https://forms.gle/qzVa8RwEtPV2QSrh8",
+    logo: "/offbeat-dcypher.png",
   },
   {
     id: "chorus",

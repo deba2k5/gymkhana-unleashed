@@ -55,7 +55,7 @@ const HeroSection = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
             </span>
-            Audition Live
+            Auditions Live
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </motion.div>

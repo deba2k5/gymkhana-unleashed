@@ -123,7 +123,7 @@ const Navbar = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600" />
                 </span>
-                Audition Live
+                Auditions Live
               </Link>
 
               <div className="hidden sm:block">
@@ -181,7 +181,7 @@ const Navbar = () => {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
                   </span>
-                  Audition Live
+                  Auditions Live
                 </Link>
               </motion.div>
 

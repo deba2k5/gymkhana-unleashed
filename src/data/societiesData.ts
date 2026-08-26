@@ -65,6 +65,7 @@ export const clubs: Club[] = [
     people: ["Rajsekhar Hajrah — 8902697173", "Vishal Roy — 8399995198"],
     achievements: ["IIT Kharagpur Communiqué 2026 – Best Delegation"],
     formLink: "https://forms.gle/t5e7N5Zni3BCY4tD9",
+    logo: "/Oratoria.png",
   },
   {
     id: "arc-graphics",

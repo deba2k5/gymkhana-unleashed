@@ -222,7 +222,7 @@ export const events: Event[] = [
   desc: "West Bengal’s first in-person 36 hr MLH hackathon with 450+ participants, featuring innovative projects, expert talks, and a competitive build environment.",
   fullDesc: "DIVERSION 2026 is West Bengal’s first in-person 36 hr MLH hackathon with around 450 participants. The event featured innovative projects, expert lectures, and concluded with results and prize distribution, supported by major tech collaborators.",
   highlights: ["36 hr Hackathon", "1st In-Person MLH Hackathon", "450+ Participants", "Expert Mentorship"],
-  eventHead: "Debangshu Chatterjee, Raunak Sen, Aritra Mukhopadhyay, Aryan Saha, Aryan Sengupta",
+  eventHead: "Debangshu Chatterjee, Hans Raj Vats, Raunak Sen, Aritra Mukhopadhyay, Aryan Saha, Aryan Sengupta",
   images: ["diversion_new_1.jpg", "diversion_new_2.jpg", "diversion_new_3.jpg", "diversion_new_4.jpg", "diversion_new_5.jpg", "diversion_new_6.jpg", "diversion_new_7.jpg", "diversion_new_8.jpg", "diversion_new_9.jpg", "diversion_new_10.jpg", "diversion_new_11.jpg", "diversion_new_12.jpg", "diversion_new_13.jpg", "diversion_new_14.jpg", "diversion_new_15.jpg", "diversion_new_16.jpg", "diversion_new_17.jpg", "diversion_new_18.jpg", "diversion_new_19.jpg", "diversion_new_20.jpg", "diversion_new_21.jpg", "diversion_new_22.jpg"]
 },
 {

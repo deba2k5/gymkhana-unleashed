@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { clubs } from "@/data/societiesData";
+import Seo from "@/seo/Seo";
+import { seoRoutes } from "@/seo/seoConfig";
 
 // TODO: replace with the live auditions Google Form link when available
 const AUDITION_FORM_LINK = "";
@@ -56,6 +58,7 @@ const AuditionsPage = () => {
 
   return (
     <div className="min-h-screen bg-transparent text-foreground flex flex-col transition-colors">
+      <Seo {...seoRoutes.auditions} />
       <Navbar />
 
       <main className="flex-grow">

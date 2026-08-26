@@ -6,6 +6,8 @@ import { ArrowLeft, ArrowRight, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Seo from "@/seo/Seo";
+import { seoRoutes } from "@/seo/seoConfig";
 
 type Category = "CULTURAL" | "TECHNICAL" | "SPORTS";
 
@@ -544,6 +546,7 @@ const SocietiesPage = () => {
 
   return (
     <div className="min-h-screen bg-transparent text-foreground flex flex-col transition-colors">
+      <Seo {...seoRoutes.societies} />
       <Navbar />
 
       <main className="flex-grow">

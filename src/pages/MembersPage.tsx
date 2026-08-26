@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Member, Section, allSections } from "@/data/membersData";
 import { allSections2024 } from "@/data/membersData_2024"; // ✅ ADDED
+import Seo from "@/seo/Seo";
+import { seoRoutes } from "@/seo/seoConfig";
 
 
 // ─── YEARS ───────────────────────────────────────────────
@@ -150,6 +152,7 @@ const MembersPage = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#050507] flex flex-col">
+      <Seo {...seoRoutes.members} />
       <Navbar />
 
       <main className="flex-grow max-w-[1300px] mx-auto px-4 pt-28 pb-20 w-full">

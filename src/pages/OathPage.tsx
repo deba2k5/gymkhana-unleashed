@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import TypewriterText from "@/components/TypewriterText";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Seo from "@/seo/Seo";
+import { seoRoutes } from "@/seo/seoConfig";
 
 const fullText = `"We, the students of IEM Gymkhana, pledge to uphold the values of innovation, integrity, and absolute excellence. We vow to work relentlessly, stand united in our diversity, and foster a community where every idea has the power to shape the future. Through sports, culture, and technology, we promise to push boundaries and build a legacy that transcends time."`;
 
@@ -13,6 +15,7 @@ const OathPage = () => {
 
   return (
     <div className="min-h-screen bg-transparent text-foreground selection:bg-yellow-400 selection:text-black flex flex-col transition-colors">
+      <Seo {...seoRoutes.oath} />
       <Navbar />
 
       <main className="flex-grow relative pt-32 pb-24 md:pt-48 md:pb-32 flex items-center overflow-hidden">

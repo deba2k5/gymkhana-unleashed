@@ -8,6 +8,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { events, type Event } from "@/data/eventsData";
 import { CardCarousel } from "@/components/ui/CardCarousel";
+import Seo from "@/seo/Seo";
+import { seoRoutes } from "@/seo/seoConfig";
 
 const CATEGORIES = ["ALL", "SPORTS", "TECHNICAL", "CULTURAL", "ACADEMIC", "NETWORKING"] as const;
 
@@ -34,6 +36,7 @@ export default function EventsPage() {
 
   return (
     <>
+      <Seo {...seoRoutes.events} />
       <Navbar />
       <main className="bg-transparent min-h-screen text-foreground transition-colors">
 

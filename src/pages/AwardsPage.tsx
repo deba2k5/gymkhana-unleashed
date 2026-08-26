@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { awardsData, type AwardCategory } from "../data/awardsData";
 import { awardsData2024 } from "../data/awardsData2024";
+import Seo from "@/seo/Seo";
+import { seoRoutes } from "@/seo/seoConfig";
 
 /* ── SESSION CONFIG ── */
 interface SessionOption {
@@ -308,6 +310,7 @@ export default function AwardsPage() {
 
   return (
     <div className="min-h-screen bg-transparent text-foreground flex flex-col transition-colors">
+      <Seo {...seoRoutes.awards} />
       <Navbar />
 
       {/* ══ HERO ══ */}

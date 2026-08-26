@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { Instagram, MoveRight } from "lucide-react";
 import { motion } from "framer-motion";
 
+const VISITOR_BADGE_URL =
+  "https://visitor-badge.laobi.icu/badge?page_id=iemstudentgymkhana.iem.edu.in&left_text=visitors&left_color=000000&right_color=22d3ee";
+
 const socials = [
   {
     name: "Instagram",
@@ -17,7 +20,8 @@ const navLinks = {
   connect: ["Portal Access", "Team Hierarchy", "IEM Main", "UEM Hub"],
 };
 
-const Footer = () => (
+const Footer = () => {
+  return (
   <footer className="relative bg-background text-foreground pt-28 pb-12 px-6 lg:px-12 border-t-4 border-yellow-400 dark:border-violet-600 overflow-hidden transition-colors">
 
     {/* Watermark */}
@@ -152,14 +156,21 @@ const Footer = () => (
       </div>
 
       {/* BOTTOM */}
-      <div className="pt-10 border-t-2 border-primary/10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+      <div className="pt-10 border-t-2 border-primary/10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
 
         <p className="text-[10px] font-black uppercase tracking-[0.45em] text-foreground/35">
           © 2026 GYMKHANA_OS_V3.0
         </p>
+
+        <img
+          src={VISITOR_BADGE_URL}
+          alt="Site visitor count"
+          className="h-5 rounded opacity-80 hover:opacity-100 transition-opacity"
+        />
       </div>
     </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;

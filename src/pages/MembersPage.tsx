@@ -294,8 +294,15 @@ const QuickNav2026 = ({ sections, activeId }: { sections: Section[]; activeId: s
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const active = navRef.current?.querySelector(`[data-id="${activeId}"]`);
-    active?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    const container = navRef.current;
+    const active = container?.querySelector<HTMLElement>(`[data-id="${activeId}"]`);
+    if (!container || !active) return;
+    // Scroll the pill row horizontally only — scrollIntoView() can trigger
+    // unwanted page-level (vertical) scroll on sticky ancestors, especially
+    // on narrow/mobile viewports.
+    const target =
+      active.offsetLeft - container.clientWidth / 2 + active.clientWidth / 2;
+    container.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
   }, [activeId]);
 
   return (

@@ -39,6 +39,7 @@ import {
   Landmark,
   Star,
   Footprints,
+  LayoutGrid,
   type LucideIcon,
 } from "lucide-react";
 
@@ -225,6 +226,56 @@ const sectionIcons: Record<string, LucideIcon> = {
 };
 const getSectionIcon = (title: string): LucideIcon => sectionIcons[title] || Users;
 
+// ─── 2026-27 : broad "community" grouping for the filter ─
+type Community = "ADMIN" | "CULTURAL" | "TECH" | "SPORTS";
+
+const communityMap: Record<string, Community> = {
+  "Administration": "ADMIN",
+  "Faculty Members": "ADMIN",
+  "Core Committee": "ADMIN",
+  "Cultural Secretary": "CULTURAL",
+  "Student Welfare Heads": "ADMIN",
+  "Alumni Relations": "ADMIN",
+  "Institutional Technical Lead": "TECH",
+  "Cultural Representative": "CULTURAL",
+  "IEM-UEM Kolkata Marathon": "SPORTS",
+  "Graphics Club (A.R.C.)": "TECH",
+  "Tech Club": "TECH",
+  "Gaming Club": "TECH",
+  "Anti-Ragging Committee": "ADMIN",
+  "Sports": "SPORTS",
+  "Sports Representative": "SPORTS",
+  "Football": "SPORTS",
+  "Cricket": "SPORTS",
+  "Kabaddi": "SPORTS",
+  "Badminton": "SPORTS",
+  "Basketball": "SPORTS",
+  "Gymkhana Room Incharge": "ADMIN",
+  "Canteen Head": "ADMIN",
+  "Music Club": "CULTURAL",
+  "Eastern Dance Club": "CULTURAL",
+  "Western Dance Club": "CULTURAL",
+  "Drama Club": "CULTURAL",
+  "Art and Craft Club": "CULTURAL",
+  "Photography Club": "CULTURAL",
+  "Debate Club": "CULTURAL",
+  "Quiz Club": "CULTURAL",
+  "E-Cell": "TECH",
+  "Literary Society": "CULTURAL",
+  "Film Society": "CULTURAL",
+  "College Magazine": "CULTURAL",
+  "IEM Humour Club": "CULTURAL",
+  "Pet Society": "CULTURAL",
+  "Student Chapters": "TECH",
+};
+
+const communityFilters: { key: Community | "ALL"; label: string; icon: LucideIcon }[] = [
+  { key: "ALL", label: "All", icon: LayoutGrid },
+  { key: "CULTURAL", label: "Cultural Community", icon: Palette },
+  { key: "TECH", label: "Tech Community", icon: Cpu },
+  { key: "SPORTS", label: "Sports Community", icon: Trophy },
+];
+
 // ─── 2026-27 : initials avatar ───────────────────────────
 const initials = (name: string) =>
   name
@@ -403,7 +454,23 @@ const SearchResultChip = ({ member, section }: { member: Member; section: Sectio
 // ─── 2026-27 : full committee view ───────────────────────
 const Committee2026 = () => {
   const [query, setQuery] = useState("");
+  const [community, setCommunity] = useState<Community | "ALL">("ALL");
   const [activeId, setActiveId] = useState(anchorId(allSections2026[0].title));
+
+  const filteredSections = useMemo(
+    () =>
+      community === "ALL"
+        ? allSections2026
+        : allSections2026.filter((s) => communityMap[s.title] === community),
+    [community]
+  );
+
+  // Keep the scrollspy/quick-nav pointed at a section that's actually visible.
+  useEffect(() => {
+    if (filteredSections.length > 0) {
+      setActiveId(anchorId(filteredSections[0].title));
+    }
+  }, [community]);
 
   const totalMembers = useMemo(
     () => allSections2026.reduce((acc, s) => acc + s.members.length, 0),
@@ -436,7 +503,7 @@ const Committee2026 = () => {
 
   // Scrollspy: highlight the nav pill for the section currently in view.
   useEffect(() => {
-    const sectionEls = allSections2026
+    const sectionEls = filteredSections
       .map((s) => document.getElementById(anchorId(s.title)))
       .filter((el): el is HTMLElement => !!el);
 
@@ -451,7 +518,7 @@ const Committee2026 = () => {
 
     sectionEls.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [filteredSections]);
 
   return (
     <div className="relative">
@@ -500,6 +567,29 @@ const Committee2026 = () => {
         )}
       </div>
 
+      {/* COMMUNITY FILTER */}
+      {!query && (
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {communityFilters.map(({ key, label, icon: Icon }) => {
+            const isActive = community === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setCommunity(key)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide border transition-colors ${
+                  isActive
+                    ? "bg-black text-white dark:bg-white dark:text-black border-transparent"
+                    : "border-black/10 dark:border-white/10 text-black/60 dark:text-white/60 hover:bg-black/5 dark:hover:bg-white/5"
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5" />
+                {label}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       {query ? (
         <div className="mb-14">
           <p className="text-xs font-bold uppercase tracking-wider opacity-50 mb-4">
@@ -517,14 +607,18 @@ const Committee2026 = () => {
             </div>
           )}
         </div>
-      ) : (
+      ) : filteredSections.length > 0 ? (
         <>
-          <QuickNav2026 sections={allSections2026} activeId={activeId} />
+          <QuickNav2026 sections={filteredSections} activeId={activeId} />
 
-          {allSections2026.map((section, i) => (
+          {filteredSections.map((section, i) => (
             <Section2026 key={section.title} section={section} index={i} />
           ))}
         </>
+      ) : (
+        <div className="text-center py-20 opacity-50 text-sm">
+          No teams in this community yet.
+        </div>
       )}
     </div>
   );

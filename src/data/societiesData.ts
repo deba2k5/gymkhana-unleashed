@@ -13,6 +13,16 @@ export interface Club {
 
 export const clubs: Club[] = [
   {
+    id: "tech-club",
+    name: "Tech Club (NEX)",
+    category: "TECHNICAL",
+    about: "NEX is IEM's technology club, bringing together students to build, hack, and explore emerging tech through projects and workshops.",
+    people: [],
+    achievements: [],
+    logo: "/tech-club.png",
+    formLink: "https://forms.gle/asLBAJBtR77GtDm46",
+  },
+  {
     id: "music",
     name: "Music Club",
     category: "CULTURAL",
@@ -172,15 +182,6 @@ export const clubs: Club[] = [
     achievements: [],
   },
   {
-    id: "tech-club",
-    name: "Tech Club",
-    category: "TECHNICAL",
-    about: "IEM's technology club, bringing together students to build, hack, and explore emerging tech through projects and workshops.",
-    people: [],
-    achievements: [],
-    logo: "/tech-club.png",
-  },
-  {
     id: "gaming-club",
     name: "Re:Spawn Gaming Club",
     category: "TECHNICAL",
@@ -188,5 +189,6 @@ export const clubs: Club[] = [
     people: [],
     achievements: [],
     logo: "/gaming-club.png",
+    formLink: "https://forms.gle/15Wibbdr8hXKkquKA",
   },
 ];

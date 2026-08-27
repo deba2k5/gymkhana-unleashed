@@ -425,9 +425,9 @@ achievements: [
 },
 {
   id: "tech-club",
-  name: "Tech Club",
+  name: "Tech Club (NEX)",
   category: "TECHNICAL" as Category,
-  about: "IEM's technology club, bringing together students to build, hack, and explore emerging tech through projects and workshops.",
+  about: "NEX is IEM's technology club, bringing together students to build, hack, and explore emerging tech through projects and workshops.",
   people: [],
   achievements: [],
 },

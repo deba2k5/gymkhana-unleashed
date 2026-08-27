@@ -1,12 +1,11 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { 
-  ArrowLeft, 
-  Award, 
-  User, 
-  Mail, 
-  Linkedin,
-  Twitter,
+import {
+  ArrowLeft,
+  Award,
+  User,
+  Mail,
+  Phone,
   ChevronRight,
   Sparkles
 } from "lucide-react";
@@ -14,6 +13,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { allSections, Member } from "@/data/membersData";
 import { allSections2024 } from "@/data/membersData_2024";
+import { allSections2026 } from "@/data/membersData_2026";
 
 const MemberDetailPage = () => {
   const { slug } = useParams();
@@ -23,7 +23,7 @@ const MemberDetailPage = () => {
   let member: Member | undefined;
   let memberSectionTitle: string = "";
 
-  for (const section of [...allSections, ...allSections2024]) {
+  for (const section of [...allSections2026, ...allSections, ...allSections2024]) {
     member = section.members.find((m) => m.slug === slug);
     if (member) {
       memberSectionTitle = section.title;
@@ -97,6 +97,11 @@ const MemberDetailPage = () => {
                     <div className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-600/20">
                       {memberSectionTitle}
                     </div>
+                    {member.role && member.role !== memberSectionTitle && (
+                      <div className="px-4 py-1.5 rounded-full bg-purple-600 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-purple-600/20">
+                        {member.role}
+                      </div>
+                    )}
                   </div>
 
                   <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-black dark:text-white font-outfit leading-[0.9]">
@@ -106,7 +111,7 @@ const MemberDetailPage = () => {
                   <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 md:gap-8 pt-4">
                     <div className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                      <p className="text-xl md:text-2xl font-bold text-black/80 dark:text-white/70">{member.dept || "Institute of Engineering & Management"}</p>
+                      <p className="text-xl md:text-2xl font-bold text-black/80 dark:text-white/70">{member.dept || member.role || "Institute of Engineering & Management"}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -118,29 +123,33 @@ const MemberDetailPage = () => {
                   transition={{ delay: 0.4 }}
                   className="flex flex-wrap justify-center lg:justify-start gap-8 pt-12 border-t border-black/5 dark:border-white/5 mt-12"
                 >
-                  <div className="group cursor-pointer">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                        <Mail size={20} />
+                  {member.email && (
+                    <a href={`mailto:${member.email}`} className="group cursor-pointer">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                          <Mail size={20} />
+                        </div>
+                        <div className="text-left hidden sm:block">
+                          <p className="text-[10px] font-black uppercase tracking-widest text-black/30 dark:text-white/30">Official Email</p>
+                          <p className="text-sm font-bold truncate max-w-[200px]">{member.email}</p>
+                        </div>
                       </div>
-                      <div className="text-left hidden sm:block">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-black/30 dark:text-white/30">Official Email</p>
-                        <p className="text-sm font-bold truncate max-w-[200px]">{member.email || "member@iem.edu"}</p>
+                    </a>
+                  )}
+
+                  {member.phone && (
+                    <a href={`tel:${member.phone}`} className="group cursor-pointer">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                          <Phone size={20} />
+                        </div>
+                        <div className="text-left hidden sm:block">
+                          <p className="text-[10px] font-black uppercase tracking-widest text-black/30 dark:text-white/30">Contact Number</p>
+                          <p className="text-sm font-bold">{member.phone}</p>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  
-                  <div className="group cursor-pointer">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
-                        <Linkedin size={20} />
-                      </div>
-                      <div className="text-left hidden sm:block">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-black/30 dark:text-white/30">Professional</p>
-                        <p className="text-sm font-bold">LinkedIn</p>
-                      </div>
-                    </div>
-                  </div>
+                    </a>
+                  )}
                 </motion.div>
               </div>
 

@@ -5,8 +5,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Member, Section, allSections } from "@/data/membersData";
 import { allSections2024 } from "@/data/membersData_2024"; // ✅ ADDED
+import { allSections2026 } from "@/data/membersData_2026";
 import Seo from "@/seo/Seo";
 import { seoRoutes } from "@/seo/seoConfig";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 
 // ─── YEARS ───────────────────────────────────────────────
@@ -145,10 +147,126 @@ const SectionBlock = ({ section }: { section: Section }) => {
   );
 };
 
+// ─── 2026-27 : slugify helper for anchors ────────────────
+const anchorId = (title: string) =>
+  title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+
+// ─── 2026-27 : quick-jump section nav ────────────────────
+const QuickNav2026 = ({ sections }: { sections: Section[] }) => (
+  <div className="sticky top-[76px] z-30 -mx-4 px-4 mb-10">
+    <div className="overflow-x-auto no-scrollbar rounded-2xl border border-black/10 dark:border-white/10 bg-white/90 dark:bg-[#0b0b0f]/90 backdrop-blur-md shadow-[3px_3px_0px_0px_black] dark:shadow-none">
+      <div className="flex gap-2 p-3 w-max">
+        {sections.map((s) => (
+          <a
+            key={s.title}
+            href={`#${anchorId(s.title)}`}
+            className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full border border-black/10 dark:border-white/10 text-black/60 dark:text-white/60 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+          >
+            {s.title}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+// ─── 2026-27 : member chip (click → portfolio) ───────────
+const MemberChip2026 = ({ member, accent }: { member: Member; accent: string }) => (
+  <Link
+    to={`/members/${member.slug}`}
+    className="group relative flex flex-col gap-1.5 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/[0.03] p-4 pt-3.5 overflow-hidden hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black] dark:hover:shadow-[0_0_20px_-4px_rgba(255,255,255,0.15)] transition-all duration-200"
+  >
+    <span
+      className="absolute top-0 left-0 right-0 h-[3px]"
+      style={{ background: accent }}
+    />
+    {member.role && (
+      <span
+        className="text-[9px] font-black uppercase tracking-wider truncate"
+        style={{ color: accent }}
+      >
+        {member.role}
+      </span>
+    )}
+    <span className="text-sm font-bold leading-snug flex items-start justify-between gap-2">
+      <span className="group-hover:underline">{member.name}</span>
+      <ArrowUpRight className="w-3.5 h-3.5 shrink-0 opacity-0 group-hover:opacity-60 transition-opacity mt-0.5" />
+    </span>
+    {member.dept && (
+      <span className="text-[11px] opacity-50 truncate">{member.dept}</span>
+    )}
+    {member.phone && (
+      <span className="text-[11px] opacity-40 truncate">{member.phone}</span>
+    )}
+  </Link>
+);
+
+// ─── 2026-27 : section group ─────────────────────────────
+const Section2026 = ({ section, index }: { section: Section; index: number }) => (
+  <motion.section
+    id={anchorId(section.title)}
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-10%" }}
+    transition={{ duration: 0.4, delay: Math.min(index * 0.03, 0.3) }}
+    className="scroll-mt-32 mb-14"
+  >
+    <div className="flex items-center gap-3 mb-6">
+      <span
+        className="w-2 h-8 rounded-full shrink-0"
+        style={{ background: section.accentColor }}
+      />
+      <h2 className="text-xl md:text-2xl font-black tracking-tight">
+        {section.title}
+      </h2>
+      <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50">
+        {section.members.length}
+      </span>
+    </div>
+
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+      {section.members.map((m, i) => (
+        <MemberChip2026 key={i} member={m} accent={section.accentColor} />
+      ))}
+    </div>
+  </motion.section>
+);
+
+// ─── 2026-27 : full committee view ───────────────────────
+const Committee2026 = () => {
+  const totalMembers = allSections2026.reduce((acc, s) => acc + s.members.length, 0);
+
+  return (
+    <div>
+      {/* HEADER */}
+      <div className="text-center mb-14">
+        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-black text-white dark:bg-white dark:text-black text-[10px] font-black uppercase tracking-[0.3em]">
+          <Sparkles className="w-3 h-3" />
+          2026 – 27 Session
+        </div>
+        <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-4">
+          The Gymkhana Committee
+        </h1>
+        <p className="opacity-60 max-w-2xl mx-auto text-sm md:text-base">
+          {totalMembers}+ students and faculty across {allSections2026.length} teams —
+          administration, faculty, core committee, and every club and chapter
+          driving campus life this year.
+        </p>
+      </div>
+
+      <QuickNav2026 sections={allSections2026} />
+
+      {allSections2026.map((section, i) => (
+        <Section2026 key={section.title} section={section} index={i} />
+      ))}
+    </div>
+  );
+};
+
 // ─── PAGE ────────────────────────────────────────────────
 const MembersPage = () => {
   const [activeYear, setActiveYear] =
-    useState<typeof YEARS[number]>("2025-26");
+    useState<typeof YEARS[number]>("2026-27");
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#050507] flex flex-col">
@@ -172,16 +290,7 @@ const MembersPage = () => {
           ))}
 
         {/* 2026-27 */}
-        {activeYear === "2026-27" && (
-          <div className="py-32 text-center">
-            <h2 className="text-3xl font-semibold mb-2">
-              2026–27 Committee
-            </h2>
-            <p className="opacity-60">
-              Team is under formation. Stay tuned.
-            </p>
-          </div>
-        )}
+        {activeYear === "2026-27" && <Committee2026 />}
 
         {/* 🔥 FIXED 2024-25 (NOW SHOWS DATA) */}
         {activeYear === "2024-25" &&

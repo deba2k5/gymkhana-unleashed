@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,63 +19,25 @@ import EventsPage from "./pages/EventsPage.tsx";
 import EventDetailPage from "./pages/EventDetailPage.tsx";
 import AwardsPage from "./pages/AwardsPage.tsx";
 import MemberDetailPage from "./pages/MemberDetailPage.tsx";
-import SelectCollegePage from "./pages/SelectCollegePage.tsx";
 import AuditionsPage from "./pages/AuditionsPage.tsx";
-import UemComingSoonPage from "./pages/uem/UemComingSoonPage.tsx";
-import UemSocietiesPage from "./pages/uem/UemSocietiesPage.tsx";
 
 const queryClient = new QueryClient();
 
-const COLLEGE_KEY = "gymkhana_college";
+const AppRoutes = () => (
+  <Routes>
+    <Route path="/" element={<Index />} />
+    <Route path="/oath" element={<OathPage />} />
+    <Route path="/societies" element={<SocietiesPage />} />
+    <Route path="/members" element={<MembersPage />} />
+    <Route path="/members/:slug" element={<MemberDetailPage />} />
+    <Route path="/events" element={<EventsPage />} />
+    <Route path="/events/:slug" element={<EventDetailPage />} />
+    <Route path="/awards" element={<AwardsPage />} />
+    <Route path="/auditions" element={<AuditionsPage />} />
 
-const AppRoutes = () => {
-  const navigate = useNavigate();
-  const [collegeChosen, setCollegeChosen] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return sessionStorage.getItem(COLLEGE_KEY) !== null;
-  });
-
-  const handleSelectCollege = (college: "iem" | "uem") => {
-    sessionStorage.setItem(COLLEGE_KEY, college);
-    setCollegeChosen(true);
-    if (college === "uem") navigate("/uem");
-  };
-
-  return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          collegeChosen ? (
-            <Index />
-          ) : (
-            <SelectCollegePage onSelect={handleSelectCollege} />
-          )
-        }
-      />
-      <Route path="/oath" element={<OathPage />} />
-      <Route path="/societies" element={<SocietiesPage />} />
-      <Route path="/members" element={<MembersPage />} />
-      <Route path="/members/:slug" element={<MemberDetailPage />} />
-      <Route path="/events" element={<EventsPage />} />
-      <Route path="/events/:slug" element={<EventDetailPage />} />
-      <Route path="/awards" element={<AwardsPage />} />
-      <Route path="/auditions" element={<AuditionsPage />} />
-
-      {/* UEM — all sections coming soon */}
-      <Route path="/uem" element={<UemComingSoonPage section="Home" />} />
-      <Route path="/uem/oath" element={<UemComingSoonPage section="Oath" />} />
-      <Route path="/uem/societies" element={<UemSocietiesPage />} />
-      <Route path="/uem/members" element={<UemComingSoonPage section="Members" />} />
-      <Route path="/uem/members/:slug" element={<UemComingSoonPage section="Members" />} />
-      <Route path="/uem/events" element={<UemComingSoonPage section="Events" />} />
-      <Route path="/uem/events/:slug" element={<UemComingSoonPage section="Events" />} />
-      <Route path="/uem/awards" element={<UemComingSoonPage section="Awards" />} />
-
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
-};
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
 
 const App = () => {
   const [loading, setLoading] = useState(() => {

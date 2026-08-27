@@ -17,7 +17,7 @@ const socials = [
 
 const navLinks = {
   discover: ["Societies", "Events", "Galleria", "Initiatives"],
-  connect: ["Portal Access", "Team Hierarchy", "IEM Main", "UEM Hub"],
+  connect: ["Portal Access", "Team Hierarchy", "IEM Main"],
 };
 
 const Footer = () => {

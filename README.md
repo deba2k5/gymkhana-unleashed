@@ -1,6 +1,6 @@
 # 🚀 Gymkhana Unleashed
 
-**Gymkhana Unleashed** is the central digital hub for the student body. It serves as a comprehensive platform to manage societies, track campus events, discover student leaders, and foster a vibrant community atmosphere. Built with modern web technologies, it offers a seamless and interactive experience for all students.
+**Hi! Gymkhana Unleashed** is the central digital hub for the student body. It serves as a comprehensive platform to manage societies, track campus events, discover student leaders, and foster a vibrant community atmosphere. Built with modern web technologies, it offers a seamless and interactive experience for all students.
 
 ---
 

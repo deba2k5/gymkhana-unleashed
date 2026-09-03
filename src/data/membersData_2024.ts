@@ -11,7 +11,7 @@ interface MemberDetails {
   dept?: string;
 }
 
-const IMG = (file: string) => `/members/2024-25/${file}`;
+const IMG = (file: string) => `/media-members/2024-25/${file}`;
 
 const MEMBER_DETAILS: Record<string, MemberDetails> = {
   "aniruddha-mallick": {

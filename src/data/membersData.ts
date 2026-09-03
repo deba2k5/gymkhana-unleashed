@@ -160,7 +160,7 @@ export const INNOVACION: Section = {
 export const ANTI_RAGGING: Section = {
   title: "Anti-Ragging Committee",
   accentColor: "#EF4444",
-  brochureLink: "/societies/OFFICIAL GYMKHANA 2025-2026.pdf",
+  brochureLink: "/media-societies/OFFICIAL GYMKHANA 2025-2026.pdf",
   note: "Click the brochure link to view the official Anti-Ragging Committee document.",
   members: [
     { name: "Tahiti Dutta", slug: "tahiti-dutta", dept: "BTECH (CSE)", phone: "6289081990" },

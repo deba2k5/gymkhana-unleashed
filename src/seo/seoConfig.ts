@@ -67,4 +67,12 @@ export const seoRoutes: Record<string, SeoRouteMeta> = {
     keywords: "IEM Gymkhana auditions, IEM Student Gymkhana recruitment, IEM Kolkata club auditions, join IEM clubs",
     path: "/auditions",
   },
+  freshers: {
+    title: "Freshers Registration | IEM Students' Gymkhana",
+    description:
+      "Register now as a fresher with IEM Students' Gymkhana — your gateway to clubs, societies, and campus life at IEM Kolkata.",
+    keywords:
+      "IEM Gymkhana freshers registration, IEM Student Gymkhana freshers, IEM Kolkata freshers, new students IEM Gymkhana",
+    path: "/freshers",
+  },
 };

@@ -13,6 +13,7 @@ const navItems = [
   { name: "Events", path: "/events", id: "04" },
   { name: "Awards", path: "/awards", id: "05" },
   { name: "Members", path: "/members", id: "06" },
+  { name: "Freshers", path: "/freshers", id: "07" },
 ];
 
 const Navbar = () => {

@@ -13,7 +13,6 @@ const navItems = [
   { name: "Events", path: "/events", id: "04" },
   { name: "Awards", path: "/awards", id: "05" },
   { name: "Members", path: "/members", id: "06" },
-  { name: "Freshers", path: "/freshers", id: "07" },
 ];
 
 const Navbar = () => {
@@ -117,6 +116,17 @@ const Navbar = () => {
             {/* RIGHT */}
             <div className="flex items-center gap-3">
               <Link
+                to="/freshers"
+                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-black text-[11px] font-black uppercase tracking-widest rounded-full shadow-[0_2px_10px_hsl(var(--yellow-400)/0.4)] hover:-translate-y-[1px] hover:shadow-[0_4px_16px_hsl(var(--yellow-400)/0.55)] active:translate-y-0 transition-all shrink-0"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600" />
+                </span>
+                Freshers Reg.
+              </Link>
+
+              <Link
                 to="/auditions"
                 className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-black text-[11px] font-black uppercase tracking-widest rounded-full shadow-[0_2px_10px_hsl(var(--yellow-400)/0.4)] hover:-translate-y-[1px] hover:shadow-[0_4px_16px_hsl(var(--yellow-400)/0.55)] active:translate-y-0 transition-all shrink-0"
               >
@@ -168,6 +178,24 @@ const Navbar = () => {
 
             {/* LINKS */}
             <div className="flex flex-col gap-6 px-6 py-10">
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  to="/freshers"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-400 text-black text-sm font-black uppercase tracking-widest rounded-full w-fit"
+                >
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600/60" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+                  </span>
+                  Freshers Registration
+                </Link>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}

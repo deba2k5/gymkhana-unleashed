@@ -50,7 +50,6 @@ export const FACULTY: Section = {
     { slug: "prof-ujjwal-basu", name: "Prof. Ujjwal Basu" },
     { slug: "prof-dr-subhajit-kar", name: "Prof. (Dr.) Subhajit Kar" },
     { slug: "prof-amit-kumar-das", name: "Prof. Amit Kumar Das" },
-    { slug: "prof-dr-rajat-subhra-paul", name: "Prof. (Dr.) Rajat Subhra Paul" },
     { slug: "dr-ayan-kumar-panja", name: "Dr. Ayan Kumar Panja" },
   ],
 };
@@ -79,7 +78,7 @@ export const STUDENT_WELFARE: Section = {
   accentColor: "#10B981",
   members: [
     { slug: "priyangshu-ghosh", name: "Priyangshu Ghosh", role: "Student Welfare Head", dept: "ECE", phone: "7980355490" },
-    { slug: "aurko-mukherjee", name: "Aurko Mukherjee", role: "Student Welfare Head", dept: "ME", phone: "8961594336" },
+    { slug: "deepjyoti-basu", name: "Deepjyoti Basu", role: "Student Welfare Head", dept: "ME", phone: "9002667581" },
     { slug: "shashi-shekhar-singh", name: "Shashi Shekhar Singh", role: "Student Welfare Head", dept: "CSE", phone: "9835643538" },
     { slug: "pawan-kumar", name: "Pawan Kumar", role: "Student Welfare Head", dept: "CSBS", phone: "8809025129" },
   ],
@@ -89,13 +88,14 @@ export const ALUMNI_RELATIONS: Section = {
   title: "Alumni Relations",
   accentColor: "#8B5CF6",
   members: [
-    { slug: "anirudhha-ghosh", name: "Anirudhha Ghosh", role: "Alumni Relation Head", dept: "IOTCSBT", phone: "9434657610" },
+    { slug: "aniruddha-ghosh", name: "Aniruddha Ghosh", role: "Alumni Relation Head", dept: "IOTCSBT", phone: "9434657610" },
     { slug: "sulagna-roy", name: "Sulagna Roy", role: "Alumni Relation Head", dept: "ECE", phone: "7439711702" },
+    { slug: "arjak-ghosh-2", name: "Arjak Ghosh", role: "Alumni Relation Head", dept: "IOT", phone: "8617753559" },
     { slug: "sreyobrata-saha", name: "Sreyobrata Saha", role: "Alumni Relation (BBA)", dept: "BBA", phone: "7003847538" },
-    { slug: "argadeep-deey", name: "Argadeep Deey", role: "Alumni Relation (MBA)", dept: "MBA", phone: "7407303047" },
+    { slug: "agradeep-dey", name: "Agradeep Dey", role: "Alumni Relation (MBA)", dept: "MBA", phone: "7407303047" },
     { slug: "sayani-malakar", name: "Sayani Malakar", role: "Alumni Relation (MBA)", dept: "MBA", phone: "7890417567" },
     { slug: "rishita-singh", name: "Rishita Singh", role: "Alumni Relation (MBA)", dept: "MBA", phone: "9903666139" },
-    { slug: "subhrodeep-roy-choudhury", name: "Subhrodeep Roy Choudhury", role: "Alumni Relation (BCA)", dept: "BCA", phone: "8697468601" },
+    { slug: "subradeep-roy-chowdhury", name: "Subradeep Roy Chowdhury", role: "Alumni Relation (BCA)", dept: "BCA", phone: "8697468601" },
     { slug: "khushi-bhagat", name: "Khushi Bhagat", role: "Alumni Relation (BBA LLB)", dept: "BBA LLB", phone: "8910111019" },
     { slug: "ankita-ghorai", name: "Ankita Ghorai", role: "Alumni Relation (BHTA3)", dept: "BHM/BHTA3", phone: "8420028793" },
   ],
@@ -131,17 +131,17 @@ export const MARATHON: Section = {
     { slug: "hans-raj-vats", name: "Hans Raj Vats", role: "Marathon (Head)", dept: "IT", phone: "7903671909" },
     { slug: "swastika-talukdar", name: "Swastika Talukdar", role: "Marathon (Head)", dept: "ECE", phone: "8961005299" },
     { slug: "rudraksh-rana", name: "Rudraksh Rana", role: "Marathon (Head)", dept: "IT", phone: "9608392656" },
-    { slug: "raushan-kumar", name: "Raushan Kumar", role: "Marathon (Head)", dept: "IT", phone: "918252342758" },
-    { slug: "shefali-gupta", name: "Shefali Gupta", role: "Marathon Graphics Lead", dept: "IT", phone: "7908262170" },
+    { slug: "raushan-kumar", name: "Raushan Kumar", role: "Marathon (Head)", dept: "IT", phone: "8252342758" },
+    { slug: "sefali-gupta", name: "Sefali Gupta", role: "Marathon Graphics Lead", dept: "IT", phone: "7908262170" },
     { slug: "risav-rakshit", name: "Risav Rakshit", role: "Marathon Database Lead", dept: "IT", phone: "7865042116" },
-    { slug: "sourav-naskar", name: "Sourav Naskar", role: "Marathon (Representative)", dept: "MBA", phone: "7550813563" },
+    { slug: "sourav-nayak", name: "Sourav Nayak", role: "Marathon (Representative)", dept: "MBA", phone: "7550813563" },
     { slug: "soumyadeep-matte", name: "Soumyadeep Matte", role: "Marathon (Representative)", dept: "MBA", phone: "7407303047" },
     { slug: "ronil-maity", name: "Ronil Maity", role: "Marathon (Representative)", dept: "MBA", phone: "9831210750" },
     { slug: "atim-ghosh", name: "Atim Ghosh", role: "Marathon (Representative)", dept: "BCA", phone: "7679809407" },
     { slug: "angsh-mitra", name: "Angsh Mitra", role: "Marathon (Representative)", dept: "BBA", phone: "8981255545" },
     { slug: "dhrubajyoti-mukherjee", name: "Dhrubajyoti Mukherjee", role: "Marathon (Representative)", dept: "BBA LLB", phone: "9875614172" },
     { slug: "md-hammad-shariq", name: "Md. Hammad Shariq", role: "Marathon (Representative)", dept: "BCA", phone: "8697648144" },
-    { slug: "abhirup-dey", name: "Abhirup Dey", role: "Marathon (Representative)", dept: "BHM/BHHA2", phone: "7980371923" },
+    { slug: "avirup-dey", name: "Avirup Dey", role: "Marathon (Representative)", dept: "BHM/BHHA2", phone: "7980371923" },
   ],
 };
 
@@ -151,9 +151,9 @@ export const GRAPHICS_CLUB: Section = {
   members: [
     { slug: "sounak-maji", name: "Sounak Maji", role: "A.R.C (Head)", dept: "IOTCSBT", phone: "7797574037" },
     { slug: "debjit-dey", name: "Debjit Dey", role: "A.R.C (Representative)", dept: "IOTCSBT", phone: "9734432577" },
-    { slug: "sarvani-saha", name: "Sarvani Saha", role: "A.R.C (Representative)", dept: "ECE", phone: "9007121400" },
+    { slug: "sarvani-jhantu-saha", name: "Sarvani Jhantu Saha", role: "A.R.C (Representative)", dept: "ECE", phone: "9831981183" },
     { slug: "aritra-mukherjee", name: "Aritra Mukherjee", role: "A.R.C (Representative)", dept: "BCA", phone: "9831981183" },
-    { slug: "soumyodeep-jana", name: "Soumyodeep Jana", role: "A.R.C (Representative)", dept: "BBA", phone: "7980937290" },
+    { slug: "soumyadeep-jana", name: "Soumyadeep Jana", role: "A.R.C (Representative)", dept: "BBA", phone: "7980937290" },
     { slug: "ishani-saha", name: "Ishani Saha", role: "A.R.C (Representative)", dept: "BBA LLB", phone: "8910905485" },
     { slug: "roni-shikari", name: "Roni Shikari", role: "A.R.C (Representative)", dept: "BHM/BHHA2", phone: "9748982128" },
   ],
@@ -164,7 +164,7 @@ export const TECH_CLUB: Section = {
   accentColor: "#06B6D4",
   members: [
     { slug: "aranya-rath", name: "Aranya Rath", role: "Tech-Club (Head)", dept: "CSE(IoTCSBT)", phone: "8274090864" },
-    { slug: "debojyoti-de-majumder", name: "Debojyoti De Majumder", role: "Tech-Club (Representative)", dept: "CSE-AI", phone: "8582882076" },
+    { slug: "debojyoti-de-majumder", name: "Debojyoti De Majumder", role: "Tech-Club (Representative)", dept: "AI", phone: "8582882076" },
     { slug: "anusmriti-saha", name: "Anusmriti Saha", role: "Tech-Club (Representative)", dept: "ECE", phone: "9123909299" },
   ],
 };
@@ -187,14 +187,14 @@ export const ANTI_RAGGING: Section = {
     { slug: "sania-parvin", name: "Sania Parvin", role: "Anti-Ragging Head", dept: "CSE", phone: "9547127400" },
     { slug: "ishika-dutta", name: "Ishika Dutta", role: "Anti-Ragging Head", dept: "CSE", phone: "8697625770" },
     { slug: "sanghamitra-das", name: "Sanghamitra Das", role: "Anti-Ragging Head", dept: "CSE AI", phone: "6909558211" },
-    { slug: "sreshtha-heera", name: "Sreshtha Heera", role: "Anti-Ragging Head", dept: "ECE", phone: "9088081824" },
-    { slug: "arjak-ghosh", name: "Arjak Ghosh", role: "Anti-Ragging Head", dept: "IOT", phone: "8617753559" },
+    { slug: "sreshtha-hira", name: "Sreshtha Hira", role: "Anti-Ragging Head", dept: "ECE", phone: "9088081824" },
+    { slug: "aurko-mukherjee", name: "Aurko Mukherjee", role: "Anti-Ragging Head", dept: "ME", phone: "8961594336" },
     { slug: "sulagna-roy-1", name: "Sulagna Roy", role: "Anti-Ragging Head", dept: "ECE", phone: "7439711702" },
     { slug: "bristi-das", name: "Bristi Das", role: "Anti-Ragging Head", dept: "BBA", phone: "8101676908" },
     { slug: "rachishnu-paul", name: "Rachishnu Paul", role: "Anti-Ragging Head", dept: "BCA", phone: "9830132572" },
     { slug: "anindit-chatterjee", name: "Anindit Chatterjee", role: "Anti-Ragging Head", dept: "MBA", phone: "9674108353" },
     { slug: "madhurattwa-ghosh", name: "Madhurattwa Ghosh", role: "Anti-Ragging Head", dept: "BHM/BHTA3", phone: "9330837301" },
-    { slug: "ojoswani-basu-ray", name: "Ojoswani Basu Ray", role: "Anti-Ragging Head", dept: "BBA LLB", phone: "9051865508" },
+    { slug: "ojoswini-basu-ray", name: "Ojoswini Basu Ray", role: "Anti-Ragging Head", dept: "BBA LLB", phone: "9051865508" },
   ],
 };
 
@@ -228,7 +228,7 @@ export const FOOTBALL: Section = {
     { slug: "anish-basu", name: "Anish Basu", role: "Football (Captain)", dept: "IOT", phone: "8145093055" },
     { slug: "subhashish-mondal", name: "Subhashish Mondal", role: "Football (Vice-Captain)", dept: "MBA", phone: "9330125354" },
     { slug: "parthib-mandal", name: "Parthib Mandal", role: "Football (Representative)", dept: "BCA", phone: "7980930169" },
-    { slug: "rishi-asthana-1", name: "Rishi Asthana", role: "Football (Representative)", dept: "BBA", phone: "8583996405" },
+    { slug: "bm-sadman-sakib", name: "BM Sadman Sakib", role: "Football (Representative)", dept: "BBA", phone: "8777020822" },
     { slug: "priyanshu-dutta", name: "Priyanshu Dutta", role: "Football (Representative)", dept: "MBA", phone: "9330118001" },
   ],
 };
@@ -241,9 +241,9 @@ export const CRICKET: Section = {
     { slug: "risham-kumar", name: "Risham Kumar", role: "Cricket (Vice-Captain)", dept: "CSE", phone: "8298689262" },
     { slug: "suraj-ojha", name: "Suraj Ojha", role: "Cricket", dept: "CSBS", phone: "9232310703" },
     { slug: "diganta-kumar-barman", name: "Diganta Kumar Barman", role: "Cricket", dept: "EE", phone: "8945027660" },
-    { slug: "adarsh-goshwami", name: "Adarsh Goshwami", role: "Cricket", dept: "MBA", phone: "9709943320" },
+    { slug: "adarsh-giri-1", name: "Adarsh Giri", role: "Cricket", dept: "MBA", phone: "9709943320" },
     { slug: "snehal-chowdhury", name: "Snehal Chowdhury", role: "Cricket", dept: "BBA", phone: "8100087423" },
-    { slug: "aritro-acharya", name: "Aritro Acharya", role: "Cricket (Representative)", dept: "BCA", phone: "8274889241" },
+    { slug: "aritra-acharyya", name: "Aritra Acharyya", role: "Cricket (Representative)", dept: "BCA", phone: "8274889241" },
   ],
 };
 
@@ -269,7 +269,7 @@ export const BASKETBALL: Section = {
   accentColor: "#22C55E",
   members: [
     { slug: "anushka-singh", name: "Anushka Singh", role: "Basketball (Captain)", dept: "EE", phone: "8967017990" },
-    { slug: "ashish-shekhar", name: "Ashish Shekhar", role: "Basketball (Vice-Captain)", dept: "CSE", phone: "6201433034" },
+    { slug: "ashish-shekhar", name: "Ashish Shekhar", role: "Basketball (Captain)", dept: "CSE", phone: "6201433034" },
     { slug: "aditya-kumar", name: "Aditya Kumar", role: "Basketball (Vice-Captain)", dept: "CSE", phone: "7221995014" },
   ],
 };
@@ -294,7 +294,7 @@ export const MUSIC_CLUB: Section = {
   title: "Music Club",
   accentColor: "#F59E0B",
   members: [
-    { slug: "pragya-banerjee", name: "Pragya Banerjee", role: "Music Club (Head)", dept: "ME", phone: "9073833447" },
+    { slug: "pragyo-banerjee", name: "Pragyo Banerjee", role: "Music Club (Head)", dept: "ME", phone: "9073833447" },
     { slug: "vedhargya-kundu", name: "Vedhargya Kundu", role: "Music Club (Co-Head)", dept: "IOT", phone: "9339463247" },
     { slug: "shinjini-bhattacharyya", name: "Shinjini Bhattacharyya", role: "Music Club (Representative)", dept: "AI", phone: "9339750060" },
     { slug: "sugata-bazani", name: "Sugata Bazani", role: "Music Club (Representative)", dept: "BCA", phone: "8910171630" },
@@ -305,8 +305,8 @@ export const EASTERN_DANCE: Section = {
   title: "Eastern Dance Club",
   accentColor: "#F59E0B",
   members: [
-    { slug: "samridha-singha-roy", name: "Samridha Singha Roy", role: "Eastern Dance Club (Head)", dept: "EE", phone: "9330960839" },
-    { slug: "ritabrata-dhar", name: "Ritabrata Dhar", role: "Eastern Dance Club (Head)", dept: "EE", phone: "8902046489" },
+    { slug: "samriddha-singha-roy", name: "Samriddha Singha Roy", role: "Eastern Dance Club (Head)", dept: "EE", phone: "9330960839" },
+    { slug: "ritabrata-dhar", name: "Ritabrata Dhar", role: "Eastern Dance Club (Co-Head)", dept: "EE", phone: "8902046489" },
     { slug: "debapriya-das", name: "Debapriya Das", role: "Eastern Dance Club (Representative)", dept: "BCA", phone: "8336023688" },
     { slug: "sauranjali-dhar", name: "Sauranjali Dhar", role: "Eastern Dance Club (Representative)", dept: "BCA", phone: "8597027268" },
   ],
@@ -316,10 +316,10 @@ export const WESTERN_DANCE: Section = {
   title: "Western Dance Club",
   accentColor: "#F59E0B",
   members: [
-    { slug: "debapriya-das-1", name: "Debapriya Das", role: "Western Dance Club (Head)", dept: "CSE", phone: "8910657581" },
+    { slug: "debapriya-roy", name: "Debapriya Roy", role: "Western Dance Club (Head)", dept: "CSE", phone: "8910657581" },
     { slug: "srija-das", name: "Srija Das", role: "Western Dance Club (Head)", dept: "AIML", phone: "8910055095" },
     { slug: "akansha-sinha", name: "Akansha Sinha", role: "Western Dance Club (Head)", dept: "CSBS", phone: "6292017298" },
-    { slug: "preyoshi-pal", name: "Preyoshi Pal", role: "Western Dance Club (Representative)", dept: "BCA", phone: "8240497914" },
+    { slug: "preyosi-pal", name: "Preyosi Pal", role: "Western Dance Club (Representative)", dept: "BCA", phone: "8240497914" },
   ],
 };
 
@@ -328,7 +328,7 @@ export const DRAMA_CLUB: Section = {
   accentColor: "#F59E0B",
   members: [
     { slug: "ariktam-de", name: "Ariktam De", role: "Drama Club (Head)", dept: "IOTCSBT", phone: "7003854680" },
-    { slug: "kuntal-ghoshwami", name: "Kuntal Ghoshwami", role: "Drama Club (Head)", dept: "IOTCSBT", phone: "8336810807" },
+    { slug: "kuntal-goswami", name: "Kuntal Goswami", role: "Drama Club (Head)", dept: "IOTCSBT", phone: "8336810807" },
   ],
 };
 
@@ -336,18 +336,18 @@ export const ART_CRAFT: Section = {
   title: "Art and Craft Club",
   accentColor: "#F59E0B",
   members: [
-    { slug: "shirsha-majumdar", name: "Shirsha Majumdar", role: "Art and Craft Club (Head)", dept: "EE", phone: "9875429449" },
+    { slug: "shirsha-majumder", name: "Shirsha Majumder", role: "Art and Craft Club (Head)", dept: "EE", phone: "9875429449" },
     { slug: "ishani-saha-1", name: "Ishani Saha", role: "Art and Craft (Representative)", dept: "BBA LLB", phone: "8910905485" },
     { slug: "lahana-bose", name: "Lahana Bose", role: "Art and Craft (Representative)", dept: "BBA", phone: "9647597762" },
     { slug: "anisha-zia", name: "Anisha Zia", role: "Art and Craft (Representative)", dept: "MBA", phone: "7479201484" },
-    { slug: "prasun-dey-sarkar", name: "Prasun Dey Sarkar", role: "Art and Craft (Representative)", dept: "MBA", phone: "9123000149" },
-    { slug: "shillindra-paul", name: "Shillindra Paul", role: "Art and Craft (Representative)", dept: "MBA", phone: "8617360996" },
-    { slug: "soumyadeep-das", name: "Soumyadeep Das", role: "Art and Craft (Representative)", dept: "BCA", phone: "7074851990" },
+    { slug: "prasun-dey", name: "Prasun Dey", role: "Art and Craft (Representative)", dept: "MBA", phone: "9123000149" },
+    { slug: "shilindhra-paul", name: "Shilindhra Paul", role: "Art and Craft (Representative)", dept: "MBA", phone: "8617360996" },
+    { slug: "soumyadeep-paul", name: "Soumyadeep Paul", role: "Art and Craft (Representative)", dept: "BCA", phone: "7074851990" },
     { slug: "sayantika-ghosh", name: "Sayantika Ghosh", role: "Art and Craft (Representative)", dept: "BBA", phone: "9064653233" },
     { slug: "sohini-pradhan", name: "Sohini Pradhan", role: "Art and Craft (Representative)", dept: "BBA LLB", phone: "9874668600" },
-    { slug: "swastik-chakraborty", name: "Swastik Chakraborty", role: "Art and Craft (Representative)", dept: "BCA", phone: "8420162986" },
+    { slug: "swastika-chakraborty", name: "Swastika Chakraborty", role: "Art and Craft (Representative)", dept: "BCA", phone: "8420162986" },
     { slug: "fawziah-noor", name: "Fawziah Noor", role: "Art and Craft (Representative)", dept: "BCA", phone: "8479004166" },
-    { slug: "ishika-guha", name: "Ishika Guha", role: "Art and Craft (Representative)", dept: "BHM/BHHA2", phone: "7439337559" },
+    { slug: "ishika-noor", name: "Ishika Noor", role: "Art and Craft (Representative)", dept: "BHM/BHHA2", phone: "7439337559" },
   ],
 };
 
@@ -392,7 +392,8 @@ export const LITERARY_SOCIETY: Section = {
   title: "Literary Society",
   accentColor: "#8B5CF6",
   members: [
-    { slug: "spandan-chakrabarty", name: "Spandan Chakrabarty", role: "Head", dept: "ECE", phone: "9836364257" },
+    { slug: "spandan-chakraborty", name: "Spandan Chakraborty", role: "Head", dept: "ECE", phone: "9836364257" },
+    { slug: "swastik-gayen", name: "Swastik Gayen", role: "Representative", dept: "CSE AIML", phone: "8927001198" },
   ],
 };
 
@@ -411,11 +412,10 @@ export const COLLEGE_MAGAZINE: Section = {
   members: [
     { slug: "kaushitaki-ghosh", name: "Kaushitaki Ghosh", role: "College Magazine (President)", dept: "CSE", phone: "7980785893" },
     { slug: "ankita-mandal", name: "Ankita Mandal", role: "College Magazine (President)", dept: "IOTCSBT", phone: "9051025318" },
-    { slug: "richika-bhowmik", name: "Richika Bhowmik", role: "College Magazine (VP)", dept: "BCA", phone: "7044024821" },
+    { slug: "richik-b-bhattacharya", name: "Richik B Bhattacharya", role: "College Magazine (VP)", dept: "BCA", phone: "7044024821" },
     { slug: "sudipta-naiya", name: "Sudipta Naiya", role: "College Magazine", dept: "BCA", phone: "8777675663" },
-    { slug: "saumili-chakraborty", name: "Saumili Chakraborty", role: "College Magazine", dept: "BBA", phone: "9432691257" },
+    { slug: "shivam-basu", name: "Shivam Basu", role: "College Magazine", dept: "BBA", phone: "7620238130" },
     { slug: "suchismita-saha", name: "Suchismita Saha", role: "College Magazine", dept: "BCA", phone: "9332343979" },
-    { slug: "ankita-sarkar", name: "Ankita Sarkar", role: "College Magazine", dept: "BBA", phone: "8274915793" },
     { slug: "bristi-das-1", name: "Bristi Das", role: "College Magazine", dept: "BBA", phone: "8101676908" },
     { slug: "swastik-dey", name: "Swastik Dey", role: "College Magazine", dept: "BCA", phone: "9735738516" },
     { slug: "namrata-kundu", name: "Namrata Kundu", role: "College Magazine", dept: "BCA", phone: "8617219678" },
@@ -435,7 +435,7 @@ export const PET_SOCIETY: Section = {
   title: "Pet Society",
   accentColor: "#10B981",
   members: [
-    { slug: "annaya-sinha", name: "Annaya Sinha", role: "Head", dept: "BCA", phone: "9874776857" },
+    { slug: "ananya-sinha", name: "Ananya Sinha", role: "Head", dept: "BCA", phone: "9874776857" },
     { slug: "arjak-ghosh-1", name: "Arjak Ghosh", role: "Co-Head", dept: "IOT", phone: "8617753559" },
   ],
 };
@@ -456,12 +456,12 @@ export const STUDENT_CHAPTERS: Section = {
     { slug: "deep-batabyal", name: "Deep Batabyal", role: "IEEE IEM CAS-S", dept: "ECE", phone: "8101144074" },
     { slug: "sneha-shaw", name: "Sneha Shaw", role: "IEEE IEM WIE", dept: "ECE", phone: "7059670668" },
     { slug: "shinjan-bhatta", name: "Shinjan Bhatta", role: "IEEE IEM CS", dept: "CSBS", phone: "9674167092" },
-    { slug: "anand-kumar-singh", name: "Anand Kumar Singh", role: "PreeHub", phone: "8969979393" },
+    { slug: "anand-kumar-singh", name: "Anand Kumar Singh", role: "PerrHub", dept: "CSE", phone: "8969979393" },
     { slug: "tina-maity", name: "Tina Maity", role: "IEEE Solid State Circuit Society", dept: "EE", phone: "9330481181" },
     { slug: "mounik-biswas", name: "Mounik Biswas", role: "IEM-IETE Students' Forum", dept: "AI", phone: "7318698164" },
     { slug: "lavitra-barat", name: "Lavitra Barat", role: "IEEE Control System Society", dept: "EE", phone: "7063862149" },
     { slug: "debosmita-gorai", name: "Debosmita Gorai", role: "IEEE Industry Applications Society (IAS)", dept: "EE", phone: "9163294221" },
-    { slug: "anurag-deb", name: "Anurag Deb", role: "Toastmasters Club", dept: "CSE", phone: "8697760025" },
+    { slug: "anurag-deb", name: "Anurag Deb", role: "Toastmasters Club", dept: "CSE(IoT)", phone: "8697760025" },
     { slug: "agnik-mitra", name: "Agnik Mitra", role: "IEEE IES SBC", dept: "EE", phone: "7076608569" },
     { slug: "meesha-sinha", name: "Meesha Sinha", role: "IEEE SIGHT", dept: "ECE", phone: "7903180412" },
     { slug: "atrisha-biswas", name: "Atrisha Biswas", role: "IEEE EMCS", dept: "ECE", phone: "9123969123" },

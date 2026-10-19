@@ -54,12 +54,26 @@ export const FACULTY: Section = {
   ],
 };
 
-export const CORE_COMMITTEE: Section = {
-  title: "Core Committee",
+export const GENERAL_SECRETARY: Section = {
+  title: "General Secretary",
   accentColor: "#EF4444",
   members: [
     { slug: "debnath-mukherjee", name: "Debnath Mukherjee", role: "General Secretary", dept: "AI", phone: "7908448126" },
+  ],
+};
+
+export const VICE_PRESIDENT: Section = {
+  title: "Vice President",
+  accentColor: "#EF4444",
+  members: [
     { slug: "adrika-kundu", name: "Adrika Kundu", role: "Vice President", dept: "IT", phone: "8584999160" },
+  ],
+};
+
+export const ASSOCIATE_VICE_PRESIDENT: Section = {
+  title: "Associate Vice President",
+  accentColor: "#EF4444",
+  members: [
     { slug: "utkarsh-srivastava", name: "Utkarsh Srivastava", role: "Associate Vice President", dept: "ME", phone: "7980144505" },
   ],
 };
@@ -476,7 +490,9 @@ export const STUDENT_CHAPTERS: Section = {
 export const allSections2026: Section[] = [
   ADMINISTRATION,
   FACULTY,
-  CORE_COMMITTEE,
+  GENERAL_SECRETARY,
+  VICE_PRESIDENT,
+  ASSOCIATE_VICE_PRESIDENT,
   CULTURAL_SECRETARY,
   STUDENT_WELFARE,
   ALUMNI_RELATIONS,

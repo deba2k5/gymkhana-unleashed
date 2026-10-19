@@ -119,7 +119,26 @@ export const TECH_LEAD: Section = {
   title: "Institutional Technical Lead",
   accentColor: "#3B82F6",
   members: [
-    { slug: "debangshu-chatterjee", name: "Debangshu Chatterjee", role: "Institutional Technical Lead", dept: "IOTCSBT", phone: "6290277345" },
+    {
+      slug: "debangshu-chatterjee",
+      name: "Debangshu Chatterjee",
+      role: "Institutional Technical Lead",
+      dept: "IOTCSBT",
+      phone: "6290277345",
+      image: "/media-members/2026-27/debangshu-chatterjee.jpg",
+      achievements: [
+        "7x Hackathon Winner",
+        "Smart India Hackathon 2024 — National Finalist & Runners-Up",
+        "Infosys Global Hackathon 2025 — State Winner & AIR 8",
+        "IEEE YESIST12 Malaysia — Global Top 3",
+        "DIVERSION 2026 — Organizer",
+        "DIVERSION 2027 — Advisor",
+        "CodeVoyage 2026 — Organizer",
+        "IEM HackOasis 2.0 — Organizer",
+        "IEM Hacks 3.0 — Organizer",
+        "Smart Maker Festival 2025 — Organizer",
+      ],
+    },
     { slug: "souherdya-sarkar", name: "Souherdya Sarkar", role: "Institutional Technical Lead", dept: "IOTCSBT", phone: "8910169299" },
   ],
 };

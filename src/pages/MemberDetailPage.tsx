@@ -141,16 +141,16 @@ const MemberDetailPage = () => {
               className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8"
             >
               {/* AVATAR */}
-              <div className="w-28 h-28 sm:w-36 sm:h-36 shrink-0 rounded-[2rem] overflow-hidden border-[3px] border-primary bg-black shadow-[6px_6px_0px_hsl(var(--primary)/var(--shadow-opacity))]">
+              <div className="w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 shrink-0 rounded-[2rem] overflow-hidden border-[3px] border-primary bg-black shadow-[6px_6px_0px_hsl(var(--primary)/var(--shadow-opacity))]">
                 {member.image ? (
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-yellow-400/20 to-primary/10 flex items-center justify-center">
-                    <User className="w-12 h-12 text-foreground/20" />
+                    <User className="w-16 h-16 text-foreground/20" />
                   </div>
                 )}
               </div>
@@ -175,7 +175,7 @@ const MemberDetailPage = () => {
 
                 <h1
                   className="font-space font-black tracking-tighter text-foreground mb-3 transition-colors break-words"
-                  style={{ fontSize: "clamp(2.25rem,5.5vw,4rem)", lineHeight: 0.95 }}
+                  style={{ fontSize: "clamp(2.5rem,6.5vw,4.75rem)", lineHeight: 0.95 }}
                 >
                   {member.name}
                 </h1>

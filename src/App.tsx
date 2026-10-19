@@ -20,7 +20,7 @@ import EventDetailPage from "./pages/EventDetailPage.tsx";
 import AwardsPage from "./pages/AwardsPage.tsx";
 import MemberDetailPage from "./pages/MemberDetailPage.tsx";
 import AuditionsPage from "./pages/AuditionsPage.tsx";
-import FreshersPage from "./pages/FreshersPage.tsx";
+// import FreshersPage from "./pages/FreshersPage.tsx"; // temporarily disabled
 
 const queryClient = new QueryClient();
 
@@ -35,7 +35,7 @@ const AppRoutes = () => (
     <Route path="/events/:slug" element={<EventDetailPage />} />
     <Route path="/awards" element={<AwardsPage />} />
     <Route path="/auditions" element={<AuditionsPage />} />
-    <Route path="/freshers" element={<FreshersPage />} />
+    {/* <Route path="/freshers" element={<FreshersPage />} /> temporarily disabled */}
 
     <Route path="*" element={<NotFound />} />
   </Routes>
